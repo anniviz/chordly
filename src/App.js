@@ -12,7 +12,12 @@ function App() {
       <SongContainer>
         {songs.map((song, index) => (
           <>
-            <Song key={index}>{song}</Song>
+            <Song
+              key={index}
+              title={song.title}
+              artist={song.artist}
+              text={song.text}
+            ></Song>
             <Seperator />
           </>
         ))}
