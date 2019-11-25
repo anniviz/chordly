@@ -1,0 +1,34 @@
+{font:Title,LenKrickel,24,0,false,false}
+{font:SubTitle,Comic Sans MS,9,0,false,false}
+{font:Lyric,Comic Sans MS,12,0,false,false}
+{font:Chorus,Chalkduster,12,0,false,false}
+{font:Chord,Chalkduster,12,0,false,false}
+{font:Comment,Verdana,12,0,false,true}
+{font:Tablature,Courier New,16,0,false,false}
+{font:Editor,Courier New,15,0,false,false}
+{color:Title,0.000000,0.000000,0.000000,1.000000}
+{color:SubTitle,0.400000,0.400000,0.400000,1.000000}
+{color:Lyric,0.000000,0.000000,0.000000,1.000000}
+{color:Chorus,0.000000,0.000000,0.000000,1.000000}
+{color:Chord,0.000000,0.000000,0.000000,1.000000}
+{color:Comment,0.298039,0.298039,0.298039,1.000000}
+{color:Tablature,0.000000,0.000000,0.000000,1.000000}
+{color:Editor,0.000000,0.000000,0.000000,1.000000}
+{color:EditorBack,1.000000,1.000000,1.000000,1.000000}
+{playtime:60}
+{chorusindent:0}
+{chordspace:8}
+{linespace:0}
+{transpositionLevel:0}
+{t:Ich gehör zum Herrn}
+{st:Lennart Wisbar}
+#
+
+[C]Ich gehör zum Herrn, der mir ver[G]gibt und mich befreit
+Der mich er[Am]löst hat mit seinem Blut für [F]alle Ewigkeit 
+(2x tief, 2x hoch)
+
+{soc}
+[C]  Ein Tag bei [G]dir ist besser als [Am]tausende wo[F]anders       (2x)
+{eoc}
+
