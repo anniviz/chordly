@@ -16,7 +16,7 @@ function App() {
               key={index}
               title={song.title}
               artist={song.artist}
-              text={song.text}
+              lyrics={song.lyrics}
             ></Song>
             <Seperator />
           </>
