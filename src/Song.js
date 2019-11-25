@@ -14,7 +14,6 @@ export default function Song({ title, artist, lyrics }) {
 
 const SongStyled = styled.section`
   margin: 10px;
-  word-wrap: break-word;
   white-space: pre-line;
   padding: 20px;
 `
