@@ -14,7 +14,11 @@ function App() {
   const [displayedSong, setDisplayedSong] = useState(songsAlphabetically[0])
   return (
     <Layout>
-      <TitleList songs={songsAlphabetically}></TitleList>
+      <TitleList
+        songs={songsAlphabetically}
+        displayedSong={displayedSong}
+        setDisplayedSong={setDisplayedSong}
+      ></TitleList>
       <Song {...displayedSong} />
     </Layout>
   )
