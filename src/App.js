@@ -1,22 +1,21 @@
 import React from 'react'
-import SongContainer from './SongContainer'
+
+import Layout from './Layout'
+import TitleList from './TitleList'
 import Song from './Song'
 
-import songs from './songs.json'
-import Seperator from './Seperator'
+import songs from './songsShort.json'
 
 function App() {
+  const titles = []
+  songs.forEach(song => {
+    titles.push(song.title)
+  })
+  const titlesAlphabetically = titles.sort()
   return (
-    <div className="App">
-      <SongContainer>
-        {songs.map((song, index) => (
-          <>
-            <Song key={index} {...song}></Song>
-            <Seperator />
-          </>
-        ))}
-      </SongContainer>
-    </div>
+    <Layout>
+      <TitleList titles={titlesAlphabetically}></TitleList>
+    </Layout>
   )
 }
 
