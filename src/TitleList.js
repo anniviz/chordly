@@ -14,14 +14,16 @@ export default function TitleList({ songs }) {
 }
 
 const TitleWrapper = styled.ul`
-  position: relative;
+  grid-column-start: 1;
+  grid-column-end: span 1;
+  justify-self: stretch;
   list-style: none;
   padding: 10px;
-  width: 35%;
+  width: 100%;
   height: 80%;
   border-radius: 12px;
   border: 4px solid transparent;
-  position: absolute;
+  position: relative;
   background: #3f4a6d;
   background-clip: padding-box;
 

@@ -13,6 +13,7 @@ export default function Song({ title, artist, lyrics }) {
 }
 
 const SongStyled = styled.section`
+  grid-column-start: 2;
   margin: 10px;
   white-space: pre-line;
   padding: 20px;
