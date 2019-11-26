@@ -1,10 +1,11 @@
 import React from 'react'
-import { withKnobs, text } from '@storybook/addon-knobs'
+import { withKnobs, text, boolean, number } from '@storybook/addon-knobs'
+import { withInfo } from '@storybook/addon-info'
 import Song from './Song'
 
 export default {
   title: 'Song',
-  decorators: [withKnobs],
+  decorators: [withKnobs, withInfo],
 }
 
 export const standard = () => (

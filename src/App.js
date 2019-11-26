@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import Layout from './Layout'
 import TitleList from './TitleList'
@@ -11,9 +11,11 @@ function App() {
     .slice(0)
     .sort((a, b) => (a.title > b.title ? 1 : -1))
 
+  const [displayedSong, setDisplayedSong] = useState(songsAlphabetically[0])
   return (
     <Layout>
       <TitleList songs={songsAlphabetically}></TitleList>
+      <Song {...displayedSong} />
     </Layout>
   )
 }
