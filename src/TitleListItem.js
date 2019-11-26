@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import styled from 'styled-components/macro'
 
 export default function TitleListItem({ song, selected, setDisplayedSong }) {
@@ -18,3 +19,9 @@ const TitleListItemStyled = styled.li`
   padding: 10px 0;
   cursor: default;
 `
+
+TitleListItem.propTypes = {
+  song: PropTypes.array.isRequired,
+  selected: PropTypes.bool.isRequired,
+  setDisplayedSong: PropTypes.func.isRequired,
+}

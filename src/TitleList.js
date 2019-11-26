@@ -77,4 +77,6 @@ const TitleWrapper = styled.ul`
 
 TitleList.propTypes = {
   songs: PropTypes.array.isRequired,
+  displayedSong: PropTypes.object.isRequired,
+  setDisplayedSong: PropTypes.func.isRequired,
 }
