@@ -7,14 +7,13 @@ import Song from './Song'
 import songs from './songsShort.json'
 
 function App() {
-  const titles = []
-  songs.forEach(song => {
-    titles.push(song.title)
-  })
-  const titlesAlphabetically = titles.sort()
+  const songsAlphabetically = songs
+    .slice(0)
+    .sort((a, b) => (a.title > b.title ? 1 : -1))
+
   return (
     <Layout>
-      <TitleList titles={titlesAlphabetically}></TitleList>
+      <TitleList songs={songsAlphabetically}></TitleList>
     </Layout>
   )
 }

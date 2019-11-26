@@ -1,12 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components/macro'
+import TitleListItem from './TitleListItem'
 
-export default function TitleList({ titles }) {
+export default function TitleList({ songs }) {
   return (
     <TitleWrapper>
-      {titles.map((title, index) => (
-        <li key={index}>{title}</li>
+      {songs.map((song, index) => (
+        <TitleListItem key={index} title={song.title} />
       ))}
     </TitleWrapper>
   )
@@ -25,5 +26,5 @@ const TitleWrapper = styled.ul`
 //const TitleListItem = styled.li``
 
 TitleList.propTypes = {
-  titles: PropTypes.array.isRequired,
+  songs: PropTypes.array.isRequired,
 }
