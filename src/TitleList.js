@@ -46,8 +46,7 @@ export default function TitleList({ songs, displayedSong, setDisplayedSong }) {
 }
 
 const TitleWrapper = styled.ul`
-  grid-column-start: 1;
-  grid-column-end: span 1;
+  grid-column: 1 / 2;
   justify-self: stretch;
   list-style: none;
   padding: 10px;
