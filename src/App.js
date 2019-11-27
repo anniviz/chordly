@@ -5,6 +5,8 @@ import TitleList from './TitleList'
 import Song from './Song'
 
 import songs from './songsShort.json'
+import SongListButton from './SongListButton'
+import TitleListWrapper from './TitleListWrapper'
 
 function App() {
   const songsAlphabetically = songs
@@ -14,11 +16,14 @@ function App() {
   const [displayedSong, setDisplayedSong] = useState(songsAlphabetically[0])
   return (
     <Layout>
-      <TitleList
-        songs={songsAlphabetically}
-        displayedSong={displayedSong}
-        setDisplayedSong={setDisplayedSong}
-      ></TitleList>
+      <TitleListWrapper>
+        <TitleList
+          songs={songsAlphabetically}
+          displayedSong={displayedSong}
+          setDisplayedSong={setDisplayedSong}
+        ></TitleList>
+        <SongListButton />
+      </TitleListWrapper>
       <Song {...displayedSong} />
     </Layout>
   )

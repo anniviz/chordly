@@ -6,6 +6,7 @@ export default styled.button`
   font-size: 1em;
   padding: 8px;
   width: 100%;
+  height: 40px;
   border-radius: 12px;
   border: 4px solid transparent;
   position: relative;
