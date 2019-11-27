@@ -10,12 +10,16 @@ export default styled.li`
   transform: rotate(180deg);
   height: 100%;
   width: 100%;
-  background: linear-gradient(#3f4a6d, #5b6689);
-  color: #fefefe;
+  background: ${props =>
+    props.isAllSongsShown
+      ? 'linear-gradient(#fd5da1, #feb79c)'
+      : 'linear-gradient(#3f4a6d, #5b6689)'};
+  color: #5b6689;
   font-size: 22px;
   font-weight: 200;
   padding: 8px;
   border: none;
   padding: 0;
   margin: 0;
+  cursor: default;
 `

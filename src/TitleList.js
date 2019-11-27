@@ -3,9 +3,14 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components/macro'
 import TitleListItem from './TitleListItem'
 
-export default function TitleList({ songs, displayedSong, setDisplayedSong }) {
+export default function TitleList({
+  songs,
+  displayedSong,
+  setDisplayedSong,
+  isAllSongsShown,
+}) {
   return (
-    <TitleWrapper>
+    <TitleWrapper isAllSongsShown={isAllSongsShown}>
       {songs.map((song, index) => {
         return highlightSelectedTitle(
           song,
@@ -46,7 +51,7 @@ export default function TitleList({ songs, displayedSong, setDisplayedSong }) {
 }
 
 const TitleWrapper = styled.ul`
-  /* grid-column: 1 / 2; */
+  display: ${props => (props.isAllSongsShown ? 'block' : 'none')};
   justify-self: stretch;
   align-self: center;
   list-style: none;

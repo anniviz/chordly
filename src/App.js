@@ -6,7 +6,6 @@ import Song from './Song'
 
 import songs from './songsShort.json'
 import SidebarItem from './SidebarItem'
-import TitleListWrapper from './TitleListWrapper'
 import Sidebar from './Sidebar'
 import GradientText from './GradientText'
 
@@ -16,29 +15,44 @@ function App() {
     .sort((a, b) => (a.title > b.title ? 1 : -1))
 
   const [displayedSong, setDisplayedSong] = useState(songsAlphabetically[0])
-  const [isTitleListShown, setIsTitleListShown] = useState(false)
+  const [isAllSongsShown, setIsAllSongsShown] = useState(false)
+  let isAListShown = false
+  isAllSongsShown ? (isAListShown = true) : (isAListShown = false)
 
   return (
     <Layout>
       <Sidebar>
-        <SidebarItem>
+        <SidebarItem listType="currentList">
           <GradientText>Current Set List</GradientText>
         </SidebarItem>
-        <SidebarItem>
+        <SidebarItem listType="setLists">
           <GradientText>Set Lists</GradientText>
         </SidebarItem>
-        <SidebarItem>
-          <GradientText>All Songs</GradientText>
+        <SidebarItem
+          listType="allSongs"
+          onClick={toggleAllSongs}
+          isAllSongsShown={isAllSongsShown}
+        >
+          {isAllSongsShown ? (
+            <p>All Songs </p>
+          ) : (
+            <GradientText>All Songs</GradientText>
+          )}
         </SidebarItem>
       </Sidebar>
       <TitleList
         songs={songsAlphabetically}
         displayedSong={displayedSong}
         setDisplayedSong={setDisplayedSong}
+        isAllSongsShown={isAllSongsShown}
       ></TitleList>
-      <Song {...displayedSong} />
+      <Song {...displayedSong} isAListShown={isAListShown} />
     </Layout>
   )
+
+  function toggleAllSongs() {
+    setIsAllSongsShown(!isAllSongsShown)
+  }
 }
 
 export default App
