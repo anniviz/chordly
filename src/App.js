@@ -5,8 +5,10 @@ import TitleList from './TitleList'
 import Song from './Song'
 
 import songs from './songsShort.json'
-import SongListButton from './SongListButton'
+import SidebarItem from './SidebarItem'
 import TitleListWrapper from './TitleListWrapper'
+import Sidebar from './Sidebar'
+import GradientText from './GradientText'
 
 function App() {
   const songsAlphabetically = songs
@@ -14,16 +16,26 @@ function App() {
     .sort((a, b) => (a.title > b.title ? 1 : -1))
 
   const [displayedSong, setDisplayedSong] = useState(songsAlphabetically[0])
+  const [isTitleListShown, setIsTitleListShown] = useState(false)
+
   return (
     <Layout>
-      <TitleListWrapper>
-        <TitleList
-          songs={songsAlphabetically}
-          displayedSong={displayedSong}
-          setDisplayedSong={setDisplayedSong}
-        ></TitleList>
-        <SongListButton />
-      </TitleListWrapper>
+      <Sidebar>
+        <SidebarItem>
+          <GradientText>Current Set List</GradientText>
+        </SidebarItem>
+        <SidebarItem>
+          <GradientText>Set Lists</GradientText>
+        </SidebarItem>
+        <SidebarItem>
+          <GradientText>All Songs</GradientText>
+        </SidebarItem>
+      </Sidebar>
+      <TitleList
+        songs={songsAlphabetically}
+        displayedSong={displayedSong}
+        setDisplayedSong={setDisplayedSong}
+      ></TitleList>
       <Song {...displayedSong} />
     </Layout>
   )
