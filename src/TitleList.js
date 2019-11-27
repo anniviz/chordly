@@ -67,8 +67,8 @@ const TitleWrapper = styled.ul`
     bottom: 0;
     left: 0;
     z-index: -1;
-    margin: -4px; /* !importanté */
-    border-radius: inherit; /* !importanté */
+    margin: -4px;
+    border-radius: inherit;
     background: linear-gradient(60deg, #feb79c, #fd5da1);
   }
 `
