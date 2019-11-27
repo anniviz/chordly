@@ -1,22 +1,26 @@
-import React from 'react'
-import SongContainer from './SongContainer'
+import React, { useState } from 'react'
+
+import Layout from './Layout'
+import TitleList from './TitleList'
 import Song from './Song'
 
-import songs from './songs.json'
-import Seperator from './Seperator'
+import songs from './songsShort.json'
 
 function App() {
+  const songsAlphabetically = songs
+    .slice(0)
+    .sort((a, b) => (a.title > b.title ? 1 : -1))
+
+  const [displayedSong, setDisplayedSong] = useState(songsAlphabetically[0])
   return (
-    <div className="App">
-      <SongContainer>
-        {songs.map((song, index) => (
-          <>
-            <Song key={index} {...song}></Song>
-            <Seperator />
-          </>
-        ))}
-      </SongContainer>
-    </div>
+    <Layout>
+      <TitleList
+        songs={songsAlphabetically}
+        displayedSong={displayedSong}
+        setDisplayedSong={setDisplayedSong}
+      ></TitleList>
+      <Song {...displayedSong} />
+    </Layout>
   )
 }
 
