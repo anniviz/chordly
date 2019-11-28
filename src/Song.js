@@ -23,4 +23,5 @@ Song.propTypes = {
   title: PropTypes.string.isRequired,
   artist: PropTypes.string,
   lyrics: PropTypes.string.isRequired,
+  isAListShown: PropTypes.bool.isRequired,
 }

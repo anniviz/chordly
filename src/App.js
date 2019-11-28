@@ -21,17 +21,13 @@ function App() {
   return (
     <Layout>
       <Sidebar>
-        <SidebarItem listType="currentList">
+        <SidebarItem>
           <GradientText>Current Set List</GradientText>
         </SidebarItem>
-        <SidebarItem listType="setLists">
+        <SidebarItem>
           <GradientText>Set Lists</GradientText>
         </SidebarItem>
-        <SidebarItem
-          listType="allSongs"
-          onClick={toggleAllSongs}
-          isAllSongsShown={isAllSongsShown}
-        >
+        <SidebarItem onClick={toggleAllSongs} isAllSongsShown={isAllSongsShown}>
           {isAllSongsShown ? (
             <p>All Songs </p>
           ) : (

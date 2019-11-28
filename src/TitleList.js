@@ -14,11 +14,9 @@ export default function TitleList({
   const AnimatedTitleWrapperBorder = animated(TitleWrapperBorder)
   const flyIn = useSpring({
     width: isAllSongsShown ? '100%' : '0%',
-    // transform: isAllSongsShown ? 'translate3d(0,0,0)' : 'translate3d(100%,0,0)',
     transform: isAllSongsShown ? 'scale(1)' : 'scale(0.6)',
     display: isAllSongsShown ? 'block' : 'none',
   })
-  //const props = useSpring({ gridColumn: isAListShown ? '3 / end' : '2 / end' })
 
   return (
     <AnimatedTitleWrapperBorder isAllSongsShown={isAllSongsShown} style={flyIn}>
@@ -88,4 +86,5 @@ TitleList.propTypes = {
   songs: PropTypes.array.isRequired,
   displayedSong: PropTypes.object.isRequired,
   setDisplayedSong: PropTypes.func.isRequired,
+  isAllSongsShown: PropTypes.bool.isRequired,
 }
