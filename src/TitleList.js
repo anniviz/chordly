@@ -1,20 +1,36 @@
 import React from 'react'
+import { useSpring, animated } from 'react-spring'
 import PropTypes from 'prop-types'
 import styled from 'styled-components/macro'
+
 import TitleListItem from './TitleListItem'
 
-export default function TitleList({ songs, displayedSong, setDisplayedSong }) {
+export default function TitleList({
+  songs,
+  displayedSong,
+  setDisplayedSong,
+  isAllSongsShown,
+}) {
+  const AnimatedTitleWrapperBorder = animated(TitleWrapperBorder)
+  const flyIn = useSpring({
+    width: isAllSongsShown ? '100%' : '0%',
+    transform: isAllSongsShown ? 'scale(1)' : 'scale(0.6)',
+    display: isAllSongsShown ? 'block' : 'none',
+  })
+
   return (
-    <TitleWrapper>
-      {songs.map((song, index) => {
-        return highlightSelectedTitle(
-          song,
-          displayedSong,
-          index,
-          setDisplayedSong
-        )
-      })}
-    </TitleWrapper>
+    <AnimatedTitleWrapperBorder isAllSongsShown={isAllSongsShown} style={flyIn}>
+      <TitleWrapper isAllSongsShown={isAllSongsShown}>
+        {songs.map((song, index) => {
+          return highlightSelectedTitle(
+            song,
+            displayedSong,
+            index,
+            setDisplayedSong
+          )
+        })}
+      </TitleWrapper>
+    </AnimatedTitleWrapperBorder>
   )
 
   function highlightSelectedTitle(
@@ -46,37 +62,29 @@ export default function TitleList({ songs, displayedSong, setDisplayedSong }) {
 }
 
 const TitleWrapper = styled.ul`
-  grid-column-start: 1;
-  grid-column-end: span 1;
   justify-self: stretch;
+  align-self: center;
   list-style: none;
   padding: 10px;
-  width: 100%;
-  height: 80%;
+  height: 100%;
   border-radius: 12px;
-  border: 4px solid transparent;
-  position: relative;
   background: #3f4a6d;
   background-clip: padding-box;
-
-  &:before {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    z-index: -1;
-    margin: -4px; /* !importanté */
-    border-radius: inherit; /* !importanté */
-    background: linear-gradient(60deg, #feb79c, #fd5da1);
-  }
 `
 
-//const TitleListItem = styled.li``
+const TitleWrapperBorder = styled.div`
+  justify-self: stretch;
+  align-self: center;
+  list-style: none;
+  border-radius: 12px;
+  padding: 2px;
+  height: 90%;
+  background: linear-gradient(60deg, #feb79c, #fd5da1);
+`
 
 TitleList.propTypes = {
   songs: PropTypes.array.isRequired,
   displayedSong: PropTypes.object.isRequired,
   setDisplayedSong: PropTypes.func.isRequired,
+  isAllSongsShown: PropTypes.bool.isRequired,
 }

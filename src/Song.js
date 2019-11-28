@@ -2,9 +2,9 @@ import React from 'react'
 import styled from 'styled-components/macro'
 import PropTypes from 'prop-types'
 
-export default function Song({ title, artist, lyrics }) {
+export default function Song({ title, artist, lyrics, isAListShown }) {
   return (
-    <SongStyled>
+    <SongStyled isAListShown={isAListShown}>
       <h2>{title}</h2>
       <h3>{artist}</h3>
       <p>{lyrics}</p>
@@ -13,14 +13,15 @@ export default function Song({ title, artist, lyrics }) {
 }
 
 const SongStyled = styled.section`
-  grid-column-start: 2;
-  margin: 10px;
+  grid-column: ${props => (props.isAListShown ? '3 / end' : '2 / end')};
   white-space: pre-line;
-  padding: 20px;
+  padding: 12px;
+  margin-top: 10%;
 `
 
 Song.propTypes = {
   title: PropTypes.string.isRequired,
   artist: PropTypes.string,
   lyrics: PropTypes.string.isRequired,
+  isAListShown: PropTypes.bool.isRequired,
 }
