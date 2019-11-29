@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import Layout from './Layout'
 import TitleList from './TitleList'
-import Song from './Song'
+import Song from './Song/Song'
 
 import songs from './songsParsed.json'
 import SidebarItem from './SidebarItem'
