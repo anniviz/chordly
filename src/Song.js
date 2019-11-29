@@ -2,12 +2,23 @@ import React from 'react'
 import styled from 'styled-components/macro'
 import PropTypes from 'prop-types'
 
-export default function Song({ title, artist, lyrics, isAListShown }) {
+export default function Song({ song, isAListShown }) {
   return (
     <SongStyled isAListShown={isAListShown}>
-      <h2>{title}</h2>
-      <h3>{artist}</h3>
-      <p>{lyrics}</p>
+      <h1>{song.optimizedMetaData.title}</h1>
+      {song.optimizedMetaData.artist && (
+        <h2>{song.optimizedMetaData.artist}</h2>
+      )}
+      {song.lines.map((line, index) => (
+        <Line key={index}>
+          {line.items.map((item, index) => (
+            <CordLyricsPair key={index}>
+              <Chord>{item.chords}</Chord>
+              <Lyrics>{item.lyrics}</Lyrics>
+            </CordLyricsPair>
+          ))}
+        </Line>
+      ))}
     </SongStyled>
   )
 }
@@ -19,9 +30,27 @@ const SongStyled = styled.section`
   margin-top: 10%;
 `
 
+const Line = styled.div`
+  display: flex;
+  flex-direction: row;
+`
+
+const CordLyricsPair = styled.div`
+  display: flex;
+  flex-direction: column;
+`
+
+const Chord = styled.div`
+  height: 1.5em;
+  color: #10ddd0;
+`
+
+const Lyrics = styled.div`
+  height: 1.5em;
+  color: #11b7bc;
+`
+
 Song.propTypes = {
-  title: PropTypes.string.isRequired,
-  artist: PropTypes.string,
-  lyrics: PropTypes.string.isRequired,
+  song: PropTypes.object.isRequired,
   isAListShown: PropTypes.bool.isRequired,
 }

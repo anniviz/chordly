@@ -8,7 +8,7 @@ export default function TitleListItem({ song, selected, setDisplayedSong }) {
       selected={selected}
       onClick={() => setDisplayedSong(song)}
     >
-      {song.title}
+      {song.optimizedMetaData.title}
     </TitleListItemStyled>
   )
 }

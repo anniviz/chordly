@@ -1,0 +1,2988 @@
+[
+  {
+    "lines": [
+      {
+        "items": [
+          {
+            "chords": "",
+            "lyrics": "  "
+          },
+          {
+            "_name": "title",
+            "_originalName": "title",
+            "_value": "All I Need Is You"
+          }
+        ],
+        "type": "none",
+        "currentChordLyricsPair": {
+          "chords": "",
+          "lyrics": "  "
+        }
+      },
+      {
+        "items": [
+          {
+            "_name": "artist",
+            "_originalName": "artist",
+            "_value": "Hillsong United"
+          }
+        ],
+        "type": "none",
+        "currentChordLyricsPair": null
+      },
+      {
+        "items": [],
+        "type": "none",
+        "currentChordLyricsPair": null
+      },
+      {
+        "items": [
+          {
+            "_name": "start_of_verse",
+            "_originalName": "start_of_verse",
+            "_value": "Verse 1"
+          }
+        ],
+        "type": "none",
+        "currentChordLyricsPair": null
+      },
+      {
+        "items": [
+          {
+            "chords": "C#m",
+            "lyrics": "Left my fear by the "
+          },
+          {
+            "chords": "F#m",
+            "lyrics": "side of the road, "
+          },
+          {
+            "chords": "A",
+            "lyrics": "hear You speak, "
+          },
+          {
+            "chords": "B",
+            "lyrics": "won't let go"
+          }
+        ],
+        "type": "verse",
+        "currentChordLyricsPair": {
+          "chords": "B",
+          "lyrics": "won't let go"
+        }
+      },
+      {
+        "items": [
+          {
+            "chords": "C#m",
+            "lyrics": "Fall to my knees, as I "
+          },
+          {
+            "chords": "E",
+            "lyrics": "lift my hands to "
+          },
+          {
+            "chords": "Bsus",
+            "lyrics": "pray  "
+          },
+          {
+            "chords": "B",
+            "lyrics": ""
+          }
+        ],
+        "type": "verse",
+        "currentChordLyricsPair": {
+          "chords": "B",
+          "lyrics": ""
+        }
+      },
+      {
+        "items": [
+          {
+            "chords": "C#m",
+            "lyrics": "Got every reason to be "
+          },
+          {
+            "chords": "F#m",
+            "lyrics": "here again, "
+          },
+          {
+            "chords": "A",
+            "lyrics": "Fathers love that "
+          },
+          {
+            "chords": "B",
+            "lyrics": "draws me in"
+          }
+        ],
+        "type": "verse",
+        "currentChordLyricsPair": {
+          "chords": "B",
+          "lyrics": "draws me in"
+        }
+      },
+      {
+        "items": [
+          {
+            "chords": "",
+            "lyrics": "And "
+          },
+          {
+            "chords": "C#m",
+            "lyrics": "all my eyes wanna "
+          },
+          {
+            "chords": "E",
+            "lyrics": "see is a glimpse of"
+          },
+          {
+            "chords": "Bsus",
+            "lyrics": " You "
+          },
+          {
+            "chords": "B",
+            "lyrics": ""
+          }
+        ],
+        "type": "verse",
+        "currentChordLyricsPair": {
+          "chords": "B",
+          "lyrics": ""
+        }
+      },
+      {
+        "items": [
+          {
+            "_name": "end_of_verse",
+            "_originalName": "end_of_verse",
+            "_value": "Verse 1"
+          }
+        ],
+        "type": "none",
+        "currentChordLyricsPair": null
+      },
+      {
+        "items": [],
+        "type": "none",
+        "currentChordLyricsPair": null
+      },
+      {
+        "items": [
+          {
+            "_name": "start_of_chorus",
+            "_originalName": "start_of_chorus",
+            "_value": "Chorus"
+          }
+        ],
+        "type": "none",
+        "currentChordLyricsPair": null
+      },
+      {
+        "items": [
+          {
+            "chords": "",
+            "lyrics": "All I need is"
+          },
+          {
+            "chords": "F#m",
+            "lyrics": " You,"
+          },
+          {
+            "chords": "A",
+            "lyrics": " all I need is "
+          },
+          {
+            "chords": "E",
+            "lyrics": "You Lord, is "
+          },
+          {
+            "chords": "B",
+            "lyrics": "You, Lord  (repeat)"
+          }
+        ],
+        "type": "chorus",
+        "currentChordLyricsPair": {
+          "chords": "B",
+          "lyrics": "You, Lord  (repeat)"
+        }
+      },
+      {
+        "items": [
+          {
+            "_name": "end_of_chorus",
+            "_originalName": "end_of_chorus",
+            "_value": "Chorus"
+          }
+        ],
+        "type": "none",
+        "currentChordLyricsPair": null
+      },
+      {
+        "items": [],
+        "type": "none",
+        "currentChordLyricsPair": null
+      },
+      {
+        "items": [
+          {
+            "_name": "start_of_verse",
+            "_originalName": "start_of_verse",
+            "_value": "Verse 2"
+          }
+        ],
+        "type": "none",
+        "currentChordLyricsPair": null
+      },
+      {
+        "items": [
+          {
+            "chords": "C#m",
+            "lyrics": "One more day, and its "
+          },
+          {
+            "chords": "F#m",
+            "lyrics": "not the same, Your "
+          },
+          {
+            "chords": "A",
+            "lyrics": "Spirit calls my "
+          },
+          {
+            "chords": "B",
+            "lyrics": "heart to sing"
+          }
+        ],
+        "type": "verse",
+        "currentChordLyricsPair": {
+          "chords": "B",
+          "lyrics": "heart to sing"
+        }
+      },
+      {
+        "items": [
+          {
+            "chords": "C#m",
+            "lyrics": "Drawn to the voice of my "
+          },
+          {
+            "chords": "E",
+            "lyrics": "Savior once"
+          },
+          {
+            "chords": "Bsus",
+            "lyrics": " again"
+          },
+          {
+            "chords": "B",
+            "lyrics": ""
+          }
+        ],
+        "type": "verse",
+        "currentChordLyricsPair": {
+          "chords": "B",
+          "lyrics": ""
+        }
+      },
+      {
+        "items": [
+          {
+            "chords": "C#m",
+            "lyrics": "Where would my soul b"
+          },
+          {
+            "chords": "F#m",
+            "lyrics": "e without Your Son, "
+          },
+          {
+            "chords": "A",
+            "lyrics": "gave His life to s"
+          },
+          {
+            "chords": "B",
+            "lyrics": "ave the earth"
+          }
+        ],
+        "type": "verse",
+        "currentChordLyricsPair": {
+          "chords": "B",
+          "lyrics": "ave the earth"
+        }
+      },
+      {
+        "items": [
+          {
+            "chords": "C#m",
+            "lyrics": "Rest in the thought that You're "
+          },
+          {
+            "chords": "E",
+            "lyrics": "watching o"
+          },
+          {
+            "chords": "Bsus",
+            "lyrics": "ver me"
+          },
+          {
+            "chords": "B",
+            "lyrics": ""
+          }
+        ],
+        "type": "verse",
+        "currentChordLyricsPair": {
+          "chords": "B",
+          "lyrics": ""
+        }
+      },
+      {
+        "items": [
+          {
+            "_name": "end_of_verse",
+            "_originalName": "end_of_verse",
+            "_value": "Verse 2"
+          }
+        ],
+        "type": "none",
+        "currentChordLyricsPair": null
+      },
+      {
+        "items": [],
+        "type": "none",
+        "currentChordLyricsPair": null
+      },
+      {
+        "items": [
+          {
+            "_name": "start_of_chorus",
+            "_originalName": "start_of_chorus",
+            "_value": "Bridge"
+          }
+        ],
+        "type": "none",
+        "currentChordLyricsPair": null
+      },
+      {
+        "items": [
+          {
+            "chords": "A",
+            "lyrics": "   "
+          },
+          {
+            "chords": "E",
+            "lyrics": "   "
+          },
+          {
+            "chords": "B",
+            "lyrics": "  "
+          },
+          {
+            "chords": "F#m",
+            "lyrics": "    "
+          },
+          {
+            "chords": "A",
+            "lyrics": "   "
+          },
+          {
+            "chords": "E",
+            "lyrics": "   "
+          },
+          {
+            "chords": "B",
+            "lyrics": ""
+          }
+        ],
+        "type": "chorus",
+        "currentChordLyricsPair": {
+          "chords": "B",
+          "lyrics": ""
+        }
+      },
+      {
+        "items": [
+          {
+            "chords": "",
+            "lyrics": "You "
+          },
+          {
+            "chords": "A",
+            "lyrics": "hol"
+          },
+          {
+            "chords": "E",
+            "lyrics": "d the "
+          },
+          {
+            "chords": "B",
+            "lyrics": "unive"
+          },
+          {
+            "chords": "F#m",
+            "lyrics": "rse, You "
+          },
+          {
+            "chords": "A",
+            "lyrics": "hol"
+          },
+          {
+            "chords": "E",
+            "lyrics": "d every"
+          },
+          {
+            "chords": "B",
+            "lyrics": "one on ea"
+          },
+          {
+            "chords": "F#m",
+            "lyrics": "rth"
+          }
+        ],
+        "type": "chorus",
+        "currentChordLyricsPair": {
+          "chords": "F#m",
+          "lyrics": "rth"
+        }
+      },
+      {
+        "items": [
+          {
+            "chords": "",
+            "lyrics": "You "
+          },
+          {
+            "chords": "A",
+            "lyrics": "hold"
+          },
+          {
+            "chords": "E",
+            "lyrics": " the "
+          },
+          {
+            "chords": "B",
+            "lyrics": "univer"
+          },
+          {
+            "chords": "F#m",
+            "lyrics": "se, You "
+          },
+          {
+            "chords": "A",
+            "lyrics": "hol"
+          },
+          {
+            "chords": "E",
+            "lyrics": "d, You h"
+          },
+          {
+            "chords": "B",
+            "lyrics": "old  (repeat)"
+          }
+        ],
+        "type": "chorus",
+        "currentChordLyricsPair": {
+          "chords": "B",
+          "lyrics": "old  (repeat)"
+        }
+      },
+      {
+        "items": [
+          {
+            "_name": "end_of_chorus",
+            "_originalName": "end_of_chorus",
+            "_value": "Bridge"
+          }
+        ],
+        "type": "none",
+        "currentChordLyricsPair": null
+      }
+    ],
+    "paragraphs": [
+      {
+        "lines": [
+          {
+            "items": [
+              {
+                "chords": "",
+                "lyrics": "  "
+              },
+              {
+                "_name": "title",
+                "_originalName": "title",
+                "_value": "All I Need Is You"
+              }
+            ],
+            "type": "none",
+            "currentChordLyricsPair": {
+              "chords": "",
+              "lyrics": "  "
+            }
+          }
+        ]
+      },
+      {
+        "lines": [
+          {
+            "items": [
+              {
+                "chords": "C#m",
+                "lyrics": "Left my fear by the "
+              },
+              {
+                "chords": "F#m",
+                "lyrics": "side of the road, "
+              },
+              {
+                "chords": "A",
+                "lyrics": "hear You speak, "
+              },
+              {
+                "chords": "B",
+                "lyrics": "won't let go"
+              }
+            ],
+            "type": "verse",
+            "currentChordLyricsPair": {
+              "chords": "B",
+              "lyrics": "won't let go"
+            }
+          },
+          {
+            "items": [
+              {
+                "chords": "C#m",
+                "lyrics": "Fall to my knees, as I "
+              },
+              {
+                "chords": "E",
+                "lyrics": "lift my hands to "
+              },
+              {
+                "chords": "Bsus",
+                "lyrics": "pray  "
+              },
+              {
+                "chords": "B",
+                "lyrics": ""
+              }
+            ],
+            "type": "verse",
+            "currentChordLyricsPair": {
+              "chords": "B",
+              "lyrics": ""
+            }
+          },
+          {
+            "items": [
+              {
+                "chords": "C#m",
+                "lyrics": "Got every reason to be "
+              },
+              {
+                "chords": "F#m",
+                "lyrics": "here again, "
+              },
+              {
+                "chords": "A",
+                "lyrics": "Fathers love that "
+              },
+              {
+                "chords": "B",
+                "lyrics": "draws me in"
+              }
+            ],
+            "type": "verse",
+            "currentChordLyricsPair": {
+              "chords": "B",
+              "lyrics": "draws me in"
+            }
+          },
+          {
+            "items": [
+              {
+                "chords": "",
+                "lyrics": "And "
+              },
+              {
+                "chords": "C#m",
+                "lyrics": "all my eyes wanna "
+              },
+              {
+                "chords": "E",
+                "lyrics": "see is a glimpse of"
+              },
+              {
+                "chords": "Bsus",
+                "lyrics": " You "
+              },
+              {
+                "chords": "B",
+                "lyrics": ""
+              }
+            ],
+            "type": "verse",
+            "currentChordLyricsPair": {
+              "chords": "B",
+              "lyrics": ""
+            }
+          }
+        ]
+      },
+      {
+        "lines": [
+          {
+            "items": [
+              {
+                "chords": "",
+                "lyrics": "All I need is"
+              },
+              {
+                "chords": "F#m",
+                "lyrics": " You,"
+              },
+              {
+                "chords": "A",
+                "lyrics": " all I need is "
+              },
+              {
+                "chords": "E",
+                "lyrics": "You Lord, is "
+              },
+              {
+                "chords": "B",
+                "lyrics": "You, Lord  (repeat)"
+              }
+            ],
+            "type": "chorus",
+            "currentChordLyricsPair": {
+              "chords": "B",
+              "lyrics": "You, Lord  (repeat)"
+            }
+          }
+        ]
+      },
+      {
+        "lines": [
+          {
+            "items": [
+              {
+                "chords": "C#m",
+                "lyrics": "One more day, and its "
+              },
+              {
+                "chords": "F#m",
+                "lyrics": "not the same, Your "
+              },
+              {
+                "chords": "A",
+                "lyrics": "Spirit calls my "
+              },
+              {
+                "chords": "B",
+                "lyrics": "heart to sing"
+              }
+            ],
+            "type": "verse",
+            "currentChordLyricsPair": {
+              "chords": "B",
+              "lyrics": "heart to sing"
+            }
+          },
+          {
+            "items": [
+              {
+                "chords": "C#m",
+                "lyrics": "Drawn to the voice of my "
+              },
+              {
+                "chords": "E",
+                "lyrics": "Savior once"
+              },
+              {
+                "chords": "Bsus",
+                "lyrics": " again"
+              },
+              {
+                "chords": "B",
+                "lyrics": ""
+              }
+            ],
+            "type": "verse",
+            "currentChordLyricsPair": {
+              "chords": "B",
+              "lyrics": ""
+            }
+          },
+          {
+            "items": [
+              {
+                "chords": "C#m",
+                "lyrics": "Where would my soul b"
+              },
+              {
+                "chords": "F#m",
+                "lyrics": "e without Your Son, "
+              },
+              {
+                "chords": "A",
+                "lyrics": "gave His life to s"
+              },
+              {
+                "chords": "B",
+                "lyrics": "ave the earth"
+              }
+            ],
+            "type": "verse",
+            "currentChordLyricsPair": {
+              "chords": "B",
+              "lyrics": "ave the earth"
+            }
+          },
+          {
+            "items": [
+              {
+                "chords": "C#m",
+                "lyrics": "Rest in the thought that You're "
+              },
+              {
+                "chords": "E",
+                "lyrics": "watching o"
+              },
+              {
+                "chords": "Bsus",
+                "lyrics": "ver me"
+              },
+              {
+                "chords": "B",
+                "lyrics": ""
+              }
+            ],
+            "type": "verse",
+            "currentChordLyricsPair": {
+              "chords": "B",
+              "lyrics": ""
+            }
+          }
+        ]
+      },
+      {
+        "lines": [
+          {
+            "items": [
+              {
+                "chords": "A",
+                "lyrics": "   "
+              },
+              {
+                "chords": "E",
+                "lyrics": "   "
+              },
+              {
+                "chords": "B",
+                "lyrics": "  "
+              },
+              {
+                "chords": "F#m",
+                "lyrics": "    "
+              },
+              {
+                "chords": "A",
+                "lyrics": "   "
+              },
+              {
+                "chords": "E",
+                "lyrics": "   "
+              },
+              {
+                "chords": "B",
+                "lyrics": ""
+              }
+            ],
+            "type": "chorus",
+            "currentChordLyricsPair": {
+              "chords": "B",
+              "lyrics": ""
+            }
+          },
+          {
+            "items": [
+              {
+                "chords": "",
+                "lyrics": "You "
+              },
+              {
+                "chords": "A",
+                "lyrics": "hol"
+              },
+              {
+                "chords": "E",
+                "lyrics": "d the "
+              },
+              {
+                "chords": "B",
+                "lyrics": "unive"
+              },
+              {
+                "chords": "F#m",
+                "lyrics": "rse, You "
+              },
+              {
+                "chords": "A",
+                "lyrics": "hol"
+              },
+              {
+                "chords": "E",
+                "lyrics": "d every"
+              },
+              {
+                "chords": "B",
+                "lyrics": "one on ea"
+              },
+              {
+                "chords": "F#m",
+                "lyrics": "rth"
+              }
+            ],
+            "type": "chorus",
+            "currentChordLyricsPair": {
+              "chords": "F#m",
+              "lyrics": "rth"
+            }
+          },
+          {
+            "items": [
+              {
+                "chords": "",
+                "lyrics": "You "
+              },
+              {
+                "chords": "A",
+                "lyrics": "hold"
+              },
+              {
+                "chords": "E",
+                "lyrics": " the "
+              },
+              {
+                "chords": "B",
+                "lyrics": "univer"
+              },
+              {
+                "chords": "F#m",
+                "lyrics": "se, You "
+              },
+              {
+                "chords": "A",
+                "lyrics": "hol"
+              },
+              {
+                "chords": "E",
+                "lyrics": "d, You h"
+              },
+              {
+                "chords": "B",
+                "lyrics": "old  (repeat)"
+              }
+            ],
+            "type": "chorus",
+            "currentChordLyricsPair": {
+              "chords": "B",
+              "lyrics": "old  (repeat)"
+            }
+          }
+        ]
+      }
+    ],
+    "currentLine": {
+      "items": [
+        {
+          "_name": "end_of_chorus",
+          "_originalName": "end_of_chorus",
+          "_value": "Bridge"
+        }
+      ],
+      "type": "none",
+      "currentChordLyricsPair": null
+    },
+    "currentParagraph": {
+      "lines": [
+        {
+          "items": [
+            {
+              "chords": "A",
+              "lyrics": "   "
+            },
+            {
+              "chords": "E",
+              "lyrics": "   "
+            },
+            {
+              "chords": "B",
+              "lyrics": "  "
+            },
+            {
+              "chords": "F#m",
+              "lyrics": "    "
+            },
+            {
+              "chords": "A",
+              "lyrics": "   "
+            },
+            {
+              "chords": "E",
+              "lyrics": "   "
+            },
+            {
+              "chords": "B",
+              "lyrics": ""
+            }
+          ],
+          "type": "chorus",
+          "currentChordLyricsPair": {
+            "chords": "B",
+            "lyrics": ""
+          }
+        },
+        {
+          "items": [
+            {
+              "chords": "",
+              "lyrics": "You "
+            },
+            {
+              "chords": "A",
+              "lyrics": "hol"
+            },
+            {
+              "chords": "E",
+              "lyrics": "d the "
+            },
+            {
+              "chords": "B",
+              "lyrics": "unive"
+            },
+            {
+              "chords": "F#m",
+              "lyrics": "rse, You "
+            },
+            {
+              "chords": "A",
+              "lyrics": "hol"
+            },
+            {
+              "chords": "E",
+              "lyrics": "d every"
+            },
+            {
+              "chords": "B",
+              "lyrics": "one on ea"
+            },
+            {
+              "chords": "F#m",
+              "lyrics": "rth"
+            }
+          ],
+          "type": "chorus",
+          "currentChordLyricsPair": {
+            "chords": "F#m",
+            "lyrics": "rth"
+          }
+        },
+        {
+          "items": [
+            {
+              "chords": "",
+              "lyrics": "You "
+            },
+            {
+              "chords": "A",
+              "lyrics": "hold"
+            },
+            {
+              "chords": "E",
+              "lyrics": " the "
+            },
+            {
+              "chords": "B",
+              "lyrics": "univer"
+            },
+            {
+              "chords": "F#m",
+              "lyrics": "se, You "
+            },
+            {
+              "chords": "A",
+              "lyrics": "hol"
+            },
+            {
+              "chords": "E",
+              "lyrics": "d, You h"
+            },
+            {
+              "chords": "B",
+              "lyrics": "old  (repeat)"
+            }
+          ],
+          "type": "chorus",
+          "currentChordLyricsPair": {
+            "chords": "B",
+            "lyrics": "old  (repeat)"
+          }
+        }
+      ]
+    },
+    "rawMetaData": {
+      "title": {},
+      "artist": {}
+    },
+    "optimizedMetaData": {
+      "title": "All I Need Is You",
+      "artist": "Hillsong United"
+    }
+  },
+  {
+    "lines": [
+      {
+        "items": [
+          {
+            "chords": "",
+            "lyrics": "  "
+          },
+          {
+            "_name": "title",
+            "_originalName": "title",
+            "_value": "All Day"
+          }
+        ],
+        "type": "none",
+        "currentChordLyricsPair": {
+          "chords": "",
+          "lyrics": "  "
+        }
+      },
+      {
+        "items": [
+          {
+            "_name": "artist",
+            "_originalName": "artist",
+            "_value": "Hillsong United"
+          }
+        ],
+        "type": "none",
+        "currentChordLyricsPair": null
+      },
+      {
+        "items": [],
+        "type": "none",
+        "currentChordLyricsPair": null
+      },
+      {
+        "items": [
+          {
+            "_name": "start_of_verse",
+            "_originalName": "start_of_verse",
+            "_value": "Verse 1"
+          }
+        ],
+        "type": "none",
+        "currentChordLyricsPair": null
+      },
+      {
+        "items": [
+          {
+            "chords": "G#m",
+            "lyrics": " I don't "
+          },
+          {
+            "chords": "E",
+            "lyrics": "care what they "
+          },
+          {
+            "chords": "B",
+            "lyrics": "say about "
+          },
+          {
+            "chords": "F#",
+            "lyrics": "me"
+          }
+        ],
+        "type": "verse",
+        "currentChordLyricsPair": {
+          "chords": "F#",
+          "lyrics": "me"
+        }
+      },
+      {
+        "items": [
+          {
+            "chords": "",
+            "lyrics": "It's alright, alright"
+          }
+        ],
+        "type": "verse",
+        "currentChordLyricsPair": {
+          "chords": "",
+          "lyrics": "It's alright, alright"
+        }
+      },
+      {
+        "items": [
+          {
+            "chords": "",
+            "lyrics": "I don't care what they think about me"
+          }
+        ],
+        "type": "verse",
+        "currentChordLyricsPair": {
+          "chords": "",
+          "lyrics": "I don't care what they think about me"
+        }
+      },
+      {
+        "items": [
+          {
+            "chords": "",
+            "lyrics": "It's alright, they'll get it one day"
+          }
+        ],
+        "type": "verse",
+        "currentChordLyricsPair": {
+          "chords": "",
+          "lyrics": "It's alright, they'll get it one day"
+        }
+      },
+      {
+        "items": [
+          {
+            "_name": "end_of_verse",
+            "_originalName": "end_of_verse",
+            "_value": "Verse 1"
+          }
+        ],
+        "type": "none",
+        "currentChordLyricsPair": null
+      },
+      {
+        "items": [],
+        "type": "none",
+        "currentChordLyricsPair": null
+      },
+      {
+        "items": [
+          {
+            "_name": "start_of_chorus",
+            "_originalName": "start_of_chorus",
+            "_value": "Pre-Chorus"
+          }
+        ],
+        "type": "none",
+        "currentChordLyricsPair": null
+      },
+      {
+        "items": [
+          {
+            "chords": "",
+            "lyrics": "I love you, I'll follow You"
+          }
+        ],
+        "type": "chorus",
+        "currentChordLyricsPair": {
+          "chords": "",
+          "lyrics": "I love you, I'll follow You"
+        }
+      },
+      {
+        "items": [
+          {
+            "chords": "",
+            "lyrics": "You are my, my life"
+          }
+        ],
+        "type": "chorus",
+        "currentChordLyricsPair": {
+          "chords": "",
+          "lyrics": "You are my, my life"
+        }
+      },
+      {
+        "items": [
+          {
+            "chords": "",
+            "lyrics": "I will read my bible and pray"
+          }
+        ],
+        "type": "chorus",
+        "currentChordLyricsPair": {
+          "chords": "",
+          "lyrics": "I will read my bible and pray"
+        }
+      },
+      {
+        "items": [
+          {
+            "chords": "",
+            "lyrics": "I will follow you all day"
+          }
+        ],
+        "type": "chorus",
+        "currentChordLyricsPair": {
+          "chords": "",
+          "lyrics": "I will follow you all day"
+        }
+      },
+      {
+        "items": [
+          {
+            "_name": "end_of_chorus",
+            "_originalName": "end_of_chorus",
+            "_value": "Pre-Chorus"
+          }
+        ],
+        "type": "none",
+        "currentChordLyricsPair": null
+      },
+      {
+        "items": [],
+        "type": "none",
+        "currentChordLyricsPair": null
+      },
+      {
+        "items": [
+          {
+            "_name": "start_of_verse",
+            "_originalName": "start_of_verse",
+            "_value": "Verse 2"
+          }
+        ],
+        "type": "none",
+        "currentChordLyricsPair": null
+      },
+      {
+        "items": [
+          {
+            "chords": "",
+            "lyrics": "I don't care what it costs anymore"
+          }
+        ],
+        "type": "verse",
+        "currentChordLyricsPair": {
+          "chords": "",
+          "lyrics": "I don't care what it costs anymore"
+        }
+      },
+      {
+        "items": [
+          {
+            "chords": "",
+            "lyrics": "Cos' You gave it all and I'm following You"
+          }
+        ],
+        "type": "verse",
+        "currentChordLyricsPair": {
+          "chords": "",
+          "lyrics": "Cos' You gave it all and I'm following You"
+        }
+      },
+      {
+        "items": [
+          {
+            "chords": "",
+            "lyrics": "I don't care what it takes anymore"
+          }
+        ],
+        "type": "verse",
+        "currentChordLyricsPair": {
+          "chords": "",
+          "lyrics": "I don't care what it takes anymore"
+        }
+      },
+      {
+        "items": [
+          {
+            "chords": "",
+            "lyrics": "No matter what happens I'm going your way"
+          }
+        ],
+        "type": "verse",
+        "currentChordLyricsPair": {
+          "chords": "",
+          "lyrics": "No matter what happens I'm going your way"
+        }
+      },
+      {
+        "items": [
+          {
+            "_name": "end_of_verse",
+            "_originalName": "end_of_verse",
+            "_value": "Verse 2"
+          }
+        ],
+        "type": "none",
+        "currentChordLyricsPair": null
+      },
+      {
+        "items": [],
+        "type": "none",
+        "currentChordLyricsPair": null
+      },
+      {
+        "items": [
+          {
+            "_name": "start_of_chorus",
+            "_originalName": "start_of_chorus",
+            "_value": "Pre-Chorus"
+          }
+        ],
+        "type": "none",
+        "currentChordLyricsPair": null
+      },
+      {
+        "items": [
+          {
+            "chords": "",
+            "lyrics": "Pre-Chorus"
+          }
+        ],
+        "type": "chorus",
+        "currentChordLyricsPair": {
+          "chords": "",
+          "lyrics": "Pre-Chorus"
+        }
+      },
+      {
+        "items": [
+          {
+            "_name": "end_of_chorus",
+            "_originalName": "end_of_chorus",
+            "_value": "Pre-Chorus"
+          }
+        ],
+        "type": "none",
+        "currentChordLyricsPair": null
+      },
+      {
+        "items": [],
+        "type": "none",
+        "currentChordLyricsPair": null
+      },
+      {
+        "items": [
+          {
+            "_name": "start_of_chorus",
+            "_originalName": "start_of_chorus",
+            "_value": "Chorus"
+          }
+        ],
+        "type": "none",
+        "currentChordLyricsPair": null
+      },
+      {
+        "items": [
+          {
+            "chords": "B",
+            "lyrics": " All "
+          },
+          {
+            "chords": "E",
+            "lyrics": "day,"
+          },
+          {
+            "chords": "B",
+            "lyrics": " all "
+          },
+          {
+            "chords": "F#",
+            "lyrics": "day now,"
+          },
+          {
+            "chords": "B",
+            "lyrics": " all "
+          },
+          {
+            "chords": "E",
+            "lyrics": "day"
+          },
+          {
+            "chords": "G#m",
+            "lyrics": ""
+          },
+          {
+            "chords": "E",
+            "lyrics": ""
+          }
+        ],
+        "type": "chorus",
+        "currentChordLyricsPair": {
+          "chords": "E",
+          "lyrics": ""
+        }
+      },
+      {
+        "items": [
+          {
+            "_name": "end_of_chorus",
+            "_originalName": "end_of_chorus",
+            "_value": "Chorus"
+          }
+        ],
+        "type": "none",
+        "currentChordLyricsPair": null
+      },
+      {
+        "items": [],
+        "type": "none",
+        "currentChordLyricsPair": null
+      },
+      {
+        "items": [
+          {
+            "_name": "start_of_chorus",
+            "_originalName": "start_of_chorus",
+            "_value": "Bridge"
+          }
+        ],
+        "type": "none",
+        "currentChordLyricsPair": null
+      },
+      {
+        "items": [
+          {
+            "chords": "C#m",
+            "lyrics": " Any"
+          },
+          {
+            "chords": "E",
+            "lyrics": "one around can "
+          },
+          {
+            "chords": "C#m",
+            "lyrics": "see just how "
+          },
+          {
+            "chords": "E",
+            "lyrics": "good You've been to me"
+          }
+        ],
+        "type": "chorus",
+        "currentChordLyricsPair": {
+          "chords": "E",
+          "lyrics": "good You've been to me"
+        }
+      },
+      {
+        "items": [
+          {
+            "chords": "C#m",
+            "lyrics": " For all my "
+          },
+          {
+            "chords": "E",
+            "lyrics": "friends that don't know "
+          },
+          {
+            "chords": "C#m",
+            "lyrics": "You, I pray that "
+          },
+          {
+            "chords": "E",
+            "lyrics": "You would save them, "
+          },
+          {
+            "chords": "B",
+            "lyrics": "too"
+          }
+        ],
+        "type": "chorus",
+        "currentChordLyricsPair": {
+          "chords": "B",
+          "lyrics": "too"
+        }
+      },
+      {
+        "items": [
+          {
+            "_name": "end_of_chorus",
+            "_originalName": "end_of_chorus",
+            "_value": "Bridge"
+          }
+        ],
+        "type": "none",
+        "currentChordLyricsPair": null
+      }
+    ],
+    "paragraphs": [
+      {
+        "lines": [
+          {
+            "items": [
+              {
+                "chords": "",
+                "lyrics": "  "
+              },
+              {
+                "_name": "title",
+                "_originalName": "title",
+                "_value": "All Day"
+              }
+            ],
+            "type": "none",
+            "currentChordLyricsPair": {
+              "chords": "",
+              "lyrics": "  "
+            }
+          }
+        ]
+      },
+      {
+        "lines": [
+          {
+            "items": [
+              {
+                "chords": "G#m",
+                "lyrics": " I don't "
+              },
+              {
+                "chords": "E",
+                "lyrics": "care what they "
+              },
+              {
+                "chords": "B",
+                "lyrics": "say about "
+              },
+              {
+                "chords": "F#",
+                "lyrics": "me"
+              }
+            ],
+            "type": "verse",
+            "currentChordLyricsPair": {
+              "chords": "F#",
+              "lyrics": "me"
+            }
+          },
+          {
+            "items": [
+              {
+                "chords": "",
+                "lyrics": "It's alright, alright"
+              }
+            ],
+            "type": "verse",
+            "currentChordLyricsPair": {
+              "chords": "",
+              "lyrics": "It's alright, alright"
+            }
+          },
+          {
+            "items": [
+              {
+                "chords": "",
+                "lyrics": "I don't care what they think about me"
+              }
+            ],
+            "type": "verse",
+            "currentChordLyricsPair": {
+              "chords": "",
+              "lyrics": "I don't care what they think about me"
+            }
+          },
+          {
+            "items": [
+              {
+                "chords": "",
+                "lyrics": "It's alright, they'll get it one day"
+              }
+            ],
+            "type": "verse",
+            "currentChordLyricsPair": {
+              "chords": "",
+              "lyrics": "It's alright, they'll get it one day"
+            }
+          }
+        ]
+      },
+      {
+        "lines": [
+          {
+            "items": [
+              {
+                "chords": "",
+                "lyrics": "I love you, I'll follow You"
+              }
+            ],
+            "type": "chorus",
+            "currentChordLyricsPair": {
+              "chords": "",
+              "lyrics": "I love you, I'll follow You"
+            }
+          },
+          {
+            "items": [
+              {
+                "chords": "",
+                "lyrics": "You are my, my life"
+              }
+            ],
+            "type": "chorus",
+            "currentChordLyricsPair": {
+              "chords": "",
+              "lyrics": "You are my, my life"
+            }
+          },
+          {
+            "items": [
+              {
+                "chords": "",
+                "lyrics": "I will read my bible and pray"
+              }
+            ],
+            "type": "chorus",
+            "currentChordLyricsPair": {
+              "chords": "",
+              "lyrics": "I will read my bible and pray"
+            }
+          },
+          {
+            "items": [
+              {
+                "chords": "",
+                "lyrics": "I will follow you all day"
+              }
+            ],
+            "type": "chorus",
+            "currentChordLyricsPair": {
+              "chords": "",
+              "lyrics": "I will follow you all day"
+            }
+          }
+        ]
+      },
+      {
+        "lines": [
+          {
+            "items": [
+              {
+                "chords": "",
+                "lyrics": "I don't care what it costs anymore"
+              }
+            ],
+            "type": "verse",
+            "currentChordLyricsPair": {
+              "chords": "",
+              "lyrics": "I don't care what it costs anymore"
+            }
+          },
+          {
+            "items": [
+              {
+                "chords": "",
+                "lyrics": "Cos' You gave it all and I'm following You"
+              }
+            ],
+            "type": "verse",
+            "currentChordLyricsPair": {
+              "chords": "",
+              "lyrics": "Cos' You gave it all and I'm following You"
+            }
+          },
+          {
+            "items": [
+              {
+                "chords": "",
+                "lyrics": "I don't care what it takes anymore"
+              }
+            ],
+            "type": "verse",
+            "currentChordLyricsPair": {
+              "chords": "",
+              "lyrics": "I don't care what it takes anymore"
+            }
+          },
+          {
+            "items": [
+              {
+                "chords": "",
+                "lyrics": "No matter what happens I'm going your way"
+              }
+            ],
+            "type": "verse",
+            "currentChordLyricsPair": {
+              "chords": "",
+              "lyrics": "No matter what happens I'm going your way"
+            }
+          }
+        ]
+      },
+      {
+        "lines": [
+          {
+            "items": [
+              {
+                "chords": "",
+                "lyrics": "Pre-Chorus"
+              }
+            ],
+            "type": "chorus",
+            "currentChordLyricsPair": {
+              "chords": "",
+              "lyrics": "Pre-Chorus"
+            }
+          }
+        ]
+      },
+      {
+        "lines": [
+          {
+            "items": [
+              {
+                "chords": "B",
+                "lyrics": " All "
+              },
+              {
+                "chords": "E",
+                "lyrics": "day,"
+              },
+              {
+                "chords": "B",
+                "lyrics": " all "
+              },
+              {
+                "chords": "F#",
+                "lyrics": "day now,"
+              },
+              {
+                "chords": "B",
+                "lyrics": " all "
+              },
+              {
+                "chords": "E",
+                "lyrics": "day"
+              },
+              {
+                "chords": "G#m",
+                "lyrics": ""
+              },
+              {
+                "chords": "E",
+                "lyrics": ""
+              }
+            ],
+            "type": "chorus",
+            "currentChordLyricsPair": {
+              "chords": "E",
+              "lyrics": ""
+            }
+          }
+        ]
+      },
+      {
+        "lines": [
+          {
+            "items": [
+              {
+                "chords": "C#m",
+                "lyrics": " Any"
+              },
+              {
+                "chords": "E",
+                "lyrics": "one around can "
+              },
+              {
+                "chords": "C#m",
+                "lyrics": "see just how "
+              },
+              {
+                "chords": "E",
+                "lyrics": "good You've been to me"
+              }
+            ],
+            "type": "chorus",
+            "currentChordLyricsPair": {
+              "chords": "E",
+              "lyrics": "good You've been to me"
+            }
+          },
+          {
+            "items": [
+              {
+                "chords": "C#m",
+                "lyrics": " For all my "
+              },
+              {
+                "chords": "E",
+                "lyrics": "friends that don't know "
+              },
+              {
+                "chords": "C#m",
+                "lyrics": "You, I pray that "
+              },
+              {
+                "chords": "E",
+                "lyrics": "You would save them, "
+              },
+              {
+                "chords": "B",
+                "lyrics": "too"
+              }
+            ],
+            "type": "chorus",
+            "currentChordLyricsPair": {
+              "chords": "B",
+              "lyrics": "too"
+            }
+          }
+        ]
+      }
+    ],
+    "currentLine": {
+      "items": [
+        {
+          "_name": "end_of_chorus",
+          "_originalName": "end_of_chorus",
+          "_value": "Bridge"
+        }
+      ],
+      "type": "none",
+      "currentChordLyricsPair": null
+    },
+    "currentParagraph": {
+      "lines": [
+        {
+          "items": [
+            {
+              "chords": "C#m",
+              "lyrics": " Any"
+            },
+            {
+              "chords": "E",
+              "lyrics": "one around can "
+            },
+            {
+              "chords": "C#m",
+              "lyrics": "see just how "
+            },
+            {
+              "chords": "E",
+              "lyrics": "good You've been to me"
+            }
+          ],
+          "type": "chorus",
+          "currentChordLyricsPair": {
+            "chords": "E",
+            "lyrics": "good You've been to me"
+          }
+        },
+        {
+          "items": [
+            {
+              "chords": "C#m",
+              "lyrics": " For all my "
+            },
+            {
+              "chords": "E",
+              "lyrics": "friends that don't know "
+            },
+            {
+              "chords": "C#m",
+              "lyrics": "You, I pray that "
+            },
+            {
+              "chords": "E",
+              "lyrics": "You would save them, "
+            },
+            {
+              "chords": "B",
+              "lyrics": "too"
+            }
+          ],
+          "type": "chorus",
+          "currentChordLyricsPair": {
+            "chords": "B",
+            "lyrics": "too"
+          }
+        }
+      ]
+    },
+    "rawMetaData": {
+      "title": {},
+      "artist": {}
+    },
+    "optimizedMetaData": {
+      "title": "All Day",
+      "artist": "Hillsong United"
+    }
+  },
+  {
+    "lines": [
+      {
+        "items": [
+          {
+            "chords": "",
+            "lyrics": "  "
+          },
+          {
+            "_name": "title",
+            "_originalName": "title",
+            "_value": "Come Away"
+          }
+        ],
+        "type": "none",
+        "currentChordLyricsPair": {
+          "chords": "",
+          "lyrics": "  "
+        }
+      },
+      {
+        "items": [],
+        "type": "none",
+        "currentChordLyricsPair": null
+      },
+      {
+        "items": [
+          {
+            "_name": "start_of_verse",
+            "_originalName": "start_of_verse",
+            "_value": "Verse 1"
+          }
+        ],
+        "type": "none",
+        "currentChordLyricsPair": null
+      },
+      {
+        "items": [
+          {
+            "chords": "",
+            "lyrics": "Come a"
+          },
+          {
+            "chords": "C",
+            "lyrics": "way with "
+          },
+          {
+            "chords": "G",
+            "lyrics": "me, come a"
+          },
+          {
+            "chords": "Em",
+            "lyrics": "way with me"
+          }
+        ],
+        "type": "verse",
+        "currentChordLyricsPair": {
+          "chords": "Em",
+          "lyrics": "way with me"
+        }
+      },
+      {
+        "items": [
+          {
+            "chords": "",
+            "lyrics": "It’s never too "
+          },
+          {
+            "chords": "C",
+            "lyrics": "late, it’s not too "
+          },
+          {
+            "chords": "G",
+            "lyrics": "late, it’s not too "
+          },
+          {
+            "chords": "D",
+            "lyrics": "late for you"
+          }
+        ],
+        "type": "verse",
+        "currentChordLyricsPair": {
+          "chords": "D",
+          "lyrics": "late for you"
+        }
+      },
+      {
+        "items": [
+          {
+            "_name": "end_of_verse",
+            "_originalName": "end_of_verse",
+            "_value": "Verse 1"
+          }
+        ],
+        "type": "none",
+        "currentChordLyricsPair": null
+      },
+      {
+        "items": [],
+        "type": "none",
+        "currentChordLyricsPair": null
+      },
+      {
+        "items": [
+          {
+            "_name": "start_of_verse",
+            "_originalName": "start_of_verse",
+            "_value": "Verse 2"
+          }
+        ],
+        "type": "none",
+        "currentChordLyricsPair": null
+      },
+      {
+        "items": [
+          {
+            "chords": "",
+            "lyrics": "I have a "
+          },
+          {
+            "chords": "C",
+            "lyrics": "plan for "
+          },
+          {
+            "chords": "G",
+            "lyrics": "you, I have a "
+          },
+          {
+            "chords": "Em",
+            "lyrics": "plan for you"
+          }
+        ],
+        "type": "verse",
+        "currentChordLyricsPair": {
+          "chords": "Em",
+          "lyrics": "plan for you"
+        }
+      },
+      {
+        "items": [
+          {
+            "chords": "",
+            "lyrics": "It’s gonna be "
+          },
+          {
+            "chords": "C",
+            "lyrics": "wild, it’s gonna be "
+          },
+          {
+            "chords": "G",
+            "lyrics": "great, it’s gonna be "
+          },
+          {
+            "chords": "D",
+            "lyrics": "full of me"
+          }
+        ],
+        "type": "verse",
+        "currentChordLyricsPair": {
+          "chords": "D",
+          "lyrics": "full of me"
+        }
+      },
+      {
+        "items": [
+          {
+            "_name": "end_of_verse",
+            "_originalName": "end_of_verse",
+            "_value": "Verse 2"
+          }
+        ],
+        "type": "none",
+        "currentChordLyricsPair": null
+      },
+      {
+        "items": [],
+        "type": "none",
+        "currentChordLyricsPair": null
+      },
+      {
+        "items": [
+          {
+            "_name": "start_of_chorus",
+            "_originalName": "start_of_chorus",
+            "_value": "Chorus"
+          }
+        ],
+        "type": "none",
+        "currentChordLyricsPair": null
+      },
+      {
+        "items": [
+          {
+            "chords": "C",
+            "lyrics": " Open up your "
+          },
+          {
+            "chords": "G",
+            "lyrics": "heart and let me "
+          },
+          {
+            "chords": "D",
+            "lyrics": "in"
+          }
+        ],
+        "type": "chorus",
+        "currentChordLyricsPair": {
+          "chords": "D",
+          "lyrics": "in"
+        }
+      },
+      {
+        "items": [
+          {
+            "_name": "end_of_chorus",
+            "_originalName": "end_of_chorus",
+            "_value": "Chorus"
+          }
+        ],
+        "type": "none",
+        "currentChordLyricsPair": null
+      }
+    ],
+    "paragraphs": [
+      {
+        "lines": [
+          {
+            "items": [
+              {
+                "chords": "",
+                "lyrics": "  "
+              },
+              {
+                "_name": "title",
+                "_originalName": "title",
+                "_value": "Come Away"
+              }
+            ],
+            "type": "none",
+            "currentChordLyricsPair": {
+              "chords": "",
+              "lyrics": "  "
+            }
+          }
+        ]
+      },
+      {
+        "lines": [
+          {
+            "items": [
+              {
+                "chords": "",
+                "lyrics": "Come a"
+              },
+              {
+                "chords": "C",
+                "lyrics": "way with "
+              },
+              {
+                "chords": "G",
+                "lyrics": "me, come a"
+              },
+              {
+                "chords": "Em",
+                "lyrics": "way with me"
+              }
+            ],
+            "type": "verse",
+            "currentChordLyricsPair": {
+              "chords": "Em",
+              "lyrics": "way with me"
+            }
+          },
+          {
+            "items": [
+              {
+                "chords": "",
+                "lyrics": "It’s never too "
+              },
+              {
+                "chords": "C",
+                "lyrics": "late, it’s not too "
+              },
+              {
+                "chords": "G",
+                "lyrics": "late, it’s not too "
+              },
+              {
+                "chords": "D",
+                "lyrics": "late for you"
+              }
+            ],
+            "type": "verse",
+            "currentChordLyricsPair": {
+              "chords": "D",
+              "lyrics": "late for you"
+            }
+          }
+        ]
+      },
+      {
+        "lines": [
+          {
+            "items": [
+              {
+                "chords": "",
+                "lyrics": "I have a "
+              },
+              {
+                "chords": "C",
+                "lyrics": "plan for "
+              },
+              {
+                "chords": "G",
+                "lyrics": "you, I have a "
+              },
+              {
+                "chords": "Em",
+                "lyrics": "plan for you"
+              }
+            ],
+            "type": "verse",
+            "currentChordLyricsPair": {
+              "chords": "Em",
+              "lyrics": "plan for you"
+            }
+          },
+          {
+            "items": [
+              {
+                "chords": "",
+                "lyrics": "It’s gonna be "
+              },
+              {
+                "chords": "C",
+                "lyrics": "wild, it’s gonna be "
+              },
+              {
+                "chords": "G",
+                "lyrics": "great, it’s gonna be "
+              },
+              {
+                "chords": "D",
+                "lyrics": "full of me"
+              }
+            ],
+            "type": "verse",
+            "currentChordLyricsPair": {
+              "chords": "D",
+              "lyrics": "full of me"
+            }
+          }
+        ]
+      },
+      {
+        "lines": [
+          {
+            "items": [
+              {
+                "chords": "C",
+                "lyrics": " Open up your "
+              },
+              {
+                "chords": "G",
+                "lyrics": "heart and let me "
+              },
+              {
+                "chords": "D",
+                "lyrics": "in"
+              }
+            ],
+            "type": "chorus",
+            "currentChordLyricsPair": {
+              "chords": "D",
+              "lyrics": "in"
+            }
+          }
+        ]
+      }
+    ],
+    "currentLine": {
+      "items": [
+        {
+          "_name": "end_of_chorus",
+          "_originalName": "end_of_chorus",
+          "_value": "Chorus"
+        }
+      ],
+      "type": "none",
+      "currentChordLyricsPair": null
+    },
+    "currentParagraph": {
+      "lines": [
+        {
+          "items": [
+            {
+              "chords": "C",
+              "lyrics": " Open up your "
+            },
+            {
+              "chords": "G",
+              "lyrics": "heart and let me "
+            },
+            {
+              "chords": "D",
+              "lyrics": "in"
+            }
+          ],
+          "type": "chorus",
+          "currentChordLyricsPair": {
+            "chords": "D",
+            "lyrics": "in"
+          }
+        }
+      ]
+    },
+    "rawMetaData": {
+      "title": {}
+    },
+    "optimizedMetaData": {
+      "title": "Come Away"
+    }
+  },
+  {
+    "lines": [
+      {
+        "items": [
+          {
+            "chords": "",
+            "lyrics": "  "
+          },
+          {
+            "_name": "title",
+            "_originalName": "title",
+            "_value": "Your Love is Deep"
+          }
+        ],
+        "type": "none",
+        "currentChordLyricsPair": {
+          "chords": "",
+          "lyrics": "  "
+        }
+      },
+      {
+        "items": [],
+        "type": "none",
+        "currentChordLyricsPair": null
+      },
+      {
+        "items": [
+          {
+            "_name": "start_of_verse",
+            "_originalName": "start_of_verse",
+            "_value": "Verse"
+          }
+        ],
+        "type": "none",
+        "currentChordLyricsPair": null
+      },
+      {
+        "items": [
+          {
+            "chords": "",
+            "lyrics": "Your love is "
+          },
+          {
+            "chords": "D",
+            "lyrics": "deep"
+          }
+        ],
+        "type": "verse",
+        "currentChordLyricsPair": {
+          "chords": "D",
+          "lyrics": "deep"
+        }
+      },
+      {
+        "items": [
+          {
+            "chords": "",
+            "lyrics": "Your love is "
+          },
+          {
+            "chords": "G",
+            "lyrics": "high"
+          }
+        ],
+        "type": "verse",
+        "currentChordLyricsPair": {
+          "chords": "G",
+          "lyrics": "high"
+        }
+      },
+      {
+        "items": [
+          {
+            "chords": "",
+            "lyrics": "Your love is "
+          },
+          {
+            "chords": "Bm",
+            "lyrics": " lo - "
+          },
+          {
+            "chords": "G",
+            "lyrics": "ong"
+          }
+        ],
+        "type": "verse",
+        "currentChordLyricsPair": {
+          "chords": "G",
+          "lyrics": "ong"
+        }
+      },
+      {
+        "items": [
+          {
+            "chords": "",
+            "lyrics": "Your love is "
+          },
+          {
+            "chords": "A",
+            "lyrics": "wide\t\t(2x)"
+          }
+        ],
+        "type": "verse",
+        "currentChordLyricsPair": {
+          "chords": "A",
+          "lyrics": "wide\t\t(2x)"
+        }
+      },
+      {
+        "items": [
+          {
+            "_name": "end_of_verse",
+            "_originalName": "end_of_verse",
+            "_value": "Verse"
+          }
+        ],
+        "type": "none",
+        "currentChordLyricsPair": null
+      },
+      {
+        "items": [],
+        "type": "none",
+        "currentChordLyricsPair": null
+      },
+      {
+        "items": [
+          {
+            "_name": "start_of_chorus",
+            "_originalName": "start_of_chorus",
+            "_value": "Chorus"
+          }
+        ],
+        "type": "none",
+        "currentChordLyricsPair": null
+      },
+      {
+        "items": [
+          {
+            "chords": "",
+            "lyrics": "Your love is "
+          },
+          {
+            "chords": "D",
+            "lyrics": "deeper than my view of grace"
+          }
+        ],
+        "type": "chorus",
+        "currentChordLyricsPair": {
+          "chords": "D",
+          "lyrics": "deeper than my view of grace"
+        }
+      },
+      {
+        "items": [
+          {
+            "chords": "G",
+            "lyrics": "Higher than this wordly place"
+          }
+        ],
+        "type": "chorus",
+        "currentChordLyricsPair": {
+          "chords": "G",
+          "lyrics": "Higher than this wordly place"
+        }
+      },
+      {
+        "items": [
+          {
+            "chords": "Bm",
+            "lyrics": "Longer than this "
+          },
+          {
+            "chords": "G",
+            "lyrics": "road I travel"
+          }
+        ],
+        "type": "chorus",
+        "currentChordLyricsPair": {
+          "chords": "G",
+          "lyrics": "road I travel"
+        }
+      },
+      {
+        "items": [
+          {
+            "chords": "A",
+            "lyrics": "Wider than the gap You filled\t\t(2x)"
+          }
+        ],
+        "type": "chorus",
+        "currentChordLyricsPair": {
+          "chords": "A",
+          "lyrics": "Wider than the gap You filled\t\t(2x)"
+        }
+      },
+      {
+        "items": [
+          {
+            "_name": "end_of_chorus",
+            "_originalName": "end_of_chorus",
+            "_value": "Chorus"
+          }
+        ],
+        "type": "none",
+        "currentChordLyricsPair": null
+      },
+      {
+        "items": [],
+        "type": "none",
+        "currentChordLyricsPair": null
+      },
+      {
+        "items": [
+          {
+            "_name": "start_of_chorus",
+            "_originalName": "start_of_chorus",
+            "_value": "Bridge"
+          }
+        ],
+        "type": "none",
+        "currentChordLyricsPair": null
+      },
+      {
+        "items": [
+          {
+            "chords": "G",
+            "lyrics": "   Who shall sepe"
+          },
+          {
+            "chords": "D",
+            "lyrics": "rate us"
+          }
+        ],
+        "type": "chorus",
+        "currentChordLyricsPair": {
+          "chords": "D",
+          "lyrics": "rate us"
+        }
+      },
+      {
+        "items": [
+          {
+            "chords": "G",
+            "lyrics": "   Who shall sepe"
+          },
+          {
+            "chords": "D",
+            "lyrics": "rate us from Your "
+          },
+          {
+            "chords": "A",
+            "lyrics": "love"
+          }
+        ],
+        "type": "chorus",
+        "currentChordLyricsPair": {
+          "chords": "A",
+          "lyrics": "love"
+        }
+      },
+      {
+        "items": [
+          {
+            "chords": "G",
+            "lyrics": "   Nothing can sepe"
+          },
+          {
+            "chords": "D",
+            "lyrics": "rate us"
+          }
+        ],
+        "type": "chorus",
+        "currentChordLyricsPair": {
+          "chords": "D",
+          "lyrics": "rate us"
+        }
+      },
+      {
+        "items": [
+          {
+            "chords": "G",
+            "lyrics": "   Nothing can sepe"
+          },
+          {
+            "chords": "D",
+            "lyrics": "rate us from Your "
+          },
+          {
+            "chords": "A",
+            "lyrics": "love"
+          }
+        ],
+        "type": "chorus",
+        "currentChordLyricsPair": {
+          "chords": "A",
+          "lyrics": "love"
+        }
+      },
+      {
+        "items": [
+          {
+            "_name": "end_of_chorus",
+            "_originalName": "end_of_chorus",
+            "_value": "Bridge"
+          }
+        ],
+        "type": "none",
+        "currentChordLyricsPair": null
+      }
+    ],
+    "paragraphs": [
+      {
+        "lines": [
+          {
+            "items": [
+              {
+                "chords": "",
+                "lyrics": "  "
+              },
+              {
+                "_name": "title",
+                "_originalName": "title",
+                "_value": "Your Love is Deep"
+              }
+            ],
+            "type": "none",
+            "currentChordLyricsPair": {
+              "chords": "",
+              "lyrics": "  "
+            }
+          }
+        ]
+      },
+      {
+        "lines": [
+          {
+            "items": [
+              {
+                "chords": "",
+                "lyrics": "Your love is "
+              },
+              {
+                "chords": "D",
+                "lyrics": "deep"
+              }
+            ],
+            "type": "verse",
+            "currentChordLyricsPair": {
+              "chords": "D",
+              "lyrics": "deep"
+            }
+          },
+          {
+            "items": [
+              {
+                "chords": "",
+                "lyrics": "Your love is "
+              },
+              {
+                "chords": "G",
+                "lyrics": "high"
+              }
+            ],
+            "type": "verse",
+            "currentChordLyricsPair": {
+              "chords": "G",
+              "lyrics": "high"
+            }
+          },
+          {
+            "items": [
+              {
+                "chords": "",
+                "lyrics": "Your love is "
+              },
+              {
+                "chords": "Bm",
+                "lyrics": " lo - "
+              },
+              {
+                "chords": "G",
+                "lyrics": "ong"
+              }
+            ],
+            "type": "verse",
+            "currentChordLyricsPair": {
+              "chords": "G",
+              "lyrics": "ong"
+            }
+          },
+          {
+            "items": [
+              {
+                "chords": "",
+                "lyrics": "Your love is "
+              },
+              {
+                "chords": "A",
+                "lyrics": "wide\t\t(2x)"
+              }
+            ],
+            "type": "verse",
+            "currentChordLyricsPair": {
+              "chords": "A",
+              "lyrics": "wide\t\t(2x)"
+            }
+          }
+        ]
+      },
+      {
+        "lines": [
+          {
+            "items": [
+              {
+                "chords": "",
+                "lyrics": "Your love is "
+              },
+              {
+                "chords": "D",
+                "lyrics": "deeper than my view of grace"
+              }
+            ],
+            "type": "chorus",
+            "currentChordLyricsPair": {
+              "chords": "D",
+              "lyrics": "deeper than my view of grace"
+            }
+          },
+          {
+            "items": [
+              {
+                "chords": "G",
+                "lyrics": "Higher than this wordly place"
+              }
+            ],
+            "type": "chorus",
+            "currentChordLyricsPair": {
+              "chords": "G",
+              "lyrics": "Higher than this wordly place"
+            }
+          },
+          {
+            "items": [
+              {
+                "chords": "Bm",
+                "lyrics": "Longer than this "
+              },
+              {
+                "chords": "G",
+                "lyrics": "road I travel"
+              }
+            ],
+            "type": "chorus",
+            "currentChordLyricsPair": {
+              "chords": "G",
+              "lyrics": "road I travel"
+            }
+          },
+          {
+            "items": [
+              {
+                "chords": "A",
+                "lyrics": "Wider than the gap You filled\t\t(2x)"
+              }
+            ],
+            "type": "chorus",
+            "currentChordLyricsPair": {
+              "chords": "A",
+              "lyrics": "Wider than the gap You filled\t\t(2x)"
+            }
+          }
+        ]
+      },
+      {
+        "lines": [
+          {
+            "items": [
+              {
+                "chords": "G",
+                "lyrics": "   Who shall sepe"
+              },
+              {
+                "chords": "D",
+                "lyrics": "rate us"
+              }
+            ],
+            "type": "chorus",
+            "currentChordLyricsPair": {
+              "chords": "D",
+              "lyrics": "rate us"
+            }
+          },
+          {
+            "items": [
+              {
+                "chords": "G",
+                "lyrics": "   Who shall sepe"
+              },
+              {
+                "chords": "D",
+                "lyrics": "rate us from Your "
+              },
+              {
+                "chords": "A",
+                "lyrics": "love"
+              }
+            ],
+            "type": "chorus",
+            "currentChordLyricsPair": {
+              "chords": "A",
+              "lyrics": "love"
+            }
+          },
+          {
+            "items": [
+              {
+                "chords": "G",
+                "lyrics": "   Nothing can sepe"
+              },
+              {
+                "chords": "D",
+                "lyrics": "rate us"
+              }
+            ],
+            "type": "chorus",
+            "currentChordLyricsPair": {
+              "chords": "D",
+              "lyrics": "rate us"
+            }
+          },
+          {
+            "items": [
+              {
+                "chords": "G",
+                "lyrics": "   Nothing can sepe"
+              },
+              {
+                "chords": "D",
+                "lyrics": "rate us from Your "
+              },
+              {
+                "chords": "A",
+                "lyrics": "love"
+              }
+            ],
+            "type": "chorus",
+            "currentChordLyricsPair": {
+              "chords": "A",
+              "lyrics": "love"
+            }
+          }
+        ]
+      }
+    ],
+    "currentLine": {
+      "items": [
+        {
+          "_name": "end_of_chorus",
+          "_originalName": "end_of_chorus",
+          "_value": "Bridge"
+        }
+      ],
+      "type": "none",
+      "currentChordLyricsPair": null
+    },
+    "currentParagraph": {
+      "lines": [
+        {
+          "items": [
+            {
+              "chords": "G",
+              "lyrics": "   Who shall sepe"
+            },
+            {
+              "chords": "D",
+              "lyrics": "rate us"
+            }
+          ],
+          "type": "chorus",
+          "currentChordLyricsPair": {
+            "chords": "D",
+            "lyrics": "rate us"
+          }
+        },
+        {
+          "items": [
+            {
+              "chords": "G",
+              "lyrics": "   Who shall sepe"
+            },
+            {
+              "chords": "D",
+              "lyrics": "rate us from Your "
+            },
+            {
+              "chords": "A",
+              "lyrics": "love"
+            }
+          ],
+          "type": "chorus",
+          "currentChordLyricsPair": {
+            "chords": "A",
+            "lyrics": "love"
+          }
+        },
+        {
+          "items": [
+            {
+              "chords": "G",
+              "lyrics": "   Nothing can sepe"
+            },
+            {
+              "chords": "D",
+              "lyrics": "rate us"
+            }
+          ],
+          "type": "chorus",
+          "currentChordLyricsPair": {
+            "chords": "D",
+            "lyrics": "rate us"
+          }
+        },
+        {
+          "items": [
+            {
+              "chords": "G",
+              "lyrics": "   Nothing can sepe"
+            },
+            {
+              "chords": "D",
+              "lyrics": "rate us from Your "
+            },
+            {
+              "chords": "A",
+              "lyrics": "love"
+            }
+          ],
+          "type": "chorus",
+          "currentChordLyricsPair": {
+            "chords": "A",
+            "lyrics": "love"
+          }
+        }
+      ]
+    },
+    "rawMetaData": {
+      "title": {}
+    },
+    "optimizedMetaData": {
+      "title": "Your Love is Deep"
+    }
+  }
+]

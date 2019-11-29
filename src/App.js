@@ -3,7 +3,7 @@ import Layout from './Layout'
 import TitleList from './TitleList'
 import Song from './Song'
 
-import songs from './songsShort.json'
+import songs from './songsParsed.json'
 import SidebarItem from './SidebarItem'
 import Sidebar from './Sidebar'
 import GradientText from './GradientText'
@@ -11,7 +11,9 @@ import GradientText from './GradientText'
 function App() {
   const songsAlphabetically = songs
     .slice(0)
-    .sort((a, b) => (a.title > b.title ? 1 : -1))
+    .sort((a, b) =>
+      a.optimizedMetaData.title > b.optimizedMetaData.title ? 1 : -1
+    )
 
   const [displayedSong, setDisplayedSong] = useState(songsAlphabetically[0])
   const [isAllSongsShown, setIsAllSongsShown] = useState(false)
@@ -41,7 +43,7 @@ function App() {
         setDisplayedSong={setDisplayedSong}
         isAllSongsShown={isAllSongsShown}
       ></TitleList>
-      <Song {...displayedSong} isAListShown={isAListShown} />
+      <Song song={displayedSong} isAListShown={isAListShown} />
     </Layout>
   )
 
