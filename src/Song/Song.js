@@ -6,12 +6,12 @@ import ChordLyricsPair from './ChordLyricsPair'
 
 export default function Song({ song, isAListShown }) {
   return (
-    <SongStyled isAListShown={isAListShown}>
+    <SongWrapper isAListShown={isAListShown}>
       <SongTitle>{song.optimizedMetaData.title}</SongTitle>
       {song.optimizedMetaData.artist && (
         <SongArtist>{song.optimizedMetaData.artist}</SongArtist>
       )}
-      <LyricsContainer>
+      <LyricsWrapper>
         {song.lines.map((line, index) => (
           <Line key={index}>
             {isLineMetadata(line.items) ||
@@ -32,8 +32,8 @@ export default function Song({ song, isAListShown }) {
                   )))}
           </Line>
         ))}
-      </LyricsContainer>
-    </SongStyled>
+      </LyricsWrapper>
+    </SongWrapper>
   )
 
   function isLineMetadata(items) {
@@ -49,7 +49,7 @@ export default function Song({ song, isAListShown }) {
   }
 }
 
-const SongStyled = styled.section`
+const SongWrapper = styled.section`
   grid-column: ${props => (props.isAListShown ? '3 / end' : '2 / end')};
   padding: 12px;
   margin-top: 10%;
@@ -67,7 +67,7 @@ const SongArtist = styled.h2`
   color: #939fc2;
 `
 
-const LyricsContainer = styled.div`
+const LyricsWrapper = styled.div`
   margin-top: 20px;
 `
 

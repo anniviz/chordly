@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
-import Layout from './Layout'
-import TitleList from './TitleList'
+import Layout from './common/Layout'
+import TitleList from './TitleList/TitleList'
 import Song from './Song/Song'
 
 import songs from './songsParsed.json'
 import SidebarItem from './SidebarItem'
 import Sidebar from './Sidebar'
-import GradientText from './GradientText'
+import GradientText from './common/GradientText'
 
 function App() {
   const songsAlphabetically = songs
