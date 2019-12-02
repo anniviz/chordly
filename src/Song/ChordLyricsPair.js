@@ -17,11 +17,13 @@ const ChordLyricsWrapper = styled.div`
 `
 
 const Chord = styled.div`
-  height: 1.5em;
+  height: 1em;
+  margin: 4px;
   color: #939fc2;
 `
 
 const Lyrics = styled.div`
-  height: 1.5em;
   color: #fefefe;
+  margin-bottom: 4px;
+  line-height: 1.5;
 `

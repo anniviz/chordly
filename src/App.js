@@ -1,12 +1,16 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import { useSpring, animated } from 'react-spring'
+
 import Layout from './common/Layout'
 import TitleList from './TitleList/TitleList'
 import Song from './Song/Song'
-
-import songs from './songsParsed.json'
 import SidebarItem from './SidebarItem'
 import Sidebar from './Sidebar'
 import GradientText from './common/GradientText'
+
+import songs from './songsParsed.json'
+
+import { getSongs } from './services'
 
 function App() {
   const songsAlphabetically = songs
@@ -15,19 +19,41 @@ function App() {
       a.optimizedMetaData.title > b.optimizedMetaData.title ? 1 : -1
     )
 
+  const [songsDB, setsongsDB] = useState([])
+
+  useEffect(() => {
+    console.log('This is called every change')
+  })
+
+  useEffect(() => {
+    getSongs()
+      .then(setsongsDB)
+      .catch(err => {
+        console.log(err)
+      })
+    console.log('This is called once')
+  }, [])
+
+  console.log(songsDB)
+
   const [displayedSong, setDisplayedSong] = useState(songsAlphabetically[0])
   const [isAllSongsShown, setIsAllSongsShown] = useState(false)
   let isAListShown = false
   isAllSongsShown ? (isAListShown = true) : (isAListShown = false)
 
+  const AnimatedLayout = animated(Layout)
+  const animateLayout = useSpring({
+    gridTemplateColumns: isAllSongsShown ? '60px 25% auto' : '60px 0% auto',
+  })
+
   return (
-    <Layout>
+    <AnimatedLayout style={animateLayout}>
       <Sidebar>
         <SidebarItem>
-          <GradientText>Current Set List</GradientText>
+          <GradientText>{/* Current Set List */}</GradientText>
         </SidebarItem>
         <SidebarItem>
-          <GradientText>Set Lists</GradientText>
+          <GradientText>{/* Set Lists */}</GradientText>
         </SidebarItem>
         <SidebarItem onClick={toggleAllSongs} isAllSongsShown={isAllSongsShown}>
           {isAllSongsShown ? (
@@ -44,7 +70,7 @@ function App() {
         isAllSongsShown={isAllSongsShown}
       ></TitleList>
       <Song song={displayedSong} isAListShown={isAListShown} />
-    </Layout>
+    </AnimatedLayout>
   )
 
   function toggleAllSongs() {
