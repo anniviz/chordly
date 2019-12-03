@@ -19,15 +19,16 @@
     "styled-components": "^4.4.1"
   },
   "scripts": {
+    "start": "run-p client server",
     "client": "react-scripts start",
-    "server": "PORT=3333 nodemon --inspect --watch node ./server/server.js",
-    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 9009 -s public",
-    "build-storybook": "build-storybook -s public"
+    "build-storybook": "build-storybook -s public",
+    "server": "PORT=3333 nodemon --inspect --watch node ./server/server.js"
   },
+  "proxy": "http://localhost:3333",
   "eslintConfig": {
     "extends": "react-app"
   },
