@@ -8,14 +8,11 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "",
+  "author": "Annemarie Wisbar",
   "license": "ISC",
   "dependencies": {
-    "all": "0.0.0",
     "express": "^4.17.1",
     "mongoose": "^5.7.13",
-    "nodemon": "^2.0.1",
-    "run": "^1.4.0",
-    "uid": "0.0.2"
+    "nodemon": "^2.0.1"
   }
 }
