@@ -13,9 +13,7 @@ export default function TitleList({
 }) {
   const AnimatedTitleWrapperBorder = animated(TitleWrapperBorder)
   const flyIn = useSpring({
-    width: isAllSongsShown ? '100%' : '0%',
-    transform: isAllSongsShown ? 'scale(1)' : 'scale(0.6)',
-    display: isAllSongsShown ? 'block' : 'none',
+    opacity: isAllSongsShown ? 1 : 0,
   })
 
   return (

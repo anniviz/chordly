@@ -1,32 +1,37 @@
 import React, { useState } from 'react'
-import Layout from './Layout'
-import TitleList from './TitleList'
-import Song from './Song'
+import { useSpring, animated } from 'react-spring'
 
-import songs from './songsShort.json'
+import Layout from './common/Layout'
+import TitleList from './TitleList/TitleList'
+import Song from './Song/Song'
 import SidebarItem from './SidebarItem'
 import Sidebar from './Sidebar'
-import GradientText from './GradientText'
+import GradientText from './common/GradientText'
+
+import songs from './songsParsed.json'
 
 function App() {
   const songsAlphabetically = songs
     .slice(0)
-    .sort((a, b) => (a.title > b.title ? 1 : -1))
+    .sort((a, b) =>
+      a.optimizedMetaData.title > b.optimizedMetaData.title ? 1 : -1
+    )
 
   const [displayedSong, setDisplayedSong] = useState(songsAlphabetically[0])
   const [isAllSongsShown, setIsAllSongsShown] = useState(false)
   let isAListShown = false
   isAllSongsShown ? (isAListShown = true) : (isAListShown = false)
 
+  const AnimatedLayout = animated(Layout)
+  const animateLayout = useSpring({
+    gridTemplateColumns: isAllSongsShown ? '60px 25% auto' : '60px 0% auto',
+  })
+
   return (
-    <Layout>
+    <AnimatedLayout style={animateLayout}>
       <Sidebar>
-        <SidebarItem>
-          <GradientText>Current Set List</GradientText>
-        </SidebarItem>
-        <SidebarItem>
-          <GradientText>Set Lists</GradientText>
-        </SidebarItem>
+        <SidebarItem></SidebarItem>
+        <SidebarItem></SidebarItem>
         <SidebarItem onClick={toggleAllSongs} isAllSongsShown={isAllSongsShown}>
           {isAllSongsShown ? (
             <p>All Songs </p>
@@ -41,8 +46,8 @@ function App() {
         setDisplayedSong={setDisplayedSong}
         isAllSongsShown={isAllSongsShown}
       ></TitleList>
-      <Song {...displayedSong} isAListShown={isAListShown} />
-    </Layout>
+      <Song song={displayedSong} isAListShown={isAListShown} />
+    </AnimatedLayout>
   )
 
   function toggleAllSongs() {
