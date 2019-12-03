@@ -18,6 +18,9 @@ const TitleListItemStyled = styled.li`
   font-weight: ${props => (props.selected ? 'bold' : 'regular')};
   padding: 10px 0;
   cursor: default;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 `
 
 TitleListItem.propTypes = {

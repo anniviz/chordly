@@ -41,7 +41,8 @@ export default function Song({ song, isAListShown }) {
 }
 
 const SongWrapper = styled.section`
-  grid-column: ${props => (props.isAListShown ? '3 / end' : '2 / end')};
+  /* grid-column: ${props => (props.isAListShown ? '3 / end' : '2 / end')}; */
+  grid-column: 3 / end;
   padding: 12px;
   margin-top: 10%;
   overflow: scroll;
@@ -55,7 +56,7 @@ const SongTitle = styled.h1`
 
 const SongArtist = styled.h2`
   font-size: 1rem;
-  color: #939fc2;
+  color: #fefefe;
 `
 
 const LyricsWrapper = styled.div`
