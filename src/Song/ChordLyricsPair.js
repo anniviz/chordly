@@ -12,7 +12,6 @@ export default function ChordLyricsPair({ item, chordsInLine }) {
 }
 
 const ChordLyricsWrapper = styled.div`
-  /* margin-right: 4px; */
   display: flex;
   flex-direction: column;
 `
