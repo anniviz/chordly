@@ -12,47 +12,35 @@ export default function Song({ song, isAListShown }) {
         <SongArtist>{song.optimizedMetaData.artist}</SongArtist>
       )}
       <LyricsWrapper>
-        {song.lines.map((line, index) => (
-          <Line key={index} chordsInLine={areChordsInLine(line.items)}>
-            {isLineMetadata(line.items) ||
-              (areChordsInLine(line.items)
-                ? line.items.map((item, index) => (
-                    <ChordLyricsPair
-                      key={index}
-                      item={item}
-                      // chordsInLine={chordsInLine}
-                      chordsInLine={true}
-                    />
-                  ))
-                : line.items.map((item, index) => (
-                    <ChordLyricsPair
-                      key={index}
-                      item={item}
-                      // chordsInLine={chordsInLine}
-                      chordsInLine={false}
-                    />
-                  )))}
-          </Line>
-        ))}
+        {song.lines.map((line, index) => {
+          const chordsInLine = areChordsInLine(line.items)
+          return (
+            <Line key={index}>
+              {isLineMetadata(line.items) ||
+                line.items.map((item, index) => (
+                  <ChordLyricsPair
+                    key={index}
+                    item={item}
+                    chordsInLine={chordsInLine}
+                  />
+                ))}
+            </Line>
+          )
+        })}
       </LyricsWrapper>
     </SongWrapper>
   )
 
   function isLineMetadata(items) {
-    let isMetadata = false
-    items.forEach(item => item._name && (isMetadata = true))
-    return isMetadata
+    return items.some(item => item._name)
   }
 
   function areChordsInLine(items) {
-    let isChords = false
-    items.forEach(item => item.chords !== '' && (isChords = true))
-    return isChords
+    return items.some(item => item.chords)
   }
 }
 
 const SongWrapper = styled.section`
-  /* grid-column: ${props => (props.isAListShown ? '3 / end' : '2 / end')}; */
   grid-column: 3 / end;
   padding: 12px;
   margin-top: 10%;

@@ -49,12 +49,8 @@ function App() {
   return (
     <AnimatedLayout style={animateLayout}>
       <Sidebar>
-        <SidebarItem>
-          <GradientText>{/* Current Set List */}</GradientText>
-        </SidebarItem>
-        <SidebarItem>
-          <GradientText>{/* Set Lists */}</GradientText>
-        </SidebarItem>
+        <SidebarItem></SidebarItem>
+        <SidebarItem></SidebarItem>
         <SidebarItem onClick={toggleAllSongs} isAllSongsShown={isAllSongsShown}>
           {isAllSongsShown ? (
             <p>All Songs </p>
