@@ -13,7 +13,7 @@ export default function Song({ song, isAListShown }) {
       )}
       <LyricsWrapper>
         {song.lines.map((line, index) => {
-          const areThereChords = areChordsInLine(line.items)
+          const chordsInLine = areChordsInLine(line.items)
           return (
             <Line key={index}>
               {isLineMetadata(line.items) ||
@@ -21,7 +21,7 @@ export default function Song({ song, isAListShown }) {
                   <ChordLyricsPair
                     key={index}
                     item={item}
-                    chordsInLine={areThereChords}
+                    chordsInLine={chordsInLine}
                   />
                 ))}
             </Line>
@@ -41,7 +41,6 @@ export default function Song({ song, isAListShown }) {
 }
 
 const SongWrapper = styled.section`
-  /* grid-column: ${props => (props.isAListShown ? '3 / end' : '2 / end')}; */
   grid-column: 3 / end;
   padding: 12px;
   margin-top: 10%;
