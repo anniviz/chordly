@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { useSpring, animated } from 'react-spring'
 
 import Layout from './common/Layout'
@@ -8,30 +8,17 @@ import SidebarItem from './SidebarItem'
 import Sidebar from './Sidebar'
 import GradientText from './common/GradientText'
 
-import { getSongs } from './services'
 import useSongs from './hooks/useSongs'
 
 function App() {
-  const { songs, setSongs, isLoading } = useSongs()
-  // const [songsDB, setSongsDB] = useState([])
+  const {
+    songs,
+    setSongs,
+    isLoading,
+    displayedSong,
+    setDisplayedSong,
+  } = useSongs()
 
-  useEffect(() => {
-    getSongs()
-      .then(setSongs)
-      .catch(err => {
-        console.error(err)
-      })
-    // This is called once
-  }, [])
-
-  useEffect(() => {
-    setDisplayedSong(songs[0])
-  }, [songs])
-
-  // console.log('songsAlphabetically')
-  // console.log(songsAlphabetically)
-
-  const [displayedSong, setDisplayedSong] = useState(songs[0])
   const [isAllSongsShown, setIsAllSongsShown] = useState(false)
   let isAListShown = false
   isAllSongsShown ? (isAListShown = true) : (isAListShown = false)
@@ -60,7 +47,7 @@ function App() {
         setDisplayedSong={setDisplayedSong}
         isAllSongsShown={isAllSongsShown}
       ></TitleList>
-      {displayedSong ? (
+      {!isLoading ? (
         <Song song={displayedSong} isAListShown={isAListShown} />
       ) : (
         'Loading ...'
