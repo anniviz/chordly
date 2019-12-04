@@ -13,30 +13,35 @@ import songs from './songsParsed.json'
 import { getSongs } from './services'
 
 function App() {
-  const songsAlphabetically = songs
-    .slice(0)
-    .sort((a, b) =>
-      a.optimizedMetaData.title > b.optimizedMetaData.title ? 1 : -1
-    )
+  const [songsDB, setSongsDB] = useState([])
 
-  const [songsDB, setsongsDB] = useState([])
-
-  useEffect(() => {
-    console.log('This is called every change')
-  })
+  // useEffect(() => {
+  //   // This is called every change
+  // })
 
   useEffect(() => {
     getSongs()
-      .then(setsongsDB)
+      .then(setSongsDB)
       .catch(err => {
-        console.log(err)
+        console.error(err)
       })
-    console.log('This is called once')
+    // This is called once
   }, [])
 
-  console.log(songsDB)
+  // const songsAlphabetically = songsDB
+  //   .slice()
+  //   .sort((a, b) =>
+  //     a.optimizedMetaData.title > b.optimizedMetaData.title ? 1 : -1
+  //   )
 
-  const [displayedSong, setDisplayedSong] = useState(songsAlphabetically[0])
+  useEffect(() => {
+    setDisplayedSong(songsDB[0])
+  }, [songsDB])
+
+  // console.log('songsAlphabetically')
+  // console.log(songsAlphabetically)
+
+  const [displayedSong, setDisplayedSong] = useState(songsDB[0])
   const [isAllSongsShown, setIsAllSongsShown] = useState(false)
   let isAListShown = false
   isAllSongsShown ? (isAListShown = true) : (isAListShown = false)
@@ -60,12 +65,16 @@ function App() {
         </SidebarItem>
       </Sidebar>
       <TitleList
-        songs={songsAlphabetically}
+        songs={songsDB}
         displayedSong={displayedSong}
         setDisplayedSong={setDisplayedSong}
         isAllSongsShown={isAllSongsShown}
       ></TitleList>
-      <Song song={displayedSong} isAListShown={isAListShown} />
+      {displayedSong ? (
+        <Song song={displayedSong} isAListShown={isAListShown} />
+      ) : (
+        'Loading ...'
+      )}
     </AnimatedLayout>
   )
 

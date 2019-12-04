@@ -1,66 +1,12 @@
 const mongoose = require('mongoose')
 
 const songSchema = {
-  lines: [
-    {
-      items: [
-        {
-          chords: String,
-          lyrics: String,
-          _name: String,
-          _originalName: String,
-          _value: String,
-        },
-      ],
-      type: String,
-      currentChordLyricsPair: { chords: String, lyrics: String },
-    },
-  ],
-  paragraphs: [
-    {
-      items: [
-        {
-          chords: String,
-          lyrics: String,
-          _name: String,
-          _originalName: String,
-          _value: String,
-        },
-      ],
-      type: String,
-      currentChordLyricsPair: { chords: String, lyrics: String },
-    },
-  ],
-  currentLine: {
-    items: [
-      {
-        chords: String,
-        lyrics: String,
-        _name: String,
-        _originalName: String,
-        _value: String,
-      },
-    ],
-    type: String,
-    currentChordLyricsPair: { chords: String, lyrics: String },
-  },
-  currentParagraph: {
-    lines: {
-      items: [
-        {
-          chords: String,
-          lyrics: String,
-          _name: String,
-          _originalName: String,
-          _value: String,
-        },
-      ],
-      type: String,
-      currentChordLyricsPair: { chords: String, lyrics: String },
-    },
-  },
-  rawMetaData: { title: {}, artist: {}, key: {} },
-  optimizedMetaData: { title: String, artist: String, key: String },
+  lines: Array,
+  paragraphs: Array,
+  currentLine: Object,
+  currentParagraph: Object,
+  rawMetaData: Object,
+  optimizedMetaData: Object,
 }
 
 module.exports = mongoose.model('Song', songSchema)

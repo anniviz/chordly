@@ -15,12 +15,19 @@ app.listen(PORT, () => console.log(`Express ready on ${PORT}`))
 
 app.get('/songs', (req, res) => {
   Song.find()
-    .then(songs => res.json(songs))
+    .then(songs => {
+      res.json(
+        songs.sort((a, b) =>
+          a.optimizedMetaData.title > b.optimizedMetaData.title ? 1 : -1
+        )
+      )
+    })
     .catch(err => res.json(err))
 })
 
-app.get('/songs/:id', (req, res) => {
-  Song.findById(req.params._id)
-    .then(song => res.json(song))
-    .catch(err => res.json(err))
-})
+// not yet working
+// app.get('/songs/:id', (req, res) => {
+//   Song.findById(req.params._id)
+//     .then(song => res.json(song))
+//     .catch(err => res.json(err))
+// })
