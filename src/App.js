@@ -8,40 +8,30 @@ import SidebarItem from './SidebarItem'
 import Sidebar from './Sidebar'
 import GradientText from './common/GradientText'
 
-import songs from './songsParsed.json'
-
 import { getSongs } from './services'
+import useSongs from './hooks/useSongs'
 
 function App() {
-  const [songsDB, setSongsDB] = useState([])
-
-  // useEffect(() => {
-  //   // This is called every change
-  // })
+  const { songs, setSongs, isLoading } = useSongs()
+  // const [songsDB, setSongsDB] = useState([])
 
   useEffect(() => {
     getSongs()
-      .then(setSongsDB)
+      .then(setSongs)
       .catch(err => {
         console.error(err)
       })
     // This is called once
   }, [])
 
-  // const songsAlphabetically = songsDB
-  //   .slice()
-  //   .sort((a, b) =>
-  //     a.optimizedMetaData.title > b.optimizedMetaData.title ? 1 : -1
-  //   )
-
   useEffect(() => {
-    setDisplayedSong(songsDB[0])
-  }, [songsDB])
+    setDisplayedSong(songs[0])
+  }, [songs])
 
   // console.log('songsAlphabetically')
   // console.log(songsAlphabetically)
 
-  const [displayedSong, setDisplayedSong] = useState(songsDB[0])
+  const [displayedSong, setDisplayedSong] = useState(songs[0])
   const [isAllSongsShown, setIsAllSongsShown] = useState(false)
   let isAListShown = false
   isAllSongsShown ? (isAListShown = true) : (isAListShown = false)
@@ -65,7 +55,7 @@ function App() {
         </SidebarItem>
       </Sidebar>
       <TitleList
-        songs={songsDB}
+        songs={songs}
         displayedSong={displayedSong}
         setDisplayedSong={setDisplayedSong}
         isAllSongsShown={isAllSongsShown}

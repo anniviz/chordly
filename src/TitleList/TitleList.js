@@ -82,7 +82,7 @@ const TitleWrapperBorder = styled.div`
 
 TitleList.propTypes = {
   songs: PropTypes.array.isRequired,
-  displayedSong: PropTypes.object.isRequired,
+  displayedSong: PropTypes.object,
   setDisplayedSong: PropTypes.func.isRequired,
   isAllSongsShown: PropTypes.bool.isRequired,
 }

@@ -44,6 +44,7 @@ const SongWrapper = styled.section`
   grid-column: 3 / end;
   padding: 12px;
   margin-top: 10%;
+  margin-left: 12px;
   overflow: scroll;
 `
 
@@ -68,6 +69,6 @@ const Line = styled.div`
 `
 
 Song.propTypes = {
-  song: PropTypes.object.isRequired,
+  song: PropTypes.object,
   isAListShown: PropTypes.bool.isRequired,
 }

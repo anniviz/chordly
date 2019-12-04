@@ -1,5 +1,8 @@
-export function getSongs() {
-  return fetch('/songs').then(res => res.json())
+export async function getSongs() {
+  const res = await fetch('/songs')
+  // console.log(res.json())
+  return res.json()
+  // return fetch('/songs').then(res => res.json())
 }
 
 // export function postCard(card) {
