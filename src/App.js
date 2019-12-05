@@ -41,10 +41,10 @@ function App() {
         setDisplayedSong={setDisplayedSong}
         isAllSongsShown={isAllSongsShown}
       ></TitleList>
-      {!isLoading ? (
-        <Song song={displayedSong} isAListShown={isAListShown} />
-      ) : (
+      {isLoading ? (
         'Loading ...'
+      ) : (
+        <Song song={displayedSong} isAListShown={isAListShown} />
       )}
     </AnimatedLayout>
   )
