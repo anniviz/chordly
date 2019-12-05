@@ -11,13 +11,7 @@ import GradientText from './common/GradientText'
 import useSongs from './hooks/useSongs'
 
 function App() {
-  const {
-    songs,
-    setSongs,
-    isLoading,
-    displayedSong,
-    setDisplayedSong,
-  } = useSongs()
+  const { songs, isLoading, displayedSong, setDisplayedSong } = useSongs()
 
   const [isAllSongsShown, setIsAllSongsShown] = useState(false)
   let isAListShown = false

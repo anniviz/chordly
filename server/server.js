@@ -23,10 +23,3 @@ app.get('/songs', (req, res) => {
     })
     .catch(err => res.json(err))
 })
-
-// not yet working
-// app.get('/songs/:id', (req, res) => {
-//   Song.findById(req.params._id)
-//     .then(song => res.json(song))
-//     .catch(err => res.json(err))
-// })
