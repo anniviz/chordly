@@ -7,6 +7,7 @@ import Song from './Song/Song'
 import SidebarItem from './SidebarItem'
 import Sidebar from './Sidebar'
 import GradientText from './common/GradientText'
+import Carousel from './Carousell/Carousell'
 
 import useSongs from './hooks/useSongs'
 
@@ -44,7 +45,11 @@ function App() {
       {isLoading ? (
         'Loading ...'
       ) : (
-        <Song song={displayedSong} isAListShown={isAListShown} />
+        <Carousel>
+          {songs.map(song => (
+            <Song key={song._id} song={song} isAListShown={isAListShown} />
+          ))}
+        </Carousel>
       )}
     </AnimatedLayout>
   )
