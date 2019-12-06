@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useSpring, animated } from 'react-spring'
+import SwipeableViews from 'react-swipeable-views'
 
 import Layout from './common/Layout'
 import TitleList from './TitleList/TitleList'
@@ -7,7 +8,7 @@ import Song from './Song/Song'
 import SidebarItem from './SidebarItem'
 import Sidebar from './Sidebar'
 import GradientText from './common/GradientText'
-import Carousel from './Carousell/Carousell'
+// import Carousel from './Carousell/Carousell'
 
 import useSongs from './hooks/useSongs'
 
@@ -45,11 +46,11 @@ function App() {
       {isLoading ? (
         'Loading ...'
       ) : (
-        <Carousel>
+        <SwipeableViews enableMouseEvents>
           {songs.map(song => (
             <Song key={song._id} song={song} isAListShown={isAListShown} />
           ))}
-        </Carousel>
+        </SwipeableViews>
       )}
     </AnimatedLayout>
   )
