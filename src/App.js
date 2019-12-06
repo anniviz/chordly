@@ -12,7 +12,7 @@ import GradientText from './common/GradientText'
 import useSongs from './hooks/useSongs'
 
 function App() {
-  const { songs, isLoading, displayedSong, setDisplayedSong } = useSongs()
+  const { songs, isLoading, swipeIndex, setSwipeIndex } = useSongs()
 
   const [isAllSongsShown, setIsAllSongsShown] = useState(false)
   let isAListShown = false
@@ -38,14 +38,18 @@ function App() {
       </Sidebar>
       <TitleList
         songs={songs}
-        displayedSong={displayedSong}
-        setDisplayedSong={setDisplayedSong}
+        swipeIndex={swipeIndex}
+        handleChangeIndex={index => handleChangeIndex(index)}
         isAllSongsShown={isAllSongsShown}
       ></TitleList>
       {isLoading ? (
         'Loading ...'
       ) : (
-        <SwipeableViews enableMouseEvents>
+        <SwipeableViews
+          index={swipeIndex}
+          onChangeIndex={handleChangeIndex}
+          enableMouseEvents
+        >
           {songs.map(song => (
             <Song key={song._id} song={song} isAListShown={isAListShown} />
           ))}
@@ -56,6 +60,10 @@ function App() {
 
   function toggleAllSongs() {
     setIsAllSongsShown(!isAllSongsShown)
+  }
+
+  function handleChangeIndex(index) {
+    setSwipeIndex(index)
   }
 }
 

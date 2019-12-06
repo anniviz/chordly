@@ -2,11 +2,16 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components/macro'
 
-export default function TitleListItem({ song, selected, setDisplayedSong }) {
+export default function TitleListItem({
+  song,
+  index,
+  selected,
+  handleChangeIndex,
+}) {
   return (
     <TitleListItemStyled
       selected={selected}
-      onClick={() => setDisplayedSong(song)}
+      onClick={() => handleChangeIndex(index)}
     >
       {song.optimizedMetaData.title}
     </TitleListItemStyled>
@@ -26,5 +31,5 @@ const TitleListItemStyled = styled.li`
 TitleListItem.propTypes = {
   song: PropTypes.object.isRequired,
   selected: PropTypes.bool.isRequired,
-  setDisplayedSong: PropTypes.func.isRequired,
+  // setDisplayedSong: PropTypes.func.isRequired,
 }

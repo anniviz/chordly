@@ -4,7 +4,7 @@ import { getSongs } from '../services'
 export default function useSongs() {
   const [songs, setSongs] = useState([])
   const [isLoading, setIsLoading] = useState(true)
-  const [displayedSong, setDisplayedSong] = useState(songs[0])
+  const [swipeIndex, setSwipeIndex] = useState(0)
 
   useEffect(() => {
     getSongs().then(loadedSongs => {
@@ -14,7 +14,14 @@ export default function useSongs() {
   }, [])
 
   useEffect(() => {
-    setDisplayedSong(songs[0])
+    setSwipeIndex(0)
   }, [songs])
-  return { songs, setSongs, isLoading, displayedSong, setDisplayedSong }
+
+  return {
+    songs,
+    setSongs,
+    isLoading,
+    swipeIndex,
+    setSwipeIndex,
+  }
 }
