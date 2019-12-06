@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useSpring, animated } from 'react-spring'
+import SwipeableViews from 'react-swipeable-views'
 
 import Layout from './common/Layout'
 import TitleList from './TitleList/TitleList'
@@ -11,7 +12,7 @@ import GradientText from './common/GradientText'
 import useSongs from './hooks/useSongs'
 
 function App() {
-  const { songs, isLoading, displayedSong, setDisplayedSong } = useSongs()
+  const { songs, isLoading, swipeIndex, setSwipeIndex } = useSongs()
 
   const [isAllSongsShown, setIsAllSongsShown] = useState(false)
   let isAListShown = false
@@ -37,20 +38,32 @@ function App() {
       </Sidebar>
       <TitleList
         songs={songs}
-        displayedSong={displayedSong}
-        setDisplayedSong={setDisplayedSong}
+        swipeIndex={swipeIndex}
+        handleChangeIndex={index => handleChangeIndex(index)}
         isAllSongsShown={isAllSongsShown}
       ></TitleList>
-      {!isLoading ? (
-        <Song song={displayedSong} isAListShown={isAListShown} />
-      ) : (
+      {isLoading ? (
         'Loading ...'
+      ) : (
+        <SwipeableViews
+          index={swipeIndex}
+          onChangeIndex={handleChangeIndex}
+          enableMouseEvents
+        >
+          {songs.map(song => (
+            <Song key={song._id} song={song} isAListShown={isAListShown} />
+          ))}
+        </SwipeableViews>
       )}
     </AnimatedLayout>
   )
 
   function toggleAllSongs() {
     setIsAllSongsShown(!isAllSongsShown)
+  }
+
+  function handleChangeIndex(index) {
+    setSwipeIndex(index)
   }
 }
 
