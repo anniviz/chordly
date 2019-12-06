@@ -19,41 +19,18 @@ export default function TitleList({
   return (
     <AnimatedTitleWrapperBorder isAllSongsShown={isAllSongsShown} style={flyIn}>
       <TitleWrapper isAllSongsShown={isAllSongsShown}>
-        {songs.map((song, index) => {
-          return highlightSelectedTitle(
-            song,
-            swipeIndex,
-            index,
-            handleChangeIndex
-          )
-        })}
+        {songs.map((song, index) => (
+          <TitleListItem
+            key={song._id}
+            song={song}
+            index={index}
+            swipeIndex={swipeIndex}
+            handleChangeIndex={index => handleChangeIndex(index)}
+          />
+        ))}
       </TitleWrapper>
     </AnimatedTitleWrapperBorder>
   )
-
-  function highlightSelectedTitle(song, swipeIndex, index, handleChangeIndex) {
-    if (song.index === swipeIndex) {
-      return (
-        <TitleListItem
-          key={song._id}
-          song={song}
-          index={index}
-          selected={true}
-          handleChangeIndex={index => handleChangeIndex(index)}
-        />
-      )
-    } else {
-      return (
-        <TitleListItem
-          key={song._id}
-          song={song}
-          index={index}
-          selected={false}
-          handleChangeIndex={index => handleChangeIndex(index)}
-        />
-      )
-    }
-  }
 }
 
 const TitleWrapper = styled.ul`
@@ -79,7 +56,7 @@ const TitleWrapperBorder = styled.div`
 
 TitleList.propTypes = {
   songs: PropTypes.array.isRequired,
-  // displayedSong: PropTypes.object,
-  // setDisplayedSong: PropTypes.func.isRequired,
+  swipeIndex: PropTypes.number.isRequired,
+  handleChangeIndex: PropTypes.func.isRequired,
   isAllSongsShown: PropTypes.bool.isRequired,
 }

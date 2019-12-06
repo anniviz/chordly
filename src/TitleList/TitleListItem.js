@@ -5,13 +5,14 @@ import styled from 'styled-components/macro'
 export default function TitleListItem({
   song,
   index,
-  selected,
+  swipeIndex,
   handleChangeIndex,
 }) {
   return (
     <TitleListItemStyled
-      selected={selected}
+      index={index}
       onClick={() => handleChangeIndex(index)}
+      swipeIndex={swipeIndex}
     >
       {song.optimizedMetaData.title}
     </TitleListItemStyled>
@@ -19,8 +20,9 @@ export default function TitleListItem({
 }
 
 const TitleListItemStyled = styled.li`
-  color: ${props => (props.selected ? '#FE8D8D' : '#FEFEFE')};
-  font-weight: ${props => (props.selected ? 'bold' : 'regular')};
+  color: ${props => (props.index === props.swipeIndex ? '#FE8D8D' : '#FEFEFE')};
+  font-weight: ${props =>
+    props.index === props.swipeIndex ? 'bold' : 'regular'};
   padding: 10px 0;
   cursor: default;
   text-overflow: ellipsis;
@@ -30,6 +32,7 @@ const TitleListItemStyled = styled.li`
 
 TitleListItem.propTypes = {
   song: PropTypes.object.isRequired,
-  selected: PropTypes.bool.isRequired,
-  // setDisplayedSong: PropTypes.func.isRequired,
+  index: PropTypes.number.isRequired,
+  swipeIndex: PropTypes.number.isRequired,
+  handleChangeIndex: PropTypes.func.isRequired,
 }
