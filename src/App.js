@@ -8,7 +8,6 @@ import Song from './Song/Song'
 import SidebarItem from './SidebarItem'
 import Sidebar from './Sidebar'
 import GradientText from './common/GradientText'
-// import Carousel from './Carousell/Carousell'
 
 import useSongs from './hooks/useSongs'
 
