@@ -1,12 +1,17 @@
 import React from 'react'
 import styled from 'styled-components/macro'
 import PropTypes from 'prop-types'
+import { useSpring, animated } from 'react-spring'
 
 import ChordLyricsPair from './ChordLyricsPair'
 
 export default function Song({ song, isAListShown }) {
+  const AnimatedSongWrapper = animated(SongWrapper)
+  const songAnimation = useSpring({
+    paddingLeft: isAListShown ? '220px' : '90px',
+  })
   return (
-    <SongWrapper isAListShown={isAListShown}>
+    <AnimatedSongWrapper isAListShown={isAListShown} style={songAnimation}>
       <SongTitle>{song.optimizedMetaData.title}</SongTitle>
       {song.optimizedMetaData.artist && (
         <SongArtist>{song.optimizedMetaData.artist}</SongArtist>
@@ -28,7 +33,7 @@ export default function Song({ song, isAListShown }) {
           )
         })}
       </LyricsWrapper>
-    </SongWrapper>
+    </AnimatedSongWrapper>
   )
 
   function isLineMetadata(items) {
@@ -41,10 +46,8 @@ export default function Song({ song, isAListShown }) {
 }
 
 const SongWrapper = styled.section`
-  grid-column: 3 / end;
-  padding: 12px;
-  margin-top: 10%;
-  margin-left: 12px;
+  padding: 20px;
+  padding-left: 90px;
   overflow: scroll;
 `
 
