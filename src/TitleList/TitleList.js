@@ -4,6 +4,9 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components/macro'
 
 import TitleListItem from './TitleListItem'
+import SmallButton from '../common/SmallButton'
+
+import addIcon from '../icons/AddIcon.png'
 
 export default function TitleList({
   songs,
@@ -30,6 +33,9 @@ export default function TitleList({
           />
         ))}
       </TitleWrapper>
+      <SmallButton style={{ bottom: '12px', left: '66px' }}>
+        <img src={addIcon} alt="" />
+      </SmallButton>
     </AnimatedTitleWrapperBorder>
   )
 }
@@ -44,6 +50,7 @@ const TitleWrapper = styled.ul`
   background: #3f4a6d;
   background-clip: padding-box;
   overflow: scroll;
+  padding-bottom: 72px;
 `
 
 const TitleWrapperBorder = styled.div`

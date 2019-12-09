@@ -12,6 +12,7 @@ export default createGlobalStyle`
     --mainButtonHeight: 100px;
     --mainButtonBottom: -20px;
     --mainButtonLeft: -20px;
+    --smallButtonDiameter: 48px;
   }
 
   * {
