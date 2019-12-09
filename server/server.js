@@ -23,3 +23,9 @@ app.get('/songs', (req, res) => {
     })
     .catch(err => res.json(err))
 })
+
+app.post('/spots', (req, res) => {
+  Song.create(req.body)
+    .then(song => res.json(song))
+    .catch(err => res.json(err))
+})

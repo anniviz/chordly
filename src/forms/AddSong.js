@@ -1,6 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components/macro'
 import { Link } from 'react-router-dom'
+
+import { postSong } from '../services'
+// import useSongs from './hooks/useSongs'
 
 import SmallButton from '../common/SmallButton'
 
@@ -8,26 +11,77 @@ import saveIcon from '../icons/saveIcon.png'
 import cancelIcon from '../icons/cancelIcon.png'
 
 export default function AddSong() {
+  //   const { songs, setSongs } = useSongs()
+
   return (
-    <FormWrapper>
-      <AddForm method="post">
-        <label htmlFor="newSong"></label>
-        <SongTextArea placeholder="Enter your song in ChordPro-Format" />
-      </AddForm>
-      <ButtonWrapper>
-        <Link>
-          <SmallButton>
+    <form onSubmit={createSong}>
+      <FormWrapper>
+        <TextAreaWrapper>
+          <SongTextArea
+            name="song"
+            placeholder="Enter your song in ChordPro-Format"
+          />
+        </TextAreaWrapper>
+        <ButtonWrapper>
+          <SmallButton type="submit">
             <img src={saveIcon} alt="" />
           </SmallButton>
-        </Link>
-        <Link to="/">
-          <SmallButton>
-            <img src={cancelIcon} alt="" />
-          </SmallButton>
-        </Link>
-      </ButtonWrapper>
-    </FormWrapper>
+          <Link to="/">
+            <SmallButton>
+              <img src={cancelIcon} alt="" />
+            </SmallButton>
+          </Link>
+        </ButtonWrapper>
+      </FormWrapper>
+    </form>
   )
+
+  function createSong(event) {
+    event.preventDefault()
+    console.log('submit')
+    const form = event.target
+    const formData = new FormData(form)
+    const data = Object.fromEntries(formData)
+    console.log(data)
+  }
+
+  //   this.el.addEventListener('submit', event => {
+  //     event.preventDefault()
+  //     const dataList = new FormData(this.el)
+  //     const data = Object.fromEntries(dataList)
+  //     this.editingId ? this.onEdit({ ...data, id: this.editingId }) : this.onSubmit(data)
+  //     this.el.reset()
+  //     this.el.title.focus()
+  //     this.editingId = null
+  //   })
+
+  function handleSubmit() {
+    // addSong({
+    //   ...newSpot,
+    //   routes: { boulder: newRoute },
+    // })
+  }
+
+  function addSong(song) {
+    postSong(song)
+    console.log(song)
+  }
+
+  //   function createSpot(event) {
+  //     event.preventDefault()
+  //     const form = event.target
+  //     const formData = new FormData(form)
+  //     const data = Object.fromEntries(formData)
+  //     const location = [Number(data.locationLong), Number(data.locationLat)]
+  //     setNewSpot({
+  //       name: data.name,
+  //       location: location,
+  //       isBookmarked: false,
+  //       mainImage: image,
+  //     })
+  //     setSecondForm(true)
+  //     form.reset()
+  //   }
 }
 
 const FormWrapper = styled.div`
@@ -36,7 +90,7 @@ const FormWrapper = styled.div`
   flex-direction: column;
 `
 
-const AddForm = styled.form`
+const TextAreaWrapper = styled.div`
   padding: var(--standardPadding);
   padding-bottom: 0;
 `

@@ -5,10 +5,10 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import Layout from './common/Layout'
 import TitleList from './TitleList/TitleList'
 import Song from './Song/Song'
+import AddSong from './forms/AddSong'
+import ListButton from './navigation/ListButton'
 
 import useSongs from './hooks/useSongs'
-import ListButton from './navigation/ListButton'
-import AddSong from './forms/AddSong'
 
 function App() {
   const { songs, isLoading, swipeIndex, setSwipeIndex } = useSongs()
