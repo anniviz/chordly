@@ -38,7 +38,7 @@ const TitleWrapper = styled.ul`
   justify-self: stretch;
   align-self: center;
   list-style: none;
-  padding: 10px;
+  padding: var(--titlePadding);
   height: 100%;
   border-radius: 12px;
   background: #3f4a6d;
@@ -50,7 +50,7 @@ const TitleWrapperBorder = styled.div`
   list-style: none;
   border-radius: 12px;
   padding: 2px;
-  width: 180px;
+  width: var(--listWidth);
   height: calc(100vh - 120px);
   background: linear-gradient(60deg, #feb79c, #fd5da1);
   position: fixed;

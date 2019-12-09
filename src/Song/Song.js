@@ -46,7 +46,7 @@ export default function Song({ song, isAListShown }) {
 }
 
 const SongWrapper = styled.section`
-  padding: 20px;
+  padding: var(--standardPadding);
   padding-left: 90px;
   overflow: scroll;
 `
