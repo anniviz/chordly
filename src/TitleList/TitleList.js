@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom'
 import TitleListItem from './TitleListItem'
 import SmallButton from '../common/SmallButton'
 
-import addIcon from '../icons/AddIcon.png'
+import addIcon from '../icons/addIcon.png'
 
 export default function TitleList({
   songs,
@@ -35,7 +35,9 @@ export default function TitleList({
         ))}
       </TitleWrapper>
       <Link to="/AddSong">
-        <SmallButton style={{ bottom: '12px', left: '66px' }}>
+        <SmallButton
+          style={{ position: 'absolute', bottom: '12px', left: '66px' }}
+        >
           <img src={addIcon} alt="" />
         </SmallButton>
       </Link>

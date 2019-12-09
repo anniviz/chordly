@@ -12,7 +12,4 @@ export default styled.button`
   border-radius: 50%;
   margin: 0;
   cursor: default;
-  position: absolute;
-  /* bottom: 12px;
-  left: 66px; */
 `
