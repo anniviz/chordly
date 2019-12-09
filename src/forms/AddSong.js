@@ -1,8 +1,6 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 
-import Layout from '../common/Layout'
-
 export default function AddSong() {
   return (
     <AddForm method="post">
