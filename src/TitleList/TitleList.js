@@ -13,6 +13,7 @@ export default function TitleList({
 }) {
   const AnimatedTitleWrapperBorder = animated(TitleWrapperBorder)
   const flyIn = useSpring({
+    width: isAllSongsShown ? '180px' : '0px',
     opacity: isAllSongsShown ? 1 : 0,
   })
 
@@ -37,21 +38,24 @@ const TitleWrapper = styled.ul`
   justify-self: stretch;
   align-self: center;
   list-style: none;
-  padding: 10px;
+  padding: var(--titlePadding);
   height: 100%;
   border-radius: 12px;
   background: #3f4a6d;
   background-clip: padding-box;
+  overflow: scroll;
 `
 
 const TitleWrapperBorder = styled.div`
-  justify-self: stretch;
-  align-self: center;
   list-style: none;
   border-radius: 12px;
   padding: 2px;
-  height: 90%;
+  width: var(--listWidth);
+  height: calc(100vh - 120px);
   background: linear-gradient(60deg, #feb79c, #fd5da1);
+  position: fixed;
+  top: 30px;
+  left: 20px;
 `
 
 TitleList.propTypes = {

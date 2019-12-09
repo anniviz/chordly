@@ -3,10 +3,23 @@ import { createGlobalStyle } from 'styled-components/macro'
 export default createGlobalStyle`
   @import url('https://fonts.googleapis.com/css?family=Nunito&display=swap');
 
+  
+  :root{
+    --listWidth: 180px;
+    --standardPadding: 20px;
+    --titlePadding: 10px;
+    --mainButtonWidth: 100px;
+    --mainButtonHeight: 100px;
+    --mainButtonBottom: -20px;
+    --mainButtonLeft: -20px;
+  }
+
   * {
     box-sizing: border-box;
     margin: 0;
     min-width: 0;
+    scrollbar-width: none;
+    ::-webkit-scrollbar {display: none;}
   }
 
   body {
