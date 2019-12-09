@@ -2,6 +2,7 @@ import React from 'react'
 import { useSpring, animated } from 'react-spring'
 import PropTypes from 'prop-types'
 import styled from 'styled-components/macro'
+import { Link } from 'react-router-dom'
 
 import TitleListItem from './TitleListItem'
 import SmallButton from '../common/SmallButton'
@@ -33,9 +34,11 @@ export default function TitleList({
           />
         ))}
       </TitleWrapper>
-      <SmallButton style={{ bottom: '12px', left: '66px' }}>
-        <img src={addIcon} alt="" />
-      </SmallButton>
+      <Link to="/AddSong">
+        <SmallButton style={{ bottom: '12px', left: '66px' }}>
+          <img src={addIcon} alt="" />
+        </SmallButton>
+      </Link>
     </AnimatedTitleWrapperBorder>
   )
 }

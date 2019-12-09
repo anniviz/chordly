@@ -5,12 +5,10 @@ import Layout from '../common/Layout'
 
 export default function AddSong() {
   return (
-    <Layout>
-      <AddForm method="post">
-        <label htmlFor="newSong"></label>
-        <SongTextArea />
-      </AddForm>
-    </Layout>
+    <AddForm method="post">
+      <label htmlFor="newSong"></label>
+      <SongTextArea />
+    </AddForm>
   )
 }
 
@@ -20,6 +18,8 @@ const AddForm = styled.form`
 
 const SongTextArea = styled.textarea`
   background: #3f496d;
+  height: calc(100vh - 100px);
+  width: calc(100vw - 40px);
   border-radius: 12px;
   border: solid 1px #fd5ca1;
 `
