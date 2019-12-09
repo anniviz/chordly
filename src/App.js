@@ -57,9 +57,7 @@ function App() {
       </Switch>
       <Switch>
         <Route exact path="/AddSong">
-          <Layout>
-            <AddSong />
-          </Layout>
+          <AddSong />
         </Route>
       </Switch>
     </Router>
