@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import styled from 'styled-components/macro'
 import { Link } from 'react-router-dom'
+import ChordSheetJS from 'chordsheetjs'
 
 import { postSong } from '../services'
 // import useSongs from './hooks/useSongs'
@@ -40,9 +41,11 @@ export default function AddSong() {
     event.preventDefault()
     console.log('submit')
     const form = event.target
-    const formData = new FormData(form)
-    const data = Object.fromEntries(formData)
-    console.log(data)
+    const song = form.song.value
+    console.log(song)
+    const parser = new ChordSheetJS.ChordProParser()
+    const songObject = parser.parse(song)
+    console.log(songObject)
   }
 
   //   this.el.addEventListener('submit', event => {
