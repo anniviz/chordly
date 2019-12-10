@@ -56,6 +56,11 @@ const TitleWrapper = styled.ul`
   background-clip: padding-box;
   overflow: scroll;
   padding-bottom: 72px;
+
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 `
 
 const TitleWrapperBorder = styled.div`
