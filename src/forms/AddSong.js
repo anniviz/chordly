@@ -41,58 +41,16 @@ export default function AddSong() {
   function createSong(event) {
     event.preventDefault()
 
-    const chordSheet = `
-  {title:Awesome God}
-{artist:.Misc. Gospel}
-
-Strophe 1:
-[Em]Oh when He rolls up his sleeves he ain't just puttin' on the ritz,
-Our [Am]God is an [D]awesome [Em]God.
-There is [Em]thunder in his footsteps and lightning in his fists,
-Our [Am]God is an [D]awesome [Em]God.
-
-And the [C]Lord, he wasn't joking when He kicked 'em out of Eden.
-It [D]wasn't for no reason that He shed his blood.
-His ret[C]urn is very soon and so you'd [C/A]better be be[C/E]lievin' that
-Our [Am]God is an [D]awesome [Em]God.
-
-Chorus:
-Our [C]God is an [G]awesome God, he r[D]eigns from [Em]heaven above
-with [C]wisdom, p[G]ow'r and love, our [Am]God is an [D]awesome [Em]God
-
-Strophe 2:
-And when the sky was starless in the void of the night,
-Our God is an awesome God.
-He spoke into the darkness and created the light,
-Our God is an awesome God.
-
-And judgment and wrath He poured out on Sodom.
-Mercy and grace He gave us at the cross.
-I hope that we have not too quickly forgotten that
-Our God is an awesome God `.substring(1)
-
     const parser = new ChordSheetJS.ChordProParser()
-    const song = parser.parse(chordSheet)
 
     const form = event.target
-    const songtarget = form.song.value
-    console.log(songtarget)
-    const songObj = parser.parse(songtarget)
+    const song = form.song.value
+    const songObject = parser.parse(song)
 
-    //const formatter = new ChordSheetJS.HtmlTableFormatter()
     const formatter = new ChordSheetJS.TextFormatter()
-    // const formatter = new ChordSheetJS.HtmlDivFormatter()
-    formatter.format(songObj)
+    formatter.format(songObject)
 
-    console.log(song)
-    console.log(songObj)
-
-    //     console.log(song)
-    //     const songOb = new ChordSheetJS.ChordProParser().parse(chordSheet)
-    //     const songObject = parser.parse(chordSheet)
-    //     const songO = parser.parse(song)
-    //     console.log(songObject)
-    //     // console.log(songO)
+    console.log(songObject)
   }
 
   //   this.el.addEventListener('submit', event => {
