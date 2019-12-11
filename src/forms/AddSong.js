@@ -1,10 +1,9 @@
-import React, { useState } from 'react'
+import React from 'react'
 import styled from 'styled-components/macro'
 import { Link } from 'react-router-dom'
 import ChordSheetJS from 'chordsheetjs'
 
 import { postSong } from '../services'
-// import useSongs from './hooks/useSongs'
 
 import SmallButton from '../common/SmallButton'
 
@@ -12,9 +11,6 @@ import saveIcon from '../icons/saveIcon.png'
 import cancelIcon from '../icons/cancelIcon.png'
 
 export default function AddSong() {
-  //   const { songs, setSongs } = useSongs()
-  // const parser = new ChordSheetJS.ChordProParser()
-
   return (
     <form onSubmit={createSong}>
       <FormWrapper>
@@ -52,44 +48,6 @@ export default function AddSong() {
 
     console.log(songObject)
   }
-
-  //   this.el.addEventListener('submit', event => {
-  //     event.preventDefault()
-  //     const dataList = new FormData(this.el)
-  //     const data = Object.fromEntries(dataList)
-  //     this.editingId ? this.onEdit({ ...data, id: this.editingId }) : this.onSubmit(data)
-  //     this.el.reset()
-  //     this.el.title.focus()
-  //     this.editingId = null
-  //   })
-
-  function handleSubmit() {
-    // addSong({
-    //   ...newSpot,
-    //   routes: { boulder: newRoute },
-    // })
-  }
-
-  function addSong(song) {
-    postSong(song)
-    console.log(song)
-  }
-
-  //   function createSpot(event) {
-  //     event.preventDefault()
-  //     const form = event.target
-  //     const formData = new FormData(form)
-  //     const data = Object.fromEntries(formData)
-  //     const location = [Number(data.locationLong), Number(data.locationLat)]
-  //     setNewSpot({
-  //       name: data.name,
-  //       location: location,
-  //       isBookmarked: false,
-  //       mainImage: image,
-  //     })
-  //     setSecondForm(true)
-  //     form.reset()
-  //   }
 }
 
 const FormWrapper = styled.div`
