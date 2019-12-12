@@ -24,15 +24,18 @@ export default function TitleList({
   return (
     <AnimatedTitleWrapperBorder isAllSongsShown={isAllSongsShown} style={flyIn}>
       <TitleWrapper isAllSongsShown={isAllSongsShown}>
-        {songs.map((song, index) => (
-          <TitleListItem
-            key={song._id}
-            song={song}
-            index={index}
-            swipeIndex={swipeIndex}
-            handleChangeIndex={index => handleChangeIndex(index)}
-          />
-        ))}
+        {/* {console.log(songs)} */}
+        {songs
+          ? songs.map((song, index) => (
+              <TitleListItem
+                key={song._id}
+                song={song}
+                index={index}
+                swipeIndex={swipeIndex}
+                handleChangeIndex={index => handleChangeIndex(index)}
+              />
+            ))
+          : 'no song'}
       </TitleWrapper>
       <Link to="/AddSong">
         <SmallButton

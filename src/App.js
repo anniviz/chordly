@@ -31,13 +31,15 @@ function App() {
                 enableMouseEvents
                 animateTransitions={false}
               >
-                {songs.map(song => (
-                  <Song
-                    key={song._id}
-                    song={song}
-                    isAListShown={isAListShown}
-                  />
-                ))}
+                {songs
+                  ? songs.map(song => (
+                      <Song
+                        key={song._id}
+                        song={song}
+                        isAListShown={isAListShown}
+                      />
+                    ))
+                  : 'no song'}
               </SwipeableViews>
             )}
             <TitleList

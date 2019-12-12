@@ -21,7 +21,7 @@
   "scripts": {
     "start": "run-p client server",
     "client": "react-scripts start",
-    "server": "PORT=3333 nodemon --inspect --watch node ./server/server.js",
+    "server": "PORT=3333 nodemon --inspect --watch ./server ./server/server.js",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
