@@ -2,8 +2,12 @@ import React from 'react'
 import { useSpring, animated } from 'react-spring'
 import PropTypes from 'prop-types'
 import styled from 'styled-components/macro'
+import { Link } from 'react-router-dom'
 
 import TitleListItem from './TitleListItem'
+import SmallButton from '../common/SmallButton'
+
+import addIcon from '../icons/addIcon.png'
 
 export default function TitleList({
   songs,
@@ -20,16 +24,25 @@ export default function TitleList({
   return (
     <AnimatedTitleWrapperBorder isAllSongsShown={isAllSongsShown} style={flyIn}>
       <TitleWrapper isAllSongsShown={isAllSongsShown}>
-        {songs.map((song, index) => (
-          <TitleListItem
-            key={song._id}
-            song={song}
-            index={index}
-            swipeIndex={swipeIndex}
-            handleChangeIndex={index => handleChangeIndex(index)}
-          />
-        ))}
+        {songs
+          ? songs.map((song, index) => (
+              <TitleListItem
+                key={song._id}
+                song={song}
+                index={index}
+                swipeIndex={swipeIndex}
+                handleChangeIndex={index => handleChangeIndex(index)}
+              />
+            ))
+          : 'no song'}
       </TitleWrapper>
+      <Link to="/AddSong">
+        <SmallButton
+          style={{ position: 'absolute', bottom: '12px', left: '66px' }}
+        >
+          <img src={addIcon} alt="" />
+        </SmallButton>
+      </Link>
     </AnimatedTitleWrapperBorder>
   )
 }
@@ -44,6 +57,12 @@ const TitleWrapper = styled.ul`
   background: #3f4a6d;
   background-clip: padding-box;
   overflow: scroll;
+  padding-bottom: 72px;
+
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 `
 
 const TitleWrapperBorder = styled.div`

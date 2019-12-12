@@ -49,6 +49,11 @@ const SongWrapper = styled.section`
   padding: var(--standardPadding);
   padding-left: 90px;
   overflow: scroll;
+
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 `
 
 const SongTitle = styled.h1`

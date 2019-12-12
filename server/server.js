@@ -17,9 +17,19 @@ app.get('/songs', (req, res) => {
   Song.find()
     .then(songs => {
       const sortedSongs = songs.sort((a, b) =>
-        a.optimizedMetaData.title > b.optimizedMetaData.title ? 1 : -1
+        a.optimizedMetaData && b.optimizedMetaData
+          ? a.optimizedMetaData.title > b.optimizedMetaData.title
+            ? 1
+            : -1
+          : -1
       )
       res.json(sortedSongs)
     })
+    .catch(err => res.json(err))
+})
+
+app.post('/songs', (req, res) => {
+  Song.create(req.body)
+    .then(song => res.json(song))
     .catch(err => res.json(err))
 })
