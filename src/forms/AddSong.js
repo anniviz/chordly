@@ -1,7 +1,8 @@
 import React from 'react'
 import styled from 'styled-components/macro'
-import { Link } from 'react-router-dom'
 import ChordSheetJS from 'chordsheetjs'
+import { confirmAlert } from 'react-confirm-alert'
+import 'react-confirm-alert/src/react-confirm-alert.css'
 
 import { postSong } from '../services'
 
@@ -25,7 +26,7 @@ export default function AddSong() {
             <img src={saveIcon} alt="" />
           </SmallButton>
           {/* <Link to="/"> */}
-          <SmallButton onClick={handleCancelClick}>
+          <SmallButton type="button" onClick={handleCancelClick}>
             <img src={cancelIcon} alt="" />
           </SmallButton>
           {/* </Link> */}
@@ -51,7 +52,22 @@ export default function AddSong() {
     event.target.reset()
   }
 
-  function handleCancelClick() {}
+  function handleCancelClick() {
+    confirmAlert({
+      title: 'go back to main page',
+      message:
+        'Do you really want to go back to the main page? Your new song will not be saved',
+      buttons: [
+        {
+          label: 'yes',
+          onClick: () => (window.location.href = '/'),
+        },
+        {
+          label: 'no',
+        },
+      ],
+    })
+  }
 }
 
 const FormWrapper = styled.div`
