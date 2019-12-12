@@ -24,11 +24,11 @@ export default function AddSong() {
           <SmallButton type="submit">
             <img src={saveIcon} alt="" />
           </SmallButton>
-          <Link to="/">
-            <SmallButton>
-              <img src={cancelIcon} alt="" />
-            </SmallButton>
-          </Link>
+          {/* <Link to="/"> */}
+          <SmallButton onClick={handleCancelClick}>
+            <img src={cancelIcon} alt="" />
+          </SmallButton>
+          {/* </Link> */}
         </ButtonWrapper>
       </FormWrapper>
     </form>
@@ -50,6 +50,8 @@ export default function AddSong() {
     postSong(songObject)
     event.target.reset()
   }
+
+  function handleCancelClick() {}
 }
 
 const FormWrapper = styled.div`
