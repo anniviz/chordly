@@ -24,7 +24,6 @@ export default function TitleList({
   return (
     <AnimatedTitleWrapperBorder isAllSongsShown={isAllSongsShown} style={flyIn}>
       <TitleWrapper isAllSongsShown={isAllSongsShown}>
-        {/* {console.log(songs)} */}
         {songs
           ? songs.map((song, index) => (
               <TitleListItem

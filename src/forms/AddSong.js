@@ -45,8 +45,10 @@ export default function AddSong() {
 
     const formatter = new ChordSheetJS.TextFormatter()
     formatter.format(songObject)
+    console.log(songObject)
 
     postSong(songObject)
+    event.target.reset()
   }
 }
 

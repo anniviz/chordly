@@ -16,7 +16,6 @@ app.listen(PORT, () => console.log(`Express ready on ${PORT}`))
 app.get('/songs', (req, res) => {
   Song.find()
     .then(songs => {
-      console.log(songs)
       const sortedSongs = songs.sort((a, b) =>
         a.optimizedMetaData && b.optimizedMetaData
           ? a.optimizedMetaData.title > b.optimizedMetaData.title
