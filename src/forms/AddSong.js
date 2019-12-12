@@ -25,11 +25,9 @@ export default function AddSong() {
           <SmallButton type="submit">
             <img src={saveIcon} alt="" />
           </SmallButton>
-          {/* <Link to="/"> */}
           <SmallButton type="button" onClick={handleCancelClick}>
             <img src={cancelIcon} alt="" />
           </SmallButton>
-          {/* </Link> */}
         </ButtonWrapper>
       </FormWrapper>
     </form>
@@ -50,6 +48,16 @@ export default function AddSong() {
 
     postSong(songObject)
     event.target.reset()
+
+    confirmAlert({
+      title: 'you saved a song!',
+      message: 'your song is now in the db',
+      buttons: [
+        {
+          label: 'ok',
+        },
+      ],
+    })
   }
 
   function handleCancelClick() {
