@@ -9,9 +9,12 @@ import AddSong from './forms/AddSong'
 import ListButton from './navigation/ListButton'
 
 import useSongs from './hooks/useSongs'
+import useSetlists from './hooks/useSetlists'
 
 function App() {
   const { songs, isLoading, swipeIndex, setSwipeIndex } = useSongs()
+  const { setlists, setSetlists, setlistsIsLoading } = useSetlists()
+  console.log(setlists)
 
   const [isAllSongsShown, setIsAllSongsShown] = useState(false)
   let isAListShown = false
