@@ -10,20 +10,20 @@ export default function TitleList({
   songs,
   swipeIndex,
   handleChangeIndex,
-  isAllSongsShown,
+  isSideListShown,
 }) {
   const AnimatedSideListWrapperBorder = animated(SideListWrapperBorder)
   const flyIn = useSpring({
-    width: isAllSongsShown ? '192px' : '0px',
-    opacity: isAllSongsShown ? 1 : 0,
+    width: isSideListShown ? '192px' : '0px',
+    opacity: isSideListShown ? 1 : 0,
   })
 
   return (
     <AnimatedSideListWrapperBorder
-      isAllSongsShown={isAllSongsShown}
+      isSideListShown={isSideListShown}
       style={flyIn}
     >
-      <SideListWrapper isAllSongsShown={isAllSongsShown}>
+      <SideListWrapper isSideListShown={isSideListShown}>
         {songs
           ? songs.map((song, index) => (
               <TitleListItem
@@ -117,5 +117,5 @@ TitleList.propTypes = {
   songs: PropTypes.array.isRequired,
   swipeIndex: PropTypes.number.isRequired,
   handleChangeIndex: PropTypes.func.isRequired,
-  isAllSongsShown: PropTypes.bool.isRequired,
+  isSideListShown: PropTypes.bool.isRequired,
 }

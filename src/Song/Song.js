@@ -5,13 +5,16 @@ import { useSpring, animated } from 'react-spring'
 
 import ChordLyricsPair from './ChordLyricsPair'
 
-export default function Song({ song, isAListShown }) {
+export default function Song({ song, isSideListShown }) {
   const AnimatedSongWrapper = animated(SongWrapper)
   const songAnimation = useSpring({
-    paddingLeft: isAListShown ? '232px' : '90px',
+    paddingLeft: isSideListShown ? '232px' : '90px',
   })
   return (
-    <AnimatedSongWrapper isAListShown={isAListShown} style={songAnimation}>
+    <AnimatedSongWrapper
+      isSideListShown={isSideListShown}
+      style={songAnimation}
+    >
       <SongTitle>{song.optimizedMetaData.title}</SongTitle>
       {song.optimizedMetaData.artist && (
         <SongArtist>{song.optimizedMetaData.artist}</SongArtist>

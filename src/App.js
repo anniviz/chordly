@@ -22,9 +22,6 @@ function App() {
     setIsAllSongsShown,
   } = useSideLists()
 
-  let isAListShown = false
-  isAllSongsShown ? (isAListShown = true) : (isAListShown = false)
-
   return (
     <Router>
       <Switch>
@@ -44,7 +41,7 @@ function App() {
                       <Song
                         key={song._id}
                         song={song}
-                        isAListShown={isAListShown}
+                        isSideListShown={isSideListShown}
                       />
                     ))
                   : 'no song'}
@@ -54,11 +51,11 @@ function App() {
               songs={songs}
               swipeIndex={swipeIndex}
               handleChangeIndex={index => handleChangeIndex(index)}
-              isAllSongsShown={isAllSongsShown}
+              isSideListShown={isSideListShown}
             ></SideList>
             <ListButton
-              onClick={toggleAllSongs}
-              isAllSongsShown={isAllSongsShown}
+              onClick={toggleSideList}
+              isSideListShown={isSideListShown}
             >
               All Songs
             </ListButton>
@@ -73,8 +70,8 @@ function App() {
     </Router>
   )
 
-  function toggleAllSongs() {
-    setIsAllSongsShown(!isAllSongsShown)
+  function toggleSideList() {
+    setIsSideListShown(!isSideListShown)
   }
 
   function handleChangeIndex(index) {
