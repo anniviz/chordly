@@ -21,11 +21,11 @@ export default function TitleList({
     isSetListsShown,
     setIsSetListsShown,
   } = useSideLists()
-  const { setlists, setSetlists, setlistsIsLoading } = useSetlists()
+  const { setlists } = useSetlists()
 
-  let content
+  let sideListContent
   if (isAllSongsShown) {
-    content = songs
+    sideListContent = songs
       ? songs.map((song, index) => (
           <SongListItem
             key={song._id}
@@ -37,11 +37,11 @@ export default function TitleList({
         ))
       : 'no song'
   } else if (isSetListsShown) {
-    content = setlists
-      ? setlists.map((setlist, index) => (
+    sideListContent = setlists
+      ? setlists.map(setlist => (
           <SetlistItem key={setlist._id} setlist={setlist} />
         ))
-      : 'nos setlists'
+      : 'no setlists'
   }
 
   const AnimatedSideListWrapperBorder = animated(SideListWrapperBorder)
@@ -56,7 +56,7 @@ export default function TitleList({
       style={flyIn}
     >
       <SideListWrapper isSideListShown={isSideListShown}>
-        {content}
+        {sideListContent}
       </SideListWrapper>
       <ListMenu>
         <MenuItem

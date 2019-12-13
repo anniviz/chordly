@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import SwipeableViews from 'react-swipeable-views'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 

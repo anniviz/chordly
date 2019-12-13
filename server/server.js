@@ -52,6 +52,7 @@ app.get('/songs', (req, res) => {
 
 app.get('/setlists', (req, res) => {
   Setlist.find()
+    .populate('songs')
     .then(setlists => res.json(setlists))
     .catch(err => res.json(err))
 })
