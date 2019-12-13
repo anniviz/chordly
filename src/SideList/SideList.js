@@ -4,7 +4,10 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components/macro'
 import { Link } from 'react-router-dom'
 
-import TitleListItem from './SideListItem'
+import SongListItem from './SongListItem'
+import SetlistItem from './SetlistItem'
+import useSideLists from '../hooks/useSideLists'
+import useSetlists from '../hooks/useSetlists'
 
 export default function TitleList({
   songs,
@@ -12,6 +15,35 @@ export default function TitleList({
   handleChangeIndex,
   isSideListShown,
 }) {
+  const {
+    isAllSongsShown,
+    setIsAllSongsShown,
+    isSetListsShown,
+    setIsSetListsShown,
+  } = useSideLists()
+  const { setlists, setSetlists, setlistsIsLoading } = useSetlists()
+
+  let content
+  if (isAllSongsShown) {
+    content = songs
+      ? songs.map((song, index) => (
+          <SongListItem
+            key={song._id}
+            song={song}
+            index={index}
+            swipeIndex={swipeIndex}
+            handleChangeIndex={index => handleChangeIndex(index)}
+          />
+        ))
+      : 'no song'
+  } else if (isSetListsShown) {
+    content = setlists
+      ? setlists.map((setlist, index) => (
+          <SetlistItem key={setlist._id} setlist={setlist} />
+        ))
+      : 'nos setlists'
+  }
+
   const AnimatedSideListWrapperBorder = animated(SideListWrapperBorder)
   const flyIn = useSpring({
     width: isSideListShown ? '192px' : '0px',
@@ -24,27 +56,20 @@ export default function TitleList({
       style={flyIn}
     >
       <SideListWrapper isSideListShown={isSideListShown}>
-        {songs
-          ? songs.map((song, index) => (
-              <TitleListItem
-                key={song._id}
-                song={song}
-                index={index}
-                swipeIndex={swipeIndex}
-                handleChangeIndex={index => handleChangeIndex(index)}
-              />
-            ))
-          : 'no song'}
+        {content}
       </SideListWrapper>
       <ListMenu>
-        <MenuItem style={{ borderRadius: '0 0 0 12px' }}>
+        <MenuItem
+          style={{ borderRadius: '0 0 0 12px' }}
+          onClick={handleSetlistClick}
+        >
           <img
             className="setlist-icon"
             alt="setlist"
             src={require('../icons/clipboard-list.svg')}
           />
         </MenuItem>
-        <MenuItem>
+        <MenuItem onClick={handleAllSongsClick}>
           <img
             className="all-songs-icon"
             alt="all songs"
@@ -63,6 +88,16 @@ export default function TitleList({
       </ListMenu>
     </AnimatedSideListWrapperBorder>
   )
+
+  function handleSetlistClick() {
+    setIsSetListsShown(true)
+    setIsAllSongsShown(false)
+  }
+
+  function handleAllSongsClick() {
+    setIsSetListsShown(false)
+    setIsAllSongsShown(true)
+  }
 }
 
 const SideListWrapper = styled.ul`

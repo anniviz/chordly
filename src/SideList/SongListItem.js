@@ -2,24 +2,24 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components/macro'
 
-export default function TitleListItem({
+export default function SongListItem({
   song,
   index,
   swipeIndex,
   handleChangeIndex,
 }) {
   return (
-    <TitleListItemStyled
+    <SongListItemStyled
       index={index}
       onClick={() => handleChangeIndex(index)}
       swipeIndex={swipeIndex}
     >
       {song.optimizedMetaData.title}
-    </TitleListItemStyled>
+    </SongListItemStyled>
   )
 }
 
-const TitleListItemStyled = styled.li`
+const SongListItemStyled = styled.li`
   color: ${props => (props.index === props.swipeIndex ? '#FE8D8D' : '#FEFEFE')};
   font-weight: ${props =>
     props.index === props.swipeIndex ? 'bold' : 'regular'};
@@ -30,7 +30,7 @@ const TitleListItemStyled = styled.li`
   white-space: nowrap;
 `
 
-TitleListItem.propTypes = {
+SongListItem.propTypes = {
   song: PropTypes.object.isRequired,
   index: PropTypes.number.isRequired,
   swipeIndex: PropTypes.number.isRequired,

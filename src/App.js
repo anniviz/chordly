@@ -9,18 +9,11 @@ import AddSong from './forms/AddSong'
 import ListButton from './navigation/ListButton'
 
 import useSongs from './hooks/useSongs'
-import useSetlists from './hooks/useSetlists'
 import useSideLists from './hooks/useSideLists'
 
 function App() {
   const { songs, isLoading, swipeIndex, setSwipeIndex } = useSongs()
-  const { setlists, setSetlists, setlistsIsLoading } = useSetlists()
-  const {
-    isSideListShown,
-    setIsSideListShown,
-    isAllSongsShown,
-    setIsAllSongsShown,
-  } = useSideLists()
+  const { isSideListShown, setIsSideListShown } = useSideLists()
 
   return (
     <Router>
