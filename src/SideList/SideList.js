@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components/macro'
 import { Link } from 'react-router-dom'
 
-import TitleListItem from './TitleListItem'
+import TitleListItem from './SideListItem'
 
 export default function TitleList({
   songs,
@@ -12,15 +12,18 @@ export default function TitleList({
   handleChangeIndex,
   isAllSongsShown,
 }) {
-  const AnimatedTitleWrapperBorder = animated(TitleWrapperBorder)
+  const AnimatedSideListWrapperBorder = animated(SideListWrapperBorder)
   const flyIn = useSpring({
     width: isAllSongsShown ? '192px' : '0px',
     opacity: isAllSongsShown ? 1 : 0,
   })
 
   return (
-    <AnimatedTitleWrapperBorder isAllSongsShown={isAllSongsShown} style={flyIn}>
-      <TitleWrapper isAllSongsShown={isAllSongsShown}>
+    <AnimatedSideListWrapperBorder
+      isAllSongsShown={isAllSongsShown}
+      style={flyIn}
+    >
+      <SideListWrapper isAllSongsShown={isAllSongsShown}>
         {songs
           ? songs.map((song, index) => (
               <TitleListItem
@@ -32,7 +35,7 @@ export default function TitleList({
               />
             ))
           : 'no song'}
-      </TitleWrapper>
+      </SideListWrapper>
       <ListMenu>
         <MenuItem style={{ borderRadius: '0 0 0 12px' }}>
           <img
@@ -58,11 +61,11 @@ export default function TitleList({
           </MenuItem>
         </Link>
       </ListMenu>
-    </AnimatedTitleWrapperBorder>
+    </AnimatedSideListWrapperBorder>
   )
 }
 
-const TitleWrapper = styled.ul`
+const SideListWrapper = styled.ul`
   justify-self: stretch;
   align-self: center;
   list-style: none;
@@ -80,7 +83,7 @@ const TitleWrapper = styled.ul`
   user-select: none;
 `
 
-const TitleWrapperBorder = styled.div`
+const SideListWrapperBorder = styled.div`
   display: grid;
   grid-template-rows: auto 48px;
   justify-items: stretch;

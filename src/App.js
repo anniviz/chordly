@@ -3,7 +3,7 @@ import SwipeableViews from 'react-swipeable-views'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
 import Layout from './common/Layout'
-import TitleList from './TitleList/TitleList'
+import SideList from './SideList/SideList'
 import Song from './Song/Song'
 import AddSong from './forms/AddSong'
 import ListButton from './navigation/ListButton'
@@ -42,12 +42,12 @@ function App() {
                   : 'no song'}
               </SwipeableViews>
             )}
-            <TitleList
+            <SideList
               songs={songs}
               swipeIndex={swipeIndex}
               handleChangeIndex={index => handleChangeIndex(index)}
               isAllSongsShown={isAllSongsShown}
-            ></TitleList>
+            ></SideList>
             <ListButton
               onClick={toggleAllSongs}
               isAllSongsShown={isAllSongsShown}

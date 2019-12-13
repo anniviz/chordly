@@ -2,15 +2,15 @@ import React from 'react'
 import { withKnobs, text, boolean, number } from '@storybook/addon-knobs'
 import { withInfo } from '@storybook/addon-info'
 import { action } from '@storybook/addon-actions'
-import TitleList from './TitleList'
+import SideList from './SideList'
 
 export default {
-  title: 'TitleList',
+  title: 'SideList',
   decorators: [withKnobs, withInfo],
 }
 
 export const standard = () => (
-  <TitleList
+  <SideList
     songs={[
       {
         title: 'All Day',
