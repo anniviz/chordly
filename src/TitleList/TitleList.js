@@ -5,9 +5,6 @@ import styled from 'styled-components/macro'
 import { Link } from 'react-router-dom'
 
 import TitleListItem from './TitleListItem'
-import SmallButton from '../common/SmallButton'
-
-import addIcon from '../icons/addIcon.png'
 
 export default function TitleList({
   songs,
@@ -51,21 +48,16 @@ export default function TitleList({
             src={require('../icons/queue-music.svg')}
           />
         </MenuItem>
-        <MenuItem style={{ borderRadius: '0 0 12px 0' }}>
-          <img
-            className="add-icon"
-            alt="add"
-            src={require('../icons/add-box.svg')}
-          />
-        </MenuItem>
+        <Link to="/AddSong">
+          <MenuItem style={{ borderRadius: '0 0 12px 0' }}>
+            <img
+              className="add-icon"
+              alt="add"
+              src={require('../icons/add-box.svg')}
+            />
+          </MenuItem>
+        </Link>
       </ListMenu>
-      {/* <Link to="/AddSong"> */}
-      {/* <SmallButton
-          style={{ position: 'absolute', bottom: '12px', left: '66px' }}
-        >
-          <img src={addIcon} alt="" />
-        </SmallButton> */}
-      {/* </Link> */}
     </AnimatedTitleWrapperBorder>
   )
 }
@@ -110,6 +102,7 @@ const ListMenu = styled.div`
 `
 
 const MenuItem = styled.div`
+  height: 100%;
   display: grid;
   align-content: center;
   justify-content: center;
