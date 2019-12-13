@@ -8,7 +8,7 @@ import ChordLyricsPair from './ChordLyricsPair'
 export default function Song({ song, isAListShown }) {
   const AnimatedSongWrapper = animated(SongWrapper)
   const songAnimation = useSpring({
-    paddingLeft: isAListShown ? '220px' : '90px',
+    paddingLeft: isAListShown ? '232px' : '90px',
   })
   return (
     <AnimatedSongWrapper isAListShown={isAListShown} style={songAnimation}>

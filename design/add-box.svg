@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="27" height="27" viewBox="0 0 27 27">
+  <defs>
+    <radialGradient id="radial-gradient" cx="0.5" cy="0.5" r="0.5" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#feb89c"/>
+      <stop offset="1" stop-color="#fd5ca1"/>
+    </radialGradient>
+  </defs>
+  <path id="Icon_material-add-box" data-name="Icon material-add-box" d="M28.5,4.5H7.5a3,3,0,0,0-3,3v21a3,3,0,0,0,3,3h21a3.009,3.009,0,0,0,3-3V7.5A3.009,3.009,0,0,0,28.5,4.5Zm-3,15h-6v6h-3v-6h-6v-3h6v-6h3v6h6Z" transform="translate(-4.5 -4.5)" fill="url(#radial-gradient)"/>
+</svg>

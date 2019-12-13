@@ -5,7 +5,7 @@ export default createGlobalStyle`
 
   
   :root{
-    --listWidth: 180px;
+    ${'' /* --listWidth: 180px; */}
     --standardPadding: 20px;
     --titlePadding: 10px;
     --mainButtonWidth: 100px;

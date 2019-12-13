@@ -17,7 +17,7 @@ export default function TitleList({
 }) {
   const AnimatedTitleWrapperBorder = animated(TitleWrapperBorder)
   const flyIn = useSpring({
-    width: isAllSongsShown ? '180px' : '0px',
+    width: isAllSongsShown ? '192px' : '0px',
     opacity: isAllSongsShown ? 1 : 0,
   })
 
@@ -36,13 +36,36 @@ export default function TitleList({
             ))
           : 'no song'}
       </TitleWrapper>
-      <Link to="/AddSong">
-        <SmallButton
+      <ListMenu>
+        <MenuItem style={{ borderRadius: '0 0 0 12px' }}>
+          <img
+            className="setlist-icon"
+            alt="setlist"
+            src={require('../icons/clipboard-list.svg')}
+          />
+        </MenuItem>
+        <MenuItem>
+          <img
+            className="all-songs-icon"
+            alt="all songs"
+            src={require('../icons/queue-music.svg')}
+          />
+        </MenuItem>
+        <MenuItem style={{ borderRadius: '0 0 12px 0' }}>
+          <img
+            className="add-icon"
+            alt="add"
+            src={require('../icons/add-box.svg')}
+          />
+        </MenuItem>
+      </ListMenu>
+      {/* <Link to="/AddSong"> */}
+      {/* <SmallButton
           style={{ position: 'absolute', bottom: '12px', left: '66px' }}
         >
           <img src={addIcon} alt="" />
-        </SmallButton>
-      </Link>
+        </SmallButton> */}
+      {/* </Link> */}
     </AnimatedTitleWrapperBorder>
   )
 }
@@ -53,7 +76,7 @@ const TitleWrapper = styled.ul`
   list-style: none;
   padding: var(--titlePadding);
   height: 100%;
-  border-radius: 12px;
+  border-radius: 12px 12px 0 0;
   background: #3f4a6d;
   background-clip: padding-box;
   overflow: scroll;
@@ -66,15 +89,32 @@ const TitleWrapper = styled.ul`
 `
 
 const TitleWrapperBorder = styled.div`
-  list-style: none;
+  display: grid;
+  grid-template-rows: auto 48px;
+  justify-items: stretch;
   border-radius: 12px;
   padding: 2px;
-  width: var(--listWidth);
   height: calc(100vh - 120px);
   background: linear-gradient(60deg, #feb79c, #fd5da1);
   position: fixed;
   top: 30px;
   left: 20px;
+`
+
+const ListMenu = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  justify-items: stretch;
+  background: #3f4a6d;
+  border-radius: 0 0 12px 12px;
+`
+
+const MenuItem = styled.div`
+  display: grid;
+  align-content: center;
+  justify-content: center;
+  border: 1px solid #707070;
+  background: #3f4a6d;
 `
 
 TitleList.propTypes = {
