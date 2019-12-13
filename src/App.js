@@ -10,13 +10,18 @@ import ListButton from './navigation/ListButton'
 
 import useSongs from './hooks/useSongs'
 import useSetlists from './hooks/useSetlists'
+import useSideLists from './hooks/useSideLists'
 
 function App() {
   const { songs, isLoading, swipeIndex, setSwipeIndex } = useSongs()
   const { setlists, setSetlists, setlistsIsLoading } = useSetlists()
-  console.log(setlists)
+  const {
+    isSideListShown,
+    setIsSideListShown,
+    isAllSongsShown,
+    setIsAllSongsShown,
+  } = useSideLists()
 
-  const [isAllSongsShown, setIsAllSongsShown] = useState(false)
   let isAListShown = false
   isAllSongsShown ? (isAListShown = true) : (isAListShown = false)
 
