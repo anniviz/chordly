@@ -25,23 +25,9 @@ export default function TitleList({
 
   let sideListContent
   if (isAllSongsShown) {
-    sideListContent = songs
-      ? songs.map((song, index) => (
-          <SongListItem
-            key={song._id}
-            song={song}
-            index={index}
-            swipeIndex={swipeIndex}
-            handleChangeIndex={index => handleChangeIndex(index)}
-          />
-        ))
-      : 'no song'
+    handleIsAllSongsShown(songs)
   } else if (isSetListsShown) {
-    sideListContent = setlists
-      ? setlists.map(setlist => (
-          <SetlistItem key={setlist._id} setlist={setlist} />
-        ))
-      : 'no setlists'
+    handleIsSetListsShown(setlists)
   }
 
   const AnimatedSideListWrapperBorder = animated(SideListWrapperBorder)
@@ -97,6 +83,32 @@ export default function TitleList({
   function handleAllSongsClick() {
     setIsSetListsShown(false)
     setIsAllSongsShown(true)
+  }
+
+  function handleIsAllSongsShown(songs) {
+    if (songs) {
+      sideListContent = songs.map((song, index) => (
+        <SongListItem
+          key={song._id}
+          song={song}
+          index={index}
+          swipeIndex={swipeIndex}
+          handleChangeIndex={index => handleChangeIndex(index)}
+        />
+      ))
+    } else {
+      sideListContent = 'no song'
+    }
+  }
+
+  function handleIsSetListsShown(setlists) {
+    if (setlists) {
+      sideListContent = setlists.map(setlist => (
+        <SetlistItem key={setlist._id} setlist={setlist} />
+      ))
+    } else {
+      sideListContent = 'no setlists'
+    }
   }
 }
 

@@ -2,8 +2,22 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components/macro'
 
+import useSetlists from '../hooks/useSetlists'
+
 export default function SetlistItem({ setlist }) {
-  return <SetlistItemStyled>{setlist.setlistName}</SetlistItemStyled>
+  const { activeSetlist, setActiveSetlist } = useSetlists()
+
+  return (
+    <SetlistItemStyled onClick={() => handleSetlistItemClick(setlist._id)}>
+      {setlist.setlistName}
+    </SetlistItemStyled>
+  )
+
+  function handleSetlistItemClick(id) {
+    setActiveSetlist(id)
+    console.log(id)
+    console.log(activeSetlist)
+  }
 }
 
 const SetlistItemStyled = styled.li`

@@ -4,6 +4,7 @@ import { getSetlists } from '../services'
 export default function useSongs() {
   const [setlists, setSetlists] = useState([])
   const [setlistsIsLoading, setSetlistsIsLoading] = useState(true)
+  const [activeSetlist, setActiveSetlist] = useState('')
 
   useEffect(() => {
     getSetlists().then(loadedSongs => {
@@ -16,5 +17,7 @@ export default function useSongs() {
     setlists,
     setSetlists,
     setlistsIsLoading,
+    activeSetlist,
+    setActiveSetlist,
   }
 }

@@ -1,9 +1,5 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
-// const Song = require('./models/Song')
-
-// const Song = mongoose.model('Post', PostSchema, 'posts');
-//   const User = mongoose.model('User', UserSchema, 'users');
 
 const setlistSchema = {
   setlistName: String,
