@@ -20,14 +20,20 @@ export default function TitleList({
     setIsAllSongsShown,
     isSetListsShown,
     setIsSetListsShown,
+    isASetListsShown,
+    setIsASetListShown,
   } = useSideLists()
-  const { setlists } = useSetlists()
+  const { setlists, activeSetlist } = useSetlists()
 
   let sideListContent
   if (isAllSongsShown) {
     handleIsAllSongsShown(songs)
   } else if (isSetListsShown) {
     handleIsSetListsShown(setlists)
+  } else if (isASetListsShown) {
+    console.log('>>>', activeSetlist)
+    const index = setlists.findIndex(setlist => setlist._id === activeSetlist)
+    handleIsASetListShown(setlists[index])
   }
 
   const AnimatedSideListWrapperBorder = animated(SideListWrapperBorder)
@@ -78,11 +84,13 @@ export default function TitleList({
   function handleSetlistClick() {
     setIsSetListsShown(true)
     setIsAllSongsShown(false)
+    setIsASetListShown(false)
   }
 
   function handleAllSongsClick() {
-    setIsSetListsShown(false)
     setIsAllSongsShown(true)
+    setIsSetListsShown(false)
+    setIsASetListShown(false)
   }
 
   function handleIsAllSongsShown(songs) {
@@ -109,6 +117,10 @@ export default function TitleList({
     } else {
       sideListContent = 'no setlists'
     }
+  }
+
+  function handleIsASetListShown(setlist) {
+    console.log('foo')
   }
 }
 

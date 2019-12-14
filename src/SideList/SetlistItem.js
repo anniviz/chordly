@@ -3,9 +3,15 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components/macro'
 
 import useSetlists from '../hooks/useSetlists'
+import useSideLists from '../hooks/useSideLists'
 
 export default function SetlistItem({ setlist }) {
   const { activeSetlist, setActiveSetlist } = useSetlists()
+  const {
+    setIsASetListShown,
+    setIsSetListsShown,
+    isASetListsShown,
+  } = useSideLists()
 
   return (
     <SetlistItemStyled onClick={() => handleSetlistItemClick(setlist._id)}>
@@ -15,8 +21,11 @@ export default function SetlistItem({ setlist }) {
 
   function handleSetlistItemClick(id) {
     setActiveSetlist(id)
+    setIsSetListsShown(false)
+    setIsASetListShown(true)
     console.log(id)
     console.log(activeSetlist)
+    console.log('>', isASetListsShown)
   }
 }
 
