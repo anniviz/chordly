@@ -25,10 +25,6 @@ export default function SetlistItem({
     setActiveSetlist(id)
     setIsSetListsShown(false)
     setIsASetListShown(true)
-    console.log(id)
-    console.log(activeSetlist)
-    console.log('>', isASetListShown)
-    console.log('>sls', isSetListsShown)
   }
 }
 

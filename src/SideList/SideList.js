@@ -27,9 +27,7 @@ export default function SideList({
     handleIsAllSongsShown(songs)
   } else if (isSetListsShown) {
     handleIsSetListsShown(setlists)
-    console.log('func', isSetListsShown)
   } else if (isASetListShown) {
-    console.log('>>>', activeSetlist)
     const index = setlists.findIndex(setlist => setlist._id === activeSetlist)
     handleIsASetListShown(setlists[index])
   }
@@ -39,8 +37,6 @@ export default function SideList({
     width: isSideListShown ? '192px' : '0px',
     opacity: isSideListShown ? 1 : 0,
   })
-
-  console.log('render')
 
   return (
     <AnimatedSideListWrapperBorder
@@ -129,7 +125,6 @@ export default function SideList({
   }
 
   function handleIsASetListShown(setlist) {
-    console.log(setlist)
     if (setlist.songs) {
       sideListContent = setlist.songs.map((song, index) => (
         <SongListItem
