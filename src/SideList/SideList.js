@@ -129,9 +129,9 @@ export default function SideList({
   }
 
   function handleIsASetListShown(setlist) {
-    console.log('foo')
+    console.log(setlist)
     if (setlist.songs) {
-      setlist.songs.map((song, index) => (
+      sideListContent = setlist.songs.map((song, index) => (
         <SongListItem
           key={song._id}
           song={song}
