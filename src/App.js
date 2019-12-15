@@ -10,10 +10,21 @@ import ListButton from './navigation/ListButton'
 
 import useSongs from './hooks/useSongs'
 import useSideLists from './hooks/useSideLists'
+import useSetlists from './hooks/useSetlists'
 
 function App() {
   const { songs, isLoading, swipeIndex, setSwipeIndex } = useSongs()
-  const { isSideListShown, setIsSideListShown } = useSideLists()
+  const {
+    isSideListShown,
+    setIsSideListShown,
+    isAllSongsShown,
+    setIsAllSongsShown,
+    isSetListsShown,
+    setIsSetListsShown,
+    isASetListShown,
+    setIsASetListShown,
+  } = useSideLists()
+  const { setlists, activeSetlist, setActiveSetlist } = useSetlists()
 
   return (
     <Router>
@@ -44,7 +55,16 @@ function App() {
               songs={songs}
               swipeIndex={swipeIndex}
               handleChangeIndex={index => handleChangeIndex(index)}
+              setlists={setlists}
+              activeSetlist={activeSetlist}
+              setActiveSetlist={setActiveSetlist}
               isSideListShown={isSideListShown}
+              isAllSongsShown={isAllSongsShown}
+              setIsAllSongsShown={setIsAllSongsShown}
+              isSetListsShown={isSetListsShown}
+              setIsSetListsShown={setIsSetListsShown}
+              isASetListShown={isASetListShown}
+              setIsASetListShown={setIsASetListShown}
             ></SideList>
             <ListButton
               onClick={toggleSideList}

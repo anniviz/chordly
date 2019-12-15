@@ -2,19 +2,21 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components/macro'
 
-import useSetlists from '../hooks/useSetlists'
-import useSideLists from '../hooks/useSideLists'
-
-export default function SetlistItem({ setlist }) {
-  const { activeSetlist, setActiveSetlist } = useSetlists()
-  const {
-    setIsASetListShown,
-    setIsSetListsShown,
-    isASetListsShown,
-  } = useSideLists()
-
+export default function SetlistItem({
+  setlist,
+  isSetListsShown,
+  isASetListShown,
+  setActiveSetlist,
+  setIsSetListsShown,
+  setIsASetListShown,
+  activeSetlist,
+}) {
   return (
-    <SetlistItemStyled onClick={() => handleSetlistItemClick(setlist._id)}>
+    <SetlistItemStyled
+      onClick={() => handleSetlistItemClick(setlist._id)}
+      isASetListShown={isASetListShown}
+      isSetListsShown={isSetListsShown}
+    >
       {setlist.setlistName}
     </SetlistItemStyled>
   )
@@ -25,7 +27,8 @@ export default function SetlistItem({ setlist }) {
     setIsASetListShown(true)
     console.log(id)
     console.log(activeSetlist)
-    console.log('>', isASetListsShown)
+    console.log('>', isASetListShown)
+    console.log('>sls', isSetListsShown)
   }
 }
 

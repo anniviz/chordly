@@ -4,7 +4,7 @@ export default function useSideLists() {
   const [isSideListShown, setIsSideListShown] = useState(false)
   const [isAllSongsShown, setIsAllSongsShown] = useState(true)
   const [isSetListsShown, setIsSetListsShown] = useState(false)
-  const [isASetListsShown, setIsASetListShown] = useState(false)
+  const [isASetListShown, setIsASetListShown] = useState(false)
 
   return {
     isSideListShown,
@@ -13,7 +13,7 @@ export default function useSideLists() {
     setIsAllSongsShown,
     isSetListsShown,
     setIsSetListsShown,
-    isASetListsShown,
+    isASetListShown,
     setIsASetListShown,
   }
 }

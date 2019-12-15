@@ -6,31 +6,29 @@ import { Link } from 'react-router-dom'
 
 import SongListItem from './SongListItem'
 import SetlistItem from './SetlistItem'
-import useSideLists from '../hooks/useSideLists'
-import useSetlists from '../hooks/useSetlists'
 
-export default function TitleList({
+export default function SideList({
   songs,
   swipeIndex,
   handleChangeIndex,
+  setlists,
+  activeSetlist,
+  setActiveSetlist,
   isSideListShown,
+  isAllSongsShown,
+  setIsAllSongsShown,
+  isSetListsShown,
+  setIsSetListsShown,
+  isASetListShown,
+  setIsASetListShown,
 }) {
-  const {
-    isAllSongsShown,
-    setIsAllSongsShown,
-    isSetListsShown,
-    setIsSetListsShown,
-    isASetListsShown,
-    setIsASetListShown,
-  } = useSideLists()
-  const { setlists, activeSetlist } = useSetlists()
-
   let sideListContent
   if (isAllSongsShown) {
     handleIsAllSongsShown(songs)
   } else if (isSetListsShown) {
     handleIsSetListsShown(setlists)
-  } else if (isASetListsShown) {
+    console.log('func', isSetListsShown)
+  } else if (isASetListShown) {
     console.log('>>>', activeSetlist)
     const index = setlists.findIndex(setlist => setlist._id === activeSetlist)
     handleIsASetListShown(setlists[index])
@@ -41,6 +39,8 @@ export default function TitleList({
     width: isSideListShown ? '192px' : '0px',
     opacity: isSideListShown ? 1 : 0,
   })
+
+  console.log('render')
 
   return (
     <AnimatedSideListWrapperBorder
@@ -112,7 +112,16 @@ export default function TitleList({
   function handleIsSetListsShown(setlists) {
     if (setlists) {
       sideListContent = setlists.map(setlist => (
-        <SetlistItem key={setlist._id} setlist={setlist} />
+        <SetlistItem
+          key={setlist._id}
+          setlist={setlist}
+          isASetListShown={isASetListShown}
+          isSetListsShown={isSetListsShown}
+          setActiveSetlist={setActiveSetlist}
+          setIsSetListsShown={setIsSetListsShown}
+          setIsASetListShown={setIsASetListShown}
+          activeSetlist={activeSetlist}
+        />
       ))
     } else {
       sideListContent = 'no setlists'
@@ -121,6 +130,19 @@ export default function TitleList({
 
   function handleIsASetListShown(setlist) {
     console.log('foo')
+    if (setlist.songs) {
+      setlist.songs.map((song, index) => (
+        <SongListItem
+          key={song._id}
+          song={song}
+          index={index}
+          swipeIndex={swipeIndex}
+          handleChangeIndex={index => handleChangeIndex(index)}
+        />
+      ))
+    } else {
+      sideListContent = 'no songs'
+    }
   }
 }
 
@@ -172,7 +194,7 @@ const MenuItem = styled.div`
   background: #3f4a6d;
 `
 
-TitleList.propTypes = {
+SideList.propTypes = {
   songs: PropTypes.array.isRequired,
   swipeIndex: PropTypes.number.isRequired,
   handleChangeIndex: PropTypes.func.isRequired,
