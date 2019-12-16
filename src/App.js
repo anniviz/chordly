@@ -24,7 +24,13 @@ function App() {
     isASetListShown,
     setIsASetListShown,
   } = useSideLists()
-  const { setlists, activeSetlist, setActiveSetlist } = useSetlists()
+  const {
+    setlists,
+    activeSetlist,
+    setActiveSetlist,
+    setlistSwipeIndices,
+    setSetlistSwipeIndices,
+  } = useSetlists()
 
   return (
     <Router>
@@ -66,6 +72,8 @@ function App() {
               isASetListShown={isASetListShown}
               setIsASetListShown={setIsASetListShown}
               setSwipeIndex={setSwipeIndex}
+              setlistSwipeIndices={setlistSwipeIndices}
+              setSetlistSwipeIndices={setSetlistSwipeIndices}
             ></SideList>
             <ListButton
               onClick={toggleSideList}

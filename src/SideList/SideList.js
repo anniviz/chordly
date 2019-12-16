@@ -24,6 +24,8 @@ export default function SideList({
   isASetListShown,
   setIsASetListShown,
   setSwipeIndex,
+  setlistSwipeIndices,
+  setSetlistSwipeIndices,
 }) {
   let sideListContent
   if (isAllSongsShown) {
@@ -122,6 +124,8 @@ export default function SideList({
           setIsASetListShown={setIsASetListShown}
           activeSetlist={activeSetlist}
           setSwipeIndex={setSwipeIndex}
+          setlistSwipeIndices={setlistSwipeIndices}
+          setSetlistSwipeIndices={setSetlistSwipeIndices}
         />
       ))
     } else {
