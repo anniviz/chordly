@@ -1,5 +1,5 @@
 import React from 'react'
-import PropTypes, { func } from 'prop-types'
+import PropTypes from 'prop-types'
 import styled from 'styled-components/macro'
 
 export default function SetlistItem({
@@ -41,4 +41,10 @@ const SetlistItemStyled = styled.li`
 
 SetlistItem.propTypes = {
   setlist: PropTypes.object.isRequired,
+  isSetListsShown: PropTypes.bool.isRequired,
+  isASetListShown: PropTypes.bool.isRequired,
+  setActiveSetlist: PropTypes.func.isRequired,
+  setIsSetListsShown: PropTypes.func.isRequired,
+  setIsASetListShown: PropTypes.func.isRequired,
+  setSwipeIndex: PropTypes.func.isRequired,
 }

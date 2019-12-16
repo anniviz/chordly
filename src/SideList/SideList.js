@@ -195,8 +195,18 @@ const MenuItem = styled.div`
 `
 
 SideList.propTypes = {
-  songs: PropTypes.array.isRequired,
+  songs: PropTypes.array,
   swipeIndex: PropTypes.number.isRequired,
   handleChangeIndex: PropTypes.func.isRequired,
+  setlists: PropTypes.array,
+  activeSetlist: PropTypes.string,
+  setActiveSetlist: PropTypes.func.isRequired,
   isSideListShown: PropTypes.bool.isRequired,
+  isAllSongsShown: PropTypes.bool.isRequired,
+  setIsAllSongsShown: PropTypes.func.isRequired,
+  isSetListsShown: PropTypes.bool.isRequired,
+  setIsSetListsShown: PropTypes.func.isRequired,
+  isASetListShown: PropTypes.bool.isRequired,
+  setIsASetListShown: PropTypes.func.isRequired,
+  setSwipeIndex: PropTypes.func.isRequired,
 }

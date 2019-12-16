@@ -12,7 +12,7 @@ import useSongs from './hooks/useSongs'
 import useSideLists from './hooks/useSideLists'
 import useSetlists from './hooks/useSetlists'
 
-function App() {
+export default function App() {
   const { songs, isLoading, swipeIndex, setSwipeIndex } = useSongs()
   const {
     isSideListShown,
@@ -127,5 +127,3 @@ function App() {
     )
   }
 }
-
-export default App
