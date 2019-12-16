@@ -24,39 +24,24 @@ function App() {
     isASetListShown,
     setIsASetListShown,
   } = useSideLists()
-  const {
-    setlists,
-    activeSetlist,
-    setActiveSetlist,
-    setlistSwipeIndices,
-    setSetlistSwipeIndices,
-  } = useSetlists()
+  const { setlists, activeSetlist, setActiveSetlist } = useSetlists()
+
+  let swipeableViewContent
+  if (isASetListShown) {
+    const activeSetlistID = setlists.findIndex(
+      setlist => setlist._id === activeSetlist
+    )
+    handleSwipeableViewsWithSetlist(setlists[activeSetlistID])
+  } else {
+    handleSwipeableViewWithAllSongs(songs)
+  }
 
   return (
     <Router>
       <Switch>
         <Route exact path="/">
           <Layout>
-            {isLoading ? (
-              'Loading ...'
-            ) : (
-              <SwipeableViews
-                index={swipeIndex}
-                onChangeIndex={handleChangeIndex}
-                enableMouseEvents
-                animateTransitions={false}
-              >
-                {songs
-                  ? songs.map(song => (
-                      <Song
-                        key={song._id}
-                        song={song}
-                        isSideListShown={isSideListShown}
-                      />
-                    ))
-                  : 'no song'}
-              </SwipeableViews>
-            )}
+            {swipeableViewContent}
             <SideList
               songs={songs}
               swipeIndex={swipeIndex}
@@ -72,8 +57,6 @@ function App() {
               isASetListShown={isASetListShown}
               setIsASetListShown={setIsASetListShown}
               setSwipeIndex={setSwipeIndex}
-              setlistSwipeIndices={setlistSwipeIndices}
-              setSetlistSwipeIndices={setSetlistSwipeIndices}
             ></SideList>
             <ListButton
               onClick={toggleSideList}
@@ -98,6 +81,50 @@ function App() {
 
   function handleChangeIndex(index) {
     setSwipeIndex(index)
+  }
+
+  function handleSwipeableViewsWithSetlist(setlist) {
+    swipeableViewContent = (
+      <SwipeableViews
+        index={swipeIndex}
+        onChangeIndex={handleChangeIndex}
+        enableMouseEvents
+        animateTransitions={false}
+      >
+        {setlist.songs
+          ? setlist.songs.map(song => (
+              <Song
+                key={song._id}
+                song={song}
+                isSideListShown={isSideListShown}
+              />
+            ))
+          : 'no song'}
+      </SwipeableViews>
+    )
+  }
+
+  function handleSwipeableViewWithAllSongs(songs) {
+    swipeableViewContent = isLoading ? (
+      'Loading ...'
+    ) : (
+      <SwipeableViews
+        index={swipeIndex}
+        onChangeIndex={handleChangeIndex}
+        enableMouseEvents
+        animateTransitions={false}
+      >
+        {songs
+          ? songs.map(song => (
+              <Song
+                key={song._id}
+                song={song}
+                isSideListShown={isSideListShown}
+              />
+            ))
+          : 'no song'}
+      </SwipeableViews>
+    )
   }
 }
 

@@ -5,7 +5,6 @@ export default function useSongs() {
   const [setlists, setSetlists] = useState([])
   const [setlistsIsLoading, setSetlistsIsLoading] = useState(true)
   const [activeSetlist, setActiveSetlist] = useState('')
-  const [setlistSwipeIndices, setSetlistSwipeIndices] = useState([])
 
   useEffect(() => {
     getSetlists().then(loadedSongs => {
@@ -20,7 +19,5 @@ export default function useSongs() {
     setlistsIsLoading,
     activeSetlist,
     setActiveSetlist,
-    setlistSwipeIndices,
-    setSetlistSwipeIndices,
   }
 }

@@ -2,10 +2,7 @@ import React from 'react'
 import PropTypes, { func } from 'prop-types'
 import styled from 'styled-components/macro'
 
-import { getSongIndex } from '../common/Functions'
-
 export default function SetlistItem({
-  songs,
   setlist,
   isSetListsShown,
   isASetListShown,
@@ -13,8 +10,6 @@ export default function SetlistItem({
   setIsSetListsShown,
   setIsASetListShown,
   setSwipeIndex,
-  setlistSwipeIndices,
-  setSetlistSwipeIndices,
 }) {
   return (
     <SetlistItemStyled
@@ -27,24 +22,10 @@ export default function SetlistItem({
   )
 
   function handleSetlistItemClick(id) {
-    console.log(setlistSwipeIndices)
-    setlist.songs.map(setlistSong => {
-      setSetlistSwipeIndices([
-        ...setlistSwipeIndices,
-        getSongIndex(songs, setlistSong),
-      ])
-      // setlistSwipeIndices
-      //   ? setSetlistSwipeIndices(
-      //       setlistSwipeIndices.push(getSongIndex(songs, setlistSong))
-      //     )
-      //   : setSetlistSwipeIndices([getSongIndex(songs, setlistSong)])
-    })
-    setSetlistSwipeIndices()
-    setSwipeIndex(getSongIndex(songs, setlist.songs[0]))
     setActiveSetlist(id)
     setIsSetListsShown(false)
     setIsASetListShown(true)
-    console.log(setlistSwipeIndices)
+    setSwipeIndex(0)
   }
 }
 

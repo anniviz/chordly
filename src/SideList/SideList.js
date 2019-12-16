@@ -7,8 +7,6 @@ import { Link } from 'react-router-dom'
 import SongListItem from './SongListItem'
 import SetlistItem from './SetlistItem'
 
-import { getSongIndex } from '../common/Functions'
-
 export default function SideList({
   songs,
   swipeIndex,
@@ -24,8 +22,6 @@ export default function SideList({
   isASetListShown,
   setIsASetListShown,
   setSwipeIndex,
-  setlistSwipeIndices,
-  setSetlistSwipeIndices,
 }) {
   let sideListContent
   if (isAllSongsShown) {
@@ -92,6 +88,7 @@ export default function SideList({
     setIsAllSongsShown(true)
     setIsSetListsShown(false)
     setIsASetListShown(false)
+    setSwipeIndex(0)
   }
 
   function handleIsAllSongsShown(songs) {
@@ -115,7 +112,6 @@ export default function SideList({
       sideListContent = setlists.map(setlist => (
         <SetlistItem
           key={setlist._id}
-          songs={songs}
           setlist={setlist}
           isASetListShown={isASetListShown}
           isSetListsShown={isSetListsShown}
@@ -124,8 +120,6 @@ export default function SideList({
           setIsASetListShown={setIsASetListShown}
           activeSetlist={activeSetlist}
           setSwipeIndex={setSwipeIndex}
-          setlistSwipeIndices={setlistSwipeIndices}
-          setSetlistSwipeIndices={setSetlistSwipeIndices}
         />
       ))
     } else {
@@ -135,14 +129,12 @@ export default function SideList({
 
   function handleIsASetListShown(setlist) {
     if (setlist.songs) {
-      sideListContent = setlist.songs.map(setlistSong => {
-        const songIndex = getSongIndex(songs, setlistSong)
-
+      sideListContent = setlist.songs.map((setlistSong, index) => {
         return (
           <SongListItem
             key={setlistSong._id}
             song={setlistSong}
-            index={songIndex}
+            index={index}
             swipeIndex={swipeIndex}
             handleChangeIndex={index => handleChangeIndex(index)}
           />
