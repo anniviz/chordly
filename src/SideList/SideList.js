@@ -7,6 +7,8 @@ import { Link } from 'react-router-dom'
 import SongListItem from './SongListItem'
 import SetlistItem from './SetlistItem'
 
+import { getSongIndex } from '../common/Functions'
+
 export default function SideList({
   songs,
   swipeIndex,
@@ -127,7 +129,7 @@ export default function SideList({
   function handleIsASetListShown(setlist) {
     if (setlist.songs) {
       sideListContent = setlist.songs.map(setlistSong => {
-        const songIndex = songs.findIndex(song => song._id === setlistSong._id)
+        const songIndex = getSongIndex(songs, setlistSong)
 
         return (
           <SongListItem
