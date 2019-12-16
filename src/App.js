@@ -65,6 +65,7 @@ function App() {
               setIsSetListsShown={setIsSetListsShown}
               isASetListShown={isASetListShown}
               setIsASetListShown={setIsASetListShown}
+              setSwipeIndex={setSwipeIndex}
             ></SideList>
             <ListButton
               onClick={toggleSideList}

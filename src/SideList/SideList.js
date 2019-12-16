@@ -23,6 +23,7 @@ export default function SideList({
   setIsSetListsShown,
   isASetListShown,
   setIsASetListShown,
+  setSwipeIndex,
 }) {
   let sideListContent
   if (isAllSongsShown) {
@@ -112,6 +113,7 @@ export default function SideList({
       sideListContent = setlists.map(setlist => (
         <SetlistItem
           key={setlist._id}
+          songs={songs}
           setlist={setlist}
           isASetListShown={isASetListShown}
           isSetListsShown={isSetListsShown}
@@ -119,6 +121,7 @@ export default function SideList({
           setIsSetListsShown={setIsSetListsShown}
           setIsASetListShown={setIsASetListShown}
           activeSetlist={activeSetlist}
+          setSwipeIndex={setSwipeIndex}
         />
       ))
     } else {
