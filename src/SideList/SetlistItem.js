@@ -9,7 +9,6 @@ export default function SetlistItem({
   setActiveSetlist,
   setIsSetListsShown,
   setIsASetListShown,
-  activeSetlist,
 }) {
   return (
     <SetlistItemStyled

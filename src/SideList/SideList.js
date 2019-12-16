@@ -126,15 +126,19 @@ export default function SideList({
 
   function handleIsASetListShown(setlist) {
     if (setlist.songs) {
-      sideListContent = setlist.songs.map((song, index) => (
-        <SongListItem
-          key={song._id}
-          song={song}
-          index={index}
-          swipeIndex={swipeIndex}
-          handleChangeIndex={index => handleChangeIndex(index)}
-        />
-      ))
+      sideListContent = setlist.songs.map(setlistSong => {
+        const songIndex = songs.findIndex(song => song._id === setlistSong._id)
+
+        return (
+          <SongListItem
+            key={setlistSong._id}
+            song={setlistSong}
+            index={songIndex}
+            swipeIndex={swipeIndex}
+            handleChangeIndex={index => handleChangeIndex(index)}
+          />
+        )
+      })
     } else {
       sideListContent = 'no songs'
     }
