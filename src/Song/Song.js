@@ -81,5 +81,5 @@ const Line = styled.div`
 
 Song.propTypes = {
   song: PropTypes.object,
-  isAListShown: PropTypes.bool.isRequired,
+  isSideListShown: PropTypes.bool.isRequired,
 }

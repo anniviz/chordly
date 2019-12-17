@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
 import styled from 'styled-components/macro'
 import ChordSheetJS from 'chordsheetjs'
 import { confirmAlert } from 'react-confirm-alert'
@@ -12,11 +12,16 @@ import saveIcon from '../icons/saveIcon.png'
 import cancelIcon from '../icons/cancelIcon.png'
 
 export default function AddSong() {
+  const textareaRef = useRef(null)
+  useEffect(() => {
+    textareaRef.current.focus()
+  })
   return (
     <form onSubmit={createSong}>
       <FormWrapper>
         <TextAreaWrapper>
           <SongTextArea
+            ref={textareaRef}
             name="song"
             placeholder="Enter your song in ChordPro-Format"
           />

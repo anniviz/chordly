@@ -61,9 +61,7 @@ export default function App() {
             <ListButton
               onClick={toggleSideList}
               isSideListShown={isSideListShown}
-            >
-              All Songs
-            </ListButton>
+            ></ListButton>
           </Layout>
         </Route>
       </Switch>
