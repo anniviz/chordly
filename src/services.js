@@ -1,4 +1,4 @@
-export async function getSongs() {
+export function getSongs() {
   return fetch('/songs').then(res => res.json())
 }
 
@@ -10,4 +10,8 @@ export function postSong(song) {
       'content-type': 'application/json',
     },
   }).then(res => res.json())
+}
+
+export function getSetlists() {
+  return fetch('/setlists').then(res => res.json())
 }

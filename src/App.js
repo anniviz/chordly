@@ -1,59 +1,67 @@
-import React, { useState } from 'react'
+import React from 'react'
 import SwipeableViews from 'react-swipeable-views'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
 import Layout from './common/Layout'
-import TitleList from './TitleList/TitleList'
+import SideList from './SideList/SideList'
 import Song from './Song/Song'
 import AddSong from './forms/AddSong'
 import ListButton from './navigation/ListButton'
 
 import useSongs from './hooks/useSongs'
+import useSideLists from './hooks/useSideLists'
+import useSetlists from './hooks/useSetlists'
 
-function App() {
+export default function App() {
   const { songs, isLoading, swipeIndex, setSwipeIndex } = useSongs()
+  const {
+    isSideListShown,
+    setIsSideListShown,
+    isAllSongsShown,
+    setIsAllSongsShown,
+    isSetListsShown,
+    setIsSetListsShown,
+    isASetListShown,
+    setIsASetListShown,
+  } = useSideLists()
+  const { setlists, activeSetlist, setActiveSetlist } = useSetlists()
 
-  const [isAllSongsShown, setIsAllSongsShown] = useState(false)
-  let isAListShown = false
-  isAllSongsShown ? (isAListShown = true) : (isAListShown = false)
+  let swipeableViewContent
+  if (isASetListShown) {
+    const activeSetlistID = setlists.findIndex(
+      setlist => setlist._id === activeSetlist
+    )
+    handleSwipeableView(setlists[activeSetlistID].songs)
+  } else {
+    handleSwipeableView(songs)
+  }
 
   return (
     <Router>
       <Switch>
         <Route exact path="/">
           <Layout>
-            {isLoading ? (
-              'Loading ...'
-            ) : (
-              <SwipeableViews
-                index={swipeIndex}
-                onChangeIndex={handleChangeIndex}
-                enableMouseEvents
-                animateTransitions={false}
-              >
-                {songs
-                  ? songs.map(song => (
-                      <Song
-                        key={song._id}
-                        song={song}
-                        isAListShown={isAListShown}
-                      />
-                    ))
-                  : 'no song'}
-              </SwipeableViews>
-            )}
-            <TitleList
+            {swipeableViewContent}
+            <SideList
               songs={songs}
               swipeIndex={swipeIndex}
               handleChangeIndex={index => handleChangeIndex(index)}
+              setlists={setlists}
+              activeSetlist={activeSetlist}
+              setActiveSetlist={setActiveSetlist}
+              isSideListShown={isSideListShown}
               isAllSongsShown={isAllSongsShown}
-            ></TitleList>
+              setIsAllSongsShown={setIsAllSongsShown}
+              isSetListsShown={isSetListsShown}
+              setIsSetListsShown={setIsSetListsShown}
+              isASetListShown={isASetListShown}
+              setIsASetListShown={setIsASetListShown}
+              setSwipeIndex={setSwipeIndex}
+            ></SideList>
             <ListButton
-              onClick={toggleAllSongs}
-              isAllSongsShown={isAllSongsShown}
-            >
-              All Songs
-            </ListButton>
+              onClick={toggleSideList}
+              isSideListShown={isSideListShown}
+            ></ListButton>
           </Layout>
         </Route>
       </Switch>
@@ -65,13 +73,34 @@ function App() {
     </Router>
   )
 
-  function toggleAllSongs() {
-    setIsAllSongsShown(!isAllSongsShown)
+  function toggleSideList() {
+    setIsSideListShown(!isSideListShown)
   }
 
   function handleChangeIndex(index) {
     setSwipeIndex(index)
   }
-}
 
-export default App
+  function handleSwipeableView(songs) {
+    swipeableViewContent = isLoading ? (
+      'Loading ...'
+    ) : (
+      <SwipeableViews
+        index={swipeIndex}
+        onChangeIndex={handleChangeIndex}
+        enableMouseEvents
+        animateTransitions={false}
+      >
+        {songs
+          ? songs.map(song => (
+              <Song
+                key={song._id}
+                song={song}
+                isSideListShown={isSideListShown}
+              />
+            ))
+          : 'no song'}
+      </SwipeableViews>
+    )
+  }
+}
