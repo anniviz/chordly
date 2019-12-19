@@ -31,9 +31,9 @@ export default function App() {
     const activeSetlistID = setlists.findIndex(
       setlist => setlist._id === activeSetlist
     )
-    handleSwipeableViewsWithSetlist(setlists[activeSetlistID])
+    handleSwipeableView(setlists[activeSetlistID].songs)
   } else {
-    handleSwipeableViewWithAllSongs(songs)
+    handleSwipeableView(songs)
   }
 
   return (
@@ -81,28 +81,7 @@ export default function App() {
     setSwipeIndex(index)
   }
 
-  function handleSwipeableViewsWithSetlist(setlist) {
-    swipeableViewContent = (
-      <SwipeableViews
-        index={swipeIndex}
-        onChangeIndex={handleChangeIndex}
-        enableMouseEvents
-        animateTransitions={false}
-      >
-        {setlist.songs
-          ? setlist.songs.map(song => (
-              <Song
-                key={song._id}
-                song={song}
-                isSideListShown={isSideListShown}
-              />
-            ))
-          : 'no song'}
-      </SwipeableViews>
-    )
-  }
-
-  function handleSwipeableViewWithAllSongs(songs) {
+  function handleSwipeableView(songs) {
     swipeableViewContent = isLoading ? (
       'Loading ...'
     ) : (
