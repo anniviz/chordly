@@ -5,7 +5,6 @@ export default createGlobalStyle`
 
   
   :root{
-    ${'' /* --listWidth: 180px; */}
     --standardPadding: 20px;
     --titlePadding: 10px;
     --mainButtonWidth: 100px;
@@ -28,5 +27,6 @@ export default createGlobalStyle`
     color: #FEFEFE;
     font-family: 'Nunito', sans-serif;
     width: 100vw;
+    ${'' /* overflow: hidden; */}
   }
   `

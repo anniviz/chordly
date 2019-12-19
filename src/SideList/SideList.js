@@ -7,6 +7,10 @@ import { Link } from 'react-router-dom'
 import SongListItem from './SongListItem'
 import SetlistItem from './SetlistItem'
 
+import clipboardList from '../icons/clipboard-list.svg'
+import queueMusic from '../icons/queue-music.svg'
+import addBox from '../icons/add-box.svg'
+
 export default function SideList({
   songs,
   swipeIndex,
@@ -52,26 +56,14 @@ export default function SideList({
           style={{ borderRadius: '0 0 0 12px' }}
           onClick={handleSetlistClick}
         >
-          <img
-            className="setlist-icon"
-            alt="setlist"
-            src={require('../icons/clipboard-list.svg')}
-          />
+          <img className="setlist-icon" alt="setlist" src={clipboardList} />
         </MenuItem>
         <MenuItem onClick={handleAllSongsClick}>
-          <img
-            className="all-songs-icon"
-            alt="all songs"
-            src={require('../icons/queue-music.svg')}
-          />
+          <img className="all-songs-icon" alt="all songs" src={queueMusic} />
         </MenuItem>
         <Link to="/AddSong">
           <MenuItem style={{ borderRadius: '0 0 12px 0' }}>
-            <img
-              className="add-icon"
-              alt="add"
-              src={require('../icons/add-box.svg')}
-            />
+            <img className="add-icon" alt="add" src={addBox} />
           </MenuItem>
         </Link>
       </ListMenu>
@@ -156,7 +148,6 @@ const SideListWrapper = styled.ul`
   background: #3f4a6d;
   background-clip: padding-box;
   overflow: scroll;
-  padding-bottom: 72px;
 
   -webkit-user-select: none;
   -moz-user-select: none;
