@@ -23,7 +23,28 @@ export default function AddSong() {
           <SongTextArea
             ref={textareaRef}
             name="song"
-            placeholder="Enter your song in ChordPro-Format"
+            placeholder={`
+            
+Enter your song in ChordPro-Format like in the example. A title is mandatory.
+
+Example:
+
+{title: Swing Low Sweet Chariot}
+{artist: Wallis Willis}
+
+{start_of_chorus}
+Swing [D]low, sweet [G]chari[D]ot,
+Comin’ for to carry me [A7]home.
+Swing [D7]low, sweet [G]chari[D]ot,
+Comin’ for to [A7]carry me [D]home.
+{end_of_chorus}
+
+I [D]looked over Jordan, and [G]what did I [D]see,
+Comin’ for to carry me [A7]home.
+A [D]band of angels [G]comin’ after [D]me,
+Comin’ for to [A7]carry me [D]home.
+
+{comment: Chorus}`}
           />
         </TextAreaWrapper>
         <ButtonWrapper>
@@ -132,22 +153,22 @@ const SongTextArea = styled.textarea`
   }
 
   ::-webkit-input-placeholder {
-    font-family: 'Nunito', sans-serif;
+    font-family: monospace;
     font-size: 1.1rem;
     color: #929ec5;
   }
   ::-moz-placeholder {
-    font-family: 'Nunito', sans-serif;
+    font-family: monospace;
     font-size: 1.1rem;
     color: #929ec5;
   }
   :-ms-input-placeholder {
-    font-family: 'Nunito', sans-serif;
+    font-family: monospace;
     font-size: 1.1em;
     color: #929ec5;
   }
   :-moz-placeholder {
-    font-family: 'Nunito', sans-serif;
+    font-family: monospace;
     font-size: 1.1em;
     color: #929ec5;
   }
