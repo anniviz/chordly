@@ -50,18 +50,40 @@ export default function AddSong() {
     const formatter = new ChordSheetJS.TextFormatter()
     formatter.format(songObject)
 
-    postSong(songObject)
-    event.target.reset()
+    if (song) {
+      postSong(songObject)
+      event.target.reset()
 
-    confirmAlert({
-      title: 'you saved a song!',
-      message: 'your song is now in the db',
-      buttons: [
-        {
-          label: 'ok',
-        },
-      ],
-    })
+      confirmAlert({
+        title: 'You saved a song!',
+        message:
+          'Your song is now in the db. Do you want to add another Song or go back to the main page?',
+        buttons: [
+          {
+            label: 'add a song',
+          },
+          {
+            label: 'go back',
+            onClick: () => (window.location.href = '/'),
+          },
+        ],
+      })
+    } else {
+      confirmAlert({
+        title: "You didn't enter anything",
+        message:
+          "You have to type something into the textfield. If you don't want to add a song go back to the main page.",
+        buttons: [
+          {
+            label: 'add a song',
+          },
+          {
+            label: 'go back',
+            onClick: () => (window.location.href = '/'),
+          },
+        ],
+      })
+    }
   }
 
   function handleCancelClick() {
