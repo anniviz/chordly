@@ -21,6 +21,13 @@ lib-cov
 # Coverage directory used by tools like istanbul
 coverage
 
+# Directory with design
+design
+scribbles
+
+# Directory with example song files
+song_example_files
+
 # nyc test coverage
 .nyc_output
 
