@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react'
+import { useRouter } from 'next/router'
 import styled from 'styled-components/macro'
 import ChordSheetJS from 'chordsheetjs'
 import { confirmAlert } from 'react-confirm-alert'
@@ -16,6 +17,32 @@ export default function AddSong() {
   useEffect(() => {
     textareaRef.current.focus()
   })
+
+  const router = useRouter()
+
+  const placeholderText = `
+
+Enter your song in ChordPro-Format like in the example. A title is mandatory.
+  
+Example:
+
+{title: Swing Low Sweet Chariot}
+{artist: Wallis Willis}
+
+{start_of_chorus}
+Swing [D]low, sweet [G]chari[D]ot,
+Comin’ for to carry me [A7]home.
+Swing [D7]low, sweet [G]chari[D]ot,
+Comin’ for to [A7]carry me [D]home.
+{end_of_chorus}
+
+I [D]looked over Jordan, and [G]what did I [D]see,
+Comin’ for to carry me [A7]home.
+A [D]band of angels [G]comin’ after [D]me,
+Comin’ for to [A7]carry me [D]home.
+
+{comment: Chorus}`
+
   return (
     <form onSubmit={createSong}>
       <FormWrapper>
@@ -23,7 +50,7 @@ export default function AddSong() {
           <SongTextArea
             ref={textareaRef}
             name="song"
-            placeholder="Enter your song in ChordPro-Format"
+            placeholder={placeholderText}
           />
         </TextAreaWrapper>
         <ButtonWrapper>
@@ -45,23 +72,55 @@ export default function AddSong() {
 
     const form = event.target
     const song = form.song.value
-    const songObject = parser.parse(song)
 
-    const formatter = new ChordSheetJS.TextFormatter()
-    formatter.format(songObject)
+    try {
+      if (song.includes('{title:')) {
+        const songObject = parser.parse(song)
 
-    postSong(songObject)
-    event.target.reset()
+        const formatter = new ChordSheetJS.TextFormatter()
+        formatter.format(songObject)
 
-    confirmAlert({
-      title: 'you saved a song!',
-      message: 'your song is now in the db',
-      buttons: [
-        {
-          label: 'ok',
-        },
-      ],
-    })
+        postSong(songObject)
+        event.target.reset()
+
+        confirmAlert({
+          title: 'You saved a song!',
+          message:
+            'Your song is now in the db. Do you want to add another Song or go back to the main page?',
+          buttons: [
+            {
+              label: 'add a song',
+            },
+            {
+              label: 'go back',
+              onClick: () => (window.location.href = '/'),
+            },
+          ],
+        })
+      } else {
+        confirmAlert({
+          title: 'Something is missing',
+          message:
+            'You have to enter at least a title like {title: songtitle} in the textfield',
+          buttons: [
+            {
+              label: 'ok',
+            },
+          ],
+        })
+      }
+    } catch {
+      confirmAlert({
+        title: 'Error',
+        message:
+          'Something is wrong in your song. Check if all brackets ar closed properly',
+        buttons: [
+          {
+            label: 'ok',
+          },
+        ],
+      })
+    }
   }
 
   function handleCancelClick() {
@@ -72,7 +131,8 @@ export default function AddSong() {
       buttons: [
         {
           label: 'yes',
-          onClick: () => (window.location.href = '/'),
+          onClick: () => router.push('/'),
+          // (window.location.href = '/'),
         },
         {
           label: 'no',
@@ -110,22 +170,22 @@ const SongTextArea = styled.textarea`
   }
 
   ::-webkit-input-placeholder {
-    font-family: 'Nunito', sans-serif;
+    font-family: monospace;
     font-size: 1.1rem;
     color: #929ec5;
   }
   ::-moz-placeholder {
-    font-family: 'Nunito', sans-serif;
+    font-family: monospace;
     font-size: 1.1rem;
     color: #929ec5;
   }
   :-ms-input-placeholder {
-    font-family: 'Nunito', sans-serif;
+    font-family: monospace;
     font-size: 1.1em;
     color: #929ec5;
   }
   :-moz-placeholder {
-    font-family: 'Nunito', sans-serif;
+    font-family: monospace;
     font-size: 1.1em;
     color: #929ec5;
   }
