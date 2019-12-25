@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom'
 
 import SongListItem from './SongListItem'
 import SetlistItem from './SetlistItem'
+import { dimensions } from '../common/dimensions'
 
 import clipboardList from '../icons/clipboard-list.svg'
 import queueMusic from '../icons/queue-music.svg'
@@ -39,7 +40,7 @@ export default function SideList({
 
   const AnimatedSideListWrapperBorder = animated(SideListWrapperBorder)
   const flyIn = useSpring({
-    width: isSideListShown ? '192px' : '0px',
+    width: isSideListShown ? dimensions.sideListWidth + 'px' : '0px',
     opacity: isSideListShown ? 1 : 0,
   })
 

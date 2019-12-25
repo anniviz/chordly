@@ -4,11 +4,14 @@ import PropTypes from 'prop-types'
 import { useSpring, animated } from 'react-spring'
 
 import ChordLyricsPair from './ChordLyricsPair'
+import { dimensions } from '../common/dimensions'
 
 export default function Song({ song, isSideListShown }) {
   const AnimatedSongWrapper = animated(SongWrapper)
   const songAnimation = useSpring({
-    paddingLeft: isSideListShown ? '232px' : '90px',
+    paddingLeft: isSideListShown
+      ? dimensions.sideListWidth + 2 * dimensions.standardPadding + 'px'
+      : '90px',
   })
   return (
     <AnimatedSongWrapper
@@ -49,8 +52,7 @@ export default function Song({ song, isSideListShown }) {
 }
 
 const SongWrapper = styled.section`
-  padding: var(--standardPadding);
-  padding-left: 90px;
+  padding: 10px;
   overflow: scroll;
 
   -webkit-user-select: none;
