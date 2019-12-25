@@ -1,5 +1,4 @@
 import React, { useEffect, useRef } from 'react'
-import { useRouter } from 'next/router'
 import styled from 'styled-components/macro'
 import ChordSheetJS from 'chordsheetjs'
 import { confirmAlert } from 'react-confirm-alert'
@@ -17,8 +16,6 @@ export default function AddSong() {
   useEffect(() => {
     textareaRef.current.focus()
   })
-
-  const router = useRouter()
 
   const placeholderText = `
 
@@ -131,8 +128,7 @@ Comin’ for to [A7]carry me [D]home.
       buttons: [
         {
           label: 'yes',
-          onClick: () => router.push('/'),
-          // (window.location.href = '/'),
+          onClick: () => (window.location.href = '/'),
         },
         {
           label: 'no',
