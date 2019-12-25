@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react'
+import { useHistory } from 'react-router-dom'
 import styled from 'styled-components/macro'
 import ChordSheetJS from 'chordsheetjs'
 import { confirmAlert } from 'react-confirm-alert'
@@ -16,6 +17,8 @@ export default function AddSong() {
   useEffect(() => {
     textareaRef.current.focus()
   })
+
+  const history = useHistory()
 
   const placeholderText = `
 
@@ -86,11 +89,11 @@ Comin’ for to [A7]carry me [D]home.
             'Your song is now in the db. Do you want to add another Song or go back to the main page?',
           buttons: [
             {
-              label: 'add a song',
+              label: 'add another song',
             },
             {
               label: 'go back',
-              onClick: () => (window.location.href = '/'),
+              onClick: handleGoBack,
             },
           ],
         })
@@ -128,13 +131,17 @@ Comin’ for to [A7]carry me [D]home.
       buttons: [
         {
           label: 'yes',
-          onClick: () => (window.location.href = '/'),
+          onClick: handleGoBack,
         },
         {
           label: 'no',
         },
       ],
     })
+  }
+
+  function handleGoBack() {
+    history.goBack()
   }
 }
 
