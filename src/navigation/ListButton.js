@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components/macro'
+import PropTypes from 'prop-types'
 
 import arrowLeft from '../icons/arrow-left.svg'
 
@@ -26,3 +27,7 @@ const ListButtonWrapper = styled.button`
   top: 10px;
   right: 20px;
 `
+
+ListButtonWrapper.propTypes = {
+  toggleSideList: PropTypes.func.isRequired,
+}

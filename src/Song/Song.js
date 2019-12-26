@@ -9,9 +9,9 @@ import { dimensions } from '../common/dimensions'
 export default function Song({ song, isSideListShown }) {
   const AnimatedSongWrapper = animated(SongWrapper)
   const songAnimation = useSpring({
-    paddingLeft: isSideListShown
+    paddingRight: isSideListShown
       ? dimensions.sideListWidth + 2 * dimensions.standardPadding + 'px'
-      : '90px',
+      : dimensions.standardPadding + 'px',
   })
   return (
     <AnimatedSongWrapper
@@ -52,7 +52,7 @@ export default function Song({ song, isSideListShown }) {
 }
 
 const SongWrapper = styled.section`
-  padding: 10px;
+  padding: ${dimensions.standardPadding + 'px'};
   overflow: scroll;
 
   -webkit-user-select: none;
