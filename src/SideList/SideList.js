@@ -147,8 +147,8 @@ const SideListWrapperBorder = styled.div`
   height: calc(100vh - 120px);
   background: linear-gradient(60deg, #feb79c, #fd5da1);
   position: fixed;
-  top: 30px;
-  left: 20px;
+  top: 75px;
+  right: 20px;
 `
 
 const ListMenu = styled.div`

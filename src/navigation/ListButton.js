@@ -1,21 +1,28 @@
+import React from 'react'
 import styled from 'styled-components/macro'
 
-export default styled.button`
+import arrowLeft from '../icons/arrow-left.svg'
+
+export default function ListButton() {
+  return (
+    <ListButtonWrapper>
+      <img src={arrowLeft} alt="" />
+    </ListButtonWrapper>
+  )
+}
+
+const ListButtonWrapper = styled.button`
   display: grid;
   align-content: center;
   justify-content: center;
-  height: var(--mainButtonHeight);
-  width: var(--mainButtonWidth);
-  background: radial-gradient(#feb79c, #fd5ea1);
-  color: #5b6689;
-  font-size: 16px;
-  font-weight: 200;
-  border: none;
-  border-radius: 50%;
-  padding: var(--standardPadding);
+  height: 48px;
+  width: 48px;
+  background: #3f4a6d;
+  border: #feb79c solid 2px;
+  border-radius: 12px;
   margin: 0;
   cursor: default;
   position: fixed;
-  bottom: var(--mainButtonBottom);
-  left: var(--mainButtonLeft);
+  top: 10px;
+  right: 20px;
 `
