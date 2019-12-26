@@ -3,10 +3,10 @@ import styled from 'styled-components/macro'
 
 import arrowLeft from '../icons/arrow-left.svg'
 
-export default function ListButton() {
+export default function ListButton({ toggleSideList }) {
   return (
-    <ListButtonWrapper>
-      <img src={arrowLeft} alt="" />
+    <ListButtonWrapper toggleSideList={toggleSideList}>
+      <img src={arrowLeft} alt="" onClick={toggleSideList} />
     </ListButtonWrapper>
   )
 }

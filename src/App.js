@@ -59,7 +59,7 @@ export default function App() {
               setSwipeIndex={setSwipeIndex}
             ></SideList>
             <ListButton
-              onClick={toggleSideList}
+              toggleSideList={toggleSideList}
               isSideListShown={isSideListShown}
             ></ListButton>
           </Layout>
