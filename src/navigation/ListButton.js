@@ -1,13 +1,24 @@
 import React from 'react'
 import styled from 'styled-components/macro'
 import PropTypes from 'prop-types'
+import { useSpring, animated } from 'react-spring'
 
 import arrowLeft from '../icons/arrow-left.svg'
 
-export default function ListButton({ toggleSideList }) {
+export default function ListButton({ toggleSideList, isSideListShown }) {
+  //transform: rotate(45deg)
+  const imgAnimation = useSpring({
+    transform: isSideListShown ? 'scaleX(-1)' : 'scaleX(1)',
+  })
+
   return (
     <ListButtonWrapper toggleSideList={toggleSideList}>
-      <img src={arrowLeft} alt="" onClick={toggleSideList} />
+      <animated.img
+        src={arrowLeft}
+        alt=""
+        onClick={toggleSideList}
+        style={imgAnimation}
+      />
     </ListButtonWrapper>
   )
 }
