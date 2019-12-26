@@ -35,6 +35,6 @@ const ListButtonWrapper = styled.button`
 `
 
 ListButtonWrapper.propTypes = {
-  toggleSideList: PropTypes.func.isRequired,
-  isSideListShown: PropTypes.bool.isRequired,
+  toggleSideList: PropTypes.func,
+  isSideListShown: PropTypes.bool,
 }
