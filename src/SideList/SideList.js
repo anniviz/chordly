@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom'
 
 import SongListItem from './SongListItem'
 import SetlistItem from './SetlistItem'
+import { dimensions } from '../common/dimensions'
 
 import clipboardList from '../icons/clipboard-list.svg'
 import queueMusic from '../icons/queue-music.svg'
@@ -39,7 +40,7 @@ export default function SideList({
 
   const AnimatedSideListWrapperBorder = animated(SideListWrapperBorder)
   const flyIn = useSpring({
-    width: isSideListShown ? '192px' : '0px',
+    width: isSideListShown ? dimensions.sideListWidth + 'px' : '0px',
     opacity: isSideListShown ? 1 : 0,
   })
 
@@ -124,7 +125,7 @@ const SideListWrapper = styled.ul`
   justify-self: stretch;
   align-self: center;
   list-style: none;
-  padding: var(--titlePadding);
+  padding: ${dimensions.titlePadding + 'px'};
   height: 100%;
   border-radius: 12px 12px 0 0;
   background: #3f4a6d;
@@ -143,11 +144,17 @@ const SideListWrapperBorder = styled.div`
   justify-items: stretch;
   border-radius: 12px;
   padding: 2px;
-  height: calc(100vh - 120px);
+  height: calc(
+    100vh -
+      ${2 * dimensions.listButtonTop +
+        dimensions.listButtonHeight +
+        dimensions.standardPadding +
+        'px'}
+  );
   background: linear-gradient(60deg, #feb79c, #fd5da1);
   position: fixed;
-  top: 30px;
-  left: 20px;
+  top: ${2 * dimensions.listButtonTop + dimensions.listButtonHeight + 'px'};
+  right: ${dimensions.standardPadding + 'px'};
 `
 
 const ListMenu = styled.div`
