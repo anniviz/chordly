@@ -4,7 +4,7 @@ import { confirmAlert } from 'react-confirm-alert'
 
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
-import './datepickeStylesPlus.css'
+import '../additionalStyles/datepicker.scss'
 
 import SaveCancelButtons from './SaveCancelButtons'
 import { dimensions } from '../common/dimensions'
@@ -38,7 +38,7 @@ export default function AddSetlist({ setSideListType }) {
               },
             }}
             showPopperArrow={false}
-            shouldCloseOnSelect={false}
+            // shouldCloseOnSelect={false}
           />
         </Fieldset>
       </InputWrapper>
@@ -65,7 +65,7 @@ export default function AddSetlist({ setSideListType }) {
 }
 
 const InputWrapper = styled.div`
-  margin-bottom: 20px;
+  margin-bottom: 40px;
 `
 
 const Fieldset = styled.fieldset`
