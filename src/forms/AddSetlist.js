@@ -1,9 +1,11 @@
 import React, { useState } from 'react'
 import styled from 'styled-components/macro'
+import PropTypes from 'prop-types'
 import { confirmAlert } from 'react-confirm-alert'
 import moment from 'moment'
 
 import { postSetlist } from '../services'
+import { getSetlists } from '../services'
 
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
@@ -12,7 +14,11 @@ import '../additionalStyles/datepicker.scss'
 import SaveCancelButtons from './SaveCancelButtons'
 import { dimensions } from '../common/dimensions'
 
-export default function AddSetlist({ setSideListType }) {
+export default function AddSetlist({
+  setSideListType,
+  setSetlists,
+  setSetlistsIsLoading,
+}) {
   const [startDate, setStartDate] = useState(new Date())
 
   return (
@@ -50,7 +56,7 @@ export default function AddSetlist({ setSideListType }) {
     </form>
   )
 
-  function createSetlist(event) {
+  async function createSetlist(event) {
     event.preventDefault()
 
     const form = event.target
@@ -67,7 +73,12 @@ export default function AddSetlist({ setSideListType }) {
     console.log(setlist)
 
     if (setlist.setlistName !== '') {
-      postSetlist(setlist)
+      setSetlistsIsLoading(true)
+      await postSetlist(setlist)
+      getSetlists().then(loadedSetlists => {
+        setSetlists(loadedSetlists)
+        setSetlistsIsLoading(false)
+      })
       setSideListType('setlists')
     } else {
       confirmAlert({
@@ -120,3 +131,9 @@ const InputField = styled.input`
   padding: 4px;
   margin: 12px 0;
 `
+
+AddSetlist.propTypes = {
+  setSideListType: PropTypes.func,
+  setlistsIsLoading: PropTypes.bool,
+  setSetlistsIsLoading: PropTypes.func,
+}

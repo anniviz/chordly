@@ -20,7 +20,14 @@ export default function App() {
     sideListType,
     setSideListType,
   } = useSideLists()
-  const { setlists, activeSetlist, setActiveSetlist } = useSetlists()
+  const {
+    setlists,
+    setSetlists,
+    activeSetlist,
+    setActiveSetlist,
+    setlistsIsLoading,
+    setSetlistsIsLoading,
+  } = useSetlists()
 
   let swipeableViewContent
   if (sideListType === 'singleSetlist') {
@@ -49,6 +56,9 @@ export default function App() {
               sideListType={sideListType}
               setSideListType={setSideListType}
               setSwipeIndex={setSwipeIndex}
+              setSetlists={setSetlists}
+              setlistsIsLoading={setlistsIsLoading}
+              setSetlistsIsLoading={setSetlistsIsLoading}
             ></SideList>
             <ListButton
               toggleSideList={toggleSideList}

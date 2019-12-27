@@ -24,6 +24,9 @@ export default function SideList({
   setSwipeIndex,
   sideListType,
   setSideListType,
+  setSetlists,
+  setlistsIsLoading,
+  setSetlistsIsLoading,
 }) {
   let sideListContent
   let addContent
@@ -105,17 +108,19 @@ export default function SideList({
 
   function handleIsSetListsShown(setlists) {
     if (setlists) {
-      sideListContent = setlists.map(setlist => (
-        <SetlistItem
-          key={setlist._id}
-          setlist={setlist}
-          sideListType={sideListType}
-          setSideListType={setSideListType}
-          setActiveSetlist={setActiveSetlist}
-          activeSetlist={activeSetlist}
-          setSwipeIndex={setSwipeIndex}
-        />
-      ))
+      sideListContent = setlistsIsLoading
+        ? 'loading...'
+        : setlists.map(setlist => (
+            <SetlistItem
+              key={setlist._id}
+              setlist={setlist}
+              sideListType={sideListType}
+              setSideListType={setSideListType}
+              setActiveSetlist={setActiveSetlist}
+              activeSetlist={activeSetlist}
+              setSwipeIndex={setSwipeIndex}
+            />
+          ))
     } else {
       sideListContent = 'no setlists'
     }
@@ -131,7 +136,13 @@ export default function SideList({
   }
 
   function handleIsAddSetlistShown() {
-    sideListContent = <AddSetlist setSideListType={setSideListType} />
+    sideListContent = (
+      <AddSetlist
+        setSideListType={setSideListType}
+        setSetlists={setSetlists}
+        setSetlistsIsLoading={setSetlistsIsLoading}
+      />
+    )
   }
 }
 
@@ -199,4 +210,6 @@ SideList.propTypes = {
   sideListType: PropTypes.string.isRequired,
   setSideListType: PropTypes.func.isRequired,
   setSwipeIndex: PropTypes.func.isRequired,
+  setlistsIsLoading: PropTypes.bool,
+  setSetlistsIsLoading: PropTypes.func,
 }

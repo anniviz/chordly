@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components/macro'
+import PropTypes from 'prop-types'
 
 import SmallButton from '../common/SmallButton'
 import saveIcon from '../icons/saveIcon.png'
@@ -25,4 +26,6 @@ const ButtonWrapper = styled.div`
   justify-content: space-evenly;
 `
 
-// export default ButtonWrapper
+SaveCancelButtons.propTypes = {
+  handleCancelClick: PropTypes.func.isRequired,
+}
