@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import styled from 'styled-components/macro'
 import { confirmAlert } from 'react-confirm-alert'
+import moment from 'moment'
 
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
@@ -53,10 +54,11 @@ export default function AddSetlist({ setSideListType }) {
     const form = event.target
     const formData = new FormData(form)
     let data = Object.fromEntries(formData)
-    data = { ...data, createtAt: new Date() }
+    var day = moment(data.dueDate, 'MM/DD/YYYY')
+    const dueDate = day.toDate()
+    data = { ...data, dueDate: dueDate, createtAt: new Date() }
 
     console.log(data)
-    console.log(new Date())
   }
 
   function handleCancelClick() {
