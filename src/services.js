@@ -15,3 +15,13 @@ export function postSong(song) {
 export function getSetlists() {
   return fetch('/setlists').then(res => res.json())
 }
+
+export function postSetlist(setlist) {
+  return fetch('/setlist', {
+    method: 'POST',
+    body: JSON.stringify(setlist),
+    headers: {
+      'content-type': 'application/json',
+    },
+  }).then(res => res.json())
+}
