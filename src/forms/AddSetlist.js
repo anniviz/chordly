@@ -13,11 +13,11 @@ export default function AddSetlist({ setSideListType }) {
   const [startDate, setStartDate] = useState(new Date())
 
   return (
-    <form>
+    <form onSubmit={createSetlist}>
       <InputWrapper>
         <Fieldset>
-          <label>Setlist title</label>
-          <InputField></InputField>
+          <label htmlFor="setlist-name">Setlist title</label>
+          <InputField name="setlistName" id="setlist-name" />
         </Fieldset>
         <Fieldset>
           <label>due date</label>
@@ -39,12 +39,25 @@ export default function AddSetlist({ setSideListType }) {
             }}
             showPopperArrow={false}
             // shouldCloseOnSelect={false}
+            name="dueDate"
           />
         </Fieldset>
       </InputWrapper>
       <SaveCancelButtons handleCancelClick={handleCancelClick} />
     </form>
   )
+
+  function createSetlist(event) {
+    event.preventDefault()
+
+    const form = event.target
+    const formData = new FormData(form)
+    let data = Object.fromEntries(formData)
+    data = { ...data, createtAt: new Date() }
+
+    console.log(data)
+    console.log(new Date())
+  }
 
   function handleCancelClick() {
     confirmAlert({
