@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom'
 
 import SongListItem from './SongListItem'
 import SetlistItem from './SetlistItem'
+import AddSetlist from '../forms/AddSetlist'
 import { dimensions } from '../common/dimensions'
 
 import clipboardList from '../icons/clipboard-list.svg'
@@ -129,7 +130,9 @@ export default function SideList({
     )
   }
 
-  function handleIsAddSetlistShown() {}
+  function handleIsAddSetlistShown() {
+    sideListContent = <AddSetlist></AddSetlist>
+  }
 }
 
 const SideListWrapper = styled.ul`
