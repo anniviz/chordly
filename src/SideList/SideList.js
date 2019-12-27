@@ -25,6 +25,7 @@ export default function SideList({
   setSideListType,
 }) {
   let sideListContent
+  let addContent
   if (sideListType === 'allSongs') {
     handleIsSongsShown(songs)
   } else if (sideListType === 'setlists') {
@@ -32,6 +33,8 @@ export default function SideList({
   } else if (sideListType === 'singleSetlist') {
     const index = setlists.findIndex(setlist => setlist._id === activeSetlist)
     handleIsSongsShown(setlists[index].songs)
+  } else if (sideListType === 'addSetlist') {
+    handleIsAddSetlistShown()
   }
 
   const AnimatedSideListWrapperBorder = animated(SideListWrapperBorder)
@@ -48,22 +51,22 @@ export default function SideList({
       <SideListWrapper isSideListShown={isSideListShown}>
         {sideListContent}
       </SideListWrapper>
-      <ListMenu>
-        <MenuItem
-          style={{ borderRadius: '0 0 0 12px' }}
-          onClick={handleSetlistClick}
-        >
-          <img className="setlist-icon" alt="setlist" src={clipboardList} />
-        </MenuItem>
-        <MenuItem onClick={handleAllSongsClick}>
-          <img className="all-songs-icon" alt="all songs" src={queueMusic} />
-        </MenuItem>
-        <Link to="/AddSong">
-          <MenuItem style={{ borderRadius: '0 0 12px 0' }}>
-            <img className="add-icon" alt="add" src={addBox} />
+      {sideListType !== 'addSetlist' ? (
+        <ListMenu>
+          <MenuItem
+            style={{ borderRadius: '0 0 0 12px' }}
+            onClick={handleSetlistClick}
+          >
+            <img className="setlist-icon" alt="setlist" src={clipboardList} />
           </MenuItem>
-        </Link>
-      </ListMenu>
+          <MenuItem onClick={handleAllSongsClick}>
+            <img className="all-songs-icon" alt="all songs" src={queueMusic} />
+          </MenuItem>
+          {addContent}
+        </ListMenu>
+      ) : (
+        <ListMenu />
+      )}
     </AnimatedSideListWrapperBorder>
   )
 
@@ -90,6 +93,13 @@ export default function SideList({
     } else {
       sideListContent = 'no song'
     }
+    addContent = (
+      <Link to="/AddSong">
+        <MenuItem style={{ borderRadius: '0 0 12px 0' }}>
+          <img className="add-icon" alt="add" src={addBox} />
+        </MenuItem>
+      </Link>
+    )
   }
 
   function handleIsSetListsShown(setlists) {
@@ -108,7 +118,18 @@ export default function SideList({
     } else {
       sideListContent = 'no setlists'
     }
+
+    addContent = (
+      <MenuItem
+        onClick={() => setSideListType('addSetlist')}
+        style={{ borderRadius: '0 0 12px 0' }}
+      >
+        <img className="add-icon" alt="add" src={addBox} />
+      </MenuItem>
+    )
   }
+
+  function handleIsAddSetlistShown() {}
 }
 
 const SideListWrapper = styled.ul`
