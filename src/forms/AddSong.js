@@ -50,9 +50,7 @@ Comin’ for to [A7]carry me [D]home.
             placeholder={placeholderText}
           />
         </TextAreaWrapper>
-        <SaveCancelButtons
-          handleCancelClick={handleCancelClick}
-        ></SaveCancelButtons>
+        <SaveCancelButtons handleCancelClick={handleCancelClick} />
       </FormWrapper>
     </form>
   )
@@ -85,7 +83,7 @@ Comin’ for to [A7]carry me [D]home.
             },
             {
               label: 'go back',
-              onClick: handleGoBack,
+              onClick: history.goBack(),
             },
           ],
         })
@@ -123,17 +121,13 @@ Comin’ for to [A7]carry me [D]home.
       buttons: [
         {
           label: 'yes',
-          onClick: handleGoBack,
+          onClick: history.goBack(),
         },
         {
           label: 'no',
         },
       ],
     })
-  }
-
-  function handleGoBack() {
-    history.goBack()
   }
 }
 

@@ -131,7 +131,7 @@ export default function SideList({
   }
 
   function handleIsAddSetlistShown() {
-    sideListContent = <AddSetlist></AddSetlist>
+    sideListContent = <AddSetlist setSideListType={setSideListType} />
   }
 }
 
@@ -139,7 +139,7 @@ const SideListWrapper = styled.ul`
   justify-self: stretch;
   align-self: center;
   list-style: none;
-  padding: ${dimensions.titlePadding + 'px'};
+  padding: ${dimensions.sideListPadding + 'px'};
   height: 100%;
   border-radius: 12px 12px 0 0;
   background: #3f4a6d;

@@ -4,7 +4,7 @@ export const dimensions = {
   mainButtonWidth: 100,
   smallButtonDiameter: 48,
   sideListWidth: 192,
-  titlePadding: 10,
+  sideListPadding: 10,
   listButtonHeight: 48,
   listButtonWidth: 48,
   listButtonTop: 10,
