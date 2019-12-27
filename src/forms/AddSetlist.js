@@ -1,25 +1,17 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components/macro'
 import { confirmAlert } from 'react-confirm-alert'
-import DayPickerInput from 'react-day-picker/DayPickerInput'
-import './daypickerStyle.css'
+
+import DatePicker from 'react-datepicker'
+import 'react-datepicker/dist/react-datepicker.css'
+import './datepickeStylesPlus.css'
 
 import SaveCancelButtons from './SaveCancelButtons'
 import { dimensions } from '../common/dimensions'
 
 export default function AddSetlist({ setSideListType }) {
-  const daypickerStyle = {
-    //   background: '#939dc5',
-    //   fontSize: '1.1rem',
-    //   color: '#fefefe',
-    //   border: 'none',
-    //   width:
-    //     "${dimensions.sideListWidth - 3 * dimensions.sideListPadding + 'px'}",
-    //   height: '2em',
-    //   borderRadius: '4px',
-    //   padding: '4px',
-    //   margin: '12px 0',
-  }
+  const [startDate, setStartDate] = useState(new Date())
+
   return (
     <form>
       <InputWrapper>
@@ -29,7 +21,25 @@ export default function AddSetlist({ setSideListType }) {
         </Fieldset>
         <Fieldset>
           <label>due date</label>
-          <DayPickerInput onDayChange={day => console.log(day)} />
+          <DatePicker
+            selected={startDate}
+            onChange={date => setStartDate(date)}
+            popperClassName="some-custom-class"
+            popperPlacement="top-end"
+            popperModifiers={{
+              offset: {
+                enabled: true,
+                offset: '5px, 10px',
+              },
+              preventOverflow: {
+                enabled: true,
+                escapeWithReference: false,
+                boundariesElement: 'viewport',
+              },
+            }}
+            showPopperArrow={false}
+            shouldCloseOnSelect={false}
+          />
         </Fieldset>
       </InputWrapper>
       <SaveCancelButtons handleCancelClick={handleCancelClick} />
@@ -74,17 +84,3 @@ const InputField = styled.input`
   padding: 4px;
   margin: 12px 0;
 `
-
-// const StyledDayPickerInput = styled.DayPickerInput`
-//   input {
-//     background: #939dc5;
-//     font-size: 1.1rem;
-//     color: #fefefe;
-//     border: none;
-//     width: ${dimensions.sideListWidth - 3 * dimensions.sideListPadding + 'px'};
-//     height: 2em;
-//     border-radius: 4px;
-//     padding: 4px;
-//     margin: 12px 0;
-//   }
-// `
