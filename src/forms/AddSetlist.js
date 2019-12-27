@@ -58,7 +58,11 @@ export default function AddSetlist({ setSideListType }) {
     const data = Object.fromEntries(formData)
     var day = moment(data.dueDate, 'MM/DD/YYYY')
     const dueDate = day.toDate()
-    const setlist = { ...data, dueDate: dueDate, createtAt: new Date() }
+    const setlist = {
+      setlistName: data.setlistName,
+      dueDate: dueDate,
+      createdAt: new Date(),
+    }
 
     console.log(setlist)
 
