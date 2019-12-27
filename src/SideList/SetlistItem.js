@@ -4,27 +4,19 @@ import styled from 'styled-components/macro'
 
 export default function SetlistItem({
   setlist,
-  isSetListsShown,
-  isASetListShown,
+  setSideListType,
   setActiveSetlist,
-  setIsSetListsShown,
-  setIsASetListShown,
   setSwipeIndex,
 }) {
   return (
-    <SetlistItemStyled
-      onClick={() => handleSetlistItemClick(setlist._id)}
-      isASetListShown={isASetListShown}
-      isSetListsShown={isSetListsShown}
-    >
+    <SetlistItemStyled onClick={() => handleSetlistItemClick(setlist._id)}>
       {setlist.setlistName}
     </SetlistItemStyled>
   )
 
   function handleSetlistItemClick(id) {
     setActiveSetlist(id)
-    setIsSetListsShown(false)
-    setIsASetListShown(true)
+    setSideListType('singleSetlist')
     setSwipeIndex(0)
   }
 }
@@ -41,10 +33,7 @@ const SetlistItemStyled = styled.li`
 
 SetlistItem.propTypes = {
   setlist: PropTypes.object.isRequired,
-  isSetListsShown: PropTypes.bool.isRequired,
-  isASetListShown: PropTypes.bool.isRequired,
+  setSideListType: PropTypes.func.isRequired,
   setActiveSetlist: PropTypes.func.isRequired,
-  setIsSetListsShown: PropTypes.func.isRequired,
-  setIsASetListShown: PropTypes.func.isRequired,
   setSwipeIndex: PropTypes.func.isRequired,
 }

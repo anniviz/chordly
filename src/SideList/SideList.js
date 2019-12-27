@@ -20,20 +20,16 @@ export default function SideList({
   activeSetlist,
   setActiveSetlist,
   isSideListShown,
-  isAllSongsShown,
-  setIsAllSongsShown,
-  isSetListsShown,
-  setIsSetListsShown,
-  isASetListShown,
-  setIsASetListShown,
   setSwipeIndex,
+  sideListType,
+  setSideListType,
 }) {
   let sideListContent
-  if (isAllSongsShown) {
+  if (sideListType === 'allSongs') {
     handleIsSongsShown(songs)
-  } else if (isSetListsShown) {
+  } else if (sideListType === 'setlists') {
     handleIsSetListsShown(setlists)
-  } else if (isASetListShown) {
+  } else if (sideListType === 'singleSetlist') {
     const index = setlists.findIndex(setlist => setlist._id === activeSetlist)
     handleIsSongsShown(setlists[index].songs)
   }
@@ -72,15 +68,11 @@ export default function SideList({
   )
 
   function handleSetlistClick() {
-    setIsSetListsShown(true)
-    setIsAllSongsShown(false)
-    setIsASetListShown(false)
+    setSideListType('setlists')
   }
 
   function handleAllSongsClick() {
-    setIsAllSongsShown(true)
-    setIsSetListsShown(false)
-    setIsASetListShown(false)
+    setSideListType('allSongs')
     setSwipeIndex(0)
   }
 
@@ -106,11 +98,9 @@ export default function SideList({
         <SetlistItem
           key={setlist._id}
           setlist={setlist}
-          isASetListShown={isASetListShown}
-          isSetListsShown={isSetListsShown}
+          sideListType={sideListType}
+          setSideListType={setSideListType}
           setActiveSetlist={setActiveSetlist}
-          setIsSetListsShown={setIsSetListsShown}
-          setIsASetListShown={setIsASetListShown}
           activeSetlist={activeSetlist}
           setSwipeIndex={setSwipeIndex}
         />
@@ -182,11 +172,7 @@ SideList.propTypes = {
   activeSetlist: PropTypes.string,
   setActiveSetlist: PropTypes.func.isRequired,
   isSideListShown: PropTypes.bool.isRequired,
-  isAllSongsShown: PropTypes.bool.isRequired,
-  setIsAllSongsShown: PropTypes.func.isRequired,
-  isSetListsShown: PropTypes.bool.isRequired,
-  setIsSetListsShown: PropTypes.func.isRequired,
-  isASetListShown: PropTypes.bool.isRequired,
-  setIsASetListShown: PropTypes.func.isRequired,
+  sideListType: PropTypes.string.isRequired,
+  setSideListType: PropTypes.func.isRequired,
   setSwipeIndex: PropTypes.func.isRequired,
 }
