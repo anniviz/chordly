@@ -7,8 +7,8 @@ import 'react-confirm-alert/src/react-confirm-alert.css'
 
 import { postSong } from '../services'
 
+import ButtonWrapper from './ButtonWrapper'
 import SmallButton from '../common/SmallButton'
-
 import saveIcon from '../icons/saveIcon.png'
 import cancelIcon from '../icons/cancelIcon.png'
 
@@ -192,11 +192,4 @@ const SongTextArea = styled.textarea`
     font-size: 1.1em;
     color: #929ec5;
   }
-`
-
-const ButtonWrapper = styled.div`
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
 `
