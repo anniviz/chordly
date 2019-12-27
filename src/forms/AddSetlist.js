@@ -3,6 +3,8 @@ import styled from 'styled-components/macro'
 import { confirmAlert } from 'react-confirm-alert'
 import moment from 'moment'
 
+import { postSetlist } from '../services'
+
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
 import '../additionalStyles/datepicker.scss'
@@ -53,12 +55,27 @@ export default function AddSetlist({ setSideListType }) {
 
     const form = event.target
     const formData = new FormData(form)
-    let data = Object.fromEntries(formData)
+    const data = Object.fromEntries(formData)
     var day = moment(data.dueDate, 'MM/DD/YYYY')
     const dueDate = day.toDate()
-    data = { ...data, dueDate: dueDate, createtAt: new Date() }
+    const setlist = { ...data, dueDate: dueDate, createtAt: new Date() }
 
-    console.log(data)
+    console.log(setlist)
+
+    if (setlist.setlistName !== '') {
+      postSetlist(setlist)
+      setSideListType('setlists')
+    } else {
+      confirmAlert({
+        title: 'Something is missing',
+        message: 'You have to enter a title',
+        buttons: [
+          {
+            label: 'ok',
+          },
+        ],
+      })
+    }
   }
 
   function handleCancelClick() {
