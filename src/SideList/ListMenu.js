@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components/macro'
 import { Link } from 'react-router-dom'
+import PropTypes from 'prop-types'
 
 import clipboardList from '../icons/clipboard-list.svg'
 import queueMusic from '../icons/queue-music.svg'
@@ -89,3 +90,9 @@ const MenuItem = styled.div`
   border: 1px solid #707070;
   background: #3f4a6d;
 `
+
+ListMenu.propTypes = {
+  sideListType: PropTypes.string.isRequired,
+  setSideListType: PropTypes.func.isRequired,
+  setSwipeIndex: PropTypes.func.isRequired,
+}
