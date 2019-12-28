@@ -94,20 +94,7 @@ export default function AddSetlist({
   }
 
   function handleCancelClick() {
-    confirmAlert({
-      title: 'go back',
-      message:
-        'Do you really want to go back? Your new setlist will not be saved',
-      buttons: [
-        {
-          label: 'yes',
-          onClick: () => setSideListType('setlists'),
-        },
-        {
-          label: 'no',
-        },
-      ],
-    })
+    setSideListType('setlists')
   }
 }
 

@@ -2,16 +2,12 @@ import React from 'react'
 import { useSpring, animated } from 'react-spring'
 import PropTypes from 'prop-types'
 import styled from 'styled-components/macro'
-import { Link } from 'react-router-dom'
 
 import SongListItem from './SongListItem'
 import SetlistItem from './SetlistItem'
 import AddSetlist from '../forms/AddSetlist'
+import ListMenu from './ListMenu'
 import { dimensions } from '../common/dimensions'
-
-import clipboardList from '../icons/clipboard-list.svg'
-import queueMusic from '../icons/queue-music.svg'
-import addBox from '../icons/add-box.svg'
 
 export default function SideList({
   songs,
@@ -29,7 +25,6 @@ export default function SideList({
   setSetlistsIsLoading,
 }) {
   let sideListContent
-  let addContent
   if (sideListType === 'allSongs') {
     handleIsSongsShown(songs)
   } else if (sideListType === 'setlists') {
@@ -55,33 +50,13 @@ export default function SideList({
       <SideListWrapper isSideListShown={isSideListShown}>
         {sideListContent}
       </SideListWrapper>
-      {sideListType !== 'addSetlist' ? (
-        <ListMenu>
-          <MenuItem
-            style={{ borderRadius: '0 0 0 12px' }}
-            onClick={handleSetlistClick}
-          >
-            <img className="setlist-icon" alt="setlist" src={clipboardList} />
-          </MenuItem>
-          <MenuItem onClick={handleAllSongsClick}>
-            <img className="all-songs-icon" alt="all songs" src={queueMusic} />
-          </MenuItem>
-          {addContent}
-        </ListMenu>
-      ) : (
-        <ListMenu />
-      )}
+      <ListMenu
+        sideListType={sideListType}
+        setSideListType={setSideListType}
+        setSwipeIndex={setSwipeIndex}
+      />
     </AnimatedSideListWrapperBorder>
   )
-
-  function handleSetlistClick() {
-    setSideListType('setlists')
-  }
-
-  function handleAllSongsClick() {
-    setSideListType('allSongs')
-    setSwipeIndex(0)
-  }
 
   function handleIsSongsShown(songs) {
     if (songs) {
@@ -97,13 +72,6 @@ export default function SideList({
     } else {
       sideListContent = 'no song'
     }
-    addContent = (
-      <Link to="/AddSong">
-        <MenuItem style={{ borderRadius: '0 0 12px 0' }}>
-          <img className="add-icon" alt="add" src={addBox} />
-        </MenuItem>
-      </Link>
-    )
   }
 
   function handleIsSetListsShown(setlists) {
@@ -124,15 +92,6 @@ export default function SideList({
     } else {
       sideListContent = 'no setlists'
     }
-
-    addContent = (
-      <MenuItem
-        onClick={() => setSideListType('addSetlist')}
-        style={{ borderRadius: '0 0 12px 0' }}
-      >
-        <img className="add-icon" alt="add" src={addBox} />
-      </MenuItem>
-    )
   }
 
   function handleIsAddSetlistShown() {
@@ -180,23 +139,6 @@ const SideListWrapperBorder = styled.div`
   position: fixed;
   top: ${2 * dimensions.listButtonTop + dimensions.listButtonHeight + 'px'};
   right: ${dimensions.standardPadding + 'px'};
-`
-
-const ListMenu = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  justify-items: stretch;
-  background: #3f4a6d;
-  border-radius: 0 0 12px 12px;
-`
-
-const MenuItem = styled.div`
-  height: 100%;
-  display: grid;
-  align-content: center;
-  justify-content: center;
-  border: 1px solid #707070;
-  background: #3f4a6d;
 `
 
 SideList.propTypes = {
