@@ -36,7 +36,6 @@ export default function SongListItem({
   function handleSongClick() {
     if (songInSetlist) {
     } else {
-      console.log('foo')
       setSetlistSongs([...setlistSongs, song._id])
     }
     console.log(setlistSongs)
@@ -56,7 +55,8 @@ const SongListItemDefault = styled.li`
 `
 
 const SongListItemAddToSetlist = styled.li`
-  color: #fefefe;
+  color: ${props => (props.songInSetlist ? '#FE8D8D' : '#FEFEFE')};
+  /* color: #fefefe; */
   padding: 10px 0;
   cursor: default;
   text-overflow: ellipsis;
