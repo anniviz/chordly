@@ -20,15 +20,6 @@ export default function ListMenu({
 
   return <ListMenuStyled>{menuContent}</ListMenuStyled>
 
-  function handleSetlistClick() {
-    setSideListType('setlists')
-  }
-
-  function handleAllSongsClick() {
-    setSideListType('allSongs')
-    setSwipeIndex(0)
-  }
-
   function handleAddButton() {
     if (sideListType === 'allSongs') {
       addContent = (
@@ -65,14 +56,14 @@ export default function ListMenu({
         <>
           <MenuItem
             style={{ borderRadius: '0 0 0 12px' }}
-            onClick={handleSetlistClick}
+            onClick={handleSaveSongsToSetlist}
           >
             save
           </MenuItem>
           <MenuItem></MenuItem>
           <MenuItem
             style={{ borderRadius: '0 0 12px 0' }}
-            onClick={handleAllSongsClick}
+            onClick={() => setSideListType('singleSetlist')}
           >
             cancel
           </MenuItem>
@@ -83,7 +74,7 @@ export default function ListMenu({
         <>
           <MenuItem
             style={{ borderRadius: '0 0 0 12px' }}
-            onClick={handleSetlistClick}
+            onClick={() => setSideListType('setlists')}
           >
             <img className="setlist-icon" alt="setlist" src={clipboardList} />
           </MenuItem>
@@ -95,6 +86,13 @@ export default function ListMenu({
       )
     }
   }
+
+  function handleAllSongsClick() {
+    setSideListType('allSongs')
+    setSwipeIndex(0)
+  }
+
+  function handleSaveSongsToSetlist() {}
 }
 
 const ListMenuStyled = styled.div`

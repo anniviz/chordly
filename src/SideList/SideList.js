@@ -4,7 +4,6 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components/macro'
 
 import SongListItem from './SongListItem'
-import AddSongListItem from './AddSongListItem'
 import SetlistItem from './SetlistItem'
 import AddSetlist from '../forms/AddSetlist'
 import ListMenu from './ListMenu'
