@@ -25,3 +25,13 @@ export function postSetlist(setlist) {
     },
   }).then(res => res.json())
 }
+
+export function patchSetlist(setlist) {
+  return fetch('/setlists/' + setlist._id, {
+    method: 'PATCH',
+    body: JSON.stringify(setlist),
+    headers: {
+      'content-type': 'application/json',
+    },
+  }).then(res => res.json())
+}

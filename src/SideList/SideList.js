@@ -9,6 +9,9 @@ import AddSetlist from '../forms/AddSetlist'
 import ListMenu from './ListMenu'
 import { dimensions } from '../common/dimensions'
 
+import useSetlists from '../hooks/useSetlists'
+import { patchSetlist } from '../services.js'
+
 export default function SideList({
   songs,
   swipeIndex,
@@ -24,8 +27,9 @@ export default function SideList({
   setlistsIsLoading,
   setSetlistsIsLoading,
 }) {
-  const [setlistSongs, setSetlistSongs] = useState([])
-  // console.log(setlistSongs)
+  // const [setlistSongs, setSetlistSongs] = useState([])
+  const { setlistSongs, setSetlistSongs } = useSetlists()
+  console.log('>>>', setlistSongs)
 
   let sideListContent
   if (sideListType === 'allSongs') {
@@ -59,6 +63,11 @@ export default function SideList({
         sideListType={sideListType}
         setSideListType={setSideListType}
         setSwipeIndex={setSwipeIndex}
+        activeSetlist={activeSetlist}
+        setSetlists={setSetlists}
+        setlists={setlists}
+        setlistSongs={setlistSongs}
+        handleSaveSongsToSetlist={handleSaveSongsToSetlist}
       />
     </AnimatedSideListWrapperBorder>
   )
@@ -95,6 +104,7 @@ export default function SideList({
               setActiveSetlist={setActiveSetlist}
               activeSetlist={activeSetlist}
               setSwipeIndex={setSwipeIndex}
+              setSetlistSongs={setSetlistSongs}
             />
           ))
     } else {
@@ -110,6 +120,25 @@ export default function SideList({
         setSetlistsIsLoading={setSetlistsIsLoading}
       />
     )
+  }
+
+  function handleSaveSongsToSetlist() {
+    console.log('setlistSongs')
+    const index = setlists.findIndex(
+      setlist => setlist._id === activeSetlist._id
+    )
+    patchSetlist({ _id: activeSetlist._id, songs: setlistSongs }).then(
+      changedSetlist => {
+        console.log('<><>', changedSetlist)
+        setSetlists([
+          ...setlists.slice(0, index),
+          changedSetlist,
+          ...setlists.slice(index + 1),
+        ])
+      }
+    )
+
+    setSideListType('singleSetlist')
   }
 }
 

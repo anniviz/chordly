@@ -7,6 +7,7 @@ export default function SetlistItem({
   setSideListType,
   setActiveSetlist,
   setSwipeIndex,
+  setSetlistSongs,
 }) {
   return (
     <SetlistItemStyled onClick={() => handleSetlistItemClick(setlist._id)}>
@@ -14,10 +15,14 @@ export default function SetlistItem({
     </SetlistItemStyled>
   )
 
-  function handleSetlistItemClick(id) {
+  async function handleSetlistItemClick(id) {
     setActiveSetlist(id)
-    setSideListType('singleSetlist')
     setSwipeIndex(0)
+    let songsArray = []
+    setlist.songs.map(song => (songsArray = [...songsArray, song._id]))
+    setSetlistSongs([...songsArray])
+    console.log(songsArray)
+    setSideListType('singleSetlist')
   }
 }
 

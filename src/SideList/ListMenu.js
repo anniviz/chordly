@@ -3,6 +3,8 @@ import styled from 'styled-components/macro'
 import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 
+// import { patchSetlist } from '../services.js'
+
 import clipboardList from '../icons/clipboard-list.svg'
 import queueMusic from '../icons/queue-music.svg'
 import addBox from '../icons/add-box.svg'
@@ -11,6 +13,11 @@ export default function ListMenu({
   sideListType,
   setSideListType,
   setSwipeIndex,
+  activeSetlist,
+  setSetlists,
+  setlists,
+  setlistSongs,
+  handleSaveSongsToSetlist,
 }) {
   let addContent
   handleAddButton()
@@ -92,7 +99,23 @@ export default function ListMenu({
     setSwipeIndex(0)
   }
 
-  function handleSaveSongsToSetlist() {}
+  //   function handleSaveSongsToSetlist() {
+  //     console.log('setlistSongs')
+  //     const index = setlists.findIndex(
+  //       setlist => setlist._id === activeSetlist._id
+  //     )
+  //     patchSetlist({ _id: activeSetlist._id, songs: setlistSongs }).then(
+  //       changedSetlist => {
+  //         setSetlists([
+  //           ...setlists.slice(0, index),
+  //           changedSetlist,
+  //           ...setlists.slice(index + 1),
+  //         ])
+  //       }
+  //     )
+
+  //     setSideListType('singleSetlist')
+  //   }
 }
 
 const ListMenuStyled = styled.div`

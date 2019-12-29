@@ -47,3 +47,9 @@ app.post('/setlist', (req, res) => {
     .then(setlist => res.json(setlist))
     .catch(err => res.json(err))
 })
+
+app.patch('/setlists/:id', (req, res) => {
+  Setlist.findByIdAndUpdate(req.params.id, req.body, { new: true })
+    .then(spot => res.json(spot))
+    .catch(err => res.json(err))
+})

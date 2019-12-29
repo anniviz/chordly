@@ -61,6 +61,8 @@ export default function App() {
               setSetlists={setSetlists}
               setlistsIsLoading={setlistsIsLoading}
               setSetlistsIsLoading={setSetlistsIsLoading}
+              setlistSongs={setlistSongs}
+              setSetlistSongs={setSetlistSongs}
             ></SideList>
             <ListButton
               toggleSideList={toggleSideList}

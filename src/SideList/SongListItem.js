@@ -15,7 +15,6 @@ export default function SongListItem({
   if (sideListType === 'addSongToSetlist') {
     songInSetlist = setlistSongs.includes(song._id)
   }
-  console.log(songInSetlist)
   return sideListType === 'addSongToSetlist' ? (
     <SongListItemAddToSetlist
       songInSetlist={songInSetlist}
@@ -43,7 +42,6 @@ export default function SongListItem({
     } else {
       setSetlistSongs([...setlistSongs, song._id])
     }
-    console.log(setlistSongs)
   }
 }
 
