@@ -38,7 +38,7 @@ export default function SideList({
   } else if (sideListType === 'addSetlist') {
     handleIsAddSetlistShown()
   } else if (sideListType === 'addSongToSetlist') {
-    handleIsAddSongToSonglistShown(songs)
+    handleIsSongsShown(songs)
   }
 
   const AnimatedSideListWrapperBorder = animated(SideListWrapperBorder)
@@ -68,6 +68,7 @@ export default function SideList({
       sideListContent = songs.map((song, index) => (
         <SongListItem
           key={song._id}
+          sideListType={sideListType}
           song={song}
           index={index}
           swipeIndex={swipeIndex}
@@ -107,16 +108,6 @@ export default function SideList({
         setSetlistsIsLoading={setSetlistsIsLoading}
       />
     )
-  }
-
-  function handleIsAddSongToSonglistShown(songs) {
-    if (songs) {
-      sideListContent = songs.map(song => (
-        <AddSongListItem key={song._id} song={song}></AddSongListItem>
-      ))
-    } else {
-      sideListContent = 'no song'
-    }
   }
 }
 
