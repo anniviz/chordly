@@ -24,7 +24,8 @@ export default function SideList({
   setlistsIsLoading,
   setSetlistsIsLoading,
 }) {
-  const { setlistSongs, setSetlistSongs } = useState([])
+  const [setlistSongs, setSetlistSongs] = useState([])
+  // console.log(setlistSongs)
 
   let sideListContent
   if (sideListType === 'allSongs') {
@@ -72,6 +73,8 @@ export default function SideList({
           index={index}
           swipeIndex={swipeIndex}
           handleChangeIndex={index => handleChangeIndex(index)}
+          setlistSongs={setlistSongs}
+          setSetlistSongs={setSetlistSongs}
         />
       ))
     } else {

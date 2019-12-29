@@ -8,9 +8,19 @@ export default function SongListItem({
   index,
   swipeIndex,
   handleChangeIndex,
+  setlistSongs,
+  setSetlistSongs,
 }) {
+  let songInSetlist = false
+  if (sideListType === 'addSongToSetlist') {
+    songInSetlist = setlistSongs.includes(song._id)
+  }
   return sideListType === 'addSongToSetlist' ? (
-    <SongListItemAddToSetlist onClick={() => handleSongClick(song)}>
+    <SongListItemAddToSetlist
+      songInSetlist={songInSetlist}
+      setSetlistSongs={setSetlistSongs}
+      onClick={handleSongClick}
+    >
       {song.optimizedMetaData.title}
     </SongListItemAddToSetlist>
   ) : (
@@ -23,7 +33,14 @@ export default function SongListItem({
     </SongListItemDefault>
   )
 
-  function handleSongClick(song) {}
+  function handleSongClick() {
+    if (songInSetlist) {
+    } else {
+      console.log('foo')
+      setSetlistSongs([...setlistSongs, song._id])
+    }
+    console.log(setlistSongs)
+  }
 }
 
 const SongListItemDefault = styled.li`
