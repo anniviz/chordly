@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useSpring, animated } from 'react-spring'
 import PropTypes from 'prop-types'
 import styled from 'styled-components/macro'
 
 import SongListItem from './SongListItem'
+import AddSongListItem from './AddSongListItem'
 import SetlistItem from './SetlistItem'
 import AddSetlist from '../forms/AddSetlist'
 import ListMenu from './ListMenu'
@@ -24,6 +25,8 @@ export default function SideList({
   setlistsIsLoading,
   setSetlistsIsLoading,
 }) {
+  const { setlistSongs, setSetlistSongs } = useState([])
+
   let sideListContent
   if (sideListType === 'allSongs') {
     handleIsSongsShown(songs)
@@ -34,6 +37,8 @@ export default function SideList({
     handleIsSongsShown(setlists[index].songs)
   } else if (sideListType === 'addSetlist') {
     handleIsAddSetlistShown()
+  } else if (sideListType === 'addSongToSetlist') {
+    handleIsAddSongToSonglistShown(songs)
   }
 
   const AnimatedSideListWrapperBorder = animated(SideListWrapperBorder)
@@ -102,6 +107,16 @@ export default function SideList({
         setSetlistsIsLoading={setSetlistsIsLoading}
       />
     )
+  }
+
+  function handleIsAddSongToSonglistShown(songs) {
+    if (songs) {
+      sideListContent = songs.map(song => (
+        <AddSongListItem key={song._id} song={song}></AddSongListItem>
+      ))
+    } else {
+      sideListContent = 'no song'
+    }
   }
 }
 

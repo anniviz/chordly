@@ -27,6 +27,8 @@ export default function App() {
     setActiveSetlist,
     setlistsIsLoading,
     setSetlistsIsLoading,
+    setlistSongs,
+    setSetlistSongs,
   } = useSetlists()
 
   let swipeableViewContent

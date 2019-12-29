@@ -15,24 +15,10 @@ export default function ListMenu({
   let addContent
   handleAddButton()
 
-  return (
-    <ListMenuStyled>
-      {sideListType !== ('addSetlist' || 'addSongToSetlist') && (
-        <>
-          <MenuItem
-            style={{ borderRadius: '0 0 0 12px' }}
-            onClick={handleSetlistClick}
-          >
-            <img className="setlist-icon" alt="setlist" src={clipboardList} />
-          </MenuItem>
-          <MenuItem onClick={handleAllSongsClick}>
-            <img className="all-songs-icon" alt="all songs" src={queueMusic} />
-          </MenuItem>
-          {addContent}
-        </>
-      )}
-    </ListMenuStyled>
-  )
+  let menuContent
+  handleMenuContent()
+
+  return <ListMenuStyled>{menuContent}</ListMenuStyled>
 
   function handleSetlistClick() {
     setSideListType('setlists')
@@ -72,6 +58,43 @@ export default function ListMenu({
       )
     }
   }
+
+  function handleMenuContent() {
+    if (sideListType === 'addSongToSetlist') {
+      menuContent = (
+        <>
+          <MenuItem
+            style={{ borderRadius: '0 0 0 12px' }}
+            onClick={handleSetlistClick}
+          >
+            save
+          </MenuItem>
+          <MenuItem></MenuItem>
+          <MenuItem
+            style={{ borderRadius: '0 0 12px 0' }}
+            onClick={handleAllSongsClick}
+          >
+            cancel
+          </MenuItem>
+        </>
+      )
+    } else if (sideListType !== ('addSetlist' || 'addSongToSetlist')) {
+      menuContent = (
+        <>
+          <MenuItem
+            style={{ borderRadius: '0 0 0 12px' }}
+            onClick={handleSetlistClick}
+          >
+            <img className="setlist-icon" alt="setlist" src={clipboardList} />
+          </MenuItem>
+          <MenuItem onClick={handleAllSongsClick}>
+            <img className="all-songs-icon" alt="all songs" src={queueMusic} />
+          </MenuItem>
+          {addContent}
+        </>
+      )
+    }
+  }
 }
 
 const ListMenuStyled = styled.div`
@@ -83,6 +106,7 @@ const ListMenuStyled = styled.div`
 `
 
 const MenuItem = styled.div`
+  color: #fe8d8d;
   height: 100%;
   display: grid;
   align-content: center;
