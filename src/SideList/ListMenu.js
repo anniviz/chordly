@@ -98,24 +98,6 @@ export default function ListMenu({
     setSideListType('allSongs')
     setSwipeIndex(0)
   }
-
-  //   function handleSaveSongsToSetlist() {
-  //     console.log('setlistSongs')
-  //     const index = setlists.findIndex(
-  //       setlist => setlist._id === activeSetlist._id
-  //     )
-  //     patchSetlist({ _id: activeSetlist._id, songs: setlistSongs }).then(
-  //       changedSetlist => {
-  //         setSetlists([
-  //           ...setlists.slice(0, index),
-  //           changedSetlist,
-  //           ...setlists.slice(index + 1),
-  //         ])
-  //       }
-  //     )
-
-  //     setSideListType('singleSetlist')
-  //   }
 }
 
 const ListMenuStyled = styled.div`

@@ -10,7 +10,7 @@ import ListMenu from './ListMenu'
 import { dimensions } from '../common/dimensions'
 
 import useSetlists from '../hooks/useSetlists'
-import { patchSetlist } from '../services.js'
+import { patchSetlist, getSetlists } from '../services.js'
 
 export default function SideList({
   songs,
@@ -29,7 +29,6 @@ export default function SideList({
 }) {
   // const [setlistSongs, setSetlistSongs] = useState([])
   const { setlistSongs, setSetlistSongs } = useSetlists()
-  console.log('>>>', setlistSongs)
 
   let sideListContent
   if (sideListType === 'allSongs') {
@@ -122,14 +121,10 @@ export default function SideList({
     )
   }
 
-  function handleSaveSongsToSetlist() {
-    console.log('setlistSongs')
-    const index = setlists.findIndex(
-      setlist => setlist._id === activeSetlist._id
-    )
-    patchSetlist({ _id: activeSetlist._id, songs: setlistSongs }).then(
+  async function handleSaveSongsToSetlist() {
+    const index = setlists.findIndex(setlist => setlist._id === activeSetlist)
+    await patchSetlist({ _id: activeSetlist, songs: setlistSongs }).then(
       changedSetlist => {
-        console.log('<><>', changedSetlist)
         setSetlists([
           ...setlists.slice(0, index),
           changedSetlist,

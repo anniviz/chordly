@@ -50,6 +50,7 @@ app.post('/setlist', (req, res) => {
 
 app.patch('/setlists/:id', (req, res) => {
   Setlist.findByIdAndUpdate(req.params.id, req.body, { new: true })
+    .populate('songs')
     .then(spot => res.json(spot))
     .catch(err => res.json(err))
 })

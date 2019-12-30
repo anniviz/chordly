@@ -70,8 +70,6 @@ export default function AddSetlist({
       createdAt: new Date(),
     }
 
-    console.log(setlist)
-
     if (setlist.setlistName !== '') {
       setSetlistsIsLoading(true)
       await postSetlist(setlist)

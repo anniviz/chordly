@@ -21,7 +21,6 @@ export default function SetlistItem({
     let songsArray = []
     setlist.songs.map(song => (songsArray = [...songsArray, song._id]))
     setSetlistSongs([...songsArray])
-    console.log(songsArray)
     setSideListType('singleSetlist')
   }
 }

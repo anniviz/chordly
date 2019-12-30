@@ -6,6 +6,7 @@ export default function useSongs() {
   const [setlistsIsLoading, setSetlistsIsLoading] = useState(true)
   const [activeSetlist, setActiveSetlist] = useState('')
   const [setlistSongs, setSetlistSongs] = useState([])
+  // const [updateSetlist, setUpdateSetlist] = useState(false)
 
   useEffect(() => {
     getSetlists().then(loadedSetlists => {
@@ -13,6 +14,14 @@ export default function useSongs() {
       setSetlistsIsLoading(false)
     })
   }, [])
+
+  // useEffect(() => {
+  //   setSetlistsIsLoading(true)
+  //   getSetlists().then(loadedSetlists => {
+  //     setSetlists(loadedSetlists)
+  //     setSetlistsIsLoading(false)
+  //   })
+  // }, [updateSetlist])
 
   useEffect(() => {
     console.log('change active setlist')
