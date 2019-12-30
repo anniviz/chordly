@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { useSpring, animated } from 'react-spring'
 import PropTypes from 'prop-types'
 import styled from 'styled-components/macro'
@@ -10,7 +10,7 @@ import ListMenu from './ListMenu'
 import { dimensions } from '../common/dimensions'
 
 import useSetlists from '../hooks/useSetlists'
-import { patchSetlist, getSetlists } from '../services.js'
+import { patchSetlist } from '../services.js'
 
 export default function SideList({
   songs,
@@ -24,11 +24,13 @@ export default function SideList({
   sideListType,
   setSideListType,
   setSetlists,
-  setlistsIsLoading,
-  setSetlistsIsLoading,
 }) {
-  // const [setlistSongs, setSetlistSongs] = useState([])
-  const { setlistSongs, setSetlistSongs } = useSetlists()
+  const {
+    setlistsIsLoading,
+    setSetlistsIsLoading,
+    setlistSongs,
+    setSetlistSongs,
+  } = useSetlists()
 
   let sideListContent
   if (sideListType === 'allSongs') {
@@ -184,6 +186,5 @@ SideList.propTypes = {
   sideListType: PropTypes.string.isRequired,
   setSideListType: PropTypes.func.isRequired,
   setSwipeIndex: PropTypes.func.isRequired,
-  setlistsIsLoading: PropTypes.bool,
-  setSetlistsIsLoading: PropTypes.func,
+  setSetlists: PropTypes.func.isRequired,
 }

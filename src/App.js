@@ -25,10 +25,6 @@ export default function App() {
     setSetlists,
     activeSetlist,
     setActiveSetlist,
-    setlistsIsLoading,
-    setSetlistsIsLoading,
-    setlistSongs,
-    setSetlistSongs,
   } = useSetlists()
 
   let swipeableViewContent
@@ -59,10 +55,6 @@ export default function App() {
               setSideListType={setSideListType}
               setSwipeIndex={setSwipeIndex}
               setSetlists={setSetlists}
-              setlistsIsLoading={setlistsIsLoading}
-              setSetlistsIsLoading={setSetlistsIsLoading}
-              setlistSongs={setlistSongs}
-              setSetlistSongs={setSetlistSongs}
             ></SideList>
             <ListButton
               toggleSideList={toggleSideList}

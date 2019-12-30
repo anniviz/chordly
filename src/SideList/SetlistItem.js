@@ -40,4 +40,5 @@ SetlistItem.propTypes = {
   setSideListType: PropTypes.func.isRequired,
   setActiveSetlist: PropTypes.func.isRequired,
   setSwipeIndex: PropTypes.func.isRequired,
+  setSetlistSongs: PropTypes.func.isRequired,
 }

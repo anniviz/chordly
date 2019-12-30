@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import styled from 'styled-components/macro'
 import PropTypes from 'prop-types'
 import { confirmAlert } from 'react-confirm-alert'
@@ -21,12 +21,17 @@ export default function AddSetlist({
 }) {
   const [startDate, setStartDate] = useState(new Date())
 
+  const inputRef = useRef(null)
+  useEffect(() => {
+    inputRef.current.focus()
+  })
+
   return (
     <form onSubmit={createSetlist}>
       <InputWrapper>
         <Fieldset>
           <label htmlFor="setlist-name">Setlist title</label>
-          <InputField name="setlistName" id="setlist-name" />
+          <InputField name="setlistName" id="setlist-name" ref={inputRef} />
         </Fieldset>
         <Fieldset>
           <label>due date</label>

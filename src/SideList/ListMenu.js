@@ -3,8 +3,6 @@ import styled from 'styled-components/macro'
 import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 
-// import { patchSetlist } from '../services.js'
-
 import clipboardList from '../icons/clipboard-list.svg'
 import queueMusic from '../icons/queue-music.svg'
 import addBox from '../icons/add-box.svg'
@@ -13,10 +11,6 @@ export default function ListMenu({
   sideListType,
   setSideListType,
   setSwipeIndex,
-  activeSetlist,
-  setSetlists,
-  setlists,
-  setlistSongs,
   handleSaveSongsToSetlist,
 }) {
   let addContent
@@ -116,10 +110,12 @@ const MenuItem = styled.div`
   justify-content: center;
   border: 1px solid #707070;
   background: #3f4a6d;
+  cursor: default;
 `
 
 ListMenu.propTypes = {
   sideListType: PropTypes.string.isRequired,
   setSideListType: PropTypes.func.isRequired,
   setSwipeIndex: PropTypes.func.isRequired,
+  handleSaveSongsToSetlist: PropTypes.func.isRequired,
 }
