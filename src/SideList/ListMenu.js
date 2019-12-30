@@ -6,6 +6,8 @@ import PropTypes from 'prop-types'
 import clipboardList from '../icons/clipboard-list.svg'
 import queueMusic from '../icons/queue-music.svg'
 import addBox from '../icons/add-box.svg'
+import saveOrange from '../icons/save-icon-orange.svg'
+import closeOrange from '../icons/close-icon-orange.svg'
 
 export default function ListMenu({
   sideListType,
@@ -19,7 +21,9 @@ export default function ListMenu({
   let menuContent
   handleMenuContent()
 
-  return <ListMenuStyled>{menuContent}</ListMenuStyled>
+  return (
+    <ListMenuStyled sideListType={sideListType}>{menuContent}</ListMenuStyled>
+  )
 
   function handleAddButton() {
     if (sideListType === 'allSongs') {
@@ -59,14 +63,13 @@ export default function ListMenu({
             style={{ borderRadius: '0 0 0 12px' }}
             onClick={handleSaveSongsToSetlist}
           >
-            save
+            <img className="save-icon" alt="save" src={saveOrange} />
           </MenuItem>
-          <MenuItem></MenuItem>
           <MenuItem
             style={{ borderRadius: '0 0 12px 0' }}
             onClick={() => setSideListType('singleSetlist')}
           >
-            cancel
+            <img className="close-icon" alt="close" src={closeOrange} />
           </MenuItem>
         </>
       )
@@ -96,7 +99,8 @@ export default function ListMenu({
 
 const ListMenuStyled = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: ${props =>
+    props.sideListType === 'addSongToSetlist' ? '1fr 1fr' : '1fr 1fr 1fr'};
   justify-items: stretch;
   background: #3f4a6d;
   border-radius: 0 0 12px 12px;
