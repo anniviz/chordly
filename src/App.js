@@ -11,6 +11,7 @@ import ListButton from './navigation/ListButton'
 import useSongs from './hooks/useSongs'
 import useSideLists from './hooks/useSideLists'
 import useSetlists from './hooks/useSetlists'
+import ChangeKeyButton from './navigation/ChangeKeyButton'
 
 export default function App() {
   const { songs, isLoading, swipeIndex, setSwipeIndex } = useSongs()
@@ -60,6 +61,8 @@ export default function App() {
               setSwipeIndex={setSwipeIndex}
               setSetlists={setSetlists}
             ></SideList>
+            <ChangeKeyButton direction="up">#</ChangeKeyButton>
+            <ChangeKeyButton direction="down">b</ChangeKeyButton>
           </Layout>
         </Route>
       </Switch>

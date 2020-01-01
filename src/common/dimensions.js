@@ -8,4 +8,6 @@ export const dimensions = {
   cubicButtonExtent: 48,
   listButtonTop: 10,
   listButtonRight: 20,
+  changeKeyButtonBottom: 10,
+  changeKeyButtonRight: 20,
 }
