@@ -6,8 +6,8 @@ import PropTypes from 'prop-types'
 import clipboardList from '../icons/clipboard-list.svg'
 import queueMusic from '../icons/queue-music.svg'
 import addBox from '../icons/add-box.svg'
-import saveOrange from '../icons/save-icon-orange.svg'
-import closeOrange from '../icons/close-icon-orange.svg'
+import save from '../icons/save-icon-orange.svg'
+import close from '../icons/close-icon-orange.svg'
 
 export default function ListMenu({
   sideListType,
@@ -34,19 +34,17 @@ export default function ListMenu({
           </MenuItem>
         </Link>
       )
-    } else if (sideListType === 'singleSetlist') {
+    } else if (
+      sideListType === 'singleSetlist' ||
+      sideListType === 'setlists'
+    ) {
       addContent = (
         <MenuItem
-          onClick={() => setSideListType('addSongToSetlist')}
-          style={{ borderRadius: '0 0 12px 0' }}
-        >
-          <img className="add-icon" alt="add" src={addBox} />
-        </MenuItem>
-      )
-    } else if (sideListType === 'setlists') {
-      addContent = (
-        <MenuItem
-          onClick={() => setSideListType('addSetlist')}
+          onClick={() =>
+            sideListType === 'singleSetlist'
+              ? setSideListType('addSongToSetlist')
+              : setSideListType('addSetlist')
+          }
           style={{ borderRadius: '0 0 12px 0' }}
         >
           <img className="add-icon" alt="add" src={addBox} />
@@ -63,13 +61,13 @@ export default function ListMenu({
             style={{ borderRadius: '0 0 0 12px' }}
             onClick={handleSaveSongsToSetlist}
           >
-            <img className="save-icon" alt="save" src={saveOrange} />
+            <img className="save-icon" alt="save" src={save} />
           </MenuItem>
           <MenuItem
             style={{ borderRadius: '0 0 12px 0' }}
             onClick={() => setSideListType('singleSetlist')}
           >
-            <img className="close-icon" alt="close" src={closeOrange} />
+            <img className="close-icon" alt="close" src={close} />
           </MenuItem>
         </>
       )

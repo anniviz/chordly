@@ -38,7 +38,6 @@ export default function AddSetlist({
           <DatePicker
             selected={startDate}
             onChange={date => setStartDate(date)}
-            popperClassName="some-custom-class"
             popperPlacement="top-end"
             popperModifiers={{
               offset: {
@@ -52,7 +51,6 @@ export default function AddSetlist({
               },
             }}
             showPopperArrow={false}
-            // shouldCloseOnSelect={false}
             name="dueDate"
           />
         </Fieldset>
