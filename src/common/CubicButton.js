@@ -4,16 +4,7 @@ import PropTypes from 'prop-types'
 
 import { dimensions } from '../common/dimensions'
 
-export default function CubicButton({ positionTop, positionRight }) {
-  return (
-    <CubicButtonStyled
-      positionTop={positionTop}
-      positionRight={positionRight}
-    />
-  )
-}
-
-const CubicButtonStyled = styled.button`
+const CubicButton = styled.button`
   display: grid;
   align-content: center;
   justify-content: center;
@@ -29,7 +20,4 @@ const CubicButtonStyled = styled.button`
   right: ${props => props.positionRight};
 `
 
-CubicButton.propTypes = {
-  positionTop: PropTypes.string,
-  positionRight: PropTypes.string,
-}
+export default CubicButton

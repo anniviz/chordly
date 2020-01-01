@@ -14,8 +14,10 @@ export default function ListButton({ toggleSideList, isSideListShown }) {
   return (
     <CubicButton
       onClick={toggleSideList}
-      positionTop={dimensions.listButtonTop + 'px'}
-      positionRight={dimensions.listButtonRight + 'px'}
+      style={{
+        top: dimensions.listButtonTop + 'px',
+        right: dimensions.listButtonRight + 'px',
+      }}
     >
       <animated.img src={arrowLeft} alt="" style={imgAnimation} />
     </CubicButton>
