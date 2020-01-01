@@ -12,6 +12,7 @@ import useSongs from './hooks/useSongs'
 import useSideLists from './hooks/useSideLists'
 import useSetlists from './hooks/useSetlists'
 import KeyButton from './navigation/KeyButton'
+import KeyChangeContainer from './keyChange/KeyChangeContainer'
 
 export default function App() {
   const { songs, isLoading, swipeIndex, setSwipeIndex } = useSongs()
@@ -44,6 +45,11 @@ export default function App() {
         <Route exact path="/">
           <Layout>
             {swipeableViewContent}
+            <ListButton
+              toggleSideList={toggleSideList}
+              isSideListShown={isSideListShown}
+            />
+            <KeyButton toggleKeyChange={toggleKeyChange} />
             <SideList
               songs={songs}
               swipeIndex={swipeIndex}
@@ -57,11 +63,7 @@ export default function App() {
               setSwipeIndex={setSwipeIndex}
               setSetlists={setSetlists}
             ></SideList>
-            <ListButton
-              toggleSideList={toggleSideList}
-              isSideListShown={isSideListShown}
-            />
-            <KeyButton toggleKeyChange={toggleKeyChange} />
+            <KeyChangeContainer></KeyChangeContainer>
           </Layout>
         </Route>
       </Switch>
