@@ -61,8 +61,8 @@ export default function App() {
               setSwipeIndex={setSwipeIndex}
               setSetlists={setSetlists}
             ></SideList>
-            <ChangeKeyButton direction="up">#</ChangeKeyButton>
-            <ChangeKeyButton direction="down">b</ChangeKeyButton>
+            <ChangeKeyButton direction="up"></ChangeKeyButton>
+            <ChangeKeyButton direction="down"></ChangeKeyButton>
           </Layout>
         </Route>
       </Switch>

@@ -17,7 +17,9 @@ export default function ChangeKeyButton({ direction }) {
         bottom: buttonBottom,
         right: dimensions.changeKeyButtonRight + 'px',
       }}
-    ></CubicButton>
+    >
+      {direction === 'up' ? '♯' : '♭'}
+    </CubicButton>
   )
 }
 

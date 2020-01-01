@@ -7,7 +7,7 @@ export const dimensions = {
   sideListPadding: 10,
   cubicButtonExtent: 48,
   listButtonTop: 10,
-  listButtonRight: 20,
+  listButtonRight: 10,
   changeKeyButtonBottom: 10,
-  changeKeyButtonRight: 20,
+  changeKeyButtonRight: 10,
 }

@@ -164,10 +164,7 @@ const SideListWrapperBorder = styled.div`
   padding: 2px;
   height: calc(
     100vh -
-      ${2 * dimensions.listButtonTop +
-        dimensions.cubicButtonExtent +
-        dimensions.standardPadding +
-        'px'}
+      ${5 * dimensions.listButtonTop + 3 * dimensions.cubicButtonExtent + 'px'}
   );
   background: linear-gradient(60deg, #feb79c, #fd5da1);
   position: fixed;

@@ -16,6 +16,8 @@ const CubicButton = styled.button`
   position: fixed;
   top: ${props => props.positionTop};
   right: ${props => props.positionRight};
+  color: #fb5ba0;
+  font-size: 24px;
 `
 
 export default CubicButton
