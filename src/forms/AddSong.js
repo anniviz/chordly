@@ -83,7 +83,7 @@ Comin’ for to [A7]carry me [D]home.
             },
             {
               label: 'go back',
-              onClick: history.goBack(),
+              onClick: () => history.goBack(),
             },
           ],
         })
@@ -121,7 +121,7 @@ Comin’ for to [A7]carry me [D]home.
       buttons: [
         {
           label: 'yes',
-          onClick: history.goBack(),
+          onClick: () => history.goBack(),
         },
         {
           label: 'no',
