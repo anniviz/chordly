@@ -1,10 +1,10 @@
 import { useState } from 'react'
 
 export default function useSideLists() {
-  const [isKeyChangeShown, SetIsKeyChangeShown] = useState(false)
+  const [keyCounter, setKeyCounter] = useState(0)
 
   return {
-    isKeyChangeShown,
-    SetIsKeyChangeShown,
+    keyCounter,
+    setKeyCounter,
   }
 }

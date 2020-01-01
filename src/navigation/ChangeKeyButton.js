@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import { dimensions } from '../common/dimensions'
 import CubicButton from '../common/CubicButton'
 
-export default function ChangeKeyButton({ direction }) {
+export default function ChangeKeyButton({ direction, handleKeyChangeClick }) {
   const buttonBottom =
     direction === 'up'
       ? 2 * dimensions.changeKeyButtonBottom +
@@ -13,6 +13,7 @@ export default function ChangeKeyButton({ direction }) {
       : dimensions.changeKeyButtonBottom + 'px'
   return (
     <CubicButton
+      onClick={handleKeyChangeClick}
       style={{
         bottom: buttonBottom,
         right: dimensions.changeKeyButtonRight + 'px',

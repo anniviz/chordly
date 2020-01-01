@@ -1,0 +1,1 @@
+export const scales = [ C C# D Es E F F# G G# A B H ]
