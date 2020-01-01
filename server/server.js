@@ -35,24 +35,22 @@ app.post('/songs', (req, res) => {
     .catch(err => res.json(err))
 })
 
-app.get('/songs', (req, res) => {
-  Song.find()
-    .then(songs => {
-      const sortedSongs = songs.sort((a, b) =>
-        a.optimizedMetaData && b.optimizedMetaData
-          ? a.optimizedMetaData.title > b.optimizedMetaData.title
-            ? 1
-            : -1
-          : -1
-      )
-      res.json(sortedSongs)
-    })
-    .catch(err => res.json(err))
-})
-
 app.get('/setlists', (req, res) => {
   Setlist.find()
     .populate('songs')
     .then(setlists => res.json(setlists))
+    .catch(err => res.json(err))
+})
+
+app.post('/setlist', (req, res) => {
+  Setlist.create(req.body)
+    .then(setlist => res.json(setlist))
+    .catch(err => res.json(err))
+})
+
+app.patch('/setlists/:id', (req, res) => {
+  Setlist.findByIdAndUpdate(req.params.id, req.body, { new: true })
+    .populate('songs')
+    .then(spot => res.json(spot))
     .catch(err => res.json(err))
 })

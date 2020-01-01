@@ -2,15 +2,15 @@ import React from 'react'
 import { useSpring, animated } from 'react-spring'
 import PropTypes from 'prop-types'
 import styled from 'styled-components/macro'
-import { Link } from 'react-router-dom'
 
 import SongListItem from './SongListItem'
 import SetlistItem from './SetlistItem'
+import AddSetlist from '../forms/AddSetlist'
+import ListMenu from './ListMenu'
 import { dimensions } from '../common/dimensions'
 
-import clipboardList from '../icons/clipboard-list.svg'
-import queueMusic from '../icons/queue-music.svg'
-import addBox from '../icons/add-box.svg'
+import useSetlists from '../hooks/useSetlists'
+import { patchSetlist } from '../services.js'
 
 export default function SideList({
   songs,
@@ -20,22 +20,30 @@ export default function SideList({
   activeSetlist,
   setActiveSetlist,
   isSideListShown,
-  isAllSongsShown,
-  setIsAllSongsShown,
-  isSetListsShown,
-  setIsSetListsShown,
-  isASetListShown,
-  setIsASetListShown,
   setSwipeIndex,
+  sideListType,
+  setSideListType,
+  setSetlists,
 }) {
+  const {
+    setlistsIsLoading,
+    setSetlistsIsLoading,
+    setlistSongs,
+    setSetlistSongs,
+  } = useSetlists()
+
   let sideListContent
-  if (isAllSongsShown) {
+  if (sideListType === 'allSongs') {
     handleIsSongsShown(songs)
-  } else if (isSetListsShown) {
+  } else if (sideListType === 'setlists') {
     handleIsSetListsShown(setlists)
-  } else if (isASetListShown) {
+  } else if (sideListType === 'singleSetlist') {
     const index = setlists.findIndex(setlist => setlist._id === activeSetlist)
     handleIsSongsShown(setlists[index].songs)
+  } else if (sideListType === 'addSetlist') {
+    handleIsAddSetlistShown()
+  } else if (sideListType === 'addSongToSetlist') {
+    handleIsSongsShown(songs)
   }
 
   const AnimatedSideListWrapperBorder = animated(SideListWrapperBorder)
@@ -52,47 +60,31 @@ export default function SideList({
       <SideListWrapper isSideListShown={isSideListShown}>
         {sideListContent}
       </SideListWrapper>
-      <ListMenu>
-        <MenuItem
-          style={{ borderRadius: '0 0 0 12px' }}
-          onClick={handleSetlistClick}
-        >
-          <img className="setlist-icon" alt="setlist" src={clipboardList} />
-        </MenuItem>
-        <MenuItem onClick={handleAllSongsClick}>
-          <img className="all-songs-icon" alt="all songs" src={queueMusic} />
-        </MenuItem>
-        <Link to="/AddSong">
-          <MenuItem style={{ borderRadius: '0 0 12px 0' }}>
-            <img className="add-icon" alt="add" src={addBox} />
-          </MenuItem>
-        </Link>
-      </ListMenu>
+      <ListMenu
+        sideListType={sideListType}
+        setSideListType={setSideListType}
+        setSwipeIndex={setSwipeIndex}
+        activeSetlist={activeSetlist}
+        setSetlists={setSetlists}
+        setlists={setlists}
+        setlistSongs={setlistSongs}
+        handleSaveSongsToSetlist={handleSaveSongsToSetlist}
+      />
     </AnimatedSideListWrapperBorder>
   )
-
-  function handleSetlistClick() {
-    setIsSetListsShown(true)
-    setIsAllSongsShown(false)
-    setIsASetListShown(false)
-  }
-
-  function handleAllSongsClick() {
-    setIsAllSongsShown(true)
-    setIsSetListsShown(false)
-    setIsASetListShown(false)
-    setSwipeIndex(0)
-  }
 
   function handleIsSongsShown(songs) {
     if (songs) {
       sideListContent = songs.map((song, index) => (
         <SongListItem
           key={song._id}
+          sideListType={sideListType}
           song={song}
           index={index}
           swipeIndex={swipeIndex}
           handleChangeIndex={index => handleChangeIndex(index)}
+          setlistSongs={setlistSongs}
+          setSetlistSongs={setSetlistSongs}
         />
       ))
     } else {
@@ -102,22 +94,48 @@ export default function SideList({
 
   function handleIsSetListsShown(setlists) {
     if (setlists) {
-      sideListContent = setlists.map(setlist => (
-        <SetlistItem
-          key={setlist._id}
-          setlist={setlist}
-          isASetListShown={isASetListShown}
-          isSetListsShown={isSetListsShown}
-          setActiveSetlist={setActiveSetlist}
-          setIsSetListsShown={setIsSetListsShown}
-          setIsASetListShown={setIsASetListShown}
-          activeSetlist={activeSetlist}
-          setSwipeIndex={setSwipeIndex}
-        />
-      ))
+      sideListContent = setlistsIsLoading
+        ? 'loading...'
+        : setlists.map(setlist => (
+            <SetlistItem
+              key={setlist._id}
+              setlist={setlist}
+              sideListType={sideListType}
+              setSideListType={setSideListType}
+              setActiveSetlist={setActiveSetlist}
+              activeSetlist={activeSetlist}
+              setSwipeIndex={setSwipeIndex}
+              setSetlistSongs={setSetlistSongs}
+            />
+          ))
     } else {
       sideListContent = 'no setlists'
     }
+  }
+
+  function handleIsAddSetlistShown() {
+    sideListContent = (
+      <AddSetlist
+        setSideListType={setSideListType}
+        setSetlists={setSetlists}
+        setSetlistsIsLoading={setSetlistsIsLoading}
+      />
+    )
+  }
+
+  async function handleSaveSongsToSetlist() {
+    const index = setlists.findIndex(setlist => setlist._id === activeSetlist)
+    await patchSetlist({ _id: activeSetlist, songs: setlistSongs }).then(
+      changedSetlist => {
+        setSetlists([
+          ...setlists.slice(0, index),
+          changedSetlist,
+          ...setlists.slice(index + 1),
+        ])
+      }
+    )
+
+    setSideListType('singleSetlist')
   }
 }
 
@@ -125,7 +143,7 @@ const SideListWrapper = styled.ul`
   justify-self: stretch;
   align-self: center;
   list-style: none;
-  padding: ${dimensions.titlePadding + 'px'};
+  padding: ${dimensions.sideListPadding + 'px'};
   height: 100%;
   border-radius: 12px 12px 0 0;
   background: #3f4a6d;
@@ -157,23 +175,6 @@ const SideListWrapperBorder = styled.div`
   right: ${dimensions.standardPadding + 'px'};
 `
 
-const ListMenu = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  justify-items: stretch;
-  background: #3f4a6d;
-  border-radius: 0 0 12px 12px;
-`
-
-const MenuItem = styled.div`
-  height: 100%;
-  display: grid;
-  align-content: center;
-  justify-content: center;
-  border: 1px solid #707070;
-  background: #3f4a6d;
-`
-
 SideList.propTypes = {
   songs: PropTypes.array,
   swipeIndex: PropTypes.number.isRequired,
@@ -182,11 +183,8 @@ SideList.propTypes = {
   activeSetlist: PropTypes.string,
   setActiveSetlist: PropTypes.func.isRequired,
   isSideListShown: PropTypes.bool.isRequired,
-  isAllSongsShown: PropTypes.bool.isRequired,
-  setIsAllSongsShown: PropTypes.func.isRequired,
-  isSetListsShown: PropTypes.bool.isRequired,
-  setIsSetListsShown: PropTypes.func.isRequired,
-  isASetListShown: PropTypes.bool.isRequired,
-  setIsASetListShown: PropTypes.func.isRequired,
+  sideListType: PropTypes.string.isRequired,
+  setSideListType: PropTypes.func.isRequired,
   setSwipeIndex: PropTypes.func.isRequired,
+  setSetlists: PropTypes.func.isRequired,
 }

@@ -5,7 +5,7 @@ const setlistSchema = {
   setlistName: String,
   songs: [
     {
-      type: Schema.Types.ObjectId,
+      type: Schema.Types.String,
       ref: 'Song',
     },
   ],

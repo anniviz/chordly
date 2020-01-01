@@ -17,17 +17,18 @@ export default function App() {
   const {
     isSideListShown,
     setIsSideListShown,
-    isAllSongsShown,
-    setIsAllSongsShown,
-    isSetListsShown,
-    setIsSetListsShown,
-    isASetListShown,
-    setIsASetListShown,
+    sideListType,
+    setSideListType,
   } = useSideLists()
-  const { setlists, activeSetlist, setActiveSetlist } = useSetlists()
+  const {
+    setlists,
+    setSetlists,
+    activeSetlist,
+    setActiveSetlist,
+  } = useSetlists()
 
   let swipeableViewContent
-  if (isASetListShown) {
+  if (sideListType === 'singleSetlist') {
     const activeSetlistID = setlists.findIndex(
       setlist => setlist._id === activeSetlist
     )
@@ -50,13 +51,10 @@ export default function App() {
               activeSetlist={activeSetlist}
               setActiveSetlist={setActiveSetlist}
               isSideListShown={isSideListShown}
-              isAllSongsShown={isAllSongsShown}
-              setIsAllSongsShown={setIsAllSongsShown}
-              isSetListsShown={isSetListsShown}
-              setIsSetListsShown={setIsSetListsShown}
-              isASetListShown={isASetListShown}
-              setIsASetListShown={setIsASetListShown}
+              sideListType={sideListType}
+              setSideListType={setSideListType}
               setSwipeIndex={setSwipeIndex}
+              setSetlists={setSetlists}
             ></SideList>
             <ListButton
               toggleSideList={toggleSideList}

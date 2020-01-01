@@ -7,10 +7,7 @@ import 'react-confirm-alert/src/react-confirm-alert.css'
 
 import { postSong } from '../services'
 
-import SmallButton from '../common/SmallButton'
-
-import saveIcon from '../icons/saveIcon.png'
-import cancelIcon from '../icons/cancelIcon.png'
+import SaveCancelButtons from './SaveCancelButtons'
 
 export default function AddSong() {
   const textareaRef = useRef(null)
@@ -53,14 +50,7 @@ Comin’ for to [A7]carry me [D]home.
             placeholder={placeholderText}
           />
         </TextAreaWrapper>
-        <ButtonWrapper>
-          <SmallButton type="submit">
-            <img src={saveIcon} alt="" />
-          </SmallButton>
-          <SmallButton type="button" onClick={handleCancelClick}>
-            <img src={cancelIcon} alt="" />
-          </SmallButton>
-        </ButtonWrapper>
+        <SaveCancelButtons handleCancelClick={handleCancelClick} />
       </FormWrapper>
     </form>
   )
@@ -93,7 +83,7 @@ Comin’ for to [A7]carry me [D]home.
             },
             {
               label: 'go back',
-              onClick: handleGoBack,
+              onClick: () => (window.location.href = '/'),
             },
           ],
         })
@@ -131,17 +121,13 @@ Comin’ for to [A7]carry me [D]home.
       buttons: [
         {
           label: 'yes',
-          onClick: handleGoBack,
+          onClick: () => history.goBack(),
         },
         {
           label: 'no',
         },
       ],
     })
-  }
-
-  function handleGoBack() {
-    history.goBack()
   }
 }
 
@@ -192,11 +178,4 @@ const SongTextArea = styled.textarea`
     font-size: 1.1em;
     color: #929ec5;
   }
-`
-
-const ButtonWrapper = styled.div`
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
 `

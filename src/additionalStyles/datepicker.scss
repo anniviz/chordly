@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css?family=Nunito&display=swap');
+
+.react-datepicker {
+  color: #3f4a6d;
+}
+
+.react-datepicker__input-container > input {
+  background: #939dc5;
+  font-size: 1.1rem;
+  color: #fefefe;
+  border: none;
+  width: 162px;
+  height: 2em;
+  border-radius: 4px;
+  padding: 4px;
+  margin: 12px 0;
+}
+
+.react-datepicker__month-container {
+  background-color: #939dc5;
+}
+
+.react-datepicker__header {
+  background: linear-gradient(30deg, #feb79c, #fd5da1);
+}
+
+.react-datepicker__day--selected {
+  background: #feb79c;
+  color: #3f4a6d;
+}
+
+.react-datepicker__day:hover {
+  background: #fd5da1;
+  color: #3f4a6d;
+}
