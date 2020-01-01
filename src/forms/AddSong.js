@@ -83,7 +83,7 @@ Comin’ for to [A7]carry me [D]home.
             },
             {
               label: 'go back',
-              onClick: () => history.goBack(),
+              onClick: () => (window.location.href = '/'),
             },
           ],
         })
