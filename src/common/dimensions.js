@@ -5,8 +5,7 @@ export const dimensions = {
   smallButtonDiameter: 48,
   sideListWidth: 192,
   sideListPadding: 10,
-  listButtonHeight: 48,
-  listButtonWidth: 48,
+  cubicButtonExtent: 48,
   listButtonTop: 10,
   listButtonRight: 20,
 }

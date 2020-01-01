@@ -75,8 +75,6 @@ export default function App() {
     setIsSideListShown(!isSideListShown)
   }
 
-  function toggleKeyChange() {}
-
   function handleChangeIndex(index) {
     setSwipeIndex(index)
   }
