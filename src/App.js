@@ -11,6 +11,7 @@ import ListButton from './navigation/ListButton'
 import useSongs from './hooks/useSongs'
 import useSideLists from './hooks/useSideLists'
 import useSetlists from './hooks/useSetlists'
+import KeyButton from './navigation/KeyButton'
 
 export default function App() {
   const { songs, isLoading, swipeIndex, setSwipeIndex } = useSongs()
@@ -59,7 +60,8 @@ export default function App() {
             <ListButton
               toggleSideList={toggleSideList}
               isSideListShown={isSideListShown}
-            ></ListButton>
+            />
+            <KeyButton toggleKeyChange={toggleKeyChange} />
           </Layout>
         </Route>
       </Switch>
@@ -74,6 +76,8 @@ export default function App() {
   function toggleSideList() {
     setIsSideListShown(!isSideListShown)
   }
+
+  function toggleKeyChange() {}
 
   function handleChangeIndex(index) {
     setSwipeIndex(index)
