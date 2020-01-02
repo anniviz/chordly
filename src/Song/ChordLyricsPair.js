@@ -27,8 +27,21 @@ export default function ChordLyricsPair({
     if (chordLength > 0) {
       if (chord.includes('/')) {
         const chordSplit = chord.indexOf('/')
+        const chordWithoutBase = chord.substring(0, chordSplit)
+        const bass = chord.substring(chordSplit + 1)
+        const transposedChordWithoutBase = transposePlainChord(
+          chordWithoutBase,
+          keyCounter,
+          chankgeKeyDirection
+        )
+        const transposedBass = transposePlainChord(
+          bass,
+          keyCounter,
+          chankgeKeyDirection
+        )
+        transposedChord = transposedChordWithoutBase + '/' + transposedBass
       } else {
-        transposedChord = transposePlainChordB(
+        transposedChord = transposePlainChord(
           chord,
           keyCounter,
           chankgeKeyDirection
@@ -38,7 +51,7 @@ export default function ChordLyricsPair({
     return transposedChord
   }
 
-  function transposePlainChordB(chord, keyCounter, chankgeKeyDirection) {
+  function transposePlainChord(chord, keyCounter, chankgeKeyDirection) {
     let transposedChord
     let chordIndex
     let transposedChordStart
