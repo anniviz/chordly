@@ -40,6 +40,7 @@ export default function Song({
                     keyCounter={keyCounter}
                     changeKeyDirection={changeKeyDirection}
                     activeSetlist={activeSetlist}
+                    song={song}
                   />
                 ))}
             </Line>

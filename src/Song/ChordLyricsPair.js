@@ -10,6 +10,7 @@ export default function ChordLyricsPair({
   keyCounter,
   changeKeyDirection,
   activeSetlist,
+  song,
 }) {
   let chord
   keyCounter === 0
@@ -37,7 +38,6 @@ export default function ChordLyricsPair({
         transposedChord = transposePlainChord(chord)
       }
     }
-    console.log('>>>', activeSetlist)
     return transposedChord
   }
 
@@ -72,6 +72,7 @@ export default function ChordLyricsPair({
     } else {
       transposedChord = transposedChordStart + chord.substring(1)
     }
+
     return transposedChord
   }
 }
@@ -99,4 +100,5 @@ ChordLyricsPair.propTypes = {
   chordsInLine: PropTypes.bool.isRequired,
   keyCounter: PropTypes.number,
   changeKeyDirection: PropTypes.string,
+  song: PropTypes.object,
 }

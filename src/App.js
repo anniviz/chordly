@@ -127,6 +127,29 @@ export default function App() {
   }
 
   function handleKeyChangeClick(direction) {
+    if (activeSetlist) {
+      let keyChangeObject = localStorage.getItem('keyChangeCounter')
+        ? JSON.parse(localStorage.getItem('keyChangeCounter'))
+        : {}
+      const activeSetlistIndex = setlists.findIndex(
+        setlist => setlist._id === activeSetlist
+      )
+      const activeSong = setlists[activeSetlistIndex].songs[swipeIndex]._id
+      const objectKey = `${activeSetlist}-${activeSong}-transpose-index`
+      keyChangeObject.objectKey
+        ? keyChangeCounting(direction, keyChangeObject.objectKey)
+        : keyChangeCounting(direction, keyCounter)
+      keyChangeObject = {
+        ...keyChangeObject,
+        [objectKey]: keyCounter,
+      }
+      localStorage.setItem('keyChangeCounter', JSON.stringify(keyChangeObject))
+    } else {
+      keyChangeCounting(direction, keyCounter)
+    }
+  }
+
+  function keyChangeCounting(direction, counter) {
     if (direction === 'up') {
       setKeyCounter(keyCounter + 1)
       setchangeKeyDirection('up')
