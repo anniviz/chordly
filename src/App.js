@@ -29,7 +29,12 @@ export default function App() {
     setActiveSetlist,
   } = useSetlists()
 
-  const { keyCounter, setKeyCounter } = useKeyChange()
+  const {
+    keyCounter,
+    setKeyCounter,
+    chankgeKeyDirection,
+    setChankgeKeyDirection,
+  } = useKeyChange()
 
   let swipeableViewContent
   if (sideListType === 'singleSetlist') {
@@ -68,11 +73,13 @@ export default function App() {
               direction="up"
               handleKeyChangeClick={() => handleKeyChangeClick('up')}
               keyCounter={keyCounter}
+              setChankgeKeyDirection={setChankgeKeyDirection}
             ></ChangeKeyButton>
             <ChangeKeyButton
               direction="down"
               handleKeyChangeClick={() => handleKeyChangeClick('down')}
               keyCounter={keyCounter}
+              setChankgeKeyDirection={setChankgeKeyDirection}
             ></ChangeKeyButton>
           </Layout>
         </Route>
@@ -102,7 +109,6 @@ export default function App() {
         onChangeIndex={handleChangeIndex}
         enableMouseEvents
         animateTransitions={false}
-        keyCounter={keyCounter}
       >
         {songs
           ? songs.map(song => (
@@ -111,6 +117,7 @@ export default function App() {
                 song={song}
                 isSideListShown={isSideListShown}
                 keyCounter={keyCounter}
+                chankgeKeyDirection={chankgeKeyDirection}
               />
             ))
           : 'no song'}
@@ -119,8 +126,16 @@ export default function App() {
   }
 
   function handleKeyChangeClick(direction) {
-    direction === 'up'
-      ? setKeyCounter(keyCounter + 1)
-      : setKeyCounter(keyCounter - 1)
+    if (direction === 'up') {
+      setKeyCounter(keyCounter + 1)
+      setChankgeKeyDirection('up')
+    } else {
+      setKeyCounter(keyCounter - 1)
+      setChankgeKeyDirection('down')
+    }
+    // direction === 'up'
+    //   ? setKeyCounter(keyCounter + 1)
+    //   : setKeyCounter(keyCounter - 1)
+    console.log(keyCounter)
   }
 }

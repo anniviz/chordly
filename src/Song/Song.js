@@ -6,7 +6,12 @@ import { useSpring, animated } from 'react-spring'
 import ChordLyricsPair from './ChordLyricsPair'
 import { dimensions } from '../common/dimensions'
 
-export default function Song({ song, isSideListShown, keyCounter }) {
+export default function Song({
+  song,
+  isSideListShown,
+  keyCounter,
+  chankgeKeyDirection,
+}) {
   const AnimatedSongWrapper = animated(SongWrapper)
   const songAnimation = useSpring({
     paddingRight: isSideListShown
@@ -18,16 +23,25 @@ export default function Song({ song, isSideListShown, keyCounter }) {
       isSideListShown={isSideListShown}
       style={songAnimation}
       keyCounter={keyCounter}
+      chankgeKeyDirection={chankgeKeyDirection}
     >
       <SongTitle>{song.optimizedMetaData.title}</SongTitle>
       {song.optimizedMetaData.artist && (
         <SongArtist>{song.optimizedMetaData.artist}</SongArtist>
       )}
-      <LyricsWrapper keyCounter={keyCounter}>
+      <LyricsWrapper
+        keyCounter={keyCounter}
+        chankgeKeyDirection={chankgeKeyDirection}
+      >
         {song.lines.map((line, index) => {
           const chordsInLine = areChordsInLine(line.items)
           return (
-            <Line key={index} keyCounter={keyCounter}>
+            <Line
+              key={index}
+              keyCounter={keyCounter}
+              chankgeKeyDirection={chankgeKeyDirection}
+            >
+              {' '}
               {isLineMetadata(line.items) ||
                 line.items.map((item, index) => (
                   <ChordLyricsPair
@@ -35,6 +49,7 @@ export default function Song({ song, isSideListShown, keyCounter }) {
                     item={item}
                     chordsInLine={chordsInLine}
                     keyCounter={keyCounter}
+                    chankgeKeyDirection={chankgeKeyDirection}
                   />
                 ))}
             </Line>
@@ -86,4 +101,6 @@ const Line = styled.div`
 Song.propTypes = {
   song: PropTypes.object,
   isSideListShown: PropTypes.bool.isRequired,
+  keyCounter: PropTypes.number,
+  chankgeKeyDirection: PropTypes.string,
 }
