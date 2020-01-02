@@ -12,7 +12,7 @@ import useSongs from './hooks/useSongs'
 import useSideLists from './hooks/useSideLists'
 import useSetlists from './hooks/useSetlists'
 import useKeyChange from './hooks/useKeyChange'
-import ChangeKeyButton from './navigation/ChangeKeyButton'
+import ChangeKeyButton from './ChangeKey/ChangeKeyButton'
 
 export default function App() {
   const { songs, isLoading, swipeIndex, setSwipeIndex } = useSongs()
@@ -67,10 +67,12 @@ export default function App() {
             <ChangeKeyButton
               direction="up"
               handleKeyChangeClick={() => handleKeyChangeClick('up')}
+              keyCounter={keyCounter}
             ></ChangeKeyButton>
             <ChangeKeyButton
               direction="down"
               handleKeyChangeClick={() => handleKeyChangeClick('down')}
+              keyCounter={keyCounter}
             ></ChangeKeyButton>
           </Layout>
         </Route>
@@ -100,6 +102,7 @@ export default function App() {
         onChangeIndex={handleChangeIndex}
         enableMouseEvents
         animateTransitions={false}
+        keyCounter={keyCounter}
       >
         {songs
           ? songs.map(song => (
@@ -107,6 +110,7 @@ export default function App() {
                 key={song._id}
                 song={song}
                 isSideListShown={isSideListShown}
+                keyCounter={keyCounter}
               />
             ))
           : 'no song'}
