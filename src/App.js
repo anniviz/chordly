@@ -137,9 +137,10 @@ export default function App() {
         setlist => setlist._id === activeSetlist
       )
       const activeSong = setlists[activeSetlistIndex].songs[swipeIndex]._id
-      const objectKey = `${activeSetlist}-${activeSong}-transpose-index`
-      keyChangeObject.objectKey
-        ? keyChangeCounting(direction, keyChangeObject.objectKey)
+      const objectKey = `${activeSetlist}-${activeSong}`
+      console.log(keyChangeObject[objectKey])
+      keyChangeObject[objectKey]
+        ? keyChangeCounting(direction, keyChangeObject[objectKey])
         : keyChangeCounting(direction, keyCounter)
       keyChangeObject = {
         ...keyChangeObject,
@@ -153,10 +154,10 @@ export default function App() {
 
   function keyChangeCounting(direction, counter) {
     if (direction === 'up') {
-      setKeyCounter(keyCounter + 1)
+      setKeyCounter(counter + 1)
       setchangeKeyDirection('up')
     } else {
-      setKeyCounter(keyCounter - 1)
+      setKeyCounter(counter - 1)
       setchangeKeyDirection('down')
     }
   }
