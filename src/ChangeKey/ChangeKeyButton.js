@@ -9,13 +9,6 @@ export default function ChangeKeyButton({
   handleKeyChangeClick,
   keyCounter,
 }) {
-  // const buttonBottom =
-  //   direction === 'up'
-  //     ? 2 * dimensions.changeKeyButtonBottom +
-  //       dimensions.cubicButtonExtent +
-  //       'px'
-  //     : dimensions.changeKeyButtonBottom + 'px'
-
   let buttonColorUp, buttoncolorDown
   if (keyCounter > 0) {
     buttonColorUp = '#fb5ba0'

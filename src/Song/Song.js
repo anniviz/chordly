@@ -6,7 +6,7 @@ import { useSpring, animated } from 'react-spring'
 import ChordLyricsPair from './ChordLyricsPair'
 import { dimensions } from '../common/dimensions'
 
-export default function Song({ song, isSideListShown }) {
+export default function Song({ song, isSideListShown, keyCounter }) {
   const AnimatedSongWrapper = animated(SongWrapper)
   const songAnimation = useSpring({
     paddingRight: isSideListShown
@@ -17,22 +17,24 @@ export default function Song({ song, isSideListShown }) {
     <AnimatedSongWrapper
       isSideListShown={isSideListShown}
       style={songAnimation}
+      keyCounter={keyCounter}
     >
       <SongTitle>{song.optimizedMetaData.title}</SongTitle>
       {song.optimizedMetaData.artist && (
         <SongArtist>{song.optimizedMetaData.artist}</SongArtist>
       )}
-      <LyricsWrapper>
+      <LyricsWrapper keyCounter={keyCounter}>
         {song.lines.map((line, index) => {
           const chordsInLine = areChordsInLine(line.items)
           return (
-            <Line key={index}>
+            <Line key={index} keyCounter={keyCounter}>
               {isLineMetadata(line.items) ||
                 line.items.map((item, index) => (
                   <ChordLyricsPair
                     key={index}
                     item={item}
                     chordsInLine={chordsInLine}
+                    keyCounter={keyCounter}
                   />
                 ))}
             </Line>

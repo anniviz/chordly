@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components/macro'
 import PropTypes from 'prop-types'
 
-export default function ChordLyricsPair({ item, chordsInLine }) {
+export default function ChordLyricsPair({ item, chordsInLine, keyCounter }) {
   return (
     <ChordLyricsWrapper item={item} chordsInLine={chordsInLine}>
       {chordsInLine && <Chord>{item.chords}</Chord>}
