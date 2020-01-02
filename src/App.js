@@ -82,12 +82,14 @@ export default function App() {
               handleKeyChangeClick={() => handleKeyChangeClick('up')}
               keyCounter={keyCounter}
               setChangeKeyDirection={setChangeKeyDirection}
+              isSideListShown={isSideListShown}
             ></ChangeKeyButton>
             <ChangeKeyButton
               direction="down"
               handleKeyChangeClick={() => handleKeyChangeClick('down')}
               keyCounter={keyCounter}
               setChangeKeyDirection={setChangeKeyDirection}
+              isSideListShown={isSideListShown}
             ></ChangeKeyButton>
           </Layout>
         </Route>

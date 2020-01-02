@@ -160,12 +160,12 @@ const SideListWrapperBorder = styled.div`
   padding: 2px;
   height: calc(
     100vh -
-      ${5 * dimensions.listButtonTop + 3 * dimensions.cubicButtonExtent + 'px'}
+      ${4 * dimensions.listButtonTop + 2 * dimensions.cubicButtonExtent + 'px'}
   );
   background: linear-gradient(60deg, #feb79c, #fd5da1);
   position: fixed;
   top: ${2 * dimensions.listButtonTop + dimensions.cubicButtonExtent + 'px'};
-  right: ${dimensions.standardPadding + 'px'};
+  right: ${dimensions.changeKeyButtonRight + 'px'};
 `
 
 SideList.propTypes = {

@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { useSpring, animated } from 'react-spring'
 
 import { dimensions } from '../common/dimensions'
 import CubicButton from '../common/CubicButton'
@@ -8,40 +9,51 @@ export default function ChangeKeyButton({
   direction,
   handleKeyChangeClick,
   keyCounter,
+  isSideListShown,
 }) {
-  let buttonColorUp, buttoncolorDown
+  let buttonColorUp, buttonColorDown
   if (keyCounter > 0) {
     buttonColorUp = '#fb5ba0'
-    buttoncolorDown = '#fefefe'
+    buttonColorDown = '#fefefe'
   } else if (keyCounter < 0) {
     buttonColorUp = '#fefefe'
-    buttoncolorDown = '#fb5ba0'
+    buttonColorDown = '#fb5ba0'
   } else {
     buttonColorUp = '#fefefe'
-    buttoncolorDown = '#fefefe'
+    buttonColorDown = '#fefefe'
   }
 
-  let buttonBottom, buttonColor
-  if (direction === 'up') {
-    buttonBottom =
-      2 * dimensions.changeKeyButtonBottom + dimensions.cubicButtonExtent + 'px'
-    buttonColor = buttonColorUp
-  } else {
-    buttonBottom = dimensions.changeKeyButtonBottom + 'px'
-    buttonColor = buttoncolorDown
-  }
+  const AnimatedCubicButton = animated(CubicButton)
+  const buttonPositionUp = useSpring({
+    bottom: isSideListShown
+      ? dimensions.changeKeyButtonBottom + 'px'
+      : 2 * dimensions.changeKeyButtonBottom +
+        dimensions.cubicButtonExtent +
+        'px',
+    right: dimensions.changeKeyButtonRight + 'px',
+    color: buttonColorUp,
+  })
+
+  const buttonPositionDown = useSpring({
+    bottom: dimensions.changeKeyButtonBottom + 'px',
+    right: isSideListShown
+      ? 2 * dimensions.changeKeyButtonRight +
+        dimensions.cubicButtonExtent +
+        'px'
+      : dimensions.changeKeyButtonRight + 'px',
+    color: buttonColorDown,
+  })
+
+  const buttonPositionAnimation =
+    direction === 'up' ? buttonPositionUp : buttonPositionDown
 
   return (
-    <CubicButton
+    <AnimatedCubicButton
       onClick={handleKeyChangeClick}
-      style={{
-        bottom: buttonBottom,
-        right: dimensions.changeKeyButtonRight + 'px',
-        color: buttonColor,
-      }}
+      style={buttonPositionAnimation}
     >
       {direction === 'up' ? '♯' : '♭'}
-    </CubicButton>
+    </AnimatedCubicButton>
   )
 }
 
