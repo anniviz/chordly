@@ -11,7 +11,6 @@ export default function Song({
   isSideListShown,
   keyCounter,
   changeKeyDirection,
-  activeSetlist,
 }) {
   const AnimatedSongWrapper = animated(SongWrapper)
   const songAnimation = useSpring({
@@ -39,8 +38,6 @@ export default function Song({
                     chordsInLine={chordsInLine}
                     keyCounter={keyCounter}
                     changeKeyDirection={changeKeyDirection}
-                    activeSetlist={activeSetlist}
-                    song={song}
                   />
                 ))}
             </Line>

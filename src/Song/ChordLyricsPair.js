@@ -9,8 +9,6 @@ export default function ChordLyricsPair({
   chordsInLine,
   keyCounter,
   changeKeyDirection,
-  activeSetlist,
-  song,
 }) {
   let chord
   keyCounter === 0
@@ -100,5 +98,4 @@ ChordLyricsPair.propTypes = {
   chordsInLine: PropTypes.bool.isRequired,
   keyCounter: PropTypes.number,
   changeKeyDirection: PropTypes.string,
-  song: PropTypes.object,
 }
