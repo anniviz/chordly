@@ -63,6 +63,38 @@ export default function ChordLyricsPair({
           chordIndex
         )
       }
+    } else if (chordLength > 0) {
+      if (chord[1] === '#') {
+        const chordIndex = scales.sharp.findIndex(
+          arrayChord => chord.substring(0, 2) === arrayChord
+        )
+        const transposedChordStart = transposePlainChord(
+          keyCounter,
+          chankgeKeyDirection,
+          chordIndex
+        )
+        transposedChord = transposedChordStart + chord.substring(2)
+      } else if (chord[1] === 'b') {
+        const chordIndex = scales.flat.findIndex(
+          arrayChord => chord.substring(0, 2) === arrayChord
+        )
+        const transposedChordStart = transposePlainChord(
+          keyCounter,
+          chankgeKeyDirection,
+          chordIndex
+        )
+        transposedChord = transposedChordStart + chord.substring(2)
+      } else {
+        const chordIndex = scales.flat.findIndex(
+          arrayChord => chord[0] === arrayChord
+        )
+        const transposedChordStart = transposePlainChord(
+          keyCounter,
+          chankgeKeyDirection,
+          chordIndex
+        )
+        transposedChord = transposedChordStart + chord.substring(1)
+      }
     }
     return transposedChord
   }
