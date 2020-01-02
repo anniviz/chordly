@@ -53,18 +53,14 @@ export default function SideList({
   })
 
   return (
-    <AnimatedSideListWrapperBorder
-      isSideListShown={isSideListShown}
-      style={flyIn}
-    >
-      <SideListWrapper isSideListShown={isSideListShown}>
-        {sideListContent}
-      </SideListWrapper>
+    <AnimatedSideListWrapperBorder style={flyIn}>
+      <SideListWrapper>{sideListContent}</SideListWrapper>
       <ListMenu
         sideListType={sideListType}
         setSideListType={setSideListType}
         setSwipeIndex={setSwipeIndex}
         activeSetlist={activeSetlist}
+        setActiveSetlist={setActiveSetlist}
         setSetlists={setSetlists}
         setlists={setlists}
         setlistSongs={setlistSongs}

@@ -11,6 +11,7 @@ export default function Song({
   isSideListShown,
   keyCounter,
   changeKeyDirection,
+  activeSetlist,
 }) {
   const AnimatedSongWrapper = animated(SongWrapper)
   const songAnimation = useSpring({
@@ -19,28 +20,16 @@ export default function Song({
       : dimensions.standardPadding + 'px',
   })
   return (
-    <AnimatedSongWrapper
-      isSideListShown={isSideListShown}
-      style={songAnimation}
-      keyCounter={keyCounter}
-      changeKeyDirection={changeKeyDirection}
-    >
+    <AnimatedSongWrapper style={songAnimation}>
       <SongTitle>{song.optimizedMetaData.title}</SongTitle>
       {song.optimizedMetaData.artist && (
         <SongArtist>{song.optimizedMetaData.artist}</SongArtist>
       )}
-      <LyricsWrapper
-        keyCounter={keyCounter}
-        changeKeyDirection={changeKeyDirection}
-      >
+      <LyricsWrapper>
         {song.lines.map((line, index) => {
           const chordsInLine = areChordsInLine(line.items)
           return (
-            <Line
-              key={index}
-              keyCounter={keyCounter}
-              changeKeyDirection={changeKeyDirection}
-            >
+            <Line key={index}>
               {' '}
               {isLineMetadata(line.items) ||
                 line.items.map((item, index) => (
@@ -50,6 +39,7 @@ export default function Song({
                     chordsInLine={chordsInLine}
                     keyCounter={keyCounter}
                     changeKeyDirection={changeKeyDirection}
+                    activeSetlist={activeSetlist}
                   />
                 ))}
             </Line>

@@ -9,49 +9,39 @@ export default function ChordLyricsPair({
   chordsInLine,
   keyCounter,
   changeKeyDirection,
+  activeSetlist,
 }) {
   let chord
   keyCounter === 0
     ? (chord = item.chords)
-    : (chord = transposeChord(item.chords, keyCounter, changeKeyDirection))
+    : (chord = transposeChord(item.chords))
   return (
-    <ChordLyricsWrapper item={item} chordsInLine={chordsInLine}>
+    <ChordLyricsWrapper>
       {chordsInLine && <Chord>{chord}</Chord>}
       <Lyrics>{item.lyrics}</Lyrics>
     </ChordLyricsWrapper>
   )
 
-  function transposeChord(chord, keyCounter, changeKeyDirection) {
+  function transposeChord(chord) {
     const chordLength = chord.length
     let transposedChord
     if (chordLength > 0) {
       if (chord.includes('/')) {
         const chordSplit = chord.indexOf('/')
-        const chordWithoutBase = chord.substring(0, chordSplit)
+        const chordWithoutBass = chord.substring(0, chordSplit)
         const bass = chord.substring(chordSplit + 1)
-        const transposedChordWithoutBase = transposePlainChord(
-          chordWithoutBase,
-          keyCounter,
-          changeKeyDirection
-        )
-        const transposedBass = transposePlainChord(
-          bass,
-          keyCounter,
-          changeKeyDirection
-        )
-        transposedChord = transposedChordWithoutBase + '/' + transposedBass
+        const transposedChordWithoutBass = transposePlainChord(chordWithoutBass)
+        const transposedBass = transposePlainChord(bass)
+        transposedChord = transposedChordWithoutBass + '/' + transposedBass
       } else {
-        transposedChord = transposePlainChord(
-          chord,
-          keyCounter,
-          changeKeyDirection
-        )
+        transposedChord = transposePlainChord(chord)
       }
     }
+    console.log('>>>', activeSetlist)
     return transposedChord
   }
 
-  function transposePlainChord(chord, keyCounter, changeKeyDirection) {
+  function transposePlainChord(chord) {
     let transposedChord
     let chordIndex
     let transposedChordStart

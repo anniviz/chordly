@@ -38,10 +38,10 @@ export default function App() {
 
   let swipeableViewContent
   if (sideListType === 'singleSetlist') {
-    const activeSetlistID = setlists.findIndex(
+    const activeSetlistIndex = setlists.findIndex(
       setlist => setlist._id === activeSetlist
     )
-    handleSwipeableView(setlists[activeSetlistID].songs)
+    handleSwipeableView(setlists[activeSetlistIndex].songs)
   } else {
     handleSwipeableView(songs)
   }
@@ -118,6 +118,7 @@ export default function App() {
                 isSideListShown={isSideListShown}
                 keyCounter={keyCounter}
                 changeKeyDirection={changeKeyDirection}
+                activeSetlist={activeSetlist}
               />
             ))
           : 'no song'}
