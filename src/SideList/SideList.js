@@ -24,6 +24,7 @@ export default function SideList({
   sideListType,
   setSideListType,
   setSetlists,
+  setKeyCounter,
 }) {
   const {
     setlistsIsLoading,
@@ -65,6 +66,7 @@ export default function SideList({
         setlists={setlists}
         setlistSongs={setlistSongs}
         handleSaveSongsToSetlist={handleSaveSongsToSetlist}
+        setKeyCounter={setKeyCounter}
       />
     </AnimatedSideListWrapperBorder>
   )
@@ -180,4 +182,5 @@ SideList.propTypes = {
   setSideListType: PropTypes.func.isRequired,
   setSwipeIndex: PropTypes.func.isRequired,
   setSetlists: PropTypes.func.isRequired,
+  setKeyCounter: PropTypes.func,
 }

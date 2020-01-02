@@ -15,6 +15,7 @@ export default function ListMenu({
   setSwipeIndex,
   handleSaveSongsToSetlist,
   setActiveSetlist,
+  setKeyCounter,
 }) {
   let addContent
   handleAddButton()
@@ -92,6 +93,7 @@ export default function ListMenu({
     setSideListType('allSongs')
     setSwipeIndex(0)
     setActiveSetlist('')
+    setKeyCounter(0)
   }
 
   function handleSetlistsClick() {
@@ -126,4 +128,5 @@ ListMenu.propTypes = {
   setSwipeIndex: PropTypes.func.isRequired,
   handleSaveSongsToSetlist: PropTypes.func.isRequired,
   setActiveSetlist: PropTypes.func,
+  setKeyCounter: PropTypes.func,
 }

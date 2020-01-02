@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import SwipeableViews from 'react-swipeable-views'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
@@ -76,6 +76,7 @@ export default function App() {
               setSideListType={setSideListType}
               setSwipeIndex={setSwipeIndex}
               setSetlists={setSetlists}
+              setKeyCounter={setKeyCounter}
             ></SideList>
             <ChangeKeyButton
               direction="up"
