@@ -28,14 +28,55 @@ export default function ChordLyricsPair({
       const chordIndex = scales.flat.findIndex(
         arrayChord => chord === arrayChord
       )
-      const transposeIndex = (chordIndex + keyCounter) % 12
-      if (chankgeKeyDirection === 'up') {
-        transposedChord = scales.sharp[transposeIndex]
-      } else {
-        transposedChord = scales.flat[transposeIndex]
+      transposedChord = transposePlainChord(
+        keyCounter,
+        chankgeKeyDirection,
+        chordIndex
+      )
+    } else if (chordLength === 2) {
+      if (chord[1] === 'm') {
+        const chordIndex = scales.flat.findIndex(
+          arrayChord => chord[0] === arrayChord
+        )
+        const transposedChordStart = transposePlainChord(
+          keyCounter,
+          chankgeKeyDirection,
+          chordIndex
+        )
+        transposedChord = transposedChordStart + 'm'
+      } else if (chord[1] === '#') {
+        const chordIndex = scales.sharp.findIndex(
+          arrayChord => chord === arrayChord
+        )
+        transposedChord = transposePlainChord(
+          keyCounter,
+          chankgeKeyDirection,
+          chordIndex
+        )
+      } else if (chord[1] === 'b') {
+        const chordIndex = scales.flat.findIndex(
+          arrayChord => chord === arrayChord
+        )
+        transposedChord = transposePlainChord(
+          keyCounter,
+          chankgeKeyDirection,
+          chordIndex
+        )
       }
     }
     return transposedChord
+  }
+
+  function transposePlainChord(keyCounter, chankgeKeyDirection, chordIndex) {
+    let transposeIndex = (chordIndex + keyCounter) % 12
+    while (transposeIndex < 0) {
+      transposeIndex = transposeIndex + 12
+    }
+    if (chankgeKeyDirection === 'up') {
+      return scales.sharp[transposeIndex]
+    } else {
+      return scales.flat[transposeIndex]
+    }
   }
 }
 
