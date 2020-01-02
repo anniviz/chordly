@@ -25,51 +25,51 @@ export default function ChordLyricsPair({
     const chordLength = chord.length
     let transposedChord
     if (chordLength > 0) {
-      if (chord[1] === '#') {
-        const chordIndex = scales.sharp.findIndex(
-          arrayChord => chord.substring(0, 2) === arrayChord
-        )
-        const transposedChordStart = transposePlainChord(
-          keyCounter,
-          chankgeKeyDirection,
-          chordIndex
-        )
-        transposedChord = transposedChordStart + chord.substring(2)
-      } else if (chord[1] === 'b') {
-        const chordIndex = scales.flat.findIndex(
-          arrayChord => chord.substring(0, 2) === arrayChord
-        )
-        const transposedChordStart = transposePlainChord(
-          keyCounter,
-          chankgeKeyDirection,
-          chordIndex
-        )
-        transposedChord = transposedChordStart + chord.substring(2)
+      if (chord.includes('/')) {
+        const chordSplit = chord.indexOf('/')
       } else {
-        const chordIndex = scales.flat.findIndex(
-          arrayChord => chord[0] === arrayChord
-        )
-        const transposedChordStart = transposePlainChord(
+        transposedChord = transposePlainChordB(
+          chord,
           keyCounter,
-          chankgeKeyDirection,
-          chordIndex
+          chankgeKeyDirection
         )
-        transposedChord = transposedChordStart + chord.substring(1)
       }
     }
     return transposedChord
   }
 
-  function transposePlainChord(keyCounter, chankgeKeyDirection, chordIndex) {
+  function transposePlainChordB(chord, keyCounter, chankgeKeyDirection) {
+    let transposedChord
+    let chordIndex
+    let transposedChordStart
+    if (chord[1] === '#') {
+      chordIndex = scales.sharp.findIndex(
+        arrayChord => chord.substring(0, 2) === arrayChord
+      )
+    } else if (chord[1] === 'b') {
+      chordIndex = scales.flat.findIndex(
+        arrayChord => chord.substring(0, 2) === arrayChord
+      )
+    } else {
+      chordIndex = scales.flat.findIndex(arrayChord => chord[0] === arrayChord)
+    }
+
     let transposeIndex = (chordIndex + keyCounter) % 12
     while (transposeIndex < 0) {
       transposeIndex = transposeIndex + 12
     }
     if (chankgeKeyDirection === 'up') {
-      return scales.sharp[transposeIndex]
+      transposedChordStart = scales.sharp[transposeIndex]
     } else {
-      return scales.flat[transposeIndex]
+      transposedChordStart = scales.flat[transposeIndex]
     }
+
+    if (chord[1] === 'b' || chord[1] === '#') {
+      transposedChord = transposedChordStart + chord.substring(2)
+    } else {
+      transposedChord = transposedChordStart + chord.substring(1)
+    }
+    return transposedChord
   }
 }
 

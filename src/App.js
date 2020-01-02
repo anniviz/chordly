@@ -133,9 +133,5 @@ export default function App() {
       setKeyCounter(keyCounter - 1)
       setChankgeKeyDirection('down')
     }
-    // direction === 'up'
-    //   ? setKeyCounter(keyCounter + 1)
-    //   : setKeyCounter(keyCounter - 1)
-    console.log(keyCounter)
   }
 }
