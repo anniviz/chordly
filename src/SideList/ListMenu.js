@@ -23,7 +23,9 @@ export default function ListMenu({
   let menuContent
   handleMenuContent()
 
-  return <ListMenuStyled>{menuContent}</ListMenuStyled>
+  return (
+    <ListMenuStyled sideListType={sideListType}>{menuContent}</ListMenuStyled>
+  )
 
   function handleAddButton() {
     if (sideListType === 'allSongs') {
