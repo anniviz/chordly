@@ -24,46 +24,7 @@ export default function ChordLyricsPair({
   function transposeChord(chord, keyCounter, chankgeKeyDirection) {
     const chordLength = chord.length
     let transposedChord
-    if (chordLength === 1) {
-      const chordIndex = scales.flat.findIndex(
-        arrayChord => chord === arrayChord
-      )
-      transposedChord = transposePlainChord(
-        keyCounter,
-        chankgeKeyDirection,
-        chordIndex
-      )
-    } else if (chordLength === 2) {
-      if (chord[1] === 'm') {
-        const chordIndex = scales.flat.findIndex(
-          arrayChord => chord[0] === arrayChord
-        )
-        const transposedChordStart = transposePlainChord(
-          keyCounter,
-          chankgeKeyDirection,
-          chordIndex
-        )
-        transposedChord = transposedChordStart + 'm'
-      } else if (chord[1] === '#') {
-        const chordIndex = scales.sharp.findIndex(
-          arrayChord => chord === arrayChord
-        )
-        transposedChord = transposePlainChord(
-          keyCounter,
-          chankgeKeyDirection,
-          chordIndex
-        )
-      } else if (chord[1] === 'b') {
-        const chordIndex = scales.flat.findIndex(
-          arrayChord => chord === arrayChord
-        )
-        transposedChord = transposePlainChord(
-          keyCounter,
-          chankgeKeyDirection,
-          chordIndex
-        )
-      }
-    } else if (chordLength > 0) {
+    if (chordLength > 0) {
       if (chord[1] === '#') {
         const chordIndex = scales.sharp.findIndex(
           arrayChord => chord.substring(0, 2) === arrayChord
