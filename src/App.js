@@ -11,11 +11,19 @@ import ListButton from './navigation/ListButton'
 import useSongs from './hooks/useSongs'
 import useSideLists from './hooks/useSideLists'
 import useSetlists from './hooks/useSetlists'
-import useKeyChange from './hooks/useKeyChange'
 import ChangeKeyButton from './ChangeKey/ChangeKeyButton'
 
 export default function App() {
-  const { songs, isLoading, swipeIndex, setSwipeIndex } = useSongs()
+  const {
+    songs,
+    isLoading,
+    swipeIndex,
+    setSwipeIndex,
+    keyCounter,
+    setKeyCounter,
+    changeKeyDirection,
+    setchangeKeyDirection,
+  } = useSongs()
   const {
     isSideListShown,
     setIsSideListShown,
@@ -28,13 +36,7 @@ export default function App() {
     activeSetlist,
     setActiveSetlist,
   } = useSetlists()
-
-  const {
-    keyCounter,
-    setKeyCounter,
-    changeKeyDirection,
-    setchangeKeyDirection,
-  } = useKeyChange()
+  console.log('swipeindex', swipeIndex, 'keycounter', keyCounter)
 
   let swipeableViewContent
   if (sideListType === 'singleSetlist') {
