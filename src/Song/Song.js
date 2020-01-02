@@ -10,7 +10,7 @@ export default function Song({
   song,
   isSideListShown,
   keyCounter,
-  chankgeKeyDirection,
+  changeKeyDirection,
 }) {
   const AnimatedSongWrapper = animated(SongWrapper)
   const songAnimation = useSpring({
@@ -23,7 +23,7 @@ export default function Song({
       isSideListShown={isSideListShown}
       style={songAnimation}
       keyCounter={keyCounter}
-      chankgeKeyDirection={chankgeKeyDirection}
+      changeKeyDirection={changeKeyDirection}
     >
       <SongTitle>{song.optimizedMetaData.title}</SongTitle>
       {song.optimizedMetaData.artist && (
@@ -31,7 +31,7 @@ export default function Song({
       )}
       <LyricsWrapper
         keyCounter={keyCounter}
-        chankgeKeyDirection={chankgeKeyDirection}
+        changeKeyDirection={changeKeyDirection}
       >
         {song.lines.map((line, index) => {
           const chordsInLine = areChordsInLine(line.items)
@@ -39,7 +39,7 @@ export default function Song({
             <Line
               key={index}
               keyCounter={keyCounter}
-              chankgeKeyDirection={chankgeKeyDirection}
+              changeKeyDirection={changeKeyDirection}
             >
               {' '}
               {isLineMetadata(line.items) ||
@@ -49,7 +49,7 @@ export default function Song({
                     item={item}
                     chordsInLine={chordsInLine}
                     keyCounter={keyCounter}
-                    chankgeKeyDirection={chankgeKeyDirection}
+                    changeKeyDirection={changeKeyDirection}
                   />
                 ))}
             </Line>
@@ -102,5 +102,5 @@ Song.propTypes = {
   song: PropTypes.object,
   isSideListShown: PropTypes.bool.isRequired,
   keyCounter: PropTypes.number,
-  chankgeKeyDirection: PropTypes.string,
+  changeKeyDirection: PropTypes.string,
 }

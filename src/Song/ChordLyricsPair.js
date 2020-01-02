@@ -8,12 +8,12 @@ export default function ChordLyricsPair({
   item,
   chordsInLine,
   keyCounter,
-  chankgeKeyDirection,
+  changeKeyDirection,
 }) {
   let chord
   keyCounter === 0
     ? (chord = item.chords)
-    : (chord = transposeChord(item.chords, keyCounter, chankgeKeyDirection))
+    : (chord = transposeChord(item.chords, keyCounter, changeKeyDirection))
   return (
     <ChordLyricsWrapper item={item} chordsInLine={chordsInLine}>
       {chordsInLine && <Chord>{chord}</Chord>}
@@ -21,7 +21,7 @@ export default function ChordLyricsPair({
     </ChordLyricsWrapper>
   )
 
-  function transposeChord(chord, keyCounter, chankgeKeyDirection) {
+  function transposeChord(chord, keyCounter, changeKeyDirection) {
     const chordLength = chord.length
     let transposedChord
     if (chordLength > 0) {
@@ -32,26 +32,26 @@ export default function ChordLyricsPair({
         const transposedChordWithoutBase = transposePlainChord(
           chordWithoutBase,
           keyCounter,
-          chankgeKeyDirection
+          changeKeyDirection
         )
         const transposedBass = transposePlainChord(
           bass,
           keyCounter,
-          chankgeKeyDirection
+          changeKeyDirection
         )
         transposedChord = transposedChordWithoutBase + '/' + transposedBass
       } else {
         transposedChord = transposePlainChord(
           chord,
           keyCounter,
-          chankgeKeyDirection
+          changeKeyDirection
         )
       }
     }
     return transposedChord
   }
 
-  function transposePlainChord(chord, keyCounter, chankgeKeyDirection) {
+  function transposePlainChord(chord, keyCounter, changeKeyDirection) {
     let transposedChord
     let chordIndex
     let transposedChordStart
@@ -71,7 +71,7 @@ export default function ChordLyricsPair({
     while (transposeIndex < 0) {
       transposeIndex = transposeIndex + 12
     }
-    if (chankgeKeyDirection === 'up') {
+    if (changeKeyDirection === 'up') {
       transposedChordStart = scales.sharp[transposeIndex]
     } else {
       transposedChordStart = scales.flat[transposeIndex]
@@ -108,5 +108,5 @@ ChordLyricsPair.propTypes = {
   item: PropTypes.object.isRequired,
   chordsInLine: PropTypes.bool.isRequired,
   keyCounter: PropTypes.number,
-  chankgeKeyDirection: PropTypes.string,
+  changeKeyDirection: PropTypes.string,
 }

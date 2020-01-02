@@ -32,8 +32,8 @@ export default function App() {
   const {
     keyCounter,
     setKeyCounter,
-    chankgeKeyDirection,
-    setChankgeKeyDirection,
+    changeKeyDirection,
+    setchangeKeyDirection,
   } = useKeyChange()
 
   let swipeableViewContent
@@ -73,13 +73,13 @@ export default function App() {
               direction="up"
               handleKeyChangeClick={() => handleKeyChangeClick('up')}
               keyCounter={keyCounter}
-              setChankgeKeyDirection={setChankgeKeyDirection}
+              setchangeKeyDirection={setchangeKeyDirection}
             ></ChangeKeyButton>
             <ChangeKeyButton
               direction="down"
               handleKeyChangeClick={() => handleKeyChangeClick('down')}
               keyCounter={keyCounter}
-              setChankgeKeyDirection={setChankgeKeyDirection}
+              setchangeKeyDirection={setchangeKeyDirection}
             ></ChangeKeyButton>
           </Layout>
         </Route>
@@ -117,7 +117,7 @@ export default function App() {
                 song={song}
                 isSideListShown={isSideListShown}
                 keyCounter={keyCounter}
-                chankgeKeyDirection={chankgeKeyDirection}
+                changeKeyDirection={changeKeyDirection}
               />
             ))
           : 'no song'}
@@ -128,10 +128,10 @@ export default function App() {
   function handleKeyChangeClick(direction) {
     if (direction === 'up') {
       setKeyCounter(keyCounter + 1)
-      setChankgeKeyDirection('up')
+      setchangeKeyDirection('up')
     } else {
       setKeyCounter(keyCounter - 1)
-      setChankgeKeyDirection('down')
+      setchangeKeyDirection('down')
     }
   }
 }
