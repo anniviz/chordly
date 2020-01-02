@@ -40,8 +40,11 @@ export default function App() {
   if (activeSetlist) {
     const keyChangeObject = loadKeyCounterFromStorage()
     const objectKey = createObjectKey()
-    keyCounter === keyChangeObject[objectKey] ||
-      (keyChangeObject[objectKey] && setKeyCounter(keyChangeObject[objectKey]))
+    if (objectKey) {
+      keyCounter === keyChangeObject[objectKey] ||
+        (keyChangeObject[objectKey] &&
+          setKeyCounter(keyChangeObject[objectKey]))
+    }
   }
 
   let swipeableViewContent
@@ -140,16 +143,21 @@ export default function App() {
     if (activeSetlist) {
       let keyChangeObject = loadKeyCounterFromStorage()
       const objectKey = createObjectKey()
-      direction === 'up'
-        ? (keyChangeObject = {
-            ...keyChangeObject,
-            [objectKey]: keyCounter + 1,
-          })
-        : (keyChangeObject = {
-            ...keyChangeObject,
-            [objectKey]: keyCounter - 1,
-          })
-      localStorage.setItem('keyChangeCounter', JSON.stringify(keyChangeObject))
+      if (objectKey) {
+        direction === 'up'
+          ? (keyChangeObject = {
+              ...keyChangeObject,
+              [objectKey]: keyCounter + 1,
+            })
+          : (keyChangeObject = {
+              ...keyChangeObject,
+              [objectKey]: keyCounter - 1,
+            })
+        localStorage.setItem(
+          'keyChangeCounter',
+          JSON.stringify(keyChangeObject)
+        )
+      }
     }
     if (direction === 'up') {
       setKeyCounter(keyCounter + 1)
@@ -170,7 +178,11 @@ export default function App() {
     const activeSetlistIndex = setlists.findIndex(
       setlist => setlist._id === activeSetlist
     )
-    const activeSong = setlists[activeSetlistIndex].songs[swipeIndex]._id
-    return `${activeSetlist}-${activeSong}`
+    if (setlists[activeSetlistIndex].songs[swipeIndex]) {
+      const activeSong = setlists[activeSetlistIndex].songs[swipeIndex]._id
+      return `${activeSetlist}-${activeSong}`
+    } else {
+      return undefined
+    }
   }
 }
