@@ -50,7 +50,9 @@ export default function SideList({
 
   useEffect(() => {
     setFuzzySearchResult(
-      songs.filter(item => fuzzy_match(item.name, searchInput))
+      songs.filter(song =>
+        fuzzy_match(song.optimizedMetaData.title, searchInput)
+      )
     )
   }, [searchInput, songs])
 
@@ -98,7 +100,9 @@ export default function SideList({
       <SideListWrapper>
         {showSearchField && (
           <InputField
-            onInput={event => setSearchInput(event.target.value)}
+            value={searchInput}
+            autoFocus
+            onChange={event => setSearchInput(event.target.value)}
           ></InputField>
         )}
         {sideListContent}
@@ -120,7 +124,7 @@ export default function SideList({
 
   function handleIsSongsShown(songs) {
     if (songs) {
-      sideListContent = songs.map((song, index) => (
+      sideListContent = fuzzySearchResult.map((song, index) => (
         <SongListItem
           key={song._id}
           sideListType={sideListType}
@@ -183,9 +187,9 @@ export default function SideList({
     setSideListType('singleSetlist')
   }
 
-  function fuzzy_match(spotname, input) {
-    let search = input.replace(/ /g, '').toLowerCase()
-    let name = spotname.replace(/ /g, '').toLowerCase()
+  function fuzzy_match(songTitle, searchInput) {
+    let search = searchInput.replace(/ /g, '').toLowerCase()
+    let name = songTitle.replace(/ /g, '').toLowerCase()
     const tokens = name.split('')
     let search_position = 0
 
@@ -202,6 +206,11 @@ export default function SideList({
       return ''
     }
     return tokens.join('')
+  }
+
+  function handleinput(event) {
+    event.preventDefault()
+    setSearchInput(event.target.value)
   }
 }
 
