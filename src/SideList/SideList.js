@@ -7,6 +7,7 @@ import SongListItem from './SongListItem'
 import SetlistItem from './SetlistItem'
 import AddSetlist from '../forms/AddSetlist'
 import ListMenu from './ListMenu'
+import SideListTitle from './SideListTitle'
 import { dimensions } from '../common/dimensions'
 
 import useSetlists from '../hooks/useSetlists'
@@ -55,6 +56,7 @@ export default function SideList({
 
   return (
     <AnimatedSideListWrapperBorder style={flyIn}>
+      <SideListTitle>title</SideListTitle>
       <SideListWrapper>{sideListContent}</SideListWrapper>
       <ListMenu
         sideListType={sideListType}
@@ -156,7 +158,7 @@ const SideListWrapper = styled.ul`
 
 const SideListWrapperBorder = styled.div`
   display: grid;
-  grid-template-rows: auto 48px;
+  grid-template-rows: 40px auto 48px;
   justify-items: stretch;
   border-radius: 12px;
   padding: 2px;
