@@ -14,6 +14,8 @@ import useSetlists from '../hooks/useSetlists'
 import useSideLists from '../hooks/useSideLists'
 import { patchSetlist } from '../services.js'
 
+import search from '../icons/search-blue.svg'
+
 export default function SideList({
   songs,
   swipeIndex,
@@ -64,7 +66,15 @@ export default function SideList({
   console.log(sideListTitle)
   return (
     <AnimatedSideListWrapperBorder style={flyIn}>
-      <SideListTitle>{sideListTitle}</SideListTitle>
+      <SideListTitleWrapper>
+        <SideListTitle>{sideListTitle}</SideListTitle>
+        <img
+          className="search-icon"
+          alt="search"
+          src={search}
+          style={{ padding: '10px', height: '36px' }}
+        />
+      </SideListTitleWrapper>
       <SideListWrapper>{sideListContent}</SideListWrapper>
       <ListMenu
         sideListType={sideListType}
@@ -166,7 +176,7 @@ const SideListWrapper = styled.ul`
 
 const SideListWrapperBorder = styled.div`
   display: grid;
-  grid-template-rows: 40px auto 48px;
+  grid-template-rows: min-content auto 48px;
   justify-items: stretch;
   border-radius: 12px;
   padding: 2px;
@@ -178,6 +188,11 @@ const SideListWrapperBorder = styled.div`
   position: fixed;
   top: ${2 * dimensions.listButtonTop + dimensions.cubicButtonExtent + 'px'};
   right: ${dimensions.changeKeyButtonRight + 'px'};
+`
+
+const SideListTitleWrapper = styled.div`
+  display: grid;
+  grid-template-columns: auto 40px;
 `
 
 SideList.propTypes = {
