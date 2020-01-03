@@ -13,7 +13,6 @@ import '../additionalStyles/datepicker.scss'
 
 import SaveCancelButtons from './SaveCancelButtons'
 import InputField from './InputField'
-import { dimensions } from '../common/dimensions'
 
 export default function AddSetlist({
   setSideListType,

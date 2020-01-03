@@ -15,6 +15,7 @@ import useSideLists from '../hooks/useSideLists'
 import { patchSetlist } from '../services.js'
 
 import search from '../icons/search-blue.svg'
+import InputField from '../forms/InputField'
 
 export default function SideList({
   songs,
@@ -36,7 +37,12 @@ export default function SideList({
     setlistSongs,
     setSetlistSongs,
   } = useSetlists()
-  const { sideListTitle, setSideListTitle } = useSideLists()
+  const {
+    sideListTitle,
+    setSideListTitle,
+    showSearchField,
+    setShowSearchField,
+  } = useSideLists()
 
   let sideListContent
   if (sideListType === 'allSongs') {
@@ -63,19 +69,27 @@ export default function SideList({
     width: isSideListShown ? dimensions.sideListWidth + 'px' : '0px',
     opacity: isSideListShown ? 1 : 0,
   })
-  console.log(sideListTitle)
   return (
     <AnimatedSideListWrapperBorder style={flyIn}>
       <SideListTitleWrapper>
         <SideListTitle>{sideListTitle}</SideListTitle>
-        <img
-          className="search-icon"
-          alt="search"
-          src={search}
-          style={{ padding: '10px', height: '36px' }}
-        />
+        {sideListType === 'addSetlist' ? (
+          <></>
+        ) : (
+          <img
+            className="search-icon"
+            alt="search"
+            src={search}
+            style={{ padding: '10px', height: '36px' }}
+            onClick={() => setShowSearchField(!showSearchField)}
+          />
+        )}
+        {/* {showSearchField && <InputField></InputField>} */}
       </SideListTitleWrapper>
-      <SideListWrapper>{sideListContent}</SideListWrapper>
+      <SideListWrapper>
+        {showSearchField && <InputField></InputField>}
+        {sideListContent}
+      </SideListWrapper>
       <ListMenu
         sideListType={sideListType}
         setSideListType={setSideListType}

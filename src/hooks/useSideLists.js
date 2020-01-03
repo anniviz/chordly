@@ -4,6 +4,7 @@ export default function useSideLists() {
   const [isSideListShown, setIsSideListShown] = useState(false)
   const [sideListType, setSideListType] = useState('allSongs')
   const [sideListTitle, setSideListTitle] = useState('All Songs')
+  const [showSearchField, setShowSearchField] = useState(false)
 
   return {
     isSideListShown,
@@ -12,5 +13,7 @@ export default function useSideLists() {
     setSideListType,
     sideListTitle,
     setSideListTitle,
+    showSearchField,
+    setShowSearchField,
   }
 }
