@@ -11,9 +11,19 @@ import ListButton from './navigation/ListButton'
 import useSongs from './hooks/useSongs'
 import useSideLists from './hooks/useSideLists'
 import useSetlists from './hooks/useSetlists'
+import ChangeKeyButton from './ChangeKey/ChangeKeyButton'
 
 export default function App() {
-  const { songs, isLoading, swipeIndex, setSwipeIndex } = useSongs()
+  const {
+    songs,
+    isLoading,
+    swipeIndex,
+    setSwipeIndex,
+    keyCounter,
+    setKeyCounter,
+    changeKeyDirection,
+    setChangeKeyDirection,
+  } = useSongs()
   const {
     isSideListShown,
     setIsSideListShown,
@@ -27,12 +37,22 @@ export default function App() {
     setActiveSetlist,
   } = useSetlists()
 
+  if (activeSetlist) {
+    const keyChangeObject = loadKeyCounterFromStorage()
+    const objectKey = createObjectKey()
+    if (objectKey) {
+      keyCounter === keyChangeObject[objectKey] ||
+        (keyChangeObject[objectKey] &&
+          setKeyCounter(keyChangeObject[objectKey]))
+    }
+  }
+
   let swipeableViewContent
   if (sideListType === 'singleSetlist') {
-    const activeSetlistID = setlists.findIndex(
+    const activeSetlistIndex = setlists.findIndex(
       setlist => setlist._id === activeSetlist
     )
-    handleSwipeableView(setlists[activeSetlistID].songs)
+    handleSwipeableView(setlists[activeSetlistIndex].songs)
   } else {
     handleSwipeableView(songs)
   }
@@ -43,6 +63,10 @@ export default function App() {
         <Route exact path="/">
           <Layout>
             {swipeableViewContent}
+            <ListButton
+              toggleSideList={toggleSideList}
+              isSideListShown={isSideListShown}
+            />
             <SideList
               songs={songs}
               swipeIndex={swipeIndex}
@@ -55,11 +79,22 @@ export default function App() {
               setSideListType={setSideListType}
               setSwipeIndex={setSwipeIndex}
               setSetlists={setSetlists}
+              setKeyCounter={setKeyCounter}
             ></SideList>
-            <ListButton
-              toggleSideList={toggleSideList}
+            <ChangeKeyButton
+              direction="up"
+              handleKeyChangeClick={() => handleKeyChangeClick('up')}
+              keyCounter={keyCounter}
+              setChangeKeyDirection={setChangeKeyDirection}
               isSideListShown={isSideListShown}
-            ></ListButton>
+            ></ChangeKeyButton>
+            <ChangeKeyButton
+              direction="down"
+              handleKeyChangeClick={() => handleKeyChangeClick('down')}
+              keyCounter={keyCounter}
+              setChangeKeyDirection={setChangeKeyDirection}
+              isSideListShown={isSideListShown}
+            ></ChangeKeyButton>
           </Layout>
         </Route>
       </Switch>
@@ -95,10 +130,59 @@ export default function App() {
                 key={song._id}
                 song={song}
                 isSideListShown={isSideListShown}
+                keyCounter={keyCounter}
+                changeKeyDirection={changeKeyDirection}
               />
             ))
           : 'no song'}
       </SwipeableViews>
     )
+  }
+
+  function handleKeyChangeClick(direction) {
+    if (activeSetlist) {
+      let keyChangeObject = loadKeyCounterFromStorage()
+      const objectKey = createObjectKey()
+      if (objectKey) {
+        direction === 'up'
+          ? (keyChangeObject = {
+              ...keyChangeObject,
+              [objectKey]: keyCounter + 1,
+            })
+          : (keyChangeObject = {
+              ...keyChangeObject,
+              [objectKey]: keyCounter - 1,
+            })
+        localStorage.setItem(
+          'keyChangeCounter',
+          JSON.stringify(keyChangeObject)
+        )
+      }
+    }
+    if (direction === 'up') {
+      setKeyCounter(keyCounter + 1)
+      setChangeKeyDirection('up')
+    } else {
+      setKeyCounter(keyCounter - 1)
+      setChangeKeyDirection('down')
+    }
+  }
+
+  function loadKeyCounterFromStorage() {
+    return localStorage.getItem('keyChangeCounter')
+      ? JSON.parse(localStorage.getItem('keyChangeCounter'))
+      : {}
+  }
+
+  function createObjectKey() {
+    const activeSetlistIndex = setlists.findIndex(
+      setlist => setlist._id === activeSetlist
+    )
+    if (setlists[activeSetlistIndex].songs[swipeIndex]) {
+      const activeSong = setlists[activeSetlistIndex].songs[swipeIndex]._id
+      return `${activeSetlist}-${activeSong}`
+    } else {
+      return undefined
+    }
   }
 }

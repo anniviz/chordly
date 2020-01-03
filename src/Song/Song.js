@@ -6,7 +6,12 @@ import { useSpring, animated } from 'react-spring'
 import ChordLyricsPair from './ChordLyricsPair'
 import { dimensions } from '../common/dimensions'
 
-export default function Song({ song, isSideListShown }) {
+export default function Song({
+  song,
+  isSideListShown,
+  keyCounter,
+  changeKeyDirection,
+}) {
   const AnimatedSongWrapper = animated(SongWrapper)
   const songAnimation = useSpring({
     paddingRight: isSideListShown
@@ -14,10 +19,7 @@ export default function Song({ song, isSideListShown }) {
       : dimensions.standardPadding + 'px',
   })
   return (
-    <AnimatedSongWrapper
-      isSideListShown={isSideListShown}
-      style={songAnimation}
-    >
+    <AnimatedSongWrapper style={songAnimation}>
       <SongTitle>{song.optimizedMetaData.title}</SongTitle>
       {song.optimizedMetaData.artist && (
         <SongArtist>{song.optimizedMetaData.artist}</SongArtist>
@@ -33,6 +35,8 @@ export default function Song({ song, isSideListShown }) {
                     key={index}
                     item={item}
                     chordsInLine={chordsInLine}
+                    keyCounter={keyCounter}
+                    changeKeyDirection={changeKeyDirection}
                   />
                 ))}
             </Line>
@@ -84,4 +88,6 @@ const Line = styled.div`
 Song.propTypes = {
   song: PropTypes.object,
   isSideListShown: PropTypes.bool.isRequired,
+  keyCounter: PropTypes.number,
+  changeKeyDirection: PropTypes.string,
 }

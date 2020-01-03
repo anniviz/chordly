@@ -24,6 +24,7 @@ export default function SideList({
   sideListType,
   setSideListType,
   setSetlists,
+  setKeyCounter,
 }) {
   const {
     setlistsIsLoading,
@@ -53,22 +54,19 @@ export default function SideList({
   })
 
   return (
-    <AnimatedSideListWrapperBorder
-      isSideListShown={isSideListShown}
-      style={flyIn}
-    >
-      <SideListWrapper isSideListShown={isSideListShown}>
-        {sideListContent}
-      </SideListWrapper>
+    <AnimatedSideListWrapperBorder style={flyIn}>
+      <SideListWrapper>{sideListContent}</SideListWrapper>
       <ListMenu
         sideListType={sideListType}
         setSideListType={setSideListType}
         setSwipeIndex={setSwipeIndex}
         activeSetlist={activeSetlist}
+        setActiveSetlist={setActiveSetlist}
         setSetlists={setSetlists}
         setlists={setlists}
         setlistSongs={setlistSongs}
         handleSaveSongsToSetlist={handleSaveSongsToSetlist}
+        setKeyCounter={setKeyCounter}
       />
     </AnimatedSideListWrapperBorder>
   )
@@ -148,7 +146,7 @@ const SideListWrapper = styled.ul`
   border-radius: 12px 12px 0 0;
   background: #3f4a6d;
   background-clip: padding-box;
-  overflow: scroll;
+  overflow-y: scroll;
 
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -164,15 +162,12 @@ const SideListWrapperBorder = styled.div`
   padding: 2px;
   height: calc(
     100vh -
-      ${2 * dimensions.listButtonTop +
-        dimensions.listButtonHeight +
-        dimensions.standardPadding +
-        'px'}
+      ${4 * dimensions.listButtonTop + 2 * dimensions.cubicButtonExtent + 'px'}
   );
   background: linear-gradient(60deg, #feb79c, #fd5da1);
   position: fixed;
-  top: ${2 * dimensions.listButtonTop + dimensions.listButtonHeight + 'px'};
-  right: ${dimensions.standardPadding + 'px'};
+  top: ${2 * dimensions.listButtonTop + dimensions.cubicButtonExtent + 'px'};
+  right: ${dimensions.changeKeyButtonRight + 'px'};
 `
 
 SideList.propTypes = {
@@ -187,4 +182,5 @@ SideList.propTypes = {
   setSideListType: PropTypes.func.isRequired,
   setSwipeIndex: PropTypes.func.isRequired,
   setSetlists: PropTypes.func.isRequired,
+  setKeyCounter: PropTypes.func,
 }

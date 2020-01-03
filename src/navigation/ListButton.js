@@ -1,10 +1,10 @@
 import React from 'react'
-import styled from 'styled-components/macro'
 import PropTypes from 'prop-types'
 import { useSpring, animated } from 'react-spring'
 
 import arrowLeft from '../icons/arrow-left.svg'
 import { dimensions } from '../common/dimensions'
+import CubicButton from '../common/CubicButton'
 
 export default function ListButton({ toggleSideList, isSideListShown }) {
   const imgAnimation = useSpring({
@@ -12,29 +12,19 @@ export default function ListButton({ toggleSideList, isSideListShown }) {
   })
 
   return (
-    <ListButtonWrapper onClick={toggleSideList}>
+    <CubicButton
+      onClick={toggleSideList}
+      style={{
+        top: dimensions.listButtonTop + 'px',
+        right: dimensions.listButtonRight + 'px',
+      }}
+    >
       <animated.img src={arrowLeft} alt="" style={imgAnimation} />
-    </ListButtonWrapper>
+    </CubicButton>
   )
 }
 
-const ListButtonWrapper = styled.button`
-  display: grid;
-  align-content: center;
-  justify-content: center;
-  height: ${dimensions.listButtonHeight + 'px'};
-  width: ${dimensions.listButtonWidth + 'px'};
-  background: #3f4a6d;
-  border: #feb79c solid 2px;
-  border-radius: 12px;
-  margin: 0;
-  cursor: default;
-  position: fixed;
-  top: ${dimensions.listButtonTop + 'px'};
-  right: ${dimensions.listButtonRight + 'px'};
-`
-
-ListButtonWrapper.propTypes = {
+ListButton.propTypes = {
   toggleSideList: PropTypes.func,
   isSideListShown: PropTypes.bool,
 }

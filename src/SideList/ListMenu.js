@@ -14,6 +14,8 @@ export default function ListMenu({
   setSideListType,
   setSwipeIndex,
   handleSaveSongsToSetlist,
+  setActiveSetlist,
+  setKeyCounter,
 }) {
   let addContent
   handleAddButton()
@@ -76,7 +78,7 @@ export default function ListMenu({
         <>
           <MenuItem
             style={{ borderRadius: '0 0 0 12px' }}
-            onClick={() => setSideListType('setlists')}
+            onClick={handleSetlistsClick}
           >
             <img className="setlist-icon" alt="setlist" src={clipboardList} />
           </MenuItem>
@@ -92,6 +94,13 @@ export default function ListMenu({
   function handleAllSongsClick() {
     setSideListType('allSongs')
     setSwipeIndex(0)
+    setActiveSetlist('')
+    setKeyCounter(0)
+  }
+
+  function handleSetlistsClick() {
+    setSideListType('setlists')
+    setActiveSetlist('')
   }
 }
 
@@ -120,4 +129,6 @@ ListMenu.propTypes = {
   setSideListType: PropTypes.func.isRequired,
   setSwipeIndex: PropTypes.func.isRequired,
   handleSaveSongsToSetlist: PropTypes.func.isRequired,
+  setActiveSetlist: PropTypes.func,
+  setKeyCounter: PropTypes.func,
 }

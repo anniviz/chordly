@@ -5,6 +5,8 @@ export default function useSongs() {
   const [songs, setSongs] = useState([])
   const [isLoading, setIsLoading] = useState(true)
   const [swipeIndex, setSwipeIndex] = useState(0)
+  const [keyCounter, setKeyCounter] = useState(0)
+  const [changeKeyDirection, setChangeKeyDirection] = useState('')
 
   useEffect(() => {
     getSongs().then(loadedSongs => {
@@ -17,11 +19,19 @@ export default function useSongs() {
     setSwipeIndex(0)
   }, [songs])
 
+  useEffect(() => {
+    setKeyCounter(0)
+  }, [swipeIndex])
+
   return {
     songs,
     setSongs,
     isLoading,
     swipeIndex,
     setSwipeIndex,
+    keyCounter,
+    setKeyCounter,
+    changeKeyDirection,
+    setChangeKeyDirection,
   }
 }
