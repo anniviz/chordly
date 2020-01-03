@@ -5,6 +5,7 @@ export default function useSongs() {
   const [songs, setSongs] = useState([])
   const [isLoading, setIsLoading] = useState(true)
   const [swipeIndex, setSwipeIndex] = useState(0)
+  const [fuzzySearchResult, setFuzzySearchResult] = useState(songs)
 
   useEffect(() => {
     getSongs().then(loadedSongs => {
@@ -23,5 +24,7 @@ export default function useSongs() {
     isLoading,
     swipeIndex,
     setSwipeIndex,
+    fuzzySearchResult,
+    setFuzzySearchResult,
   }
 }

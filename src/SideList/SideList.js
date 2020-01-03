@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useSpring, animated } from 'react-spring'
 import PropTypes from 'prop-types'
 import styled from 'styled-components/macro'
@@ -8,14 +8,15 @@ import SetlistItem from './SetlistItem'
 import AddSetlist from '../forms/AddSetlist'
 import ListMenu from './ListMenu'
 import SideListTitle from './SideListTitle'
+import InputField from '../forms/InputField'
 import { dimensions } from '../common/dimensions'
 
 import useSetlists from '../hooks/useSetlists'
 import useSideLists from '../hooks/useSideLists'
+import useSongs from '../hooks/useSongs'
 import { patchSetlist } from '../services.js'
 
 import search from '../icons/search-blue.svg'
-import InputField from '../forms/InputField'
 
 export default function SideList({
   songs,
@@ -42,7 +43,16 @@ export default function SideList({
     setSideListTitle,
     showSearchField,
     setShowSearchField,
+    searchInput,
+    setSearchInput,
   } = useSideLists()
+  const { fuzzySearchResult, setFuzzySearchResult } = useSongs()
+
+  useEffect(() => {
+    setFuzzySearchResult(
+      songs.filter(item => fuzzy_match(item.name, searchInput))
+    )
+  }, [searchInput, songs])
 
   let sideListContent
   if (sideListType === 'allSongs') {
@@ -84,10 +94,13 @@ export default function SideList({
             onClick={() => setShowSearchField(!showSearchField)}
           />
         )}
-        {/* {showSearchField && <InputField></InputField>} */}
       </SideListTitleWrapper>
       <SideListWrapper>
-        {showSearchField && <InputField></InputField>}
+        {showSearchField && (
+          <InputField
+            onInput={event => setSearchInput(event.target.value)}
+          ></InputField>
+        )}
         {sideListContent}
       </SideListWrapper>
       <ListMenu
@@ -168,6 +181,27 @@ export default function SideList({
     )
 
     setSideListType('singleSetlist')
+  }
+
+  function fuzzy_match(spotname, input) {
+    let search = input.replace(/ /g, '').toLowerCase()
+    let name = spotname.replace(/ /g, '').toLowerCase()
+    const tokens = name.split('')
+    let search_position = 0
+
+    tokens.forEach(i => {
+      if (i === search[search_position]) {
+        search_position += 1
+        if (search_position >= search.length) {
+          return false
+        }
+      }
+    })
+
+    if (search_position !== search.length) {
+      return ''
+    }
+    return tokens.join('')
   }
 }
 
