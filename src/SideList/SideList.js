@@ -146,7 +146,7 @@ const SideListWrapper = styled.ul`
   border-radius: 12px 12px 0 0;
   background: #3f4a6d;
   background-clip: padding-box;
-  overflow: scroll;
+  overflow-y: scroll;
 
   -webkit-user-select: none;
   -moz-user-select: none;

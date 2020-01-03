@@ -29,7 +29,6 @@ export default function Song({
           const chordsInLine = areChordsInLine(line.items)
           return (
             <Line key={index}>
-              {' '}
               {isLineMetadata(line.items) ||
                 line.items.map((item, index) => (
                   <ChordLyricsPair
