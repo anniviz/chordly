@@ -11,6 +11,7 @@ import SideListTitle from './SideListTitle'
 import { dimensions } from '../common/dimensions'
 
 import useSetlists from '../hooks/useSetlists'
+import useSideLists from '../hooks/useSideLists'
 import { patchSetlist } from '../services.js'
 
 export default function SideList({
@@ -33,19 +34,26 @@ export default function SideList({
     setlistSongs,
     setSetlistSongs,
   } = useSetlists()
+  const { sideListTitle, setSideListTitle } = useSideLists()
 
   let sideListContent
   if (sideListType === 'allSongs') {
     handleIsSongsShown(songs)
+    sideListTitle === 'All Songs' || setSideListTitle('All Songs')
   } else if (sideListType === 'setlists') {
     handleIsSetListsShown(setlists)
+    sideListTitle === 'All Sets' || setSideListTitle('All Sets')
   } else if (sideListType === 'singleSetlist') {
     const index = setlists.findIndex(setlist => setlist._id === activeSetlist)
     handleIsSongsShown(setlists[index].songs)
+    sideListTitle === setlists[index].setlistName ||
+      setSideListTitle(setlists[index].setlistName)
   } else if (sideListType === 'addSetlist') {
     handleIsAddSetlistShown()
+    sideListTitle === 'Add Set' || setSideListTitle('Add Set')
   } else if (sideListType === 'addSongToSetlist') {
     handleIsSongsShown(songs)
+    sideListTitle === 'Add Song to Set' || setSideListTitle('Add Song to Set')
   }
 
   const AnimatedSideListWrapperBorder = animated(SideListWrapperBorder)
@@ -53,10 +61,10 @@ export default function SideList({
     width: isSideListShown ? dimensions.sideListWidth + 'px' : '0px',
     opacity: isSideListShown ? 1 : 0,
   })
-
+  console.log(sideListTitle)
   return (
     <AnimatedSideListWrapperBorder style={flyIn}>
-      <SideListTitle>title</SideListTitle>
+      <SideListTitle>{sideListTitle}</SideListTitle>
       <SideListWrapper>{sideListContent}</SideListWrapper>
       <ListMenu
         sideListType={sideListType}
