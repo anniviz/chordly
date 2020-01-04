@@ -49,6 +49,14 @@ export default function SideList({
   const { fuzzySearchResult, setFuzzySearchResult } = useSongs()
 
   useEffect(() => {
+    setSearchInput('')
+  }, [sideListType, swipeIndex])
+
+  useEffect(() => {
+    setShowSearchField(false)
+  }, [sideListType])
+
+  useEffect(() => {
     setFuzzySearchResult(
       songs.filter(song =>
         fuzzy_match(song.optimizedMetaData.title, searchInput)
@@ -124,14 +132,14 @@ export default function SideList({
 
   function handleIsSongsShown(songs) {
     if (songs) {
-      sideListContent = fuzzySearchResult.map((song, index) => (
+      sideListContent = fuzzySearchResult.map(song => (
         <SongListItem
           key={song._id}
+          index={findSongIndex(song._id)}
           sideListType={sideListType}
           song={song}
-          index={index}
           swipeIndex={swipeIndex}
-          handleChangeIndex={index => handleChangeIndex(index)}
+          handleChangeIndex={handleChangeIndex}
           setlistSongs={setlistSongs}
           setSetlistSongs={setSetlistSongs}
         />
@@ -208,9 +216,8 @@ export default function SideList({
     return tokens.join('')
   }
 
-  function handleinput(event) {
-    event.preventDefault()
-    setSearchInput(event.target.value)
+  function findSongIndex(songID) {
+    return songs.findIndex(song => song._id === songID)
   }
 }
 
