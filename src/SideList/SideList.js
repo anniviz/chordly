@@ -57,12 +57,22 @@ export default function SideList({
   }, [sideListType])
 
   useEffect(() => {
-    setFuzzySearchResult(
-      songs.filter(song =>
-        fuzzy_match(song.optimizedMetaData.title, searchInput)
+    if (sideListType === 'setlists') {
+      console.log('foo')
+      setFuzzySearchResult(
+        setlists
+        // setlists.filter(setlist =>
+        //   findFuzzyMatch(setlist.setlistName, searchInput)
+        // )
       )
-    )
-  }, [searchInput, songs])
+    } else {
+      setFuzzySearchResult(
+        songs.filter(song =>
+          findFuzzyMatch(song.optimizedMetaData.title, searchInput)
+        )
+      )
+    }
+  }, [searchInput, songs, setlists])
 
   let sideListContent
   if (sideListType === 'allSongs') {
@@ -153,7 +163,7 @@ export default function SideList({
     if (setlists) {
       sideListContent = setlistsIsLoading
         ? 'loading...'
-        : setlists.map(setlist => (
+        : fuzzySearchResult.map(setlist => (
             <SetlistItem
               key={setlist._id}
               setlist={setlist}
@@ -195,7 +205,7 @@ export default function SideList({
     setSideListType('singleSetlist')
   }
 
-  function fuzzy_match(songTitle, searchInput) {
+  function findFuzzyMatch(songTitle, searchInput) {
     let search = searchInput.replace(/ /g, '').toLowerCase()
     let name = songTitle.replace(/ /g, '').toLowerCase()
     const tokens = name.split('')
