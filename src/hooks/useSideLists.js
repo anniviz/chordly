@@ -1,6 +1,9 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import useSongs from './useSongs'
 
 export default function useSideLists() {
+  const { swipeIndex } = useSongs()
+
   const [isSideListShown, setIsSideListShown] = useState(false)
   const [sideListType, setSideListType] = useState('allSongs')
   const [sideListTitle, setSideListTitle] = useState('All Songs')

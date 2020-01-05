@@ -13,7 +13,6 @@ import { dimensions } from '../common/dimensions'
 
 import useSetlists from '../hooks/useSetlists'
 import useSideLists from '../hooks/useSideLists'
-import useSongs from '../hooks/useSongs'
 import { patchSetlist } from '../services.js'
 
 import search from '../icons/search-blue.svg'
@@ -31,6 +30,9 @@ export default function SideList({
   setSideListType,
   setSetlists,
   setKeyCounter,
+  searchInput,
+  fuzzySearchResult,
+  handleSearchInput,
 }) {
   const {
     setlistsIsLoading,
@@ -43,12 +45,13 @@ export default function SideList({
     setSideListTitle,
     showSearchField,
     setShowSearchField,
-    searchInput,
     setSearchInput,
   } = useSideLists()
-  const { fuzzySearchResult, setFuzzySearchResult } = useSongs()
+
+  let sideListContent
 
   useEffect(() => {
+    console.log('foo')
     setSearchInput('')
   }, [sideListType, swipeIndex])
 
@@ -56,43 +59,9 @@ export default function SideList({
     setShowSearchField(false)
   }, [sideListType])
 
-  useEffect(() => {
-    if (sideListType === 'setlists') {
-      console.log('foo')
-      setFuzzySearchResult(
-        setlists
-        // setlists.filter(setlist =>
-        //   findFuzzyMatch(setlist.setlistName, searchInput)
-        // )
-      )
-    } else {
-      setFuzzySearchResult(
-        songs.filter(song =>
-          findFuzzyMatch(song.optimizedMetaData.title, searchInput)
-        )
-      )
-    }
-  }, [searchInput, songs, setlists])
+  console.log(fuzzySearchResult)
 
-  let sideListContent
-  if (sideListType === 'allSongs') {
-    handleIsSongsShown(songs)
-    sideListTitle === 'All Songs' || setSideListTitle('All Songs')
-  } else if (sideListType === 'setlists') {
-    handleIsSetListsShown(setlists)
-    sideListTitle === 'All Sets' || setSideListTitle('All Sets')
-  } else if (sideListType === 'singleSetlist') {
-    const index = setlists.findIndex(setlist => setlist._id === activeSetlist)
-    handleIsSongsShown(setlists[index].songs)
-    sideListTitle === setlists[index].setlistName ||
-      setSideListTitle(setlists[index].setlistName)
-  } else if (sideListType === 'addSetlist') {
-    handleIsAddSetlistShown()
-    sideListTitle === 'Add Set' || setSideListTitle('Add Set')
-  } else if (sideListType === 'addSongToSetlist') {
-    handleIsSongsShown(songs)
-    sideListTitle === 'Add Song to Set' || setSideListTitle('Add Song to Set')
-  }
+  handleSideListType()
 
   const AnimatedSideListWrapperBorder = animated(SideListWrapperBorder)
   const flyIn = useSpring({
@@ -120,7 +89,7 @@ export default function SideList({
           <InputField
             value={searchInput}
             autoFocus
-            onChange={event => setSearchInput(event.target.value)}
+            onChange={event => handleSearchInput(event)}
           ></InputField>
         )}
         {sideListContent}
@@ -140,9 +109,31 @@ export default function SideList({
     </AnimatedSideListWrapperBorder>
   )
 
+  function handleSideListType() {
+    if (sideListType === 'allSongs') {
+      handleIsSongsShown(songs)
+      sideListTitle === 'All Songs' || setSideListTitle('All Songs')
+    } else if (sideListType === 'setlists') {
+      handleIsSetListsShown(setlists)
+      sideListTitle === 'All Sets' || setSideListTitle('All Sets')
+    } else if (sideListType === 'singleSetlist') {
+      console.log('if einzel')
+      const index = setlists.findIndex(setlist => setlist._id === activeSetlist)
+      handleIsSongsShown(setlists[index].songs)
+      sideListTitle === setlists[index].setlistName ||
+        setSideListTitle(setlists[index].setlistName)
+    } else if (sideListType === 'addSetlist') {
+      handleIsAddSetlistShown()
+      sideListTitle === 'Add Set' || setSideListTitle('Add Set')
+    } else if (sideListType === 'addSongToSetlist') {
+      handleIsSongsShown(songs)
+      sideListTitle === 'Add Song to Set' || setSideListTitle('Add Song to Set')
+    }
+  }
+
   function handleIsSongsShown(songs) {
     if (songs) {
-      sideListContent = fuzzySearchResult.map(song => (
+      sideListContent = songs.map(song => (
         <SongListItem
           key={song._id}
           index={findSongIndex(song._id)}
@@ -203,27 +194,6 @@ export default function SideList({
     )
 
     setSideListType('singleSetlist')
-  }
-
-  function findFuzzyMatch(songTitle, searchInput) {
-    let search = searchInput.replace(/ /g, '').toLowerCase()
-    let name = songTitle.replace(/ /g, '').toLowerCase()
-    const tokens = name.split('')
-    let search_position = 0
-
-    tokens.forEach(i => {
-      if (i === search[search_position]) {
-        search_position += 1
-        if (search_position >= search.length) {
-          return false
-        }
-      }
-    })
-
-    if (search_position !== search.length) {
-      return ''
-    }
-    return tokens.join('')
   }
 
   function findSongIndex(songID) {

@@ -14,13 +14,24 @@ import useSideLists from './hooks/useSideLists'
 import useSetlists from './hooks/useSetlists'
 import useKeyChange from './hooks/useKeyChange'
 
+import findFuzzyMatch from './common/searchFucntions'
+
 export default function App() {
-  const { songs, isLoading, swipeIndex, setSwipeIndex } = useSongs()
+  const {
+    songs,
+    isLoading,
+    swipeIndex,
+    setSwipeIndex,
+    fuzzySearchResult,
+    setFuzzySearchResult,
+  } = useSongs()
   const {
     isSideListShown,
     setIsSideListShown,
     sideListType,
     setSideListType,
+    searchInput,
+    setSearchInput,
   } = useSideLists()
   const {
     setlists,
@@ -39,6 +50,34 @@ export default function App() {
   useEffect(() => {
     setKeyCounter(0)
   }, [swipeIndex])
+  const activeSetlistIndex = setlists.findIndex(
+    setlist => setlist._id === activeSetlist
+  )
+  useEffect(() => {
+    console.log('useEffect')
+
+    if (sideListType === 'singleSetlist') {
+      console.log('ue einzelneSetliste')
+
+      setFuzzySearchResult(
+        setlists[activeSetlistIndex].songs.filter(song =>
+          findFuzzyMatch(song.optimizedMetaData.title, searchInput)
+        )
+      )
+    } else if (sideListType === 'setlists') {
+      setFuzzySearchResult(
+        setlists.filter(setlist =>
+          findFuzzyMatch(setlist.setlistName, searchInput)
+        )
+      )
+    } else {
+      setFuzzySearchResult(
+        songs.filter(song =>
+          findFuzzyMatch(song.optimizedMetaData.title, searchInput)
+        )
+      )
+    }
+  }, [searchInput, sideListType, songs, setlists])
 
   if (activeSetlist) {
     const keyChangeObject = loadKeyCounterFromStorage()
@@ -83,6 +122,9 @@ export default function App() {
               setSwipeIndex={setSwipeIndex}
               setSetlists={setSetlists}
               setKeyCounter={setKeyCounter}
+              searchInput={searchInput}
+              fuzzySearchResult={fuzzySearchResult}
+              handleSearchInput={handleSearchInput}
             ></SideList>
             <ChangeKeyButton
               direction="up"
@@ -187,5 +229,9 @@ export default function App() {
     } else {
       return undefined
     }
+  }
+
+  function handleSearchInput(event) {
+    setSearchInput(event.target.value)
   }
 }
