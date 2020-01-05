@@ -144,6 +144,7 @@ export default function SideList({
           handleChangeIndex={handleChangeIndex}
           setlistSongs={setlistSongs}
           setSetlistSongs={setSetlistSongs}
+          setSearchInput={setSearchInput}
         />
       ))
     } else {
