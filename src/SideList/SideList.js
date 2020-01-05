@@ -13,6 +13,7 @@ import { dimensions } from '../common/dimensions'
 
 import useSetlists from '../hooks/useSetlists'
 import useSideLists from '../hooks/useSideLists'
+import useSongs from '../hooks/useSongs'
 import { patchSetlist } from '../services.js'
 
 import search from '../icons/search-blue.svg'
@@ -30,9 +31,6 @@ export default function SideList({
   setSideListType,
   setSetlists,
   setKeyCounter,
-  searchInput,
-  fuzzySearchResult,
-  handleSearchInput,
 }) {
   const {
     setlistsIsLoading,
@@ -45,13 +43,12 @@ export default function SideList({
     setSideListTitle,
     showSearchField,
     setShowSearchField,
+    searchInput,
     setSearchInput,
   } = useSideLists()
-
-  let sideListContent
+  const { fuzzySearchResult, setFuzzySearchResult } = useSongs()
 
   useEffect(() => {
-    console.log('foo')
     setSearchInput('')
   }, [sideListType, swipeIndex])
 
@@ -59,8 +56,33 @@ export default function SideList({
     setShowSearchField(false)
   }, [sideListType])
 
-  console.log(fuzzySearchResult)
+  const activeSetlistIndex = setlists.findIndex(
+    setlist => setlist._id === activeSetlist
+  )
 
+  useEffect(() => {
+    if (sideListType === 'singleSetlist') {
+      setFuzzySearchResult(
+        setlists[activeSetlistIndex].songs.filter(song =>
+          findFuzzyMatch(song.optimizedMetaData.title, searchInput)
+        )
+      )
+    } else if (sideListType === 'setlists') {
+      setFuzzySearchResult(
+        setlists.filter(setlist =>
+          findFuzzyMatch(setlist.setlistName, searchInput)
+        )
+      )
+    } else {
+      setFuzzySearchResult(
+        songs.filter(song =>
+          findFuzzyMatch(song.optimizedMetaData.title, searchInput)
+        )
+      )
+    }
+  }, [searchInput, sideListType, songs, setlists])
+
+  let sideListContent
   handleSideListType()
 
   const AnimatedSideListWrapperBorder = animated(SideListWrapperBorder)
@@ -89,7 +111,7 @@ export default function SideList({
           <InputField
             value={searchInput}
             autoFocus
-            onChange={event => handleSearchInput(event)}
+            onChange={event => setSearchInput(event.target.value)}
           ></InputField>
         )}
         {sideListContent}
@@ -109,31 +131,10 @@ export default function SideList({
     </AnimatedSideListWrapperBorder>
   )
 
-  function handleSideListType() {
-    if (sideListType === 'allSongs') {
-      handleIsSongsShown(songs)
-      sideListTitle === 'All Songs' || setSideListTitle('All Songs')
-    } else if (sideListType === 'setlists') {
-      handleIsSetListsShown(setlists)
-      sideListTitle === 'All Sets' || setSideListTitle('All Sets')
-    } else if (sideListType === 'singleSetlist') {
-      console.log('if einzel')
-      const index = setlists.findIndex(setlist => setlist._id === activeSetlist)
-      handleIsSongsShown(setlists[index].songs)
-      sideListTitle === setlists[index].setlistName ||
-        setSideListTitle(setlists[index].setlistName)
-    } else if (sideListType === 'addSetlist') {
-      handleIsAddSetlistShown()
-      sideListTitle === 'Add Set' || setSideListTitle('Add Set')
-    } else if (sideListType === 'addSongToSetlist') {
-      handleIsSongsShown(songs)
-      sideListTitle === 'Add Song to Set' || setSideListTitle('Add Song to Set')
-    }
-  }
-
   function handleIsSongsShown(songs) {
+    const songList = showSearchField ? fuzzySearchResult : songs
     if (songs) {
-      sideListContent = songs.map(song => (
+      sideListContent = songList.map(song => (
         <SongListItem
           key={song._id}
           index={findSongIndex(song._id)}
@@ -151,10 +152,11 @@ export default function SideList({
   }
 
   function handleIsSetListsShown(setlists) {
+    const setlistList = showSearchField ? fuzzySearchResult : setlists
     if (setlists) {
       sideListContent = setlistsIsLoading
         ? 'loading...'
-        : fuzzySearchResult.map(setlist => (
+        : setlistList.map(setlist => (
             <SetlistItem
               key={setlist._id}
               setlist={setlist}
@@ -196,8 +198,53 @@ export default function SideList({
     setSideListType('singleSetlist')
   }
 
+  function findFuzzyMatch(songTitle, searchInput) {
+    let search = searchInput.replace(/ /g, '').toLowerCase()
+    let name = songTitle.replace(/ /g, '').toLowerCase()
+    const tokens = name.split('')
+    let search_position = 0
+
+    tokens.forEach(i => {
+      if (i === search[search_position]) {
+        search_position += 1
+        if (search_position >= search.length) {
+          return false
+        }
+      }
+    })
+
+    if (search_position !== search.length) {
+      return ''
+    }
+    return tokens.join('')
+  }
+
   function findSongIndex(songID) {
-    return songs.findIndex(song => song._id === songID)
+    const songList =
+      sideListType === 'singleSetlist'
+        ? setlists[activeSetlistIndex].songs
+        : songs
+    return songList.findIndex(song => song._id === songID)
+  }
+
+  function handleSideListType() {
+    if (sideListType === 'allSongs') {
+      handleIsSongsShown(songs)
+      sideListTitle === 'All Songs' || setSideListTitle('All Songs')
+    } else if (sideListType === 'setlists') {
+      handleIsSetListsShown(setlists)
+      sideListTitle === 'All Sets' || setSideListTitle('All Sets')
+    } else if (sideListType === 'singleSetlist') {
+      handleIsSongsShown(setlists[activeSetlistIndex].songs)
+      sideListTitle === setlists[activeSetlistIndex].setlistName ||
+        setSideListTitle(setlists[activeSetlistIndex].setlistName)
+    } else if (sideListType === 'addSetlist') {
+      handleIsAddSetlistShown()
+      sideListTitle === 'Add Set' || setSideListTitle('Add Set')
+    } else if (sideListType === 'addSongToSetlist') {
+      handleIsSongsShown(songs)
+      sideListTitle === 'Add Song to Set' || setSideListTitle('Add Song to Set')
+    }
   }
 }
 
@@ -211,7 +258,6 @@ const SideListWrapper = styled.ul`
   background: #3f4a6d;
   background-clip: padding-box;
   overflow-y: scroll;
-
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
