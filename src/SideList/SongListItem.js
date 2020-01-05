@@ -69,9 +69,12 @@ const SongListItemAddToSetlist = styled.li`
 `
 
 SongListItem.propTypes = {
+  sideListType: PropTypes.string,
   song: PropTypes.object.isRequired,
   index: PropTypes.number.isRequired,
   swipeIndex: PropTypes.number.isRequired,
   handleChangeIndex: PropTypes.func.isRequired,
+  setlistSongs: PropTypes.array,
+  setSetlistSongs: PropTypes.func,
   setSearchInput: PropTypes.func,
 }
