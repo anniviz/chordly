@@ -56,14 +56,22 @@ export default function SideList({
     setShowSearchField(false)
   }, [sideListType])
 
+  const activeSetlistIndex = setlists.findIndex(
+    setlist => setlist._id === activeSetlist
+  )
+
   useEffect(() => {
-    if (sideListType === 'setlists') {
-      console.log('foo')
+    if (sideListType === 'singleSetlist') {
       setFuzzySearchResult(
-        setlists
-        // setlists.filter(setlist =>
-        //   findFuzzyMatch(setlist.setlistName, searchInput)
-        // )
+        setlists[activeSetlistIndex].songs.filter(song =>
+          findFuzzyMatch(song.optimizedMetaData.title, searchInput)
+        )
+      )
+    } else if (sideListType === 'setlists') {
+      setFuzzySearchResult(
+        setlists.filter(setlist =>
+          findFuzzyMatch(setlist.setlistName, searchInput)
+        )
       )
     } else {
       setFuzzySearchResult(
@@ -72,27 +80,10 @@ export default function SideList({
         )
       )
     }
-  }, [searchInput, songs, setlists])
+  }, [searchInput, sideListType, songs, setlists])
 
   let sideListContent
-  if (sideListType === 'allSongs') {
-    handleIsSongsShown(songs)
-    sideListTitle === 'All Songs' || setSideListTitle('All Songs')
-  } else if (sideListType === 'setlists') {
-    handleIsSetListsShown(setlists)
-    sideListTitle === 'All Sets' || setSideListTitle('All Sets')
-  } else if (sideListType === 'singleSetlist') {
-    const index = setlists.findIndex(setlist => setlist._id === activeSetlist)
-    handleIsSongsShown(setlists[index].songs)
-    sideListTitle === setlists[index].setlistName ||
-      setSideListTitle(setlists[index].setlistName)
-  } else if (sideListType === 'addSetlist') {
-    handleIsAddSetlistShown()
-    sideListTitle === 'Add Set' || setSideListTitle('Add Set')
-  } else if (sideListType === 'addSongToSetlist') {
-    handleIsSongsShown(songs)
-    sideListTitle === 'Add Song to Set' || setSideListTitle('Add Song to Set')
-  }
+  handleSideListType()
 
   const AnimatedSideListWrapperBorder = animated(SideListWrapperBorder)
   const flyIn = useSpring({
@@ -141,8 +132,9 @@ export default function SideList({
   )
 
   function handleIsSongsShown(songs) {
+    const songList = showSearchField ? fuzzySearchResult : songs
     if (songs) {
-      sideListContent = fuzzySearchResult.map(song => (
+      sideListContent = songList.map(song => (
         <SongListItem
           key={song._id}
           index={findSongIndex(song._id)}
@@ -160,10 +152,11 @@ export default function SideList({
   }
 
   function handleIsSetListsShown(setlists) {
+    const setlistList = showSearchField ? fuzzySearchResult : setlists
     if (setlists) {
       sideListContent = setlistsIsLoading
         ? 'loading...'
-        : fuzzySearchResult.map(setlist => (
+        : setlistList.map(setlist => (
             <SetlistItem
               key={setlist._id}
               setlist={setlist}
@@ -227,7 +220,31 @@ export default function SideList({
   }
 
   function findSongIndex(songID) {
-    return songs.findIndex(song => song._id === songID)
+    const songList =
+      sideListType === 'singleSetlist'
+        ? setlists[activeSetlistIndex].songs
+        : songs
+    return songList.findIndex(song => song._id === songID)
+  }
+
+  function handleSideListType() {
+    if (sideListType === 'allSongs') {
+      handleIsSongsShown(songs)
+      sideListTitle === 'All Songs' || setSideListTitle('All Songs')
+    } else if (sideListType === 'setlists') {
+      handleIsSetListsShown(setlists)
+      sideListTitle === 'All Sets' || setSideListTitle('All Sets')
+    } else if (sideListType === 'singleSetlist') {
+      handleIsSongsShown(setlists[activeSetlistIndex].songs)
+      sideListTitle === setlists[activeSetlistIndex].setlistName ||
+        setSideListTitle(setlists[activeSetlistIndex].setlistName)
+    } else if (sideListType === 'addSetlist') {
+      handleIsAddSetlistShown()
+      sideListTitle === 'Add Set' || setSideListTitle('Add Set')
+    } else if (sideListType === 'addSongToSetlist') {
+      handleIsSongsShown(songs)
+      sideListTitle === 'Add Song to Set' || setSideListTitle('Add Song to Set')
+    }
   }
 }
 
