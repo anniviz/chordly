@@ -106,16 +106,17 @@ export default function SideList({
           />
         )}
       </SideListTitleWrapper>
-      <SideListWrapper>
+      <ItemSearchWrapper>
         {showSearchField && (
           <InputField
             value={searchInput}
             autoFocus
             onChange={event => setSearchInput(event.target.value)}
+            style={{ margin: dimensions.sideListPadding + 'px' }}
           ></InputField>
         )}
-        {sideListContent}
-      </SideListWrapper>
+        <SideListItemWrapper>{sideListContent}</SideListItemWrapper>
+      </ItemSearchWrapper>
       <ListMenu
         sideListType={sideListType}
         setSideListType={setSideListType}
@@ -249,16 +250,31 @@ export default function SideList({
   }
 }
 
-const SideListWrapper = styled.ul`
+const SideListItemWrapper = styled.ul`
   justify-self: stretch;
   align-self: center;
   list-style: none;
   padding: ${dimensions.sideListPadding + 'px'};
   height: 100%;
+  /* border-radius: 12px 12px 0 0; */
+  /* background: #3f4a6d; */
+  /* background-clip: padding-box; */
+  overflow-y: scroll;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+`
+
+const ItemSearchWrapper = styled.div`
+  overflow: hidden;
+  justify-self: stretch;
+  align-self: center;
+  list-style: none;
+  height: 100%;
   border-radius: 12px 12px 0 0;
   background: #3f4a6d;
   background-clip: padding-box;
-  overflow-y: scroll;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
