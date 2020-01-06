@@ -94,9 +94,7 @@ export default function SideList({
     <AnimatedSideListWrapperBorder style={flyIn}>
       <SideListTitleWrapper>
         <SideListTitle>{sideListTitle}</SideListTitle>
-        {sideListType === 'addSetlist' ? (
-          <></>
-        ) : (
+        {sideListType === 'addSetlist' || (
           <img
             className="search-icon"
             alt="search"
