@@ -3,16 +3,17 @@ const Song = require('./models/Song')
 const Setlist = require('./models/Setlist')
 const mongoose = require('mongoose')
 
-mongoose.connect('mongodb://localhost:27017/songnet', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-})
+mongoose.connect(process.env.MONGODB_URI)
+mongoose.Promise = global.Promise
 
 const app = express()
 app.use(express.json())
 
 const PORT = process.env.PORT || 3333
 app.listen(PORT, () => console.log(`Express ready on ${PORT}`))
+
+// app.use(AuthHandler);
+// app.use(bodyParser.json());
 
 app.get('/songs', (req, res) => {
   Song.find()
@@ -54,3 +55,5 @@ app.patch('/setlists/:id', (req, res) => {
     .then(spot => res.json(spot))
     .catch(err => res.json(err))
 })
+
+module.exports = app
