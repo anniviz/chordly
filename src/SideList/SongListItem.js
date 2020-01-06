@@ -10,6 +10,7 @@ export default function SongListItem({
   handleChangeIndex,
   setlistSongs,
   setSetlistSongs,
+  setSearchInput,
 }) {
   let songInSetlist
   if (sideListType === 'addSongToSetlist') {
@@ -42,6 +43,7 @@ export default function SongListItem({
     } else {
       setSetlistSongs([...setlistSongs, song._id])
     }
+    setSearchInput('')
   }
 }
 
@@ -67,8 +69,12 @@ const SongListItemAddToSetlist = styled.li`
 `
 
 SongListItem.propTypes = {
+  sideListType: PropTypes.string,
   song: PropTypes.object.isRequired,
   index: PropTypes.number.isRequired,
   swipeIndex: PropTypes.number.isRequired,
   handleChangeIndex: PropTypes.func.isRequired,
+  setlistSongs: PropTypes.array,
+  setSetlistSongs: PropTypes.func,
+  setSearchInput: PropTypes.func,
 }

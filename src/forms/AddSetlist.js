@@ -12,7 +12,7 @@ import 'react-datepicker/dist/react-datepicker.css'
 import '../additionalStyles/datepicker.scss'
 
 import SaveCancelButtons from './SaveCancelButtons'
-import { dimensions } from '../common/dimensions'
+import InputField from './InputField'
 
 export default function AddSetlist({
   setSideListType,
@@ -106,18 +106,6 @@ const InputWrapper = styled.div`
 const Fieldset = styled.fieldset`
   border: none;
   padding: 4px;
-`
-
-const InputField = styled.input`
-  background: #939dc5;
-  font-size: 1.1rem;
-  color: #fefefe;
-  border: none;
-  width: ${dimensions.sideListWidth - 3 * dimensions.sideListPadding + 'px'};
-  height: 2em;
-  border-radius: 4px;
-  padding: 4px;
-  margin: 12px 0;
 `
 
 AddSetlist.propTypes = {

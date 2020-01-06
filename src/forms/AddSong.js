@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react'
+import React from 'react'
 import { useHistory } from 'react-router-dom'
 import styled from 'styled-components/macro'
 import ChordSheetJS from 'chordsheetjs'
@@ -10,11 +10,6 @@ import { postSong } from '../services'
 import SaveCancelButtons from './SaveCancelButtons'
 
 export default function AddSong() {
-  const textareaRef = useRef(null)
-  useEffect(() => {
-    textareaRef.current.focus()
-  })
-
   const history = useHistory()
 
   const placeholderText = `
@@ -44,11 +39,7 @@ Comin’ for to [A7]carry me [D]home.
     <form onSubmit={createSong}>
       <FormWrapper>
         <TextAreaWrapper>
-          <SongTextArea
-            ref={textareaRef}
-            name="song"
-            placeholder={placeholderText}
-          />
+          <SongTextArea autoFocus name="song" placeholder={placeholderText} />
         </TextAreaWrapper>
         <SaveCancelButtons handleCancelClick={handleCancelClick} />
       </FormWrapper>

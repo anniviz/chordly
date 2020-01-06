@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import SwipeableViews from 'react-swipeable-views'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
@@ -7,23 +7,15 @@ import SideList from './SideList/SideList'
 import Song from './Song/Song'
 import AddSong from './forms/AddSong'
 import ListButton from './navigation/ListButton'
+import ChangeKeyButton from './ChangeKey/ChangeKeyButton'
 
 import useSongs from './hooks/useSongs'
 import useSideLists from './hooks/useSideLists'
 import useSetlists from './hooks/useSetlists'
-import ChangeKeyButton from './ChangeKey/ChangeKeyButton'
+import useKeyChange from './hooks/useKeyChange'
 
 export default function App() {
-  const {
-    songs,
-    isLoading,
-    swipeIndex,
-    setSwipeIndex,
-    keyCounter,
-    setKeyCounter,
-    changeKeyDirection,
-    setChangeKeyDirection,
-  } = useSongs()
+  const { songs, isLoading, swipeIndex, setSwipeIndex } = useSongs()
   const {
     isSideListShown,
     setIsSideListShown,
@@ -36,6 +28,17 @@ export default function App() {
     activeSetlist,
     setActiveSetlist,
   } = useSetlists()
+
+  const {
+    keyCounter,
+    setKeyCounter,
+    changeKeyDirection,
+    setChangeKeyDirection,
+  } = useKeyChange()
+
+  useEffect(() => {
+    setKeyCounter(0)
+  }, [swipeIndex])
 
   if (activeSetlist) {
     const keyChangeObject = loadKeyCounterFromStorage()
