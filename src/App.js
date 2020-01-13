@@ -128,9 +128,10 @@ export default function App() {
         animateTransitions={false}
       >
         {songs
-          ? songs.map(song => (
+          ? songs.map((song, index) => (
               <Song
                 key={song._id}
+                hidden={swipeIndex !== index}
                 song={song}
                 isSideListShown={isSideListShown}
                 keyCounter={keyCounter}

@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 
 import { scales } from '../ChangeKey/scales'
 
-export default function ChordLyricsPair({
+function ChordLyricsPair({
   item,
   chordsInLine,
   keyCounter,
@@ -99,3 +99,5 @@ ChordLyricsPair.propTypes = {
   keyCounter: PropTypes.number,
   changeKeyDirection: PropTypes.string,
 }
+
+export default React.memo(ChordLyricsPair)
