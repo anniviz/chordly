@@ -14,19 +14,20 @@ function Song({ song, isSideListShown, keyCounter, changeKeyDirection }) {
       : dimensions.standardPadding + 'px',
   })
   return (
-    <AnimatedSongWrapper style={songAnimation}>
+    <SongWrapper>
       <SongContent
         song={song}
         keyCounter={keyCounter}
         changeKeyDirection={changeKeyDirection}
       ></SongContent>
-    </AnimatedSongWrapper>
+    </SongWrapper>
   )
 }
 
 const SongWrapper = styled.section`
   padding: ${dimensions.standardPadding + 'px'};
   overflow: scroll;
+  width: auto;
 
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -41,5 +42,5 @@ Song.propTypes = {
   changeKeyDirection: PropTypes.string,
 }
 
-// export default React.memo(Song)
-export default Song
+export default React.memo(Song)
+// export default Song

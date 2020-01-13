@@ -277,6 +277,7 @@ const ItemSearchWrapper = styled.div`
 `
 
 const SideListWrapperBorder = styled.div`
+position: sticky;
   display: grid;
   grid-template-rows: min-content auto 48px;
   justify-items: stretch;
@@ -287,9 +288,9 @@ const SideListWrapperBorder = styled.div`
       ${4 * dimensions.listButtonTop + 2 * dimensions.cubicButtonExtent + 'px'}
   );
   background: linear-gradient(60deg, #feb79c, #fd5da1);
-  position: fixed;
+  /* position: fixed;
   top: ${2 * dimensions.listButtonTop + dimensions.cubicButtonExtent + 'px'};
-  right: ${dimensions.changeKeyButtonRight + 'px'};
+  right: ${dimensions.changeKeyButtonRight + 'px'}; */
 `
 
 const SideListTitleWrapper = styled.div`

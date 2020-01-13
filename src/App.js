@@ -149,10 +149,10 @@ export default function App() {
         animateTransitions={false}
       >
         {songs
-          ? displaySongs.map((song, index) => (
+          ? songs.map((song, index) => (
               <Song
                 key={song._id}
-                hidden={swipeIndex !== index}
+                // hidden={swipeIndex !== index}
                 song={song}
                 isSideListShown={isSideListShown}
                 keyCounter={keyCounter}
