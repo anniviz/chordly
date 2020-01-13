@@ -118,7 +118,28 @@ export default function App() {
   }
 
   function handleSwipeableView(songs) {
-    swipeableViewContent = isLoading ? (
+    console.log(swipeIndex)
+    let displaySongs
+    // const displaySongs =
+    //   songs.length > 3
+    //     ? [songs[swipeIndex - 1], songs[swipeIndex], songs[swipeIndex + 1]]
+    //     : songs
+
+    if (!songs[swipeIndex - 1]) {
+      displaySongs = [songs[swipeIndex], songs[swipeIndex + 1]]
+      // } else if (!songs[swipeIndex + 1]) {
+      //   displaySongs = [songs[swipeIndex - 1], songs[swipeIndex]]
+    } else {
+      displaySongs = [
+        songs[swipeIndex - 1],
+        songs[swipeIndex],
+        songs[swipeIndex + 1],
+      ]
+    }
+
+    console.log(displaySongs)
+
+    return (swipeableViewContent = isLoading ? (
       'Loading ...'
     ) : (
       <SwipeableViews
@@ -128,7 +149,7 @@ export default function App() {
         animateTransitions={false}
       >
         {songs
-          ? songs.map((song, index) => (
+          ? displaySongs.map((song, index) => (
               <Song
                 key={song._id}
                 hidden={swipeIndex !== index}
@@ -140,7 +161,7 @@ export default function App() {
             ))
           : 'no song'}
       </SwipeableViews>
-    )
+    ))
   }
 
   function handleKeyChangeClick(direction) {

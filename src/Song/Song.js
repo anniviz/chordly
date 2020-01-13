@@ -41,4 +41,5 @@ Song.propTypes = {
   changeKeyDirection: PropTypes.string,
 }
 
-export default React.memo(Song)
+// export default React.memo(Song)
+export default Song
