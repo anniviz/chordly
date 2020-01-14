@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react'
+import styled from 'styled-components/macro'
 import SwipeableViews from 'react-swipeable-views'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
@@ -65,7 +66,8 @@ export default function App() {
       <Switch>
         <Route exact path="/">
           <Layout>
-            {swipeableViewContent}
+            <SwipeContainer>{swipeableViewContent}</SwipeContainer>
+
             <ListButton
               toggleSideList={toggleSideList}
               isSideListShown={isSideListShown}
@@ -211,3 +213,8 @@ export default function App() {
     }
   }
 }
+
+const SwipeContainer = styled.div`
+  align-self: flex-start;
+  overflow: visible;
+`
