@@ -85,48 +85,51 @@ export default function SideList({
   let sideListContent
   handleSideListType()
 
-  const AnimatedSideListWrapperBorder = animated(SideListWrapperBorder)
+  const AnimatedSideListWrapperBorder = animated(Container)
   const flyIn = useSpring({
     width: isSideListShown ? dimensions.sideListWidth + 'px' : '0px',
     opacity: isSideListShown ? 1 : 0,
   })
   return (
     <AnimatedSideListWrapperBorder style={flyIn}>
-      <SideListTitleWrapper>
-        <SideListTitle>{sideListTitle}</SideListTitle>
-        {sideListType === 'addSetlist' || (
-          <img
-            className="search-icon"
-            alt="search"
-            src={search}
-            style={{ padding: '10px', height: '36px' }}
-            onClick={() => setShowSearchField(!showSearchField)}
-          />
-        )}
-      </SideListTitleWrapper>
-      <ItemSearchWrapper>
-        {showSearchField && (
-          <InputField
-            value={searchInput}
-            autoFocus
-            onChange={event => setSearchInput(event.target.value)}
-            style={{ margin: dimensions.sideListPadding + 'px' }}
-          ></InputField>
-        )}
-        <SideListItemWrapper>{sideListContent}</SideListItemWrapper>
-      </ItemSearchWrapper>
-      <ListMenu
-        sideListType={sideListType}
-        setSideListType={setSideListType}
-        setSwipeIndex={setSwipeIndex}
-        activeSetlist={activeSetlist}
-        setActiveSetlist={setActiveSetlist}
-        setSetlists={setSetlists}
-        setlists={setlists}
-        setlistSongs={setlistSongs}
-        handleSaveSongsToSetlist={handleSaveSongsToSetlist}
-        setKeyCounter={setKeyCounter}
-      />
+      <SideListWrapperBorder>
+        <SideListTitleWrapper>
+          <SideListTitle>{sideListTitle}</SideListTitle>
+          {sideListType === 'addSetlist' || (
+            <img
+              className="search-icon"
+              alt="search"
+              src={search}
+              style={{ padding: '10px', height: '36px' }}
+              onClick={() => setShowSearchField(!showSearchField)}
+            />
+          )}
+        </SideListTitleWrapper>
+
+        <ItemSearchWrapper>
+          {showSearchField && (
+            <InputField
+              value={searchInput}
+              autoFocus
+              onChange={event => setSearchInput(event.target.value)}
+              style={{ margin: dimensions.sideListPadding + 'px' }}
+            ></InputField>
+          )}
+          <SideListItemWrapper>{sideListContent}</SideListItemWrapper>
+        </ItemSearchWrapper>
+        <ListMenu
+          sideListType={sideListType}
+          setSideListType={setSideListType}
+          setSwipeIndex={setSwipeIndex}
+          activeSetlist={activeSetlist}
+          setActiveSetlist={setActiveSetlist}
+          setSetlists={setSetlists}
+          setlists={setlists}
+          setlistSongs={setlistSongs}
+          handleSaveSongsToSetlist={handleSaveSongsToSetlist}
+          setKeyCounter={setKeyCounter}
+        />
+      </SideListWrapperBorder>
     </AnimatedSideListWrapperBorder>
   )
 
@@ -254,7 +257,7 @@ const SideListItemWrapper = styled.ul`
   list-style: none;
   padding: ${dimensions.sideListPadding + 'px'};
   height: 100%;
-  overflow-y: scroll;
+  overflow: auto;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -262,7 +265,8 @@ const SideListItemWrapper = styled.ul`
 `
 
 const ItemSearchWrapper = styled.div`
-  overflow: hidden;
+  overflow: scroll;
+  /* -webkit-overflow-scrolling: touch; */
   justify-self: stretch;
   align-self: center;
   list-style: none;
@@ -274,6 +278,14 @@ const ItemSearchWrapper = styled.div`
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+`
+
+const Container = styled.div`
+  align-self: flex-start;
+  margin-top: ${2 * dimensions.listButtonTop +
+    dimensions.cubicButtonExtent +
+    'px'};
+  margin-right: ${dimensions.changeKeyButtonRight + 'px'};
 `
 
 const SideListWrapperBorder = styled.div`
@@ -288,11 +300,7 @@ const SideListWrapperBorder = styled.div`
   );
   background: linear-gradient(60deg, #feb79c, #fd5da1);
   overflow: hidden;
-  align-self: flex-start;
-  margin-top: ${2 * dimensions.listButtonTop +
-    dimensions.cubicButtonExtent +
-    'px'};
-  margin-right: ${dimensions.changeKeyButtonRight + 'px'};
+  
   /* position: fixed;
   top: ${2 * dimensions.listButtonTop + dimensions.cubicButtonExtent + 'px'};
   right: ${dimensions.changeKeyButtonRight + 'px'}; */

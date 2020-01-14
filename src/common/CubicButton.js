@@ -4,8 +4,8 @@ import { dimensions } from '../common/dimensions'
 
 const CubicButton = styled.button`
   display: grid;
-  align-content: center;
-  justify-content: center;
+  align-items: center;
+  justify-items: center;
   height: ${dimensions.cubicButtonExtent + 'px'};
   width: ${dimensions.cubicButtonExtent + 'px'};
   background: #3f4a6d;

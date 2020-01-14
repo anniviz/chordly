@@ -156,7 +156,6 @@ export default function App() {
                 key={song._id}
                 // hidden={swipeIndex !== index}
                 song={song}
-                isSideListShown={isSideListShown}
                 keyCounter={keyCounter}
                 changeKeyDirection={changeKeyDirection}
               />
