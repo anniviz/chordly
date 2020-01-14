@@ -7,6 +7,10 @@ import ChordLyricsPair from './ChordLyricsPair'
 import { dimensions } from '../common/dimensions'
 
 function Song({ song, keyCounter, changeKeyDirection }) {
+  // console.log('song', song)
+  // console.log('keyCounter', keyCounter)
+  // console.log('changeKeyDirection', changeKeyDirection)
+  console.log('foo')
   return (
     <ScrollContainer>
       <SongWrapper>

@@ -120,7 +120,7 @@ export default function App() {
   }
 
   function handleSwipeableView(songs) {
-    console.log(swipeIndex)
+    // console.log(swipeIndex)
     let displaySongs
     // const displaySongs =
     //   songs.length > 3
@@ -139,7 +139,7 @@ export default function App() {
       ]
     }
 
-    console.log(displaySongs)
+    // console.log(displaySongs)
 
     return (swipeableViewContent = isLoading ? (
       'Loading ...'
