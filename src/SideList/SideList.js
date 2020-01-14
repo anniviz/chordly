@@ -281,16 +281,23 @@ const ItemSearchWrapper = styled.div`
 `
 
 const Container = styled.div`
+  /* display: flex; */
   align-self: flex-start;
+  /* height: 500px; */
   margin-top: ${2 * dimensions.listButtonTop +
     dimensions.cubicButtonExtent +
     'px'};
+  margin-bottom: ${2 * dimensions.listButtonTop +
+    dimensions.cubicButtonExtent +
+    'px'};
   margin-right: ${dimensions.changeKeyButtonRight + 'px'};
+  overflow: hidden;
 `
 
 const SideListWrapperBorder = styled.div`
   display: grid;
   grid-template-rows: min-content auto 48px;
+  /* grid-template-rows: min-content 700px 48px; */
   justify-items: stretch;
   border-radius: 12px;
   padding: 2px;
@@ -298,9 +305,10 @@ const SideListWrapperBorder = styled.div`
     100vh -
       ${4 * dimensions.listButtonTop + 2 * dimensions.cubicButtonExtent + 'px'}
   );
+  /* height: 100vh; */
   background: linear-gradient(60deg, #feb79c, #fd5da1);
   overflow: hidden;
-  
+  /* align-self: stretch; */
   /* position: fixed;
   top: ${2 * dimensions.listButtonTop + dimensions.cubicButtonExtent + 'px'};
   right: ${dimensions.changeKeyButtonRight + 'px'}; */

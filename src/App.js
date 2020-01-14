@@ -148,7 +148,7 @@ export default function App() {
         index={swipeIndex}
         onChangeIndex={handleChangeIndex}
         enableMouseEvents
-        animateTransitions={false}
+        animateTransitions={true}
       >
         {songs
           ? songs.map((song, index) => (
