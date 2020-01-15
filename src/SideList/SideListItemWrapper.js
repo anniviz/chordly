@@ -1,5 +1,7 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import styled from 'styled-components/macro'
+
 import SongListItem from './SongListItem'
 import SetlistItem from './SetlistItem'
 import AddSetlist from '../forms/AddSetlist'
@@ -128,5 +130,30 @@ const SideListItemWrapperStyled = styled.ul`
   -ms-user-select: none;
   user-select: none;
 `
+
+SideListItemWrapperStyled.propTypes = {
+  songs: PropTypes.array,
+  swipeIndex: PropTypes.number.isRequired,
+  setSwipeIndex: PropTypes.func.isRequired,
+  handleChangeIndex: PropTypes.func.isRequired,
+  setlists: PropTypes.array,
+  activeSetlist: PropTypes.string,
+  setActiveSetlist: PropTypes.func.isRequired,
+  setlistsIsLoading: PropTypes.bool,
+  isSideListShown: PropTypes.bool.isRequired,
+  sideListType: PropTypes.string.isRequired,
+  setSideListType: PropTypes.func.isRequired,
+  setSetlists: PropTypes.func.isRequired,
+  setlistSongs: PropTypes.array.isRequired,
+  setSetlistSongs: PropTypes.func,
+  setKeyCounter: PropTypes.func,
+  setSearchInput: PropTypes.func,
+  showSearchField: PropTypes.bool,
+  fuzzySearchResult: PropTypes.array,
+  setSetlistsIsLoading: PropTypes.func,
+  sideListTitle: PropTypes.string,
+  setSideListTitle: PropTypes.func,
+  activeSetlistIndex: PropTypes.number,
+}
 
 export default React.memo(SideListItemWrapper)
