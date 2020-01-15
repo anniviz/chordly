@@ -120,26 +120,7 @@ export default function App() {
   }
 
   function handleSwipeableView(songs) {
-    // console.log(swipeIndex)
-    let displaySongs
-    // const displaySongs =
-    //   songs.length > 3
-    //     ? [songs[swipeIndex - 1], songs[swipeIndex], songs[swipeIndex + 1]]
-    //     : songs
-
-    if (!songs[swipeIndex - 1]) {
-      displaySongs = [songs[swipeIndex], songs[swipeIndex + 1]]
-      // } else if (!songs[swipeIndex + 1]) {
-      //   displaySongs = [songs[swipeIndex - 1], songs[swipeIndex]]
-    } else {
-      displaySongs = [
-        songs[swipeIndex - 1],
-        songs[swipeIndex],
-        songs[swipeIndex + 1],
-      ]
-    }
-
-    // console.log(displaySongs)
+    console.log('>>', songs)
 
     return (swipeableViewContent = isLoading ? (
       'Loading ...'
@@ -150,17 +131,18 @@ export default function App() {
         enableMouseEvents
         animateTransitions={true}
       >
-        {songs
-          ? songs.map((song, index) => (
-              <Song
-                key={song._id}
-                // hidden={swipeIndex !== index}
-                song={song}
-                keyCounter={keyCounter}
-                changeKeyDirection={changeKeyDirection}
-              />
-            ))
-          : 'no song'}
+        {songs.length > 0 ? (
+          songs.map(song => (
+            <Song
+              key={song._id}
+              song={song}
+              keyCounter={keyCounter}
+              changeKeyDirection={changeKeyDirection}
+            />
+          ))
+        ) : (
+          <EmptySong>no song</EmptySong>
+        )}
       </SwipeableViews>
     ))
   }
@@ -216,4 +198,10 @@ export default function App() {
 const SwipeContainer = styled.div`
   align-self: flex-start;
   overflow: visible;
+`
+
+const EmptySong = styled.div`
+  height: 100vh;
+  width: 100vh;
+  align-self: flex-start;
 `
