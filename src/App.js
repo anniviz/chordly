@@ -120,9 +120,7 @@ export default function App() {
   }
 
   function handleSwipeableView(songs) {
-    console.log('>>', songs)
-
-    return (swipeableViewContent = isLoading ? (
+    swipeableViewContent = isLoading ? (
       'Loading ...'
     ) : (
       <SwipeableViews
@@ -144,7 +142,7 @@ export default function App() {
           <EmptySong>no song</EmptySong>
         )}
       </SwipeableViews>
-    ))
+    )
   }
 
   function handleKeyChangeClick(direction) {
