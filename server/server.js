@@ -58,5 +58,5 @@ app.patch('/setlists/:id', (req, res) => {
 })
 
 app.get('*', (req, res) => {
-  res.render(path.join(__dirname, '/build/index.html'))
+  res.sendFile(path.join(__dirname, '/build/index.html'))
 })
