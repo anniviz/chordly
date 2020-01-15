@@ -23,7 +23,8 @@
     "styled-components": "^4.4.1"
   },
   "scripts": {
-    "start": "run-p client server",
+    "start": "node server/server.js",
+    "dev": "run-p client server",
     "client": "react-scripts start",
     "server": "PORT=3333 nodemon --inspect --watch ./server ./server/server.js",
     "build": "react-scripts build",

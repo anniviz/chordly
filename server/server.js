@@ -2,6 +2,7 @@ const express = require('express')
 const Song = require('./models/Song')
 const Setlist = require('./models/Setlist')
 const mongoose = require('mongoose')
+const path = require('path')
 
 mongoose.connect('mongodb://localhost:27017/songnet', {
   useNewUrlParser: true,
@@ -10,6 +11,7 @@ mongoose.connect('mongodb://localhost:27017/songnet', {
 
 const app = express()
 app.use(express.json())
+app.use(express.static(path.join(__dirname, '../build')))
 
 const PORT = process.env.PORT || 3333
 app.listen(PORT, () => console.log(`Express ready on ${PORT}`))
@@ -53,4 +55,8 @@ app.patch('/setlists/:id', (req, res) => {
     .populate('songs')
     .then(spot => res.json(spot))
     .catch(err => res.json(err))
+})
+
+app.get('*', (req, res) => {
+  res.render(path.join(__dirname, '/build/index.html'))
 })
