@@ -2,7 +2,6 @@ import React from 'react'
 import styled from 'styled-components/macro'
 import PropTypes from 'prop-types'
 
-import SongContent from './SongContent'
 import ChordLyricsPair from './ChordLyricsPair'
 import { dimensions } from '../common/dimensions'
 
@@ -53,11 +52,8 @@ const ScrollContainer = styled.div`
 `
 
 const SongWrapper = styled.section`
-  /* height: 100vh; */
-  /* align-self: flex-start; */
   padding: ${dimensions.standardPadding + 'px'};
   padding-bottom: 100px;
-  /* overflow: scroll; */
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -86,10 +82,8 @@ const Line = styled.div`
 
 Song.propTypes = {
   song: PropTypes.object,
-  isSideListShown: PropTypes.bool.isRequired,
   keyCounter: PropTypes.number,
   changeKeyDirection: PropTypes.string,
 }
 
 export default React.memo(Song)
-// export default Song
