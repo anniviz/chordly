@@ -132,7 +132,6 @@ function SideList({
             setSideListTitle={setSideListTitle}
             activeSetlistIndex={activeSetlistIndex}
           ></SideListItemWrapper>
-          {/* <SideListItemWrapper>{sideListContent}</SideListItemWrapper> */}
         </ItemSearchWrapper>
         <ListMenu
           sideListType={sideListType}
@@ -188,7 +187,6 @@ function SideList({
 
 const ItemSearchWrapper = styled.div`
   overflow: scroll;
-  /* -webkit-overflow-scrolling: touch; */
   justify-self: stretch;
   align-self: center;
   list-style: none;
@@ -203,9 +201,7 @@ const ItemSearchWrapper = styled.div`
 `
 
 const Container = styled.div`
-  /* display: flex; */
   align-self: flex-start;
-  /* height: 500px; */
   margin-top: ${2 * dimensions.listButtonTop +
     dimensions.cubicButtonExtent +
     'px'};
@@ -219,7 +215,6 @@ const Container = styled.div`
 const SideListWrapperBorder = styled.div`
   display: grid;
   grid-template-rows: min-content auto 48px;
-  /* grid-template-rows: min-content 700px 48px; */
   justify-items: stretch;
   border-radius: 12px;
   padding: 2px;
@@ -227,13 +222,8 @@ const SideListWrapperBorder = styled.div`
     100vh -
       ${4 * dimensions.listButtonTop + 2 * dimensions.cubicButtonExtent + 'px'}
   );
-  /* height: 100vh; */
   background: linear-gradient(60deg, #feb79c, #fd5da1);
   overflow: hidden;
-  /* align-self: stretch; */
-  /* position: fixed;
-  top: ${2 * dimensions.listButtonTop + dimensions.cubicButtonExtent + 'px'};
-  right: ${dimensions.changeKeyButtonRight + 'px'}; */
 `
 
 const SideListTitleWrapper = styled.div`
