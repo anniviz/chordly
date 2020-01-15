@@ -20,7 +20,9 @@
     "react-swipeable-views": "^0.13.3",
     "serialize-javascript": "^2.1.2",
     "storybook-addon-jsx": "^7.1.13",
-    "styled-components": "^4.4.1"
+    "styled-components": "^4.4.1",
+    "express": "^4.17.1",
+    "mongoose": "^5.7.13"
   },
   "scripts": {
     "start": "node server/server.js",
