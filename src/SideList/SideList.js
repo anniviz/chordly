@@ -100,7 +100,6 @@ function SideList({
             />
           )}
         </SideListTitleWrapper>
-
         <ItemSearchWrapper>
           {showSearchField && (
             <InputField
@@ -108,7 +107,7 @@ function SideList({
               autoFocus
               onChange={event => setSearchInput(event.target.value)}
               style={{ margin: dimensions.sideListPadding + 'px' }}
-            ></InputField>
+            />
           )}
           <SideListItemWrapper
             songs={songs}
@@ -131,7 +130,7 @@ function SideList({
             sideListTitle={sideListTitle}
             setSideListTitle={setSideListTitle}
             activeSetlistIndex={activeSetlistIndex}
-          ></SideListItemWrapper>
+          />
         </ItemSearchWrapper>
         <ListMenu
           sideListType={sideListType}
