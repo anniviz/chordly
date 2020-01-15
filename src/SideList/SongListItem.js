@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components/macro'
 
-export default function SongListItem({
+function SongListItem({
   sideListType,
   song,
   index,
@@ -78,3 +78,5 @@ SongListItem.propTypes = {
   setSetlistSongs: PropTypes.func,
   setSearchInput: PropTypes.func,
 }
+
+export default React.memo(SongListItem)
