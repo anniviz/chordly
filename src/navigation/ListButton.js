@@ -9,6 +9,7 @@ import CubicButton from '../common/CubicButton'
 export default function ListButton({ toggleSideList, isSideListShown }) {
   const imgAnimation = useSpring({
     transform: isSideListShown ? 'scaleX(-1)' : 'scaleX(1)',
+    margin: '6px',
   })
 
   return (
