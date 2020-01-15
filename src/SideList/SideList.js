@@ -18,7 +18,7 @@ import { patchSetlist } from '../services.js'
 
 import search from '../icons/search-blue.svg'
 
-export default function SideList({
+function SideList({
   songs,
   swipeIndex,
   handleChangeIndex,
@@ -333,3 +333,5 @@ SideList.propTypes = {
   setSetlists: PropTypes.func.isRequired,
   setKeyCounter: PropTypes.func,
 }
+
+export default React.memo(SideList)
