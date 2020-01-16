@@ -2,18 +2,23 @@ const express = require('express')
 const Song = require('./models/Song')
 const Setlist = require('./models/Setlist')
 const mongoose = require('mongoose')
+const path = require('path')
 
-mongoose.connect(process.env.MONGODB_URI)
-mongoose.Promise = global.Promise
+const {
+  MONGODB_URI = 'mongodb://localhost:27017/songnet',
+  PORT = 3333,
+} = process.env
+
+mongoose.connect(MONGODB_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+})
 
 const app = express()
 app.use(express.json())
+app.use(express.static(path.join(__dirname, '../build')))
 
-const PORT = process.env.PORT || 3333
 app.listen(PORT, () => console.log(`Express ready on ${PORT}`))
-
-// app.use(AuthHandler);
-// app.use(bodyParser.json());
 
 app.get('/songs', (req, res) => {
   Song.find()
@@ -56,4 +61,6 @@ app.patch('/setlists/:id', (req, res) => {
     .catch(err => res.json(err))
 })
 
-module.exports = app
+app.get('*', (req, res) => {
+  res.render(path.join(__dirname, '/build/index.html'))
+})
