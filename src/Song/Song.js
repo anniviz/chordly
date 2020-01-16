@@ -1,49 +1,39 @@
 import React from 'react'
 import styled from 'styled-components/macro'
 import PropTypes from 'prop-types'
-import { useSpring, animated } from 'react-spring'
 
 import ChordLyricsPair from './ChordLyricsPair'
 import { dimensions } from '../common/dimensions'
 
-export default function Song({
-  song,
-  isSideListShown,
-  keyCounter,
-  changeKeyDirection,
-}) {
-  const AnimatedSongWrapper = animated(SongWrapper)
-  const songAnimation = useSpring({
-    paddingRight: isSideListShown
-      ? dimensions.sideListWidth + 2 * dimensions.standardPadding + 'px'
-      : dimensions.standardPadding + 'px',
-  })
+function Song({ song, keyCounter, changeKeyDirection }) {
   return (
-    <AnimatedSongWrapper style={songAnimation}>
-      <SongTitle>{song.optimizedMetaData.title}</SongTitle>
-      {song.optimizedMetaData.artist && (
-        <SongArtist>{song.optimizedMetaData.artist}</SongArtist>
-      )}
-      <LyricsWrapper>
-        {song.lines.map((line, index) => {
-          const chordsInLine = areChordsInLine(line.items)
-          return (
-            <Line key={index}>
-              {isLineMetadata(line.items) ||
-                line.items.map((item, index) => (
-                  <ChordLyricsPair
-                    key={index}
-                    item={item}
-                    chordsInLine={chordsInLine}
-                    keyCounter={keyCounter}
-                    changeKeyDirection={changeKeyDirection}
-                  />
-                ))}
-            </Line>
-          )
-        })}
-      </LyricsWrapper>
-    </AnimatedSongWrapper>
+    <ScrollContainer>
+      <SongWrapper>
+        <SongTitle>{song.optimizedMetaData.title}</SongTitle>
+        {song.optimizedMetaData.artist && (
+          <SongArtist>{song.optimizedMetaData.artist}</SongArtist>
+        )}
+        <LyricsWrapper>
+          {song.lines.map((line, index) => {
+            const chordsInLine = areChordsInLine(line.items)
+            return (
+              <Line key={index}>
+                {isLineMetadata(line.items) ||
+                  line.items.map((item, index) => (
+                    <ChordLyricsPair
+                      key={index}
+                      item={item}
+                      chordsInLine={chordsInLine}
+                      keyCounter={keyCounter}
+                      changeKeyDirection={changeKeyDirection}
+                    />
+                  ))}
+              </Line>
+            )
+          })}
+        </LyricsWrapper>
+      </SongWrapper>
+    </ScrollContainer>
   )
 
   function isLineMetadata(items) {
@@ -55,10 +45,15 @@ export default function Song({
   }
 }
 
+const ScrollContainer = styled.div`
+  height: 100vh;
+  overflow: scroll;
+  align-self: flex-start;
+`
+
 const SongWrapper = styled.section`
   padding: ${dimensions.standardPadding + 'px'};
-  overflow: scroll;
-
+  padding-bottom: 100px;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -87,7 +82,8 @@ const Line = styled.div`
 
 Song.propTypes = {
   song: PropTypes.object,
-  isSideListShown: PropTypes.bool.isRequired,
   keyCounter: PropTypes.number,
   changeKeyDirection: PropTypes.string,
 }
+
+export default React.memo(Song)

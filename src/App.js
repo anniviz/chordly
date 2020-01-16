@@ -1,13 +1,12 @@
 import React, { useEffect } from 'react'
-import SwipeableViews from 'react-swipeable-views'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
 import Layout from './common/Layout'
 import SideList from './SideList/SideList'
-import Song from './Song/Song'
 import AddSong from './forms/AddSong'
 import ListButton from './navigation/ListButton'
 import ChangeKeyButton from './ChangeKey/ChangeKeyButton'
+import SwipeContainer from './SwipeContainer'
 
 import useSongs from './hooks/useSongs'
 import useSideLists from './hooks/useSideLists'
@@ -50,22 +49,22 @@ export default function App() {
     }
   }
 
-  let swipeableViewContent
-  if (sideListType === 'singleSetlist') {
-    const activeSetlistIndex = setlists.findIndex(
-      setlist => setlist._id === activeSetlist
-    )
-    handleSwipeableView(setlists[activeSetlistIndex].songs)
-  } else {
-    handleSwipeableView(songs)
-  }
-
   return (
     <Router>
       <Switch>
         <Route exact path="/">
           <Layout>
-            {swipeableViewContent}
+            <SwipeContainer
+              songs={songs}
+              sideListType={sideListType}
+              setlists={setlists}
+              activeSetlist={activeSetlist}
+              isLoading={isLoading}
+              swipeIndex={swipeIndex}
+              handleChangeIndex={handleChangeIndex}
+              keyCounter={keyCounter}
+              changeKeyDirection={changeKeyDirection}
+            />
             <ListButton
               toggleSideList={toggleSideList}
               isSideListShown={isSideListShown}
@@ -83,21 +82,21 @@ export default function App() {
               setSwipeIndex={setSwipeIndex}
               setSetlists={setSetlists}
               setKeyCounter={setKeyCounter}
-            ></SideList>
+            />
             <ChangeKeyButton
               direction="up"
               handleKeyChangeClick={() => handleKeyChangeClick('up')}
               keyCounter={keyCounter}
               setChangeKeyDirection={setChangeKeyDirection}
               isSideListShown={isSideListShown}
-            ></ChangeKeyButton>
+            />
             <ChangeKeyButton
               direction="down"
               handleKeyChangeClick={() => handleKeyChangeClick('down')}
               keyCounter={keyCounter}
               setChangeKeyDirection={setChangeKeyDirection}
               isSideListShown={isSideListShown}
-            ></ChangeKeyButton>
+            />
           </Layout>
         </Route>
       </Switch>
@@ -115,31 +114,6 @@ export default function App() {
 
   function handleChangeIndex(index) {
     setSwipeIndex(index)
-  }
-
-  function handleSwipeableView(songs) {
-    swipeableViewContent = isLoading ? (
-      'Loading ...'
-    ) : (
-      <SwipeableViews
-        index={swipeIndex}
-        onChangeIndex={handleChangeIndex}
-        enableMouseEvents
-        animateTransitions={false}
-      >
-        {songs
-          ? songs.map(song => (
-              <Song
-                key={song._id}
-                song={song}
-                isSideListShown={isSideListShown}
-                keyCounter={keyCounter}
-                changeKeyDirection={changeKeyDirection}
-              />
-            ))
-          : 'no song'}
-      </SwipeableViews>
-    )
   }
 
   function handleKeyChangeClick(direction) {

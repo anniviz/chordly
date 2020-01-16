@@ -3,9 +3,6 @@ import { useSpring, animated } from 'react-spring'
 import PropTypes from 'prop-types'
 import styled from 'styled-components/macro'
 
-import SongListItem from './SongListItem'
-import SetlistItem from './SetlistItem'
-import AddSetlist from '../forms/AddSetlist'
 import ListMenu from './ListMenu'
 import SideListTitle from './SideListTitle'
 import InputField from '../forms/InputField'
@@ -17,8 +14,9 @@ import useSongs from '../hooks/useSongs'
 import { patchSetlist } from '../services.js'
 
 import search from '../icons/search-blue.svg'
+import SideListItemWrapper from './SideListItemWrapper'
 
-export default function SideList({
+function SideList({
   songs,
   swipeIndex,
   handleChangeIndex,
@@ -82,106 +80,72 @@ export default function SideList({
     }
   }, [searchInput, sideListType, songs, setlists])
 
-  let sideListContent
-  handleSideListType()
-
-  const AnimatedSideListWrapperBorder = animated(SideListWrapperBorder)
+  const AnimatedSideListWrapperBorder = animated(Container)
   const flyIn = useSpring({
     width: isSideListShown ? dimensions.sideListWidth + 'px' : '0px',
     opacity: isSideListShown ? 1 : 0,
   })
   return (
     <AnimatedSideListWrapperBorder style={flyIn}>
-      <SideListTitleWrapper>
-        <SideListTitle>{sideListTitle}</SideListTitle>
-        {sideListType === 'addSetlist' || (
-          <img
-            className="search-icon"
-            alt="search"
-            src={search}
-            style={{ padding: '10px', height: '36px' }}
-            onClick={() => setShowSearchField(!showSearchField)}
+      <SideListWrapperBorder>
+        <SideListTitleWrapper>
+          <SideListTitle>{sideListTitle}</SideListTitle>
+          {sideListType === 'addSetlist' || (
+            <img
+              className="search-icon"
+              alt="search"
+              src={search}
+              style={{ padding: '10px', height: '36px' }}
+              onClick={() => setShowSearchField(!showSearchField)}
+            />
+          )}
+        </SideListTitleWrapper>
+        <ItemSearchWrapper>
+          {showSearchField && (
+            <InputField
+              value={searchInput}
+              autoFocus
+              onChange={event => setSearchInput(event.target.value)}
+              style={{ margin: dimensions.sideListPadding + 'px' }}
+            />
+          )}
+          <SideListItemWrapper
+            songs={songs}
+            setlists={setlists}
+            setSetlists={setSetlists}
+            setlistSongs={setlistSongs}
+            setSetlistSongs={setSetlistSongs}
+            setSearchInput={setSearchInput}
+            sideListType={sideListType}
+            swipeIndex={swipeIndex}
+            setSwipeIndex={setSwipeIndex}
+            showSearchField={showSearchField}
+            fuzzySearchResult={fuzzySearchResult}
+            handleChangeIndex={handleChangeIndex}
+            setlistsIsLoading={setlistsIsLoading}
+            setSideListType={setSideListType}
+            setActiveSetlist={setActiveSetlist}
+            activeSetlist={activeSetlist}
+            setSetlistsIsLoading={setSetlistsIsLoading}
+            sideListTitle={sideListTitle}
+            setSideListTitle={setSideListTitle}
+            activeSetlistIndex={activeSetlistIndex}
           />
-        )}
-      </SideListTitleWrapper>
-      <ItemSearchWrapper>
-        {showSearchField && (
-          <InputField
-            value={searchInput}
-            autoFocus
-            onChange={event => setSearchInput(event.target.value)}
-            style={{ margin: dimensions.sideListPadding + 'px' }}
-          ></InputField>
-        )}
-        <SideListItemWrapper>{sideListContent}</SideListItemWrapper>
-      </ItemSearchWrapper>
-      <ListMenu
-        sideListType={sideListType}
-        setSideListType={setSideListType}
-        setSwipeIndex={setSwipeIndex}
-        activeSetlist={activeSetlist}
-        setActiveSetlist={setActiveSetlist}
-        setSetlists={setSetlists}
-        setlists={setlists}
-        setlistSongs={setlistSongs}
-        handleSaveSongsToSetlist={handleSaveSongsToSetlist}
-        setKeyCounter={setKeyCounter}
-      />
+        </ItemSearchWrapper>
+        <ListMenu
+          sideListType={sideListType}
+          setSideListType={setSideListType}
+          setSwipeIndex={setSwipeIndex}
+          activeSetlist={activeSetlist}
+          setActiveSetlist={setActiveSetlist}
+          setSetlists={setSetlists}
+          setlists={setlists}
+          handleSaveSongsToSetlist={handleSaveSongsToSetlist}
+          setKeyCounter={setKeyCounter}
+        />
+      </SideListWrapperBorder>
     </AnimatedSideListWrapperBorder>
   )
-
-  function handleIsSongsShown(songs) {
-    const songList = showSearchField ? fuzzySearchResult : songs
-    if (songs) {
-      sideListContent = songList.map(song => (
-        <SongListItem
-          key={song._id}
-          index={findSongIndex(song._id)}
-          sideListType={sideListType}
-          song={song}
-          swipeIndex={swipeIndex}
-          handleChangeIndex={handleChangeIndex}
-          setlistSongs={setlistSongs}
-          setSetlistSongs={setSetlistSongs}
-          setSearchInput={setSearchInput}
-        />
-      ))
-    } else {
-      sideListContent = 'no song'
-    }
-  }
-
-  function handleIsSetListsShown(setlists) {
-    const setlistList = showSearchField ? fuzzySearchResult : setlists
-    if (setlists) {
-      sideListContent = setlistsIsLoading
-        ? 'loading...'
-        : setlistList.map(setlist => (
-            <SetlistItem
-              key={setlist._id}
-              setlist={setlist}
-              sideListType={sideListType}
-              setSideListType={setSideListType}
-              setActiveSetlist={setActiveSetlist}
-              activeSetlist={activeSetlist}
-              setSwipeIndex={setSwipeIndex}
-              setSetlistSongs={setSetlistSongs}
-            />
-          ))
-    } else {
-      sideListContent = 'no setlists'
-    }
-  }
-
-  function handleIsAddSetlistShown() {
-    sideListContent = (
-      <AddSetlist
-        setSideListType={setSideListType}
-        setSetlists={setSetlists}
-        setSetlistsIsLoading={setSetlistsIsLoading}
-      />
-    )
-  }
 
   async function handleSaveSongsToSetlist() {
     const index = setlists.findIndex(setlist => setlist._id === activeSetlist)
@@ -218,51 +182,10 @@ export default function SideList({
     }
     return tokens.join('')
   }
-
-  function findSongIndex(songID) {
-    const songList =
-      sideListType === 'singleSetlist'
-        ? setlists[activeSetlistIndex].songs
-        : songs
-    return songList.findIndex(song => song._id === songID)
-  }
-
-  function handleSideListType() {
-    if (sideListType === 'allSongs') {
-      handleIsSongsShown(songs)
-      sideListTitle === 'All Songs' || setSideListTitle('All Songs')
-    } else if (sideListType === 'setlists') {
-      handleIsSetListsShown(setlists)
-      sideListTitle === 'All Sets' || setSideListTitle('All Sets')
-    } else if (sideListType === 'singleSetlist') {
-      handleIsSongsShown(setlists[activeSetlistIndex].songs)
-      sideListTitle === setlists[activeSetlistIndex].setlistName ||
-        setSideListTitle(setlists[activeSetlistIndex].setlistName)
-    } else if (sideListType === 'addSetlist') {
-      handleIsAddSetlistShown()
-      sideListTitle === 'Add Set' || setSideListTitle('Add Set')
-    } else if (sideListType === 'addSongToSetlist') {
-      handleIsSongsShown(songs)
-      sideListTitle === 'Add Song to Set' || setSideListTitle('Add Song to Set')
-    }
-  }
 }
 
-const SideListItemWrapper = styled.ul`
-  justify-self: stretch;
-  align-self: center;
-  list-style: none;
-  padding: ${dimensions.sideListPadding + 'px'};
-  height: 100%;
-  overflow-y: scroll;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-`
-
 const ItemSearchWrapper = styled.div`
-  overflow: hidden;
+  overflow: scroll;
   justify-self: stretch;
   align-self: center;
   list-style: none;
@@ -276,6 +199,18 @@ const ItemSearchWrapper = styled.div`
   user-select: none;
 `
 
+const Container = styled.div`
+  align-self: flex-start;
+  margin-top: ${2 * dimensions.listButtonTop +
+    dimensions.cubicButtonExtent +
+    'px'};
+  margin-bottom: ${2 * dimensions.listButtonTop +
+    dimensions.cubicButtonExtent +
+    'px'};
+  margin-right: ${dimensions.changeKeyButtonRight + 'px'};
+  overflow: hidden;
+`
+
 const SideListWrapperBorder = styled.div`
   display: grid;
   grid-template-rows: min-content auto 48px;
@@ -287,9 +222,7 @@ const SideListWrapperBorder = styled.div`
       ${4 * dimensions.listButtonTop + 2 * dimensions.cubicButtonExtent + 'px'}
   );
   background: linear-gradient(60deg, #feb79c, #fd5da1);
-  position: fixed;
-  top: ${2 * dimensions.listButtonTop + dimensions.cubicButtonExtent + 'px'};
-  right: ${dimensions.changeKeyButtonRight + 'px'};
+  overflow: hidden;
 `
 
 const SideListTitleWrapper = styled.div`
@@ -311,3 +244,5 @@ SideList.propTypes = {
   setSetlists: PropTypes.func.isRequired,
   setKeyCounter: PropTypes.func,
 }
+
+export default React.memo(SideList)

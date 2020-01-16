@@ -20,10 +20,13 @@
     "react-swipeable-views": "^0.13.3",
     "serialize-javascript": "^2.1.2",
     "storybook-addon-jsx": "^7.1.13",
-    "styled-components": "^4.4.1"
+    "styled-components": "^4.4.1",
+    "express": "^4.17.1",
+    "mongoose": "^5.7.13"
   },
   "scripts": {
-    "start": "run-p client server",
+    "start": "node server/server.js",
+    "dev": "run-p client server",
     "client": "react-scripts start",
     "server": "PORT=3333 nodemon --inspect --watch ./server ./server/server.js",
     "build": "react-scripts build",
