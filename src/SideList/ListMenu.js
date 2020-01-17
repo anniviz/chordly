@@ -111,6 +111,7 @@ const ListMenuStyled = styled.div`
   justify-items: stretch;
   background: #3f4a6d;
   border-radius: 0 0 12px 12px;
+  /* height: 48px; */
 `
 
 const MenuItem = styled.div`
@@ -122,6 +123,7 @@ const MenuItem = styled.div`
   border: 1px solid #707070;
   background: #3f4a6d;
   cursor: default;
+  height: 48px;
 `
 
 ListMenu.propTypes = {

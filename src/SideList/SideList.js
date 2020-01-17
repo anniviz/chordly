@@ -189,7 +189,8 @@ const ItemSearchWrapper = styled.div`
   justify-self: stretch;
   align-self: center;
   list-style: none;
-  height: 100%;
+  /* height: 100%; */
+  align-self: stretch;
   border-radius: 12px 12px 0 0;
   background: #3f4a6d;
   background-clip: padding-box;
@@ -212,15 +213,17 @@ const Container = styled.div`
 `
 
 const SideListWrapperBorder = styled.div`
-  display: grid;
+  /* display: grid;
   grid-template-rows: min-content auto 48px;
-  justify-items: stretch;
+  justify-items: stretch; */
+  display: flex;
+  flex-direction: column;
   border-radius: 12px;
   padding: 2px;
-  height: calc(
-    100vh -
-      ${4 * dimensions.listButtonTop + 2 * dimensions.cubicButtonExtent + 'px'}
-  );
+  height: ${window.innerHeight -
+    (4 * dimensions.listButtonTop + 2 * dimensions.cubicButtonExtent) +
+    'px'};
+
   background: linear-gradient(60deg, #feb79c, #fd5da1);
   overflow: hidden;
 `
@@ -228,6 +231,7 @@ const SideListWrapperBorder = styled.div`
 const SideListTitleWrapper = styled.div`
   display: grid;
   grid-template-columns: auto 40px;
+  height: min-content;
 `
 
 SideList.propTypes = {
