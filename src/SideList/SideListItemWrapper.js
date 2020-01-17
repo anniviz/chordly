@@ -119,8 +119,8 @@ function SideListItemWrapper({
 }
 
 const SideListItemWrapperStyled = styled.ul`
-  justify-self: stretch;
-  align-self: center;
+  /* justify-self: stretch; */
+  align-self: stretch;
   list-style: none;
   padding: ${dimensions.sideListPadding + 'px'};
   height: 100%;

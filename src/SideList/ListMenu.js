@@ -105,6 +105,7 @@ export default function ListMenu({
 }
 
 const ListMenuStyled = styled.div`
+  flex-grow: 0;
   display: grid;
   grid-template-columns: ${props =>
     props.sideListType === 'addSongToSetlist' ? '1fr 1fr' : '1fr 1fr 1fr'};
