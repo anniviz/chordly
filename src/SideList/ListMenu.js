@@ -32,7 +32,7 @@ export default function ListMenu({
       addContent = (
         <Link to="/AddSong">
           <MenuItem style={{ borderRadius: '0 0 12px 0' }}>
-            <img className="add-icon" alt="add" src={addBox} />
+            +{/* <img className="add-icon" alt="add" src={addBox} /> */}
           </MenuItem>
         </Link>
       )
@@ -49,7 +49,7 @@ export default function ListMenu({
           }
           style={{ borderRadius: '0 0 12px 0' }}
         >
-          <img className="add-icon" alt="add" src={addBox} />
+          +{/* <img className="add-icon" alt="add" src={addBox} /> */}
         </MenuItem>
       )
     }
@@ -80,10 +80,12 @@ export default function ListMenu({
             style={{ borderRadius: '0 0 0 12px' }}
             onClick={handleSetlistsClick}
           >
-            <img className="setlist-icon" alt="setlist" src={clipboardList} />
+            Sets
+            {/* <img className="setlist-icon" alt="setlist" src={clipboardList} /> */}
           </MenuItem>
           <MenuItem onClick={handleAllSongsClick}>
-            <img className="all-songs-icon" alt="all songs" src={queueMusic} />
+            Songs
+            {/* <img className="all-songs-icon" alt="all songs" src={queueMusic} /> */}
           </MenuItem>
           {addContent}
         </>
@@ -110,18 +112,18 @@ const ListMenuStyled = styled.div`
   grid-template-columns: ${props =>
     props.sideListType === 'addSongToSetlist' ? '1fr 1fr' : '1fr 1fr 1fr'};
   justify-items: stretch;
-  background: #3f4a6d;
+  background: linear-gradient(60deg, #feb79c, #fd5da1);
   border-radius: 0 0 12px 12px;
 `
 
 const MenuItem = styled.div`
-  color: #fe8d8d;
+  color: #3f4a6d;
   height: 100%;
   display: grid;
   align-content: center;
   justify-content: center;
   border: 1px solid #707070;
-  background: #3f4a6d;
+  /* background: #3f4a6d; */
   cursor: default;
   height: 48px;
 `
