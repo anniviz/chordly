@@ -2,19 +2,17 @@ describe('Test the side list', function() {
   it('Visits my App', function() {
     cy.visit('http://localhost:3000/')
 
-    cy.contains('Song')
+    cy.contains('Loading ...').should('not.exist')
   })
-
-  // it('Looks for my title', function() {
-  //   cy.title().should('include', 'chordly')
-  // })
 
   it('has a button to open the sidelist', () => {
     cy.get('#list-button').click()
   })
 
   it('open the search field', () => {
-    cy.get('.search-icon').click()
+    cy.get('.search-icon')
+      .should('be.visible')
+      .click()
   })
 
   it('can type something into the search field', () => {
