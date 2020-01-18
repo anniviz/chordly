@@ -112,7 +112,6 @@ const ListMenuStyled = styled.div`
   justify-items: stretch;
   background: #3f4a6d;
   border-radius: 0 0 12px 12px;
-  /* height: 48px; */
 `
 
 const MenuItem = styled.div`

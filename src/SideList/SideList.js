@@ -236,6 +236,7 @@ const SideListWrapper = styled.div`
   display: flex;
   align-items: stretch;
   flex-direction: column;
+  border-radius: 12px;
 `
 
 SideList.propTypes = {

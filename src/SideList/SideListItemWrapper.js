@@ -33,25 +33,30 @@ function SideListItemWrapper({
   handleSideListType()
 
   return (
-    <SideListItemWrapperStyled>{sideListContent}</SideListItemWrapperStyled>
+    <SideListContainer>{sideListContent}</SideListContainer>
+    // <SideListItemWrapperStyled>{sideListContent}</SideListItemWrapperStyled>
   )
 
   function handleIsSongsShown(songs) {
     const songList = showSearchField ? fuzzySearchResult : songs
     if (songs) {
-      sideListContent = songList.map(song => (
-        <SongListItem
-          key={song._id}
-          index={findSongIndex(song._id)}
-          sideListType={sideListType}
-          song={song}
-          swipeIndex={swipeIndex}
-          handleChangeIndex={handleChangeIndex}
-          setlistSongs={setlistSongs}
-          setSetlistSongs={setSetlistSongs}
-          setSearchInput={setSearchInput}
-        />
-      ))
+      sideListContent = (
+        <SideListItemWrapperStyled>
+          {songList.map(song => (
+            <SongListItem
+              key={song._id}
+              index={findSongIndex(song._id)}
+              sideListType={sideListType}
+              song={song}
+              swipeIndex={swipeIndex}
+              handleChangeIndex={handleChangeIndex}
+              setlistSongs={setlistSongs}
+              setSetlistSongs={setSetlistSongs}
+              setSearchInput={setSearchInput}
+            />
+          ))}
+        </SideListItemWrapperStyled>
+      )
     } else {
       sideListContent = 'no song'
     }
@@ -60,20 +65,24 @@ function SideListItemWrapper({
   function handleIsSetListsShown(setlists) {
     const setlistList = showSearchField ? fuzzySearchResult : setlists
     if (setlists) {
-      sideListContent = setlistsIsLoading
-        ? 'loading...'
-        : setlistList.map(setlist => (
-            <SetlistItem
-              key={setlist._id}
-              setlist={setlist}
-              sideListType={sideListType}
-              setSideListType={setSideListType}
-              setActiveSetlist={setActiveSetlist}
-              activeSetlist={activeSetlist}
-              setSwipeIndex={setSwipeIndex}
-              setSetlistSongs={setSetlistSongs}
-            />
-          ))
+      sideListContent = (
+        <SideListItemWrapperStyled>
+          {setlistsIsLoading
+            ? 'loading...'
+            : setlistList.map(setlist => (
+                <SetlistItem
+                  key={setlist._id}
+                  setlist={setlist}
+                  sideListType={sideListType}
+                  setSideListType={setSideListType}
+                  setActiveSetlist={setActiveSetlist}
+                  activeSetlist={activeSetlist}
+                  setSwipeIndex={setSwipeIndex}
+                  setSetlistSongs={setSetlistSongs}
+                />
+              ))}
+        </SideListItemWrapperStyled>
+      )
     } else {
       sideListContent = 'no setlists'
     }
@@ -119,9 +128,14 @@ function SideListItemWrapper({
 }
 
 const SideListItemWrapperStyled = styled.ul`
-  /* justify-self: stretch; */
-  align-self: stretch;
+  heigh: 100%;
   list-style: none;
+  padding: 0;
+`
+
+const SideListContainer = styled.div`
+  align-self: stretch;
+
   padding: ${dimensions.sideListPadding + 'px'};
   height: 100%;
   overflow: auto;
