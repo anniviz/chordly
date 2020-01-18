@@ -14,6 +14,7 @@ export default function ListButton({ toggleSideList, isSideListShown }) {
 
   return (
     <CubicButton
+      id="list-button"
       onClick={toggleSideList}
       style={{
         top: dimensions.listButtonTop + 'px',

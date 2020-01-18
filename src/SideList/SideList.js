@@ -52,7 +52,7 @@ function SideList({
 
   useEffect(() => {
     setShowSearchField(false)
-  }, [sideListType])
+  }, [sideListType, isSideListShown])
 
   const activeSetlistIndex = setlists.findIndex(
     setlist => setlist._id === activeSetlist
@@ -80,7 +80,7 @@ function SideList({
     }
   }, [searchInput, sideListType, songs, setlists])
 
-  const AnimatedSideListWrapperBorder = animated(Container)
+  const AnimatedSideListWrapperBorder = animated(SideListContainer)
   const flyIn = useSpring({
     width: isSideListShown ? dimensions.sideListWidth + 'px' : '0px',
     opacity: isSideListShown ? 1 : 0,
@@ -88,61 +88,63 @@ function SideList({
   return (
     <AnimatedSideListWrapperBorder style={flyIn}>
       <SideListWrapperBorder>
-        <SideListTitleWrapper>
-          <SideListTitle>{sideListTitle}</SideListTitle>
-          {sideListType === 'addSetlist' || (
-            <img
-              className="search-icon"
-              alt="search"
-              src={search}
-              style={{ padding: '10px', height: '36px' }}
-              onClick={() => setShowSearchField(!showSearchField)}
+        <SideListWrapper>
+          <SideListTitleWrapper>
+            <SideListTitle>{sideListTitle}</SideListTitle>
+            {sideListType === 'addSetlist' || (
+              <img
+                className="search-icon"
+                alt="search"
+                src={search}
+                style={{ padding: '10px', height: '36px' }}
+                onClick={() => setShowSearchField(!showSearchField)}
+              />
+            )}
+          </SideListTitleWrapper>
+          <ItemSearchWrapper>
+            {showSearchField && (
+              <InputField
+                value={searchInput}
+                autoFocus
+                onChange={event => setSearchInput(event.target.value)}
+                style={{ margin: dimensions.sideListPadding + 'px' }}
+              />
+            )}
+            <SideListItemWrapper
+              songs={songs}
+              setlists={setlists}
+              setSetlists={setSetlists}
+              setlistSongs={setlistSongs}
+              setSetlistSongs={setSetlistSongs}
+              setSearchInput={setSearchInput}
+              sideListType={sideListType}
+              swipeIndex={swipeIndex}
+              setSwipeIndex={setSwipeIndex}
+              showSearchField={showSearchField}
+              fuzzySearchResult={fuzzySearchResult}
+              handleChangeIndex={handleChangeIndex}
+              setlistsIsLoading={setlistsIsLoading}
+              setSideListType={setSideListType}
+              setActiveSetlist={setActiveSetlist}
+              activeSetlist={activeSetlist}
+              setSetlistsIsLoading={setSetlistsIsLoading}
+              sideListTitle={sideListTitle}
+              setSideListTitle={setSideListTitle}
+              activeSetlistIndex={activeSetlistIndex}
             />
-          )}
-        </SideListTitleWrapper>
-        <ItemSearchWrapper>
-          {showSearchField && (
-            <InputField
-              value={searchInput}
-              autoFocus
-              onChange={event => setSearchInput(event.target.value)}
-              style={{ margin: dimensions.sideListPadding + 'px' }}
-            />
-          )}
-          <SideListItemWrapper
-            songs={songs}
-            setlists={setlists}
-            setSetlists={setSetlists}
-            setlistSongs={setlistSongs}
-            setSetlistSongs={setSetlistSongs}
-            setSearchInput={setSearchInput}
+          </ItemSearchWrapper>
+          <ListMenu
             sideListType={sideListType}
-            swipeIndex={swipeIndex}
-            setSwipeIndex={setSwipeIndex}
-            showSearchField={showSearchField}
-            fuzzySearchResult={fuzzySearchResult}
-            handleChangeIndex={handleChangeIndex}
-            setlistsIsLoading={setlistsIsLoading}
             setSideListType={setSideListType}
-            setActiveSetlist={setActiveSetlist}
+            setSwipeIndex={setSwipeIndex}
             activeSetlist={activeSetlist}
-            setSetlistsIsLoading={setSetlistsIsLoading}
-            sideListTitle={sideListTitle}
-            setSideListTitle={setSideListTitle}
-            activeSetlistIndex={activeSetlistIndex}
+            setActiveSetlist={setActiveSetlist}
+            setSetlists={setSetlists}
+            setlists={setlists}
+            handleSaveSongsToSetlist={handleSaveSongsToSetlist}
+            setKeyCounter={setKeyCounter}
           />
-        </ItemSearchWrapper>
-        <ListMenu
-          sideListType={sideListType}
-          setSideListType={setSideListType}
-          setSwipeIndex={setSwipeIndex}
-          activeSetlist={activeSetlist}
-          setActiveSetlist={setActiveSetlist}
-          setSetlists={setSetlists}
-          setlists={setlists}
-          handleSaveSongsToSetlist={handleSaveSongsToSetlist}
-          setKeyCounter={setKeyCounter}
-        />
+        </SideListWrapper>
       </SideListWrapperBorder>
     </AnimatedSideListWrapperBorder>
   )
@@ -185,11 +187,11 @@ function SideList({
 }
 
 const ItemSearchWrapper = styled.div`
+  flex-grow: 1;
   overflow: scroll;
-  justify-self: stretch;
-  align-self: center;
+  align-self: stretch;
   list-style: none;
-  height: 100%;
+  align-self: stretch;
   border-radius: 12px 12px 0 0;
   background: #3f4a6d;
   background-clip: padding-box;
@@ -199,7 +201,7 @@ const ItemSearchWrapper = styled.div`
   user-select: none;
 `
 
-const Container = styled.div`
+const SideListContainer = styled.div`
   align-self: flex-start;
   margin-top: ${2 * dimensions.listButtonTop +
     dimensions.cubicButtonExtent +
@@ -212,22 +214,29 @@ const Container = styled.div`
 `
 
 const SideListWrapperBorder = styled.div`
-  display: grid;
-  grid-template-rows: min-content auto 48px;
-  justify-items: stretch;
   border-radius: 12px;
   padding: 2px;
-  height: calc(
-    100vh -
-      ${4 * dimensions.listButtonTop + 2 * dimensions.cubicButtonExtent + 'px'}
-  );
+  height: ${window.innerHeight -
+    (4 * dimensions.listButtonTop + 2 * dimensions.cubicButtonExtent) +
+    'px'};
+
   background: linear-gradient(60deg, #feb79c, #fd5da1);
   overflow: hidden;
 `
 
 const SideListTitleWrapper = styled.div`
+  flex-grow: 0;
   display: grid;
   grid-template-columns: auto 40px;
+  height: min-content;
+`
+
+const SideListWrapper = styled.div`
+  height: 100%;
+  display: flex;
+  align-items: stretch;
+  flex-direction: column;
+  border-radius: 12px;
 `
 
 SideList.propTypes = {

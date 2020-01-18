@@ -32,26 +32,28 @@ function SideListItemWrapper({
   let sideListContent
   handleSideListType()
 
-  return (
-    <SideListItemWrapperStyled>{sideListContent}</SideListItemWrapperStyled>
-  )
+  return <SideListContainer>{sideListContent}</SideListContainer>
 
   function handleIsSongsShown(songs) {
     const songList = showSearchField ? fuzzySearchResult : songs
     if (songs) {
-      sideListContent = songList.map(song => (
-        <SongListItem
-          key={song._id}
-          index={findSongIndex(song._id)}
-          sideListType={sideListType}
-          song={song}
-          swipeIndex={swipeIndex}
-          handleChangeIndex={handleChangeIndex}
-          setlistSongs={setlistSongs}
-          setSetlistSongs={setSetlistSongs}
-          setSearchInput={setSearchInput}
-        />
-      ))
+      sideListContent = (
+        <SideListItemWrapperStyled>
+          {songList.map(song => (
+            <SongListItem
+              key={song._id}
+              index={findSongIndex(song._id)}
+              sideListType={sideListType}
+              song={song}
+              swipeIndex={swipeIndex}
+              handleChangeIndex={handleChangeIndex}
+              setlistSongs={setlistSongs}
+              setSetlistSongs={setSetlistSongs}
+              setSearchInput={setSearchInput}
+            />
+          ))}
+        </SideListItemWrapperStyled>
+      )
     } else {
       sideListContent = 'no song'
     }
@@ -60,20 +62,24 @@ function SideListItemWrapper({
   function handleIsSetListsShown(setlists) {
     const setlistList = showSearchField ? fuzzySearchResult : setlists
     if (setlists) {
-      sideListContent = setlistsIsLoading
-        ? 'loading...'
-        : setlistList.map(setlist => (
-            <SetlistItem
-              key={setlist._id}
-              setlist={setlist}
-              sideListType={sideListType}
-              setSideListType={setSideListType}
-              setActiveSetlist={setActiveSetlist}
-              activeSetlist={activeSetlist}
-              setSwipeIndex={setSwipeIndex}
-              setSetlistSongs={setSetlistSongs}
-            />
-          ))
+      sideListContent = (
+        <SideListItemWrapperStyled>
+          {setlistsIsLoading
+            ? 'loading...'
+            : setlistList.map(setlist => (
+                <SetlistItem
+                  key={setlist._id}
+                  setlist={setlist}
+                  sideListType={sideListType}
+                  setSideListType={setSideListType}
+                  setActiveSetlist={setActiveSetlist}
+                  activeSetlist={activeSetlist}
+                  setSwipeIndex={setSwipeIndex}
+                  setSetlistSongs={setSetlistSongs}
+                />
+              ))}
+        </SideListItemWrapperStyled>
+      )
     } else {
       sideListContent = 'no setlists'
     }
@@ -119,9 +125,13 @@ function SideListItemWrapper({
 }
 
 const SideListItemWrapperStyled = styled.ul`
-  justify-self: stretch;
-  align-self: center;
+  heigh: 100%;
   list-style: none;
+  padding: 0;
+`
+
+const SideListContainer = styled.div`
+  align-self: stretch;
   padding: ${dimensions.sideListPadding + 'px'};
   height: 100%;
   overflow: auto;
@@ -133,18 +143,18 @@ const SideListItemWrapperStyled = styled.ul`
 
 SideListItemWrapperStyled.propTypes = {
   songs: PropTypes.array,
-  swipeIndex: PropTypes.number.isRequired,
-  setSwipeIndex: PropTypes.func.isRequired,
-  handleChangeIndex: PropTypes.func.isRequired,
+  swipeIndex: PropTypes.number,
+  setSwipeIndex: PropTypes.func,
+  handleChangeIndex: PropTypes.func,
   setlists: PropTypes.array,
   activeSetlist: PropTypes.string,
-  setActiveSetlist: PropTypes.func.isRequired,
+  setActiveSetlist: PropTypes.func,
   setlistsIsLoading: PropTypes.bool,
-  isSideListShown: PropTypes.bool.isRequired,
-  sideListType: PropTypes.string.isRequired,
-  setSideListType: PropTypes.func.isRequired,
-  setSetlists: PropTypes.func.isRequired,
-  setlistSongs: PropTypes.array.isRequired,
+  isSideListShown: PropTypes.bool,
+  sideListType: PropTypes.string,
+  setSideListType: PropTypes.func,
+  setSetlists: PropTypes.func,
+  setlistSongs: PropTypes.array,
   setSetlistSongs: PropTypes.func,
   setKeyCounter: PropTypes.func,
   setSearchInput: PropTypes.func,
