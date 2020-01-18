@@ -2,14 +2,16 @@ import React from 'react'
 import styled from 'styled-components/macro'
 import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
+import { useSpring, animated } from 'react-spring'
 
 import clipboardList from '../icons/clipboard-list.svg'
 import queueMusic from '../icons/queue-music.svg'
 import addBox from '../icons/add-box.svg'
 import save from '../icons/save-icon-orange.svg'
 import close from '../icons/close-icon-orange.svg'
+import { dimensions } from '../common/dimensions'
 
-export default function ListMenu({
+function ListMenu({
   sideListType,
   setSideListType,
   setSwipeIndex,
@@ -23,8 +25,21 @@ export default function ListMenu({
   let menuContent
   handleMenuContent()
 
+  const AnimatedIndicator = animated(Indicator)
+  const swap = useSpring({
+    config: { mass: 1000 },
+    left:
+      sideListType === 'allSongs'
+        ? ((dimensions.sideListWidth - 4) / 3 / 2) * 3 - 4 + 'px'
+        : (dimensions.sideListWidth - 4) / 3 / 2 - 4 + 'px',
+    // height: sideListType === 'allSongs' ? '8px' : '20px',
+  })
+
   return (
-    <ListMenuStyled sideListType={sideListType}>{menuContent}</ListMenuStyled>
+    <ListMenuStyled sideListType={sideListType}>
+      <AnimatedIndicator style={swap} />
+      {menuContent}
+    </ListMenuStyled>
   )
 
   function handleAddButton() {
@@ -107,6 +122,7 @@ export default function ListMenu({
 }
 
 const ListMenuStyled = styled.div`
+  position: relative;
   flex-grow: 0;
   display: grid;
   grid-template-columns: ${props =>
@@ -128,6 +144,16 @@ const MenuItem = styled.div`
   height: 48px;
 `
 
+const Indicator = styled.div`
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #3f4a6d;
+  top: 8px;
+  left: ${(dimensions.sideListWidth - 4) / 3 / 2 - 4 + 'px'};
+`
+
 ListMenu.propTypes = {
   sideListType: PropTypes.string.isRequired,
   setSideListType: PropTypes.func.isRequired,
@@ -136,3 +162,5 @@ ListMenu.propTypes = {
   setActiveSetlist: PropTypes.func,
   setKeyCounter: PropTypes.func,
 }
+
+export default React.memo(ListMenu)
