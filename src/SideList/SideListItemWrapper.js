@@ -32,10 +32,7 @@ function SideListItemWrapper({
   let sideListContent
   handleSideListType()
 
-  return (
-    <SideListContainer>{sideListContent}</SideListContainer>
-    // <SideListItemWrapperStyled>{sideListContent}</SideListItemWrapperStyled>
-  )
+  return <SideListContainer>{sideListContent}</SideListContainer>
 
   function handleIsSongsShown(songs) {
     const songList = showSearchField ? fuzzySearchResult : songs
@@ -135,7 +132,6 @@ const SideListItemWrapperStyled = styled.ul`
 
 const SideListContainer = styled.div`
   align-self: stretch;
-
   padding: ${dimensions.sideListPadding + 'px'};
   height: 100%;
   overflow: auto;
