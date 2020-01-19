@@ -3,9 +3,9 @@ import styled from 'styled-components/macro'
 import { dimensions } from '../common/dimensions'
 
 const CubicButton = styled.button`
-  display: grid;
+  display: flex;
   align-items: center;
-  justify-items: center;
+  justify-content: center;
   height: ${dimensions.cubicButtonExtent + 'px'};
   width: ${dimensions.cubicButtonExtent + 'px'};
   background: #3f4a6d;

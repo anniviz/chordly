@@ -1,8 +1,8 @@
 import styled from 'styled-components/macro'
 
 export default styled.button`
-  display: grid;
-  align-content: center;
+  display: flex;
+  align-items: center;
   justify-content: center;
   height: var(--smallButtonDiameter);
   width: var(--smallButtonDiameter);
