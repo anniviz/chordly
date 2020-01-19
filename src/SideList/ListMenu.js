@@ -4,11 +4,10 @@ import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import { useSpring, animated } from 'react-spring'
 
-import clipboardList from '../icons/clipboard-list.svg'
-import queueMusic from '../icons/queue-music.svg'
-import addBox from '../icons/add-box.svg'
-import save from '../icons/save-icon-orange.svg'
-import close from '../icons/close-icon-orange.svg'
+import addBlue from '../icons/add-icon-blue.svg'
+
+import save from '../icons/save-icon-blue.svg'
+import close from '../icons/close-icon-blue.svg'
 import { dimensions } from '../common/dimensions'
 
 function ListMenu({
@@ -32,13 +31,14 @@ function ListMenu({
       sideListType === 'allSongs'
         ? ((dimensions.sideListWidth - 4) / 3 / 2) * 3 - 4 + 'px'
         : (dimensions.sideListWidth - 4) / 3 / 2 - 4 + 'px',
-    // height: sideListType === 'allSongs' ? '8px' : '20px',
   })
 
   return (
     <ListMenuStyled sideListType={sideListType}>
-      <AnimatedIndicator style={swap} />
       {menuContent}
+      {(sideListType === 'allSongs' || sideListType === 'setlists') && (
+        <AnimatedIndicator style={swap} />
+      )}
     </ListMenuStyled>
   )
 
@@ -47,7 +47,8 @@ function ListMenu({
       addContent = (
         <Link to="/AddSong">
           <MenuItem style={{ borderRadius: '0 0 12px 0' }}>
-            +{/* <img className="add-icon" alt="add" src={addBox} /> */}
+            {/* <img className="add-icon" alt="add" src={addBox} /> */}
+            <img className="add-icon" alt="add" src={addBlue} />
           </MenuItem>
         </Link>
       )
@@ -64,7 +65,8 @@ function ListMenu({
           }
           style={{ borderRadius: '0 0 12px 0' }}
         >
-          +{/* <img className="add-icon" alt="add" src={addBox} /> */}
+          {/* <img className="add-icon" alt="add" src={addBox} /> */}
+          <img className="add-icon" alt="add" src={addBlue} />
         </MenuItem>
       )
     }
@@ -75,7 +77,10 @@ function ListMenu({
       menuContent = (
         <>
           <MenuItem
-            style={{ borderRadius: '0 0 0 12px' }}
+            style={{
+              borderRadius: '0 0 0 12px',
+              borderRight: '1px solid #3f4a6d',
+            }}
             onClick={handleSaveSongsToSetlist}
           >
             <img className="save-icon" alt="save" src={save} />
@@ -96,9 +101,14 @@ function ListMenu({
             onClick={handleSetlistsClick}
           >
             Sets
-            {/* <img className="setlist-icon" alt="setlist" src={clipboardList} /> */}
           </MenuItem>
-          <MenuItem onClick={handleAllSongsClick}>
+          <MenuItem
+            style={{
+              borderLeft: '1px solid #3f4a6d',
+              borderRight: '1px solid #3f4a6d',
+            }}
+            onClick={handleAllSongsClick}
+          >
             Songs
             {/* <img className="all-songs-icon" alt="all songs" src={queueMusic} /> */}
           </MenuItem>
@@ -128,7 +138,7 @@ const ListMenuStyled = styled.div`
   grid-template-columns: ${props =>
     props.sideListType === 'addSongToSetlist' ? '1fr 1fr' : '1fr 1fr 1fr'};
   justify-items: stretch;
-  background: linear-gradient(60deg, #feb79c, #fd5da1);
+  /* background: linear-gradient(60deg, #feb79c, #fd5da1); */
   border-radius: 0 0 12px 12px;
 `
 
@@ -138,7 +148,7 @@ const MenuItem = styled.div`
   display: grid;
   align-content: center;
   justify-content: center;
-  border: 1px solid #707070;
+  /* border: 1px solid #707070; */
   /* background: #3f4a6d; */
   cursor: default;
   height: 48px;
