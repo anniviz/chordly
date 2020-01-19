@@ -47,7 +47,6 @@ function ListMenu({
       addContent = (
         <Link to="/AddSong">
           <MenuItem style={{ borderRadius: '0 0 12px 0' }}>
-            {/* <img className="add-icon" alt="add" src={addBox} /> */}
             <img className="add-icon" alt="add" src={addBlue} />
           </MenuItem>
         </Link>
@@ -65,7 +64,6 @@ function ListMenu({
           }
           style={{ borderRadius: '0 0 12px 0' }}
         >
-          {/* <img className="add-icon" alt="add" src={addBox} /> */}
           <img className="add-icon" alt="add" src={addBlue} />
         </MenuItem>
       )
@@ -110,7 +108,6 @@ function ListMenu({
             onClick={handleAllSongsClick}
           >
             Songs
-            {/* <img className="all-songs-icon" alt="all songs" src={queueMusic} /> */}
           </MenuItem>
           {addContent}
         </>
@@ -138,7 +135,6 @@ const ListMenuStyled = styled.div`
   grid-template-columns: ${props =>
     props.sideListType === 'addSongToSetlist' ? '1fr 1fr' : '1fr 1fr 1fr'};
   justify-items: stretch;
-  /* background: linear-gradient(60deg, #feb79c, #fd5da1); */
   border-radius: 0 0 12px 12px;
 `
 
@@ -148,8 +144,6 @@ const MenuItem = styled.div`
   display: grid;
   align-content: center;
   justify-content: center;
-  /* border: 1px solid #707070; */
-  /* background: #3f4a6d; */
   cursor: default;
   height: 48px;
 `

@@ -86,16 +86,6 @@ function SideList({
     opacity: isSideListShown ? 1 : 0,
   })
 
-  const AnimatedIndicator = animated(Indicator)
-  const swap = useSpring({
-    config: { mass: 1000 },
-    left:
-      sideListType === 'allSongs'
-        ? ((dimensions.sideListWidth - 4) / 3 / 2) * 3 - 4 + 'px'
-        : (dimensions.sideListWidth - 4) / 3 / 2 - 4 + 'px',
-    height: sideListType === 'allSongs' ? '8px' : '20px',
-  })
-
   return (
     <AnimatedSideListWrapperBorder style={flyIn}>
       <SideListWrapperBorder>
@@ -144,8 +134,6 @@ function SideList({
               activeSetlistIndex={activeSetlistIndex}
             />
           </ItemSearchWrapper>
-          {/* <ListMenuWrapper> */}
-          {/* <AnimatedIndicator style={swap} /> */}
           <ListMenu
             sideListType={sideListType}
             setSideListType={setSideListType}
@@ -157,7 +145,6 @@ function SideList({
             handleSaveSongsToSetlist={handleSaveSongsToSetlist}
             setKeyCounter={setKeyCounter}
           />
-          {/* </ListMenuWrapper> */}
         </SideListWrapper>
       </SideListWrapperBorder>
     </AnimatedSideListWrapperBorder>
@@ -251,20 +238,6 @@ const SideListWrapper = styled.div`
   align-items: stretch;
   flex-direction: column;
   border-radius: 12px;
-`
-
-const ListMenuWrapper = styled.div`
-  position: relative;
-`
-
-const Indicator = styled.div`
-  position: absolute;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: #3f4a6d;
-  top: 8px;
-  left: ${(dimensions.sideListWidth - 4) / 3 / 2 - 4 + 'px'};
 `
 
 SideList.propTypes = {
