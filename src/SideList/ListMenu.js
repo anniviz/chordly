@@ -5,7 +5,6 @@ import PropTypes from 'prop-types'
 import { useSpring, animated } from 'react-spring'
 
 import addBlue from '../icons/add-icon-blue.svg'
-
 import save from '../icons/save-icon-blue.svg'
 import close from '../icons/close-icon-blue.svg'
 import { dimensions } from '../common/dimensions'
