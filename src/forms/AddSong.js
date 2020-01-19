@@ -66,7 +66,7 @@ Comin’ for to [A7]carry me [D]home.
 
         confirmAlert({
           message:
-            'Your song is now in the db. Do you want to add another Song or go back to the main page?',
+            'Your song is now in the database. Do you want to add another Song or go back to the main page?',
           buttons: [
             {
               label: 'add another song',
