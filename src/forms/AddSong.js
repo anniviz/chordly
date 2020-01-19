@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom'
 import styled from 'styled-components/macro'
 import ChordSheetJS from 'chordsheetjs'
 import { confirmAlert } from 'react-confirm-alert'
-import 'react-confirm-alert/src/react-confirm-alert.css'
+import '../additionalStyles/react-confirm-alert.css'
 
 import { postSong } from '../services'
 
@@ -65,9 +65,8 @@ Comin’ for to [A7]carry me [D]home.
         event.target.reset()
 
         confirmAlert({
-          title: 'You saved a song!',
           message:
-            'Your song is now in the db. Do you want to add another Song or go back to the main page?',
+            'Your song is now in the database. Do you want to add another Song or go back to the main page?',
           buttons: [
             {
               label: 'add another song',
@@ -80,9 +79,8 @@ Comin’ for to [A7]carry me [D]home.
         })
       } else {
         confirmAlert({
-          title: 'Something is missing',
           message:
-            'You have to enter at least a title like {title: songtitle} in the textfield',
+            'You have to enter at least a title like {title: songtitle} in the textfield.',
           buttons: [
             {
               label: 'ok',
@@ -94,7 +92,7 @@ Comin’ for to [A7]carry me [D]home.
       confirmAlert({
         title: 'Error',
         message:
-          'Something is wrong in your song. Check if all brackets ar closed properly',
+          'Something is wrong in your song. Check if all brackets ar closed properly.',
         buttons: [
           {
             label: 'ok',
@@ -106,9 +104,8 @@ Comin’ for to [A7]carry me [D]home.
 
   function handleCancelClick() {
     confirmAlert({
-      title: 'go back to main page',
       message:
-        'Do you really want to go back to the main page? Your new song will not be saved',
+        'Do you really want to go back to the main page? Your new song will not be saved.',
       buttons: [
         {
           label: 'yes',

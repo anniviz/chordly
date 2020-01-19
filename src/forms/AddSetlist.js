@@ -8,7 +8,7 @@ import { postSetlist } from '../services'
 import { getSetlists } from '../services'
 
 import DatePicker from 'react-datepicker'
-import 'react-datepicker/dist/react-datepicker.css'
+import '../additionalStyles/react-confirm-alert.css'
 import '../additionalStyles/datepicker.scss'
 
 import SaveCancelButtons from './SaveCancelButtons'
@@ -83,7 +83,6 @@ export default function AddSetlist({
       setSideListType('setlists')
     } else {
       confirmAlert({
-        title: 'Something is missing',
         message: 'You have to enter a title',
         buttons: [
           {
