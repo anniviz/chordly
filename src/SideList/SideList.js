@@ -85,6 +85,7 @@ function SideList({
     width: isSideListShown ? dimensions.sideListWidth + 'px' : '0px',
     opacity: isSideListShown ? 1 : 0,
   })
+
   return (
     <AnimatedSideListWrapperBorder style={flyIn}>
       <SideListWrapperBorder>
@@ -192,7 +193,7 @@ const ItemSearchWrapper = styled.div`
   align-self: stretch;
   list-style: none;
   align-self: stretch;
-  border-radius: 12px 12px 0 0;
+  border-radius: 12px;
   background: #3f4a6d;
   background-clip: padding-box;
   -webkit-user-select: none;
