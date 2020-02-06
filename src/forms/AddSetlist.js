@@ -9,6 +9,7 @@ import { getSetlists } from '../services'
 
 import DatePicker from 'react-datepicker'
 import '../additionalStyles/react-confirm-alert.css'
+import 'react-datepicker/dist/react-datepicker.css'
 import '../additionalStyles/datepicker.scss'
 
 import SaveCancelButtons from './SaveCancelButtons'
