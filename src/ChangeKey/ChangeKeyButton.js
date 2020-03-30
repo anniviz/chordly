@@ -30,15 +30,19 @@ export default function ChangeKeyButton({
       : 2 * dimensions.changeKeyButtonBottom +
         dimensions.cubicButtonExtent +
         'px',
-    right: dimensions.changeKeyButtonRight + 'px',
+    right: isSideListShown
+      ? 2 * dimensions.changeKeyButtonRight +
+        dimensions.cubicButtonExtent +
+        'px'
+      : dimensions.changeKeyButtonRight + 'px',
     color: buttonColorUp,
   })
 
   const buttonPositionDown = useSpring({
     bottom: dimensions.changeKeyButtonBottom + 'px',
     right: isSideListShown
-      ? 2 * dimensions.changeKeyButtonRight +
-        dimensions.cubicButtonExtent +
+      ? 3 * dimensions.changeKeyButtonRight +
+        2 * dimensions.cubicButtonExtent +
         'px'
       : dimensions.changeKeyButtonRight + 'px',
     color: buttonColorDown,

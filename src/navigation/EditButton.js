@@ -10,8 +10,8 @@ export default function EditButton({ isSideListShown }) {
   const swap = useSpring({
     bottom: isSideListShown
       ? dimensions.changeKeyButtonBottom + 'px'
-      : 2 * dimensions.changeKeyButtonBottom +
-        dimensions.cubicButtonExtent +
+      : 3 * dimensions.changeKeyButtonBottom +
+        2 * dimensions.cubicButtonExtent +
         'px',
     right: dimensions.changeKeyButtonRight + 'px',
   })

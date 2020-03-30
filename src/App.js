@@ -6,6 +6,7 @@ import SideList from './SideList/SideList'
 import AddSong from './forms/AddSong'
 import ListButton from './navigation/ListButton'
 import ChangeKeyButton from './ChangeKey/ChangeKeyButton'
+import EditButton from './navigation/EditButton'
 import SwipeContainer from './SwipeContainer'
 
 import useSongs from './hooks/useSongs'
@@ -97,6 +98,7 @@ export default function App() {
               setChangeKeyDirection={setChangeKeyDirection}
               isSideListShown={isSideListShown}
             />
+            <EditButton isSideListShown={isSideListShown} />
           </Layout>
         </Route>
       </Switch>
