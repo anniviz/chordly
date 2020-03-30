@@ -107,6 +107,11 @@ export default function App() {
           <AddSong />
         </Route>
       </Switch>
+      <Switch>
+        <Route exact path="/EditSong">
+          <AddSong />
+        </Route>
+      </Switch>
     </Router>
   )
 
