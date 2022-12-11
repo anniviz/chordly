@@ -8,7 +8,7 @@
     "chordsheetjs": "^2.9.1",
     "cypress": "^3.8.2",
     "eslint-plugin-cypress": "^2.8.1",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "moment": "^2.24.0",
     "mongoose": "^5.7.13",
     "node-sass": "^4.13.0",
